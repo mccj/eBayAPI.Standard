@@ -1,0 +1,563 @@
+openapi: 3.0.0
+info:
+  title: Compliance API
+  description: API for providing the compliance violations of seller account/listings
+  contact:
+    name: 'eBay Inc,'
+  license:
+    name: eBay API License Agreement
+    url: 'https://go.developer.ebay.com/api-license-agreement'
+  version: 1.0.0
+servers:
+  - url: 'https://api.ebay.com{basePath}'
+    description: Production
+    variables:
+      basePath:
+        default: /sell/compliance/v1
+paths:
+  /listing_violation_summary:
+    get:
+      tags:
+        - listing_violation_summary
+      summary: getListingViolationsSummary
+      description: >-
+        This call returns listing violation counts for a seller. A user can pass
+        in one or more compliance types through the compliance_type query
+        parameter. Listing violations are returned for multiple marketplaces if
+        the seller sells on multiple eBay marketplaces. Note: For the initial
+        release of Compliance API, the only supported compliance type is
+        PRODUCT_ADOPTION. With this compliance type, a seller will be able to
+        discover which active listings need to be revised with an eBay catalog
+        product or product identifier.
+      operationId: getListingViolationsSummary
+      parameters:
+        - name: compliance_type
+          in: query
+          description: >-
+            A user passes in one or more compliance type values through this
+            query parameter. See ComplianceTypeEnum for more information on the
+            compliance types that can be passed in here. If more than one
+            compliance type values is used, delimit these values with a comma.
+            If no compliance type values are passed in, the listing count for
+            all compliance types will be returned. Note: For the initial release
+            of Compliance API, the only supported compliance type is
+            PRODUCT_ADOPTION. With this compliance type, a seller will be able
+            to discover which active listings need to be revised with an eBay
+            catalog prodoct or product identifier.
+          required: false
+          schema:
+            type: string
+        - name: X-EBAY-C-MARKETPLACE-ID
+          in: header
+          description: >-
+            Use this header to specify the eBay marketplace identifier.
+            Supported values for this header can be found in the
+            MarketplaceIdEnum type definition. Note that Version 1.0.0 of the
+            Compliance API is only supported on the US, UK, Australia, and
+            Canada (English) sites.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >-
+            This call returns listing violation counts for a seller. A user can
+            pass in one or more compliance types through the compliance_type
+            query parameter. Listing violations are returned for multiple
+            marketplaces if the seller sells on multiple eBay marketplaces.
+            Note: For the initial release of Compliance API, the only supported
+            compliance type is PRODUCT_ADOPTION. With this compliance type, a
+            seller will be able to discover which active listings need to be
+            revised with an eBay catalog product or product identifier.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ComplianceSummary'
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Error'
+      security:
+        - api_auth:
+            - 'https://api.ebay.com/oauth/api_scope/sell.inventory'
+  /listing_violation:
+    get:
+      tags:
+        - listing_violation
+      summary: getListingViolations
+      description: >-
+        This call returns specific listing violations for a seller. The seller
+        can either retrieve all listing violations of a specific compliance
+        type, or they can pass in a specific listing ID, and all listing
+        violations applicable to this listing are returned. This call also has
+        pagination control. Note: For the initial release of Compliance API, the
+        only supported compliance type is PRODUCT_ADOPTION. With this compliance
+        type, a seller will be able to discover which active listings need to be
+        revised with an eBay catalog prodoct or product identifier. Searching
+        for violations for a specific listing is also not supported with the
+        initial release of the Compliance API.
+      operationId: getListingViolations
+      parameters:
+        - name: X-EBAY-C-MARKETPLACE-ID
+          in: header
+          description: >-
+            Use this header to specify the eBay marketplace identifier.
+            Supported values for this header can be found in the
+            MarketplaceIdEnum type definition. Note that Version 1.0.0 of the
+            Compliance API is only supported on the US, UK, Australia, and
+            Canada (English) sites.
+          required: true
+          schema:
+            type: string
+        - name: compliance_type
+          in: query
+          description: >-
+            A seller uses this query parameter to retrieve all listing
+            violations of a specific compliance type. Only one compliance type
+            value should be passed in here. See ComplianceTypeEnum for more
+            information on the compliance types that can be passed in here. If
+            the listing_id query parameter is used, the compliance_type query
+            parameter (if passed in) will be ignored. This is because all of a
+            listing's policy violations (each compliance type) will be returned
+            if a listing_id is provided. Either the listing_id or a
+            compliance_type query parameter must be used, and if the seller only
+            wants to view listing violations of a specific compliance type, both
+            of these parameters can be used. Note: For the initial release of
+            Compliance API, the listing_id query parameter is not available for
+            use, so the seller does not have the ability to retrieve listing
+            violations for one or more specific listings. Until the listing_id
+            query parameter becomes available, the compliance_type query
+            parameter is required with each getListingViolations call. Note: For
+            the initial release of Compliance API, the only supported compliance
+            type is PRODUCT_ADOPTION. With this compliance type, a seller will
+            be able to discover which active listings need to be revised with an
+            eBay catalog prodoct or other product identifier.
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: >-
+            The first policy violation to return based on its position in the
+            collection of listing violations. Use this parameter in conjunction
+            with the limit parameter to control the pagination of the output.
+            For example, if offset is set to 10 and limit is set to 10, the call
+            retrieves listing violations 11 thru 20 from the resulting
+            collection of listing violations. Note: This feature employs a
+            zero-based list, where the first item in the list has an offset of
+            0. If the listing_id parameter is included in the request, this
+            parameter will be ignored. Default: 0 (zero)
+          required: false
+          schema:
+            type: string
+        - name: listing_id
+          in: query
+          description: >-
+            Note: This query parameter is for future use, and will not be
+            supported for the initial release of Compliance API. This query
+            parameter is used if the user wants to view all listing violations
+            for one or more eBay listings. The string value passed into this
+            field is the unique identifier of the listing, sometimes referred to
+            as the Item ID. If this query parameter is used, all other query
+            parameters (if provided) are ignored. Either the listing_id or a
+            compliance_type query parameter must be used, and if the seller only
+            wants to view listing violations of a specific compliance type, both
+            of these parameters can be used. Up to 50 listing IDs can be
+            specified with this query parameter, and each unique listing ID is
+            separated with a comma.
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: >-
+            This query parameter is used if the user wants to set a limit on the
+            number of listing violations that are returned in the current result
+            set. This parameter is used in conjunction with the offset parameter
+            to control the pagination of the output. For example, if offset is
+            set to 10 and limit is set to 10, the call retrieves listing
+            violations 11 thru 20 from the collection of listing violations that
+            match the value set in the compliance_type parameter. Note: This
+            feature employs a zero-based list, where the first item in the list
+            has an offset of 0. If the listing_id parameter is included in the
+            request, this parameter will be ignored. Default: 50 Maximum: 200
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >-
+            This call returns specific listing violations for a seller. The
+            seller can either retrieve all listing violations of a specific
+            compliance type, or they can pass in a specific listing ID, and all
+            listing violations applicable to this listing are returned. This
+            call also has pagination control. Note: For the initial release of
+            Compliance API, the only supported compliance type is
+            PRODUCT_ADOPTION. With this compliance type, a seller will be able
+            to discover which active listings need to be revised with an eBay
+            catalog prodoct or product identifier. Searching for violations for
+            a specific listing is also not supported with the initial release of
+            the Compliance API.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/PagedComplianceViolationCollection'
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Error'
+      security:
+        - api_auth:
+            - 'https://api.ebay.com/oauth/api_scope/sell.inventory'
+components:
+  schemas:
+    ComplianceSummaryInfo:
+      type: object
+      properties:
+        complianceType:
+          type: string
+          description: >-
+            This enumeration value indicates the type of compliance. See
+            ComplianceTypeEnum for more information on each compliance type.
+            Note: For the initial release of Compliance API, the only supported
+            compliance type is PRODUCT_ADOPTION. With this compliance type, a
+            seller will be able to discover which active listings (or variations
+            within a multiple-variation listing) need to be revised with an eBay
+            catalog prodoct and/or a product identifier value. For
+            implementation help, refer to <a
+            href='https://developer.ebay.com/devzone/rest/api-ref/compliance/types/ComplianceTypeEnum.html'>eBay
+            API documentation</a>
+        marketplaceId:
+          type: string
+          description: >-
+            This enumeration value indicates the eBay marketplace where the
+            listing violations are occurring. For implementation help, refer to
+            <a
+            href='https://developer.ebay.com/devzone/rest/api-ref/compliance/types/MarketplaceIdEnum.html'>eBay
+            API documentation</a>
+        listingCount:
+          type: integer
+          description: >-
+            This integer value indicates the number of eBay listings that are
+            currently violating the compliance type indicated in the
+            complianceType field for the eBay marketplace indicated in the
+            marketplaceId field. If there are no listing violations for the
+            corresponding compliance type, 0 will be returned.
+          format: int32
+    ComplianceViolation:
+      type: object
+      properties:
+        complianceType:
+          type: string
+          description: >-
+            This enumeration value indicates the compliance type of listing
+            violation. See ComplianceTypeEnum for more information on each
+            compliance type. This will always be returned for each listing
+            violation that is found. Note: For the initial release of Compliance
+            API, the only supported compliance type is PRODUCT_ADOPTION. With
+            this compliance type, a seller will be able to discover which active
+            listings need to be revised with an eBay catalog prodoct and/or a
+            product identifier value. For implementation help, refer to <a
+            href='https://developer.ebay.com/devzone/rest/api-ref/compliance/types/ComplianceTypeEnum.html'>eBay
+            API documentation</a>
+        listingId:
+          type: string
+          description: >-
+            The unique identifier of the eBay listing that currently has the
+            corresponding listing violation(s). This will always be returned for
+            each listing that has one or more violations.
+        sku:
+          type: string
+          description: >-
+            The seller-defined SKU value of the product in the listing with the
+            violation(s). This field is only returned if defined in the listing.
+            SKU values are optional in listings except when creating listings
+            using the Inventory API.
+        offerId:
+          type: string
+          description: >-
+            Note: This field is not supported with the initial release of the
+            Compliance API, and will not be returned. The unique identifier of
+            the offer. This field is only applicable and returned for listings
+            that were created through the Inventory API. To convert an Inventory
+            Item object into an eBay listing, an Offer object must be created
+            and published
+        violations:
+          type: array
+          description: >-
+            This container consists of an array of one or more listing
+            violations applicable to the eBay listing specified in the listingId
+            field. This array is returned for each eBay listing that has one or
+            more violations.
+          items:
+            $ref: '#/components/schemas/ComplianceDetail'
+      description: >-
+        This type is used by each listing violation that is returned under the
+        listingViolations container.
+    ComplianceSummary:
+      type: object
+      properties:
+        violationSummaries:
+          type: array
+          description: >-
+            This container is an array of one or more policy violation counts. A
+            policy violation count is returned for each unique eBay marketplace
+            and compliance type violation. Note: For the initial release of
+            Compliance API, the only supported compliance type is
+            PRODUCT_ADOPTION. With this compliance type, a seller will be able
+            to discover which active listings need to be revised with an eBay
+            catalog prodoct or product identifier.
+          items:
+            $ref: '#/components/schemas/ComplianceSummaryInfo'
+      description: >-
+        This type is the base type for the getListingViolationsSummary response.
+        The violationSummaries container contains an array of policy violation
+        counts for each unique eBay marketplace and compliance type violation.
+    PagedComplianceViolationCollection:
+      type: object
+      properties:
+        offset:
+          type: integer
+          description: >-
+            The distance (number of records) from the first policy violation in
+            the collection to the first policy violation in this result set. In
+            the call request, you can use the offset parameter in conjunction
+            with the limit parameter to control the pagination of the output.
+            For example, if offset is set to 30 and limit is set to 10, the call
+            retrieves policy violations 31 thru 40 from the resulting collection
+            of policy violations. Note: This feature employs a zero-based list,
+            where the first item in the list has an offset of 0. Default: 0
+            (zero)
+          format: int32
+        href:
+          type: string
+          description: >-
+            The URI of the getListingViolations call request that produced this
+            result set.
+        total:
+          type: integer
+          description: >-
+            The total number of policy violations in the collection. Note: If no
+            policy violations are found, this field is returned with a value of
+            0.
+          format: int32
+        next:
+          type: string
+          description: >-
+            The getListingViolations call URI for the next result set. For
+            example, the following URI returns policy violations 41 thru 50 from
+            the collection of policy violations:
+            path/listing_violation?limit=10&amp;offset=40 This field is only
+            returned if an additional page of listing violations exists.
+        prev:
+          type: string
+          description: >-
+            The getListingViolations call URI for the previous result set. For
+            example, the following URI returns policy violations 21 thru 30 from
+            the collection of policy violations:
+            path/listing_violation?limit=10&amp;offset=20 Note: This feature
+            employs a zero-based list, where the first policy violation in the
+            list has an offset of 0. This field is only returned if a previous
+            page of listing violations exists.
+        limit:
+          type: integer
+          description: >-
+            The maximum number of policy violations returned in the current
+            result set. Note: If this is the last or only result set in the
+            collection, it may contain fewer listing violations. To determine
+            the number of result sets in the collection, divide this into the
+            value of total and round up to the next integer. Default: 50 Max:
+            200
+          format: int32
+        listingViolations:
+          type: array
+          description: >-
+            An array of listing violations that match the criteria in the call
+            request, including pagination control (if set). An empty array is
+            returned if no listing violations are found.
+          items:
+            $ref: '#/components/schemas/ComplianceViolation'
+    VariationDetails:
+      type: object
+      properties:
+        sku:
+          type: string
+          description: >-
+            The seller-defined SKU value of the variation within the
+            multiple-variation listing with the violation(s). This field is only
+            returned if a seller-defined SKU value is defined for the variation.
+            SKU values are optional in listing except when creating listings
+            using the Inventory API.
+        variationAspects:
+          type: array
+          description: >-
+            An array of one or more variation aspects that define a variation
+            within a multiple variation listing. The aspect(s) returned here
+            define the individual variation because these aspects will differ
+            for each variation. Common varying aspects include color and size.
+          items:
+            $ref: '#/components/schemas/NameValueList'
+    ComplianceDetail:
+      type: object
+      properties:
+        reasonCode:
+          type: string
+          description: >-
+            This value states the nature of the listing violation. Each
+            compliance type has one or more reason codes. See the Revising
+            Non-Compliant Listings topic in the Product-Based Shopping
+            Experience Playbook for information on revising non-compliant
+            listings based on the PRODUCT_ADOPTION reason code that is received.
+            A reasonCode value is returned for each listing violation.
+        message:
+          type: string
+          description: >-
+            This field provides a textual summary of the listing violation. A
+            message field is returned for each listing violation.
+        variation:
+          description: >-
+            This container defines the variation within a multiple-variation
+            listing that has the listing violation. This container is only
+            returned if an individual variation within multiple-variation
+            listing has the listing violation.
+          $ref: '#/components/schemas/VariationDetails'
+        violationData:
+          type: array
+          description: >-
+            Note: This container is for future use, and will not be applicable
+            for the initial release of Compliance API. This container provides
+            more information about the listing violation if applicable. The type
+            of information that appears here will vary based on the compliance
+            type and type of violation.
+          items:
+            $ref: '#/components/schemas/NameValueList'
+      description: >-
+        This type is used by each listing violation that is returned under the
+        violations container.
+    NameValueList:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The category of information is returned in this field. The type of
+            information that appears here will vary based on the compliance type
+            and type of violation.
+        value:
+          type: string
+          description: >-
+            This value corresponds to violation category returned in the
+            corresponding name field.
+      description: >-
+        This type is used by the violationData container to provide more
+        information about the listing violation if applicable. Note: The
+        violationData container is for future use, and will not be applicable
+        for the initial release of Compliance API.
+    Error:
+      type: object
+      properties:
+        category:
+          type: string
+          description: Identifies the type of erro.
+        domain:
+          type: string
+          description: >-
+            Name for the primary system where the error occurred. This is
+            relevant for application errors.
+        errorId:
+          type: integer
+          description: A unique number to identify the error.
+          format: int32
+        inputRefIds:
+          type: array
+          description: An array of request elements most closely associated to the error.
+          items:
+            type: string
+        longMessage:
+          type: string
+          description: A more detailed explanation of the error.
+        message:
+          type: string
+          description: >-
+            Information on how to correct the problem, in the end user's terms
+            and language where applicable.
+        outputRefIds:
+          type: array
+          description: An array of request elements most closely associated to the error.
+          items:
+            type: string
+        parameters:
+          type: array
+          description: >-
+            An array of name/value pairs that describe details the error
+            condition. These are useful when multiple errors are returned.
+          items:
+            $ref: '#/components/schemas/ErrorParameter'
+        subdomain:
+          type: string
+          description: >-
+            Further helps indicate which subsystem the error is coming from.
+            System subcategories include: Initialization, Serialization,
+            Security, Monitoring, Rate Limiting, etc.
+      description: This type defines the fields that can be returned in an error.
+    ErrorParameter:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The object of the error.
+        value:
+          type: string
+          description: The value of the object.
+  securitySchemes:
+    api_auth:
+      type: oauth2
+      description: >-
+        The security definitions for this API. Please check individual
+        operations for applicable scopes.
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://auth.ebay.com/oauth2/authorize'
+          tokenUrl: 'https://api.ebay.com/identity/v1/oauth2/token'
+          scopes:
+            'https://api.ebay.com/oauth/api_scope/sell.inventory': View and manage your inventory and offers
