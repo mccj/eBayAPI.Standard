@@ -127,10 +127,11 @@ namespace OpenApiToCSharpCode
         {
             return string.Join("\r\n", new[] {
                 $"namespace {ns} {{",
-        $"public partial class {clientName}{{",
-            string.Join("\r\n",  doc.Select(f=>$"public {f.Item1}.{f.Item2} {f.Item3} {{ get; set; }} = new {f.Item1}.{f.Item2}(\"{f.Item4}\");")),
-            "private void Setting(Action<Api.Client.ApiBase> execute){",
-                  string.Join("\r\n",  doc.Select(f=>$"execute({f.Item3});")),
+                $"public partial class {clientName}{{",
+                "private readonly Dictionary<string, Api.Client.ApiBase> keyValuesApiClient = new Dictionary<string, Api.Client.ApiBase>();",
+                string.Join("\r\n",  doc.Select(f=>$"public {f.Item1}.{f.Item2} {f.Item3} {{ get {{ return keyValuesApiClient[\"{f.Item3}\"] as {f.Item1}.{f.Item2}; }} }}")),
+                "private void InitializationGeneration(Func<string, Api.Client.ApiBase> func = null){",
+                  string.Join("\r\n",  doc.Select(f=>$"keyValuesApiClient[\"{f.Item3}\"] = func?.Invoke(\"{f.Item3}\") ?? new {f.Item1}.{f.Item2}(replaceApiHostUrl(\"{f.Item4}\"));")),
             "}",
         "}",
     "}"
@@ -173,7 +174,7 @@ namespace OpenApiToCSharpCode
                     缩进+缩进+$"var authSettings = new String[] {{ {(f.Method?.Security?.Length>0?("\""+string.Join("\",\"", f.Method?.Security?.Select(ff=>ff.Name))+"\""):"")}}};",
                     "",
                     缩进+缩进+"// make the HTTP request",
-                    缩进+缩进+$"var response = (IRestResponse)ApiClient.CallApi(path, Method.{f.Method?.Name?.ToUpper()}, queryParams, postBody, headerParams, formParams, fileParams, authSettings);",
+                    缩进+缩进+$"var response = ApiClient.CallApi(path, Method.{f.Method?.Name?.ToUpper()}, queryParams, postBody, headerParams, formParams, fileParams, authSettings);",
                     "",
                     缩进+缩进+"if (((int)response.StatusCode) >= 400)",
                     缩进+缩进+$"    throw new Api.Client.ApiException((int)response.StatusCode, \"Error calling {f.Method?.OperationId?.大驼峰命名()}: \" + response.Content, response.Content);",

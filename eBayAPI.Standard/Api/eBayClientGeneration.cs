@@ -18,22 +18,23 @@ namespace eBayApi
 {
     public partial class eBayClient
     {
-        public eBayApi.Buy.Browse.BrowseClient Browse { get; set; } = new eBayApi.Buy.Browse.BrowseClient("https://api.ebay.com/buy/browse/v1");
-        public eBayApi.Buy.Feed.FeedClient Feed { get; set; } = new eBayApi.Buy.Feed.FeedClient("https://api.ebay.com/buy/feed/v1_beta");
-        public eBayApi.Buy.Marketing.MarketingClient Marketing { get; set; } = new eBayApi.Buy.Marketing.MarketingClient("https://api.ebay.com/buy/marketing/v1_beta");
-        public eBayApi.Commerce.Catalog.CatalogClient Catalog { get; set; } = new eBayApi.Commerce.Catalog.CatalogClient("https://api.ebay.com/commerce/catalog/v1_beta");
-        public eBayApi.Commerce.Taxonomy.TaxonomyClient Taxonomy { get; set; } = new eBayApi.Commerce.Taxonomy.TaxonomyClient("https://api.ebay.com/commerce/taxonomy/v1_beta");
-        public eBayApi.Sell.Compliance.ComplianceClient Compliance { get; set; } = new eBayApi.Sell.Compliance.ComplianceClient("https://api.ebay.com/sell/compliance/v1");
-        public eBayApi.Sell.Fulfillment.FulfillmentClient Fulfillment { get; set; } = new eBayApi.Sell.Fulfillment.FulfillmentClient("https://api.ebay.com/sell/fulfillment/v1");
-        private void Setting(Action<Api.Client.ApiBase> execute)
+        private readonly Dictionary<string, Api.Client.ApiBase> keyValuesApiClient = new Dictionary<string, Api.Client.ApiBase>();
+        public eBayApi.Buy.Browse.BrowseClient Browse { get { return keyValuesApiClient["Browse"] as eBayApi.Buy.Browse.BrowseClient; } }
+        public eBayApi.Buy.Feed.FeedClient Feed { get { return keyValuesApiClient["Feed"] as eBayApi.Buy.Feed.FeedClient; } }
+        public eBayApi.Buy.Marketing.MarketingClient Marketing { get { return keyValuesApiClient["Marketing"] as eBayApi.Buy.Marketing.MarketingClient; } }
+        public eBayApi.Commerce.Catalog.CatalogClient Catalog { get { return keyValuesApiClient["Catalog"] as eBayApi.Commerce.Catalog.CatalogClient; } }
+        public eBayApi.Commerce.Taxonomy.TaxonomyClient Taxonomy { get { return keyValuesApiClient["Taxonomy"] as eBayApi.Commerce.Taxonomy.TaxonomyClient; } }
+        public eBayApi.Sell.Compliance.ComplianceClient Compliance { get { return keyValuesApiClient["Compliance"] as eBayApi.Sell.Compliance.ComplianceClient; } }
+        public eBayApi.Sell.Fulfillment.FulfillmentClient Fulfillment { get { return keyValuesApiClient["Fulfillment"] as eBayApi.Sell.Fulfillment.FulfillmentClient; } }
+        private void InitializationGeneration(Func<string, Api.Client.ApiBase> func = null)
         {
-            execute(Browse);
-            execute(Feed);
-            execute(Marketing);
-            execute(Catalog);
-            execute(Taxonomy);
-            execute(Compliance);
-            execute(Fulfillment);
+            keyValuesApiClient["Browse"] = func?.Invoke("Browse") ?? new eBayApi.Buy.Browse.BrowseClient(replaceApiHostUrl("https://api.ebay.com/buy/browse/v1"));
+            keyValuesApiClient["Feed"] = func?.Invoke("Feed") ?? new eBayApi.Buy.Feed.FeedClient(replaceApiHostUrl("https://api.ebay.com/buy/feed/v1_beta"));
+            keyValuesApiClient["Marketing"] = func?.Invoke("Marketing") ?? new eBayApi.Buy.Marketing.MarketingClient(replaceApiHostUrl("https://api.ebay.com/buy/marketing/v1_beta"));
+            keyValuesApiClient["Catalog"] = func?.Invoke("Catalog") ?? new eBayApi.Commerce.Catalog.CatalogClient(replaceApiHostUrl("https://api.ebay.com/commerce/catalog/v1_beta"));
+            keyValuesApiClient["Taxonomy"] = func?.Invoke("Taxonomy") ?? new eBayApi.Commerce.Taxonomy.TaxonomyClient(replaceApiHostUrl("https://api.ebay.com/commerce/taxonomy/v1_beta"));
+            keyValuesApiClient["Compliance"] = func?.Invoke("Compliance") ?? new eBayApi.Sell.Compliance.ComplianceClient(replaceApiHostUrl("https://api.ebay.com/sell/compliance/v1"));
+            keyValuesApiClient["Fulfillment"] = func?.Invoke("Fulfillment") ?? new eBayApi.Sell.Fulfillment.FulfillmentClient(replaceApiHostUrl("https://api.ebay.com/sell/fulfillment/v1"));
         }
     }
 }
@@ -74,7 +75,7 @@ namespace eBayApi.Buy.Browse
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetItem: " + response.Content, response.Content);
@@ -119,7 +120,7 @@ namespace eBayApi.Buy.Browse
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetItemByLegacyId: " + response.Content, response.Content);
@@ -158,7 +159,7 @@ namespace eBayApi.Buy.Browse
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetItemsByItemGroup: " + response.Content, response.Content);
@@ -214,7 +215,7 @@ namespace eBayApi.Buy.Browse
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling Search: " + response.Content, response.Content);
@@ -3537,7 +3538,7 @@ namespace eBayApi.Buy.Feed
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetItemDescriptionFeed: " + response.Content, response.Content);
@@ -3591,7 +3592,7 @@ namespace eBayApi.Buy.Feed
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetItemFeed: " + response.Content, response.Content);
@@ -3643,7 +3644,7 @@ namespace eBayApi.Buy.Feed
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetItemGroupFeed: " + response.Content, response.Content);
@@ -3693,7 +3694,7 @@ namespace eBayApi.Buy.Feed
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetItemSnapshotFeed: " + response.Content, response.Content);
@@ -4780,7 +4781,7 @@ namespace eBayApi.Buy.Marketing
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetAlsoBoughtByProduct: " + response.Content, response.Content);
@@ -4824,7 +4825,7 @@ namespace eBayApi.Buy.Marketing
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetAlsoViewedByProduct: " + response.Content, response.Content);
@@ -4871,7 +4872,7 @@ namespace eBayApi.Buy.Marketing
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetMerchandisedProducts: " + response.Content, response.Content);
@@ -5446,7 +5447,7 @@ namespace eBayApi.Commerce.Catalog
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling CreateChangeRequest: " + response.Content, response.Content);
@@ -5490,7 +5491,7 @@ namespace eBayApi.Commerce.Catalog
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetChangeRequest: " + response.Content, response.Content);
@@ -5536,7 +5537,7 @@ namespace eBayApi.Commerce.Catalog
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetChangeRequests: " + response.Content, response.Content);
@@ -5575,7 +5576,7 @@ namespace eBayApi.Commerce.Catalog
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetProduct: " + response.Content, response.Content);
@@ -5623,7 +5624,7 @@ namespace eBayApi.Commerce.Catalog
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetProductMetadata: " + response.Content, response.Content);
@@ -5669,7 +5670,7 @@ namespace eBayApi.Commerce.Catalog
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetProductMetadataForCategories: " + response.Content, response.Content);
@@ -5721,7 +5722,7 @@ namespace eBayApi.Commerce.Catalog
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling Search: " + response.Content, response.Content);
@@ -7840,7 +7841,7 @@ namespace eBayApi.Commerce.Taxonomy
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetCategorySubtree: " + response.Content, response.Content);
@@ -7882,7 +7883,7 @@ namespace eBayApi.Commerce.Taxonomy
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetCategorySuggestions: " + response.Content, response.Content);
@@ -7921,7 +7922,7 @@ namespace eBayApi.Commerce.Taxonomy
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetCategoryTree: " + response.Content, response.Content);
@@ -7960,7 +7961,7 @@ namespace eBayApi.Commerce.Taxonomy
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetDefaultCategoryTreeId: " + response.Content, response.Content);
@@ -8002,7 +8003,7 @@ namespace eBayApi.Commerce.Taxonomy
             var authSettings = new String[] { "Client Credentials" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetItemAspectsForCategory: " + response.Content, response.Content);
@@ -8725,7 +8726,7 @@ namespace eBayApi.Sell.Compliance
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetListingViolations: " + response.Content, response.Content);
@@ -8765,7 +8766,7 @@ namespace eBayApi.Sell.Compliance
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetListingViolationsSummary: " + response.Content, response.Content);
@@ -9192,7 +9193,7 @@ namespace eBayApi.Sell.Fulfillment
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling CreateShippingFulfillment: " + response.Content, response.Content);
@@ -9231,7 +9232,7 @@ namespace eBayApi.Sell.Fulfillment
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetOrder: " + response.Content, response.Content);
@@ -9275,7 +9276,7 @@ namespace eBayApi.Sell.Fulfillment
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetOrders: " + response.Content, response.Content);
@@ -9318,7 +9319,7 @@ namespace eBayApi.Sell.Fulfillment
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetShippingFulfillment: " + response.Content, response.Content);
@@ -9357,7 +9358,7 @@ namespace eBayApi.Sell.Fulfillment
             var authSettings = new String[] { "Authorization Code" };
 
             // make the HTTP request
-            var response = (IRestResponse)ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            var response = ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
 
             if (((int)response.StatusCode) >= 400)
                 throw new Api.Client.ApiException((int)response.StatusCode, "Error calling GetShippingFulfillments: " + response.Content, response.Content);
