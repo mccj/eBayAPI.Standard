@@ -38,7 +38,7 @@ namespace eBayApi.Standard.Test
             try
             {
                 //var rrr = sss.Browse.GetItemByLegacyId(itemid);
-                var aaa = client.Browse.GetItem("v1|111635764160|0");
+                var aaa = client.BuyBrowse.GetItem("v1|111635764160|0");
 
             }
             catch (Api.Client.ApiException ex)
