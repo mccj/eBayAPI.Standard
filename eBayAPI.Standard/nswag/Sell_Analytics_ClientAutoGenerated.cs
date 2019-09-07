@@ -46,16 +46,16 @@ namespace eBayApi.Sell.Analytics
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
     
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<FindSellerStandardsProfilesResponse> FindSellerStandardsProfilesAsync()
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public FindSellerStandardsProfilesResponse FindSellerStandardsProfiles()
         {
-            return FindSellerStandardsProfilesAsync(System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await FindSellerStandardsProfilesAsync(System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FindSellerStandardsProfilesResponse> FindSellerStandardsProfilesAsync(System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<FindSellerStandardsProfilesResponse> FindSellerStandardsProfilesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/seller_standards_profile");
@@ -95,19 +95,19 @@ namespace eBayApi.Sell.Analytics
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response2>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response2>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response2>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(FindSellerStandardsProfilesResponse);
@@ -127,18 +127,18 @@ namespace eBayApi.Sell.Analytics
         /// <param name="cycle">Specifies the cycle of the requested profile.</param>
         /// <param name="program">Specifies the program of the requested profile.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<StandardsProfile> GetSellerStandardsProfileAsync(string cycle, string program)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public StandardsProfile GetSellerStandardsProfile(string cycle, string program)
         {
-            return GetSellerStandardsProfileAsync(cycle, program, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetSellerStandardsProfileAsync(cycle, program, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="cycle">Specifies the cycle of the requested profile.</param>
         /// <param name="program">Specifies the program of the requested profile.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<StandardsProfile> GetSellerStandardsProfileAsync(string cycle, string program, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<StandardsProfile> GetSellerStandardsProfileAsync(string cycle, string program, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (cycle == null)
                 throw new System.ArgumentNullException("cycle");
@@ -186,31 +186,31 @@ namespace eBayApi.Sell.Analytics
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response3>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response3>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response3>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response4>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response4>("Resource not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response4>("Resource not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response5>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response5>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response5>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(StandardsProfile);
@@ -232,10 +232,10 @@ namespace eBayApi.Sell.Analytics
         /// <param name="metric">Specifies a comma separated list of the metrics you want included in the report. Valid values: CLICK_THROUGH_RATE The number of times a buyer saw a listing impression and then clicked through to the listing page. Localized name: Click through rate LISTING_IMPRESSION_SEARCH_RESULTS_PAGE The number of times the seller's listings appeared on the search results page. However, the listing might not have been visible to the buyer because of its position on the page. Localized name: Listing impressions from the search results page LISTING_IMPRESSION_STORE The number of times the seller's listings appeared on the seller's store. However, the listing might not have been visible to the buyer because of its position on the page. Localized name: Listing impressions from your Store LISTING_IMPRESSION_TOTAL The total number of times the seller's listings appeared in the search results page or the seller's store. If the listing appeared in both places, it is counted each time. However, the listing might not have been visible to the buyer because of its position on the page. (LISTING_IMPRESSION_SEARCH_RESULTS_PAGE + LISTING_IMPRESSION_STORE) Localized name: Total listing impressions LISTING_VIEWS_SOURCE_DIRECT The number of times a seller's listing was viewed directly, such as when a buyer uses a bookmark. Localized name: Direct views LISTING_VIEWS_SOURCE_OFF_EBAY The number of times a seller's listing was viewed from a site other than eBay, such as when a buyer clicks on a link to the listing from a Google search page. Localized name: Off eBay views LISTING_VIEWS_SOURCE_OTHER_EBAY The number of times a seller's listing was viewed from an eBay page, other than the search results page or the seller's store. Localized name: Views from non-search and non-store pages within eBay LISTING_VIEWS_SOURCE_SEARCH_RESULTS_PAGE The number of times a seller's listing was viewed by clicking on a link that was on the search results page. Localized name: Views from the search results page LISTING_VIEWS_SOURCE_STORE The number of times a seller's listing was viewed by clicking on a link that was on the seller's store. Localized name: Views from your Store LISTING_VIEWS_TOTAL Total number of listings viewed. (LISTING_VIEWS_SOURCE_DIRECT + LISTING_VIEWS_SOURCE_OFF_EBAY + LISTING_VIEWS_SOURCE_OTHER_EBAY + LISTING_VIEWS_SOURCE_SEARCH_RESULTS_PAGE + LISTING_VIEWS_SOURCE_STORE) Localized name: Total views SALES_CONVERSION_RATE The number of transactions divided by the number of listings views. (TRANSACTION / LISTING_VIEWS_TOTAL) Localized name: Sales conversion rate TRANSACTION The number of transactions. Localized name: Transaction count Required: Always</param>
         /// <param name="sort">Specifies a single metric to be sorted and whether you want to sort in ascending or descending order. Specifying a metric in this field, sorts that data in ascending order. To sort in descending order add - in front of the metric. This is helpful when the seller wants to see metrics starting with the greatest number, such as the CLICK_THROUGH_RATE (sort=-CLICK_THROUGH_RATE). Default: ascending If null: Sorts by the first metric specified in ascending order Maximum metric: 1 Valid Values: metric values For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/analytics/types/SortField.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Report> GetTrafficReportAsync(string dimension, string filter, string metric, string sort)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Report GetTrafficReport(string dimension = null, string filter = null, string metric = null, string sort = null)
         {
-            return GetTrafficReportAsync(dimension, filter, metric, sort, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetTrafficReportAsync(dimension, filter, metric, sort, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -244,8 +244,8 @@ namespace eBayApi.Sell.Analytics
         /// <param name="metric">Specifies a comma separated list of the metrics you want included in the report. Valid values: CLICK_THROUGH_RATE The number of times a buyer saw a listing impression and then clicked through to the listing page. Localized name: Click through rate LISTING_IMPRESSION_SEARCH_RESULTS_PAGE The number of times the seller's listings appeared on the search results page. However, the listing might not have been visible to the buyer because of its position on the page. Localized name: Listing impressions from the search results page LISTING_IMPRESSION_STORE The number of times the seller's listings appeared on the seller's store. However, the listing might not have been visible to the buyer because of its position on the page. Localized name: Listing impressions from your Store LISTING_IMPRESSION_TOTAL The total number of times the seller's listings appeared in the search results page or the seller's store. If the listing appeared in both places, it is counted each time. However, the listing might not have been visible to the buyer because of its position on the page. (LISTING_IMPRESSION_SEARCH_RESULTS_PAGE + LISTING_IMPRESSION_STORE) Localized name: Total listing impressions LISTING_VIEWS_SOURCE_DIRECT The number of times a seller's listing was viewed directly, such as when a buyer uses a bookmark. Localized name: Direct views LISTING_VIEWS_SOURCE_OFF_EBAY The number of times a seller's listing was viewed from a site other than eBay, such as when a buyer clicks on a link to the listing from a Google search page. Localized name: Off eBay views LISTING_VIEWS_SOURCE_OTHER_EBAY The number of times a seller's listing was viewed from an eBay page, other than the search results page or the seller's store. Localized name: Views from non-search and non-store pages within eBay LISTING_VIEWS_SOURCE_SEARCH_RESULTS_PAGE The number of times a seller's listing was viewed by clicking on a link that was on the search results page. Localized name: Views from the search results page LISTING_VIEWS_SOURCE_STORE The number of times a seller's listing was viewed by clicking on a link that was on the seller's store. Localized name: Views from your Store LISTING_VIEWS_TOTAL Total number of listings viewed. (LISTING_VIEWS_SOURCE_DIRECT + LISTING_VIEWS_SOURCE_OFF_EBAY + LISTING_VIEWS_SOURCE_OTHER_EBAY + LISTING_VIEWS_SOURCE_SEARCH_RESULTS_PAGE + LISTING_VIEWS_SOURCE_STORE) Localized name: Total views SALES_CONVERSION_RATE The number of transactions divided by the number of listings views. (TRANSACTION / LISTING_VIEWS_TOTAL) Localized name: Sales conversion rate TRANSACTION The number of transactions. Localized name: Transaction count Required: Always</param>
         /// <param name="sort">Specifies a single metric to be sorted and whether you want to sort in ascending or descending order. Specifying a metric in this field, sorts that data in ascending order. To sort in descending order add - in front of the metric. This is helpful when the seller wants to see metrics starting with the greatest number, such as the CLICK_THROUGH_RATE (sort=-CLICK_THROUGH_RATE). Default: ascending If null: Sorts by the first metric specified in ascending order Maximum metric: 1 Valid Values: metric values For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/analytics/types/SortField.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Report> GetTrafficReportAsync(string dimension, string filter, string metric, string sort, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Report> GetTrafficReportAsync(string dimension = null, string filter = null, string metric = null, string sort = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/traffic_report?");
@@ -302,19 +302,19 @@ namespace eBayApi.Sell.Analytics
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response6>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response6>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response6>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response7>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response7>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response7>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Report);
@@ -364,7 +364,7 @@ namespace eBayApi.Sell.Analytics
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -383,7 +383,7 @@ namespace eBayApi.Sell.Analytics
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -984,41 +984,6 @@ namespace eBayApi.Sell.Analytics
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

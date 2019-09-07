@@ -48,18 +48,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to apply a coupon to a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> ApplyCouponAsync(string checkoutSessionId, CouponRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse ApplyCoupon(string checkoutSessionId, CouponRequest body = null)
         {
-            return ApplyCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await ApplyCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to apply a coupon to a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> ApplyCouponAsync(string checkoutSessionId, CouponRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> ApplyCouponAsync(string checkoutSessionId, CouponRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -106,37 +106,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -155,17 +155,17 @@ namespace eBayApi.Buy.Order
     
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> GetCheckoutSessionAsync(string checkoutSessionId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse GetCheckoutSession(string checkoutSessionId)
         {
-            return GetCheckoutSessionAsync(checkoutSessionId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetCheckoutSessionAsync(checkoutSessionId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> GetCheckoutSessionAsync(string checkoutSessionId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> GetCheckoutSessionAsync(string checkoutSessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -209,37 +209,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -258,17 +258,17 @@ namespace eBayApi.Buy.Order
     
         /// <param name="body">The container for the fields used by the initiateCheckoutSession method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> InitiateCheckoutSessionAsync(CreateSignInCheckoutSessionRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse InitiateCheckoutSession(CreateSignInCheckoutSessionRequest body = null)
         {
-            return InitiateCheckoutSessionAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await InitiateCheckoutSessionAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">The container for the fields used by the initiateCheckoutSession method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> InitiateCheckoutSessionAsync(CreateSignInCheckoutSessionRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> InitiateCheckoutSessionAsync(CreateSignInCheckoutSessionRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/checkout_session/initiate");
@@ -311,25 +311,25 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -348,17 +348,17 @@ namespace eBayApi.Buy.Order
     
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PurchaseOrderSummary> PlaceOrderAsync(string checkoutSessionId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PurchaseOrderSummary PlaceOrder(string checkoutSessionId)
         {
-            return PlaceOrderAsync(checkoutSessionId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await PlaceOrderAsync(checkoutSessionId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PurchaseOrderSummary> PlaceOrderAsync(string checkoutSessionId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PurchaseOrderSummary> PlaceOrderAsync(string checkoutSessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -403,37 +403,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PurchaseOrderSummary);
@@ -453,18 +453,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to remove a coupon from a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> RemoveCouponAsync(string checkoutSessionId, CouponRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse RemoveCoupon(string checkoutSessionId, CouponRequest body = null)
         {
-            return RemoveCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await RemoveCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to remove a coupon from a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> RemoveCouponAsync(string checkoutSessionId, CouponRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> RemoveCouponAsync(string checkoutSessionId, CouponRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -511,37 +511,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -561,18 +561,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updatePaymentInfo method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> UpdatePaymentInfoAsync(string checkoutSessionId, UpdatePaymentInformation body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse UpdatePaymentInfo(string checkoutSessionId, UpdatePaymentInformation body = null)
         {
-            return UpdatePaymentInfoAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdatePaymentInfoAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updatePaymentInfo method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> UpdatePaymentInfoAsync(string checkoutSessionId, UpdatePaymentInformation body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> UpdatePaymentInfoAsync(string checkoutSessionId, UpdatePaymentInformation body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -619,37 +619,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -669,18 +669,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateQuantity method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> UpdateQuantityAsync(string checkoutSessionId, UpdateQuantity body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse UpdateQuantity(string checkoutSessionId, UpdateQuantity body = null)
         {
-            return UpdateQuantityAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateQuantityAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateQuantity method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> UpdateQuantityAsync(string checkoutSessionId, UpdateQuantity body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> UpdateQuantityAsync(string checkoutSessionId, UpdateQuantity body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -727,37 +727,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -777,18 +777,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateShippingAddress method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> UpdateShippingAddressAsync(string checkoutSessionId, ShippingAddressImpl body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse UpdateShippingAddress(string checkoutSessionId, ShippingAddressImpl body = null)
         {
-            return UpdateShippingAddressAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateShippingAddressAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateShippingAddress method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> UpdateShippingAddressAsync(string checkoutSessionId, ShippingAddressImpl body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> UpdateShippingAddressAsync(string checkoutSessionId, ShippingAddressImpl body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -835,37 +835,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -885,18 +885,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned checkout session ID, for a specific eBay marketplace, that is returned by initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateShippingOption method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> UpdateShippingOptionAsync(string checkoutSessionId, UpdateShippingOption body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse UpdateShippingOption(string checkoutSessionId, UpdateShippingOption body = null)
         {
-            return UpdateShippingOptionAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateShippingOptionAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned checkout session ID, for a specific eBay marketplace, that is returned by initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateShippingOption method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> UpdateShippingOptionAsync(string checkoutSessionId, UpdateShippingOption body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> UpdateShippingOptionAsync(string checkoutSessionId, UpdateShippingOption body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -943,37 +943,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -993,18 +993,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to apply a coupon to a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> ApplyGuestCouponAsync(string checkoutSessionId, CouponRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse ApplyGuestCoupon(string checkoutSessionId, CouponRequest body = null)
         {
-            return ApplyGuestCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await ApplyGuestCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to apply a coupon to a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> ApplyGuestCouponAsync(string checkoutSessionId, CouponRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> ApplyGuestCouponAsync(string checkoutSessionId, CouponRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -1051,37 +1051,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -1100,17 +1100,17 @@ namespace eBayApi.Buy.Order
     
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> GetGuestCheckoutSessionAsync(string checkoutSessionId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse GetGuestCheckoutSession(string checkoutSessionId)
         {
-            return GetGuestCheckoutSessionAsync(checkoutSessionId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetGuestCheckoutSessionAsync(checkoutSessionId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> GetGuestCheckoutSessionAsync(string checkoutSessionId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> GetGuestCheckoutSessionAsync(string checkoutSessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -1154,37 +1154,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -1203,17 +1203,17 @@ namespace eBayApi.Buy.Order
     
         /// <param name="body">The container for the fields used by the initiateGuestCheckoutSession method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> InitiateGuestCheckoutSessionAsync(CreateGuestCheckoutSessionRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse InitiateGuestCheckoutSession(CreateGuestCheckoutSessionRequest body = null)
         {
-            return InitiateGuestCheckoutSessionAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await InitiateGuestCheckoutSessionAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">The container for the fields used by the initiateGuestCheckoutSession method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> InitiateGuestCheckoutSessionAsync(CreateGuestCheckoutSessionRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> InitiateGuestCheckoutSessionAsync(CreateGuestCheckoutSessionRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/guest_checkout_session/initiate");
@@ -1256,25 +1256,25 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -1294,18 +1294,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the initiateGuestPayment method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> InitiateGuestPaymentAsync(string checkoutSessionId, InitiatePaymentRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse InitiateGuestPayment(string checkoutSessionId, InitiatePaymentRequest body = null)
         {
-            return InitiateGuestPaymentAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await InitiateGuestPaymentAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the initiateGuestPayment method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> InitiateGuestPaymentAsync(string checkoutSessionId, InitiatePaymentRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> InitiateGuestPaymentAsync(string checkoutSessionId, InitiatePaymentRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -1352,37 +1352,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -1402,18 +1402,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific, eBay marketplace that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the placeGuestOrder method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PurchaseOrderSummary> PlaceGuestOrderAsync(string checkoutSessionId, GuestPlaceOrderRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PurchaseOrderSummary PlaceGuestOrder(string checkoutSessionId, GuestPlaceOrderRequest body = null)
         {
-            return PlaceGuestOrderAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await PlaceGuestOrderAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific, eBay marketplace that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the placeGuestOrder method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PurchaseOrderSummary> PlaceGuestOrderAsync(string checkoutSessionId, GuestPlaceOrderRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PurchaseOrderSummary> PlaceGuestOrderAsync(string checkoutSessionId, GuestPlaceOrderRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -1460,37 +1460,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PurchaseOrderSummary);
@@ -1510,18 +1510,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to remove a coupon from a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> RemoveGuestCouponAsync(string checkoutSessionId, CouponRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse RemoveGuestCoupon(string checkoutSessionId, CouponRequest body = null)
         {
-            return RemoveGuestCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await RemoveGuestCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to remove a coupon from a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> RemoveGuestCouponAsync(string checkoutSessionId, CouponRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> RemoveGuestCouponAsync(string checkoutSessionId, CouponRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -1568,37 +1568,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -1618,18 +1618,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateGuestPaymentInfo method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestPaymentInfoAsync(string checkoutSessionId, UpdatePaymentInformation body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse UpdateGuestPaymentInfo(string checkoutSessionId, UpdatePaymentInformation body = null)
         {
-            return UpdateGuestPaymentInfoAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateGuestPaymentInfoAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateGuestPaymentInfo method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestPaymentInfoAsync(string checkoutSessionId, UpdatePaymentInformation body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestPaymentInfoAsync(string checkoutSessionId, UpdatePaymentInformation body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -1676,37 +1676,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -1726,18 +1726,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateGuestQuantity method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestQuantityAsync(string checkoutSessionId, UpdateQuantity body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse UpdateGuestQuantity(string checkoutSessionId, UpdateQuantity body = null)
         {
-            return UpdateGuestQuantityAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateGuestQuantityAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateGuestQuantity method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestQuantityAsync(string checkoutSessionId, UpdateQuantity body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestQuantityAsync(string checkoutSessionId, UpdateQuantity body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -1784,37 +1784,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -1834,18 +1834,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateGuestShippingAddress method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestShippingAddressAsync(string checkoutSessionId, ShippingAddressImpl body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse UpdateGuestShippingAddress(string checkoutSessionId, ShippingAddressImpl body = null)
         {
-            return UpdateGuestShippingAddressAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateGuestShippingAddressAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateGuestShippingAddress method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestShippingAddressAsync(string checkoutSessionId, ShippingAddressImpl body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestShippingAddressAsync(string checkoutSessionId, ShippingAddressImpl body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -1892,37 +1892,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -1942,18 +1942,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateGuestShippingOption method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestShippingOptionAsync(string checkoutSessionId, UpdateShippingOption body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse UpdateGuestShippingOption(string checkoutSessionId, UpdateShippingOption body = null)
         {
-            return UpdateGuestShippingOptionAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateGuestShippingOptionAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateGuestShippingOption method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestShippingOptionAsync(string checkoutSessionId, UpdateShippingOption body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateGuestShippingOptionAsync(string checkoutSessionId, UpdateShippingOption body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -2000,37 +2000,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -2050,18 +2050,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to apply a coupon to a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> ApplyProxyGuestCouponAsync(string checkoutSessionId, CouponRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse ApplyProxyGuestCoupon(string checkoutSessionId, CouponRequest body = null)
         {
-            return ApplyProxyGuestCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await ApplyProxyGuestCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to apply a coupon to a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> ApplyProxyGuestCouponAsync(string checkoutSessionId, CouponRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> ApplyProxyGuestCouponAsync(string checkoutSessionId, CouponRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -2108,37 +2108,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -2157,17 +2157,17 @@ namespace eBayApi.Buy.Order
     
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> GetProxyGuestCheckoutSessionAsync(string checkoutSessionId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse GetProxyGuestCheckoutSession(string checkoutSessionId)
         {
-            return GetProxyGuestCheckoutSessionAsync(checkoutSessionId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetProxyGuestCheckoutSessionAsync(checkoutSessionId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> GetProxyGuestCheckoutSessionAsync(string checkoutSessionId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> GetProxyGuestCheckoutSessionAsync(string checkoutSessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -2211,37 +2211,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -2260,17 +2260,17 @@ namespace eBayApi.Buy.Order
     
         /// <param name="body">The container for the fields used by the initiateProxyGuestCheckoutSession method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> InitiateProxyGuestCheckoutSessionAsync(CheckoutSessionRequestWithoutPayment body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse InitiateProxyGuestCheckoutSession(CheckoutSessionRequestWithoutPayment body = null)
         {
-            return InitiateProxyGuestCheckoutSessionAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await InitiateProxyGuestCheckoutSessionAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">The container for the fields used by the initiateProxyGuestCheckoutSession method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> InitiateProxyGuestCheckoutSessionAsync(CheckoutSessionRequestWithoutPayment body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> InitiateProxyGuestCheckoutSessionAsync(CheckoutSessionRequestWithoutPayment body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/proxy_guest_checkout_session/initiate");
@@ -2313,31 +2313,31 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -2357,18 +2357,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the placeProxyGuestOrder method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PurchaseOrderSummary> PlaceProxyGuestOrderAsync(string checkoutSessionId, GuestPlaceOrderRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PurchaseOrderSummary PlaceProxyGuestOrder(string checkoutSessionId, GuestPlaceOrderRequest body = null)
         {
-            return PlaceProxyGuestOrderAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await PlaceProxyGuestOrderAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the placeProxyGuestOrder method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PurchaseOrderSummary> PlaceProxyGuestOrderAsync(string checkoutSessionId, GuestPlaceOrderRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PurchaseOrderSummary> PlaceProxyGuestOrderAsync(string checkoutSessionId, GuestPlaceOrderRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -2415,37 +2415,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PurchaseOrderSummary);
@@ -2465,18 +2465,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to remove a coupon from a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CheckoutSessionResponse> RemoveProxyGuestCouponAsync(string checkoutSessionId, CouponRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CheckoutSessionResponse RemoveProxyGuestCoupon(string checkoutSessionId, CouponRequest body = null)
         {
-            return RemoveProxyGuestCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await RemoveProxyGuestCouponAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used to remove a coupon from a checkout session.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CheckoutSessionResponse> RemoveProxyGuestCouponAsync(string checkoutSessionId, CouponRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CheckoutSessionResponse> RemoveProxyGuestCouponAsync(string checkoutSessionId, CouponRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -2523,37 +2523,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CheckoutSessionResponse);
@@ -2578,10 +2578,10 @@ namespace eBayApi.Buy.Order
         /// <param name="x_EBAY_C_SIGNATURE">The HMAC signature, which is generated and added to the request by the VSP.</param>
         /// <param name="body">The container for the fields used by the updateProxyGuestPaymentInfo method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestPaymentInfoAsync(string authorization, string checkoutSessionId, string x_EBAY_C_DATE, string x_EBAY_C_MARKETPLACE_ID, string x_EBAY_C_REQUEST_NONCE, string x_EBAY_C_SIGNATURE, UpdatePaymentInformation body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse UpdateProxyGuestPaymentInfo(string authorization, string checkoutSessionId, string x_EBAY_C_DATE, string x_EBAY_C_MARKETPLACE_ID, string x_EBAY_C_REQUEST_NONCE, string x_EBAY_C_SIGNATURE, UpdatePaymentInformation body = null)
         {
-            return UpdateProxyGuestPaymentInfoAsync(authorization, checkoutSessionId, x_EBAY_C_DATE, x_EBAY_C_MARKETPLACE_ID, x_EBAY_C_REQUEST_NONCE, x_EBAY_C_SIGNATURE, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateProxyGuestPaymentInfoAsync(authorization, checkoutSessionId, x_EBAY_C_DATE, x_EBAY_C_MARKETPLACE_ID, x_EBAY_C_REQUEST_NONCE, x_EBAY_C_SIGNATURE, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -2593,8 +2593,8 @@ namespace eBayApi.Buy.Order
         /// <param name="x_EBAY_C_SIGNATURE">The HMAC signature, which is generated and added to the request by the VSP.</param>
         /// <param name="body">The container for the fields used by the updateProxyGuestPaymentInfo method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestPaymentInfoAsync(string authorization, string checkoutSessionId, string x_EBAY_C_DATE, string x_EBAY_C_MARKETPLACE_ID, string x_EBAY_C_REQUEST_NONCE, string x_EBAY_C_SIGNATURE, UpdatePaymentInformation body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestPaymentInfoAsync(string authorization, string checkoutSessionId, string x_EBAY_C_DATE, string x_EBAY_C_MARKETPLACE_ID, string x_EBAY_C_REQUEST_NONCE, string x_EBAY_C_SIGNATURE, UpdatePaymentInformation body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -2656,37 +2656,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -2706,18 +2706,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateProxyGuestQuantity method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestQuantityAsync(string checkoutSessionId, UpdateQuantity body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse UpdateProxyGuestQuantity(string checkoutSessionId, UpdateQuantity body = null)
         {
-            return UpdateProxyGuestQuantityAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateProxyGuestQuantityAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateProxyGuestQuantity method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestQuantityAsync(string checkoutSessionId, UpdateQuantity body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestQuantityAsync(string checkoutSessionId, UpdateQuantity body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -2764,37 +2764,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -2814,18 +2814,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateProxyGuestShippingAddress method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestShippingAddressAsync(string checkoutSessionId, ShippingAddressImpl body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse UpdateProxyGuestShippingAddress(string checkoutSessionId, ShippingAddressImpl body = null)
         {
-            return UpdateProxyGuestShippingAddressAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateProxyGuestShippingAddressAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateProxyGuestShippingAddress method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestShippingAddressAsync(string checkoutSessionId, ShippingAddressImpl body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestShippingAddressAsync(string checkoutSessionId, ShippingAddressImpl body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -2872,37 +2872,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -2922,18 +2922,18 @@ namespace eBayApi.Buy.Order
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateProxyGuestShippingOption method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestShippingOptionAsync(string checkoutSessionId, UpdateShippingOption body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestCheckoutSessionResponse UpdateProxyGuestShippingOption(string checkoutSessionId, UpdateShippingOption body = null)
         {
-            return UpdateProxyGuestShippingOptionAsync(checkoutSessionId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateProxyGuestShippingOptionAsync(checkoutSessionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="checkoutSessionId">The eBay-assigned session ID, for a specific eBay marketplace, that is returned by the initiateProxyGuestCheckoutSession method. Note: When using this ID, the X-EBAY-C-MARKETPLACE-ID value and developer App ID must be the same as what was used when this checkout session was created. See Checkout session restrictions in the Buy Integration Guide.</param>
         /// <param name="body">The container for the fields used by the updateProxyGuestShippingOption method.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestShippingOptionAsync(string checkoutSessionId, UpdateShippingOption body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestCheckoutSessionResponse> UpdateProxyGuestShippingOptionAsync(string checkoutSessionId, UpdateShippingOption body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (checkoutSessionId == null)
                 throw new System.ArgumentNullException("checkoutSessionId");
@@ -2980,37 +2980,37 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestCheckoutSessionResponse);
@@ -3029,17 +3029,17 @@ namespace eBayApi.Buy.Order
     
         /// <param name="purchaseOrderId">The unique identifier of a purchase order made by a guest buyer, for which details are to be retrieved. This value is returned by the placeGuestOrder method in the purchaseOrderId field. The purchaseOrderId is passed in as a URI parameter and is required.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GuestPurchaseOrder> GetGuestPurchaseOrderAsync(string purchaseOrderId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GuestPurchaseOrder GetGuestPurchaseOrder(string purchaseOrderId)
         {
-            return GetGuestPurchaseOrderAsync(purchaseOrderId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetGuestPurchaseOrderAsync(purchaseOrderId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="purchaseOrderId">The unique identifier of a purchase order made by a guest buyer, for which details are to be retrieved. This value is returned by the placeGuestOrder method in the purchaseOrderId field. The purchaseOrderId is passed in as a URI parameter and is required.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GuestPurchaseOrder> GetGuestPurchaseOrderAsync(string purchaseOrderId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GuestPurchaseOrder> GetGuestPurchaseOrderAsync(string purchaseOrderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (purchaseOrderId == null)
                 throw new System.ArgumentNullException("purchaseOrderId");
@@ -3083,31 +3083,31 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GuestPurchaseOrder);
@@ -3126,17 +3126,17 @@ namespace eBayApi.Buy.Order
     
         /// <param name="purchaseOrderId">The unique identifier of a purchase order made by an eBay member, for which details are to be retrieved. This value is returned by the placeOrder method in the purchaseOrderId field. The purchaseOrderId is passed in as a URI parameter and is required.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PurchaseOrder> GetPurchaseOrderAsync(string purchaseOrderId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PurchaseOrder GetPurchaseOrder(string purchaseOrderId)
         {
-            return GetPurchaseOrderAsync(purchaseOrderId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPurchaseOrderAsync(purchaseOrderId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="purchaseOrderId">The unique identifier of a purchase order made by an eBay member, for which details are to be retrieved. This value is returned by the placeOrder method in the purchaseOrderId field. The purchaseOrderId is passed in as a URI parameter and is required.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PurchaseOrder> GetPurchaseOrderAsync(string purchaseOrderId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PurchaseOrder> GetPurchaseOrderAsync(string purchaseOrderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (purchaseOrderId == null)
                 throw new System.ArgumentNullException("purchaseOrderId");
@@ -3180,31 +3180,31 @@ namespace eBayApi.Buy.Order
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PurchaseOrder);
@@ -3254,7 +3254,7 @@ namespace eBayApi.Buy.Order
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -3273,7 +3273,7 @@ namespace eBayApi.Buy.Order
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -4963,41 +4963,6 @@ namespace eBayApi.Buy.Order
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

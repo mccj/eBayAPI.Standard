@@ -45,25 +45,25 @@ namespace eBayApi.Sell.Recommendation
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
     
+        /// <param name="x_EBAY_C_MARKETPLACE_ID">Use this header to specify the eBay marketplace where you list the items for which you want to get recommendations.</param>
         /// <param name="filter">Provide a list of key-value pairs to specify the criteria you want to use to filter the response. In the list, separate each filter key from its associated value with a colon (&amp;quot;:&amp;quot;). Currently, the only supported filter value is recommendationTypes and it supports only the (&amp;quot;AD&amp;quot;) type. Follow the recommendationTypes specifier with the filter type(s) enclosed in curly braces (&amp;quot;{ }&amp;quot;), and separate multiple types with commas. Example: filter=recommendationTypes:{AD} Default: recommendationTypes:{AD}</param>
         /// <param name="limit">Use this query parameter to set the maximum number of ads to return on a page from the paginated response. Default: 10 Maximum: 500</param>
         /// <param name="offset">Specifies the number of ads to skip in the result set before returning the first ad in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
-        /// <param name="x_EBAY_C_MARKETPLACE_ID">Use this header to specify the eBay marketplace where you list the items for which you want to get recommendations.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PagedListingRecommendationCollection> FindListingRecommendationsAsync(string filter, string limit, string offset, string x_EBAY_C_MARKETPLACE_ID, FindListingRecommendationRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PagedListingRecommendationCollection FindListingRecommendations(string x_EBAY_C_MARKETPLACE_ID, string filter = null, string limit = null, string offset = null, FindListingRecommendationRequest body = null)
         {
-            return FindListingRecommendationsAsync(filter, limit, offset, x_EBAY_C_MARKETPLACE_ID, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await FindListingRecommendationsAsync(x_EBAY_C_MARKETPLACE_ID, filter, limit, offset, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <param name="x_EBAY_C_MARKETPLACE_ID">Use this header to specify the eBay marketplace where you list the items for which you want to get recommendations.</param>
         /// <param name="filter">Provide a list of key-value pairs to specify the criteria you want to use to filter the response. In the list, separate each filter key from its associated value with a colon (&amp;quot;:&amp;quot;). Currently, the only supported filter value is recommendationTypes and it supports only the (&amp;quot;AD&amp;quot;) type. Follow the recommendationTypes specifier with the filter type(s) enclosed in curly braces (&amp;quot;{ }&amp;quot;), and separate multiple types with commas. Example: filter=recommendationTypes:{AD} Default: recommendationTypes:{AD}</param>
         /// <param name="limit">Use this query parameter to set the maximum number of ads to return on a page from the paginated response. Default: 10 Maximum: 500</param>
         /// <param name="offset">Specifies the number of ads to skip in the result set before returning the first ad in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
-        /// <param name="x_EBAY_C_MARKETPLACE_ID">Use this header to specify the eBay marketplace where you list the items for which you want to get recommendations.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PagedListingRecommendationCollection> FindListingRecommendationsAsync(string filter, string limit, string offset, string x_EBAY_C_MARKETPLACE_ID, FindListingRecommendationRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PagedListingRecommendationCollection> FindListingRecommendationsAsync(string x_EBAY_C_MARKETPLACE_ID, string filter = null, string limit = null, string offset = null, FindListingRecommendationRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/find?");
@@ -122,25 +122,25 @@ namespace eBayApi.Sell.Recommendation
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PagedListingRecommendationCollection);
@@ -190,7 +190,7 @@ namespace eBayApi.Sell.Recommendation
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -209,7 +209,7 @@ namespace eBayApi.Sell.Recommendation
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -504,41 +504,6 @@ namespace eBayApi.Sell.Recommendation
         [System.Runtime.Serialization.EnumMember(Value = @"UNDETERMINED")]
         UNDETERMINED = 1,
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

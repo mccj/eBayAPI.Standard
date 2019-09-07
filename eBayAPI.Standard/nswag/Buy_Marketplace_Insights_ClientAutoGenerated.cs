@@ -56,10 +56,10 @@ namespace eBayApi.Buy.Marketplace.Insights
         /// <param name="q">A string consisting of one or more keywords that are used to search for items on eBay. The keywords are handled as follows: If the keywords are separated by a comma, it is treated as an AND. In the following example, the query returns items that have iphone AND ipad. /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone,ipad&amp;amp;category_ids=15724 If the keywords are separated by a space, it is treated as an OR. In the following examples, the query returns items that have iphone OR ipad. /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone&amp;amp;category_ids=15724&amp;nbsp;ipad /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone,&amp;nbsp;ipad&amp;amp;category_ids=15724 Restriction: The * wildcard character is not allowed in this field. Required: At least 1 category_ids Optional: Any combination of epid, gtin, or q</param>
         /// <param name="sort">This field specifies the order and the field name to use to sort the items. To sort in descending order use - before the field name. Currently, you can only sort by price (in ascending or descending order). If no sort parameter is submitted, the result set is sorted by &amp;quot;Best Match&amp;quot;. The following are examples of using the sort query parameter. Sort Result &amp;amp;sort=price Sorts by price in ascending order (lowest price first) &amp;amp;sort=-price Sorts by price in descending order (highest price first) Default: ascending For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketplace_insights/types/SortField.html</param>
         /// <returns>(Limited Release) This call searches for sold eBay items by various URI query parameters and retrieves the sales history of the items for the last 90 days. You can search by keyword, category, eBay product ID (ePID), or GTIN, or a combination of these. You can refine the items returned by using field filters, such as price range. Controlling what is returned You can also control what is returned by using the fieldgroups field. In addition to returning items, which is the default, you can return refinements (metadata) about an item that enables you to create aspect histograms. A histogram enables users to drill down in each refinement narrowing the search results. You can return: ASPECT_REFINEMENTS - Lets you refine the result set by variation aspects, such as Brand, Color, etc. BUYING_OPTION_REFINEMENT - Lets you refine the result set by either FIXED_PRICE or AUCTION CATEGORY_REFINEMENTS - Lets you refine the result set by items in a category CONDITION_REFINEMENT - Lets you refine the result set by item condition, such as NEW, USED, etc. MATCHING_ITEMS - The default, which returns the items. When used with one or more of the refinement values above the specified refinements and all the matching items are returned. FULL - This returns all the refinement containers and all the matching items. Filtering by aspects You can use the ASPECT_REFINEMENTS returned to filter the result set using the aspect_filter field. For example: This call gets a list of the aspects pairs for the sold items and the dominant category (category most of the items are in). /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;fieldgroups=ASPECT_REFINEMENTS This call filters the items by one of the aspect pairs returned and the dominant category. The category ID is required twice when using aspect_filter; once as a URI parameter and as part of the aspect_filter. /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{adidas} This call filters the items by multiple aspects /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{adidas},Featured Refinements:{Adidas Match Ball} This call filters the items by multiple aspect values /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{Nike|Wilson} Fields filters You can also refine the result set by price range using s field filter. Pagination and sort controls There are pagination controls (limit and offset fields) and sort query parameters that control/sort the data that is returned. By default, the results are sorted by &amp;quot;Best Match&amp;quot;. For more information about Best Match, see the eBay help page Best Match. URLs for this call Production URL: https://api.ebay.com/buy/marketplace_insights/v1_beta/item_sales/ Sandbox URL: https://api.sandbox.ebay.com/buy/marketplace_insights/v1_beta/item_sales/ Request headers You will want to use the X-EBAY-C-ENDUSERCTX request header with this call. If you are an eBay Network Partner you must use affiliateCampaignId=ePNCampaignId,affiliateReferenceId=referenceId in the header in order to be paid for selling eBay items on your site . For details see, Request headers in the Buy APIs Overview. Restrictions For a list of supported sites and other restrictions, see API Restrictions. URL Encoding for Parameters As with all query parameter values, the filter parameter value must be URL encoded. For better readability, the examples in this document omit the encoding. Example: &amp;nbsp;&amp;nbsp;search?q=iphone&amp;amp;category_ids=9355&amp;amp;filter=price:[50..500],priceCurrency:USD Encoded Example: &amp;nbsp;&amp;nbsp;search?q=iphone&amp;amp;category_ids=9355&amp;amp;filter=price%3A%5B50..500%5D,priceCurrency%3AUSD For more information about encoding, see HTML URL Encoding Reference.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SalesHistoryPagedCollection> SearchAsync(string aspect_filter, string category_ids, string epid, string fieldgroups, string filter, string gtin, string limit, string offset, string q, string sort)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SalesHistoryPagedCollection Search(string aspect_filter = null, string category_ids = null, string epid = null, string fieldgroups = null, string filter = null, string gtin = null, string limit = null, string offset = null, string q = null, string sort = null)
         {
-            return SearchAsync(aspect_filter, category_ids, epid, fieldgroups, filter, gtin, limit, offset, q, sort, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await SearchAsync(aspect_filter, category_ids, epid, fieldgroups, filter, gtin, limit, offset, q, sort, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -74,8 +74,8 @@ namespace eBayApi.Buy.Marketplace.Insights
         /// <param name="q">A string consisting of one or more keywords that are used to search for items on eBay. The keywords are handled as follows: If the keywords are separated by a comma, it is treated as an AND. In the following example, the query returns items that have iphone AND ipad. /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone,ipad&amp;amp;category_ids=15724 If the keywords are separated by a space, it is treated as an OR. In the following examples, the query returns items that have iphone OR ipad. /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone&amp;amp;category_ids=15724&amp;nbsp;ipad /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone,&amp;nbsp;ipad&amp;amp;category_ids=15724 Restriction: The * wildcard character is not allowed in this field. Required: At least 1 category_ids Optional: Any combination of epid, gtin, or q</param>
         /// <param name="sort">This field specifies the order and the field name to use to sort the items. To sort in descending order use - before the field name. Currently, you can only sort by price (in ascending or descending order). If no sort parameter is submitted, the result set is sorted by &amp;quot;Best Match&amp;quot;. The following are examples of using the sort query parameter. Sort Result &amp;amp;sort=price Sorts by price in ascending order (lowest price first) &amp;amp;sort=-price Sorts by price in descending order (highest price first) Default: ascending For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketplace_insights/types/SortField.html</param>
         /// <returns>(Limited Release) This call searches for sold eBay items by various URI query parameters and retrieves the sales history of the items for the last 90 days. You can search by keyword, category, eBay product ID (ePID), or GTIN, or a combination of these. You can refine the items returned by using field filters, such as price range. Controlling what is returned You can also control what is returned by using the fieldgroups field. In addition to returning items, which is the default, you can return refinements (metadata) about an item that enables you to create aspect histograms. A histogram enables users to drill down in each refinement narrowing the search results. You can return: ASPECT_REFINEMENTS - Lets you refine the result set by variation aspects, such as Brand, Color, etc. BUYING_OPTION_REFINEMENT - Lets you refine the result set by either FIXED_PRICE or AUCTION CATEGORY_REFINEMENTS - Lets you refine the result set by items in a category CONDITION_REFINEMENT - Lets you refine the result set by item condition, such as NEW, USED, etc. MATCHING_ITEMS - The default, which returns the items. When used with one or more of the refinement values above the specified refinements and all the matching items are returned. FULL - This returns all the refinement containers and all the matching items. Filtering by aspects You can use the ASPECT_REFINEMENTS returned to filter the result set using the aspect_filter field. For example: This call gets a list of the aspects pairs for the sold items and the dominant category (category most of the items are in). /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;fieldgroups=ASPECT_REFINEMENTS This call filters the items by one of the aspect pairs returned and the dominant category. The category ID is required twice when using aspect_filter; once as a URI parameter and as part of the aspect_filter. /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{adidas} This call filters the items by multiple aspects /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{adidas},Featured Refinements:{Adidas Match Ball} This call filters the items by multiple aspect values /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{Nike|Wilson} Fields filters You can also refine the result set by price range using s field filter. Pagination and sort controls There are pagination controls (limit and offset fields) and sort query parameters that control/sort the data that is returned. By default, the results are sorted by &amp;quot;Best Match&amp;quot;. For more information about Best Match, see the eBay help page Best Match. URLs for this call Production URL: https://api.ebay.com/buy/marketplace_insights/v1_beta/item_sales/ Sandbox URL: https://api.sandbox.ebay.com/buy/marketplace_insights/v1_beta/item_sales/ Request headers You will want to use the X-EBAY-C-ENDUSERCTX request header with this call. If you are an eBay Network Partner you must use affiliateCampaignId=ePNCampaignId,affiliateReferenceId=referenceId in the header in order to be paid for selling eBay items on your site . For details see, Request headers in the Buy APIs Overview. Restrictions For a list of supported sites and other restrictions, see API Restrictions. URL Encoding for Parameters As with all query parameter values, the filter parameter value must be URL encoded. For better readability, the examples in this document omit the encoding. Example: &amp;nbsp;&amp;nbsp;search?q=iphone&amp;amp;category_ids=9355&amp;amp;filter=price:[50..500],priceCurrency:USD Encoded Example: &amp;nbsp;&amp;nbsp;search?q=iphone&amp;amp;category_ids=9355&amp;amp;filter=price%3A%5B50..500%5D,priceCurrency%3AUSD For more information about encoding, see HTML URL Encoding Reference.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SalesHistoryPagedCollection> SearchAsync(string aspect_filter, string category_ids, string epid, string fieldgroups, string filter, string gtin, string limit, string offset, string q, string sort, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SalesHistoryPagedCollection> SearchAsync(string aspect_filter = null, string category_ids = null, string epid = null, string fieldgroups = null, string filter = null, string gtin = null, string limit = null, string offset = null, string q = null, string sort = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/item_sales/search?");
@@ -156,25 +156,25 @@ namespace eBayApi.Buy.Marketplace.Insights
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SalesHistoryPagedCollection);
@@ -224,7 +224,7 @@ namespace eBayApi.Buy.Marketplace.Insights
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -243,7 +243,7 @@ namespace eBayApi.Buy.Marketplace.Insights
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -838,41 +838,6 @@ namespace eBayApi.Buy.Marketplace.Insights
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

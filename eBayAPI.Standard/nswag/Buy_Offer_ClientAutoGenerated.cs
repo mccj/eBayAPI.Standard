@@ -48,18 +48,18 @@ namespace eBayApi.Buy.Offer
         /// <param name="item_id">The eBay RESTful identifier of an item that you want the buyer's bidding information. This ID is returned by the Browse and Feed API methods. RESTful Item ID example: v1|272394640372|0 For more information about item ID for RESTful APIs, see the Legacy API compatibility section of the Buy APIs Overview. Restriction: The buyer must have placed a bid for this item.</param>
         /// <param name="x_EBAY_C_MARKETPLACE_ID">The ID of the eBay marketplace where the buyer is based. Note: This value is case sensitive. For example: &amp;nbsp;&amp;nbsp;X-EBAY-C-MARKETPLACE-ID = EBAY_US For a list of supported sites see, API Restrictions.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Bidding> GetBiddingAsync(string item_id, string x_EBAY_C_MARKETPLACE_ID)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Bidding GetBidding(string item_id, string x_EBAY_C_MARKETPLACE_ID)
         {
-            return GetBiddingAsync(item_id, x_EBAY_C_MARKETPLACE_ID, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetBiddingAsync(item_id, x_EBAY_C_MARKETPLACE_ID, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="item_id">The eBay RESTful identifier of an item that you want the buyer's bidding information. This ID is returned by the Browse and Feed API methods. RESTful Item ID example: v1|272394640372|0 For more information about item ID for RESTful APIs, see the Legacy API compatibility section of the Buy APIs Overview. Restriction: The buyer must have placed a bid for this item.</param>
         /// <param name="x_EBAY_C_MARKETPLACE_ID">The ID of the eBay marketplace where the buyer is based. Note: This value is case sensitive. For example: &amp;nbsp;&amp;nbsp;X-EBAY-C-MARKETPLACE-ID = EBAY_US For a list of supported sites see, API Restrictions.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Bidding> GetBiddingAsync(string item_id, string x_EBAY_C_MARKETPLACE_ID, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Bidding> GetBiddingAsync(string item_id, string x_EBAY_C_MARKETPLACE_ID, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (item_id == null)
                 throw new System.ArgumentNullException("item_id");
@@ -106,25 +106,25 @@ namespace eBayApi.Buy.Offer
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Bidding);
@@ -144,18 +144,18 @@ namespace eBayApi.Buy.Offer
         /// <param name="item_id">The eBay RESTful identifier of an item you want to bid on. This ID is returned by the Browse and Feed API methods. RESTful Item ID Example: v1|272394640372|0 For more information about item ID for RESTful APIs, see the Legacy API compatibility section of the Buy APIs Overview.</param>
         /// <param name="x_EBAY_C_MARKETPLACE_ID">The ID of the eBay marketplace where the buyer is based. Note: This value is case sensitive. For example: &amp;nbsp;&amp;nbsp;X-EBAY-C-MARKETPLACE-ID = EBAY_US For a list of supported sites see, API Restrictions.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PlaceProxyBidResponse> PlaceProxyBidAsync(string item_id, string x_EBAY_C_MARKETPLACE_ID, PlaceProxyBidRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PlaceProxyBidResponse PlaceProxyBid(string item_id, string x_EBAY_C_MARKETPLACE_ID, PlaceProxyBidRequest body = null)
         {
-            return PlaceProxyBidAsync(item_id, x_EBAY_C_MARKETPLACE_ID, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await PlaceProxyBidAsync(item_id, x_EBAY_C_MARKETPLACE_ID, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="item_id">The eBay RESTful identifier of an item you want to bid on. This ID is returned by the Browse and Feed API methods. RESTful Item ID Example: v1|272394640372|0 For more information about item ID for RESTful APIs, see the Legacy API compatibility section of the Buy APIs Overview.</param>
         /// <param name="x_EBAY_C_MARKETPLACE_ID">The ID of the eBay marketplace where the buyer is based. Note: This value is case sensitive. For example: &amp;nbsp;&amp;nbsp;X-EBAY-C-MARKETPLACE-ID = EBAY_US For a list of supported sites see, API Restrictions.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PlaceProxyBidResponse> PlaceProxyBidAsync(string item_id, string x_EBAY_C_MARKETPLACE_ID, PlaceProxyBidRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PlaceProxyBidResponse> PlaceProxyBidAsync(string item_id, string x_EBAY_C_MARKETPLACE_ID, PlaceProxyBidRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (item_id == null)
                 throw new System.ArgumentNullException("item_id");
@@ -205,31 +205,31 @@ namespace eBayApi.Buy.Offer
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PlaceProxyBidResponse);
@@ -279,7 +279,7 @@ namespace eBayApi.Buy.Offer
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -298,7 +298,7 @@ namespace eBayApi.Buy.Offer
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -576,41 +576,6 @@ namespace eBayApi.Buy.Offer
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

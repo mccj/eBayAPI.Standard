@@ -47,17 +47,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="marketplace_id">This query parameter specifies the eBay marketplace of the policies you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<FulfillmentPolicyResponse> GetFulfillmentPoliciesAsync(string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public FulfillmentPolicyResponse GetFulfillmentPolicies(string marketplace_id)
         {
-            return GetFulfillmentPoliciesAsync(marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetFulfillmentPoliciesAsync(marketplace_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="marketplace_id">This query parameter specifies the eBay marketplace of the policies you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FulfillmentPolicyResponse> GetFulfillmentPoliciesAsync(string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<FulfillmentPolicyResponse> GetFulfillmentPoliciesAsync(string marketplace_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -102,19 +102,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response2>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response2>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response2>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(FulfillmentPolicyResponse);
@@ -133,17 +133,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="body">Request to create a seller account fulfillment policy.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SetFulfillmentPolicyResponse> CreateFulfillmentPolicyAsync(FulfillmentPolicyRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SetFulfillmentPolicyResponse CreateFulfillmentPolicy(FulfillmentPolicyRequest body)
         {
-            return CreateFulfillmentPolicyAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await CreateFulfillmentPolicyAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">Request to create a seller account fulfillment policy.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SetFulfillmentPolicyResponse> CreateFulfillmentPolicyAsync(FulfillmentPolicyRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SetFulfillmentPolicyResponse> CreateFulfillmentPolicyAsync(FulfillmentPolicyRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/fulfillment_policy/");
@@ -186,19 +186,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response3>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response3>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response3>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response4>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response4>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response4>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SetFulfillmentPolicyResponse);
@@ -217,17 +217,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="fulfillmentPolicyId">This path parameter specifies the ID of the fulfillment policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<FulfillmentPolicy> GetFulfillmentPolicyAsync(string fulfillmentPolicyId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public FulfillmentPolicy GetFulfillmentPolicy(string fulfillmentPolicyId)
         {
-            return GetFulfillmentPolicyAsync(fulfillmentPolicyId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetFulfillmentPolicyAsync(fulfillmentPolicyId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="fulfillmentPolicyId">This path parameter specifies the ID of the fulfillment policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FulfillmentPolicy> GetFulfillmentPolicyAsync(string fulfillmentPolicyId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<FulfillmentPolicy> GetFulfillmentPolicyAsync(string fulfillmentPolicyId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (fulfillmentPolicyId == null)
                 throw new System.ArgumentNullException("fulfillmentPolicyId");
@@ -271,25 +271,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response5>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response5>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response5>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response6>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response6>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response6>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response7>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response7>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response7>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(FulfillmentPolicy);
@@ -309,18 +309,18 @@ namespace eBayApi.Sell.Account
         /// <param name="fulfillmentPolicyId">This path parameter specifies the ID of the fulfillment policy you want to update.</param>
         /// <param name="body">Fulfillment policy request</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SetFulfillmentPolicyResponse> UpdateFulfillmentPolicyAsync(string fulfillmentPolicyId, FulfillmentPolicyRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SetFulfillmentPolicyResponse UpdateFulfillmentPolicy(string fulfillmentPolicyId, FulfillmentPolicyRequest body)
         {
-            return UpdateFulfillmentPolicyAsync(fulfillmentPolicyId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateFulfillmentPolicyAsync(fulfillmentPolicyId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="fulfillmentPolicyId">This path parameter specifies the ID of the fulfillment policy you want to update.</param>
         /// <param name="body">Fulfillment policy request</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SetFulfillmentPolicyResponse> UpdateFulfillmentPolicyAsync(string fulfillmentPolicyId, FulfillmentPolicyRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SetFulfillmentPolicyResponse> UpdateFulfillmentPolicyAsync(string fulfillmentPolicyId, FulfillmentPolicyRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (fulfillmentPolicyId == null)
                 throw new System.ArgumentNullException("fulfillmentPolicyId");
@@ -367,25 +367,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response8>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response8>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response8>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response9>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response9>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response9>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response10>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response10>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response10>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SetFulfillmentPolicyResponse);
@@ -404,17 +404,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="fulfillmentPolicyId">This path parameter specifies the ID of the fulfillment policy to delete.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task DeleteFulfillmentPolicyAsync(string fulfillmentPolicyId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void DeleteFulfillmentPolicy(string fulfillmentPolicyId)
         {
-            return DeleteFulfillmentPolicyAsync(fulfillmentPolicyId, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeleteFulfillmentPolicyAsync(fulfillmentPolicyId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="fulfillmentPolicyId">This path parameter specifies the ID of the fulfillment policy to delete.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task DeleteFulfillmentPolicyAsync(string fulfillmentPolicyId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task DeleteFulfillmentPolicyAsync(string fulfillmentPolicyId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (fulfillmentPolicyId == null)
                 throw new System.ArgumentNullException("fulfillmentPolicyId");
@@ -456,25 +456,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response11>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response11>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response11>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response12>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response12>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response12>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response13>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response13>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response13>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -492,18 +492,18 @@ namespace eBayApi.Sell.Account
         /// <param name="marketplace_id">This query parameter specifies the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <param name="name">This query parameter specifies the user-defined name of the fulfillment policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<FulfillmentPolicy> GetFulfillmentPolicyByNameAsync(string marketplace_id, string name)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public FulfillmentPolicy GetFulfillmentPolicyByName(string marketplace_id, string name)
         {
-            return GetFulfillmentPolicyByNameAsync(marketplace_id, name, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetFulfillmentPolicyByNameAsync(marketplace_id, name, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="marketplace_id">This query parameter specifies the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <param name="name">This query parameter specifies the user-defined name of the fulfillment policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FulfillmentPolicy> GetFulfillmentPolicyByNameAsync(string marketplace_id, string name, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<FulfillmentPolicy> GetFulfillmentPolicyByNameAsync(string marketplace_id, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -552,19 +552,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response14>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response14>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response14>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response15>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response15>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response15>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(FulfillmentPolicy);
@@ -583,17 +583,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="marketplace_id">This query parameter specifies the eBay marketplace of the policies you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PaymentPolicyResponse> GetPaymentPoliciesAsync(string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PaymentPolicyResponse GetPaymentPolicies(string marketplace_id)
         {
-            return GetPaymentPoliciesAsync(marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPaymentPoliciesAsync(marketplace_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="marketplace_id">This query parameter specifies the eBay marketplace of the policies you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PaymentPolicyResponse> GetPaymentPoliciesAsync(string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PaymentPolicyResponse> GetPaymentPoliciesAsync(string marketplace_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -638,19 +638,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response16>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response16>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response16>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response17>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response17>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response17>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PaymentPolicyResponse);
@@ -669,17 +669,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="body">Payment policy request</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SetPaymentPolicyResponse> CreatePaymentPolicyAsync(PaymentPolicyRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SetPaymentPolicyResponse CreatePaymentPolicy(PaymentPolicyRequest body)
         {
-            return CreatePaymentPolicyAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await CreatePaymentPolicyAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">Payment policy request</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SetPaymentPolicyResponse> CreatePaymentPolicyAsync(PaymentPolicyRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SetPaymentPolicyResponse> CreatePaymentPolicyAsync(PaymentPolicyRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/payment_policy/");
@@ -722,19 +722,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response18>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response18>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response18>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response19>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response19>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response19>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SetPaymentPolicyResponse);
@@ -753,17 +753,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="payment_policy_id">This path parameter specifies the ID of the payment policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PaymentPolicy> GetPaymentPolicyAsync(string payment_policy_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PaymentPolicy GetPaymentPolicy(string payment_policy_id)
         {
-            return GetPaymentPolicyAsync(payment_policy_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPaymentPolicyAsync(payment_policy_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="payment_policy_id">This path parameter specifies the ID of the payment policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PaymentPolicy> GetPaymentPolicyAsync(string payment_policy_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PaymentPolicy> GetPaymentPolicyAsync(string payment_policy_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (payment_policy_id == null)
                 throw new System.ArgumentNullException("payment_policy_id");
@@ -807,25 +807,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response20>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response20>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response20>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response21>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response21>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response21>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response22>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response22>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response22>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PaymentPolicy);
@@ -845,18 +845,18 @@ namespace eBayApi.Sell.Account
         /// <param name="payment_policy_id">This path parameter specifies the ID of the payment policy you want to update.</param>
         /// <param name="body">Payment policy request</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SetPaymentPolicyResponse> UpdatePaymentPolicyAsync(string payment_policy_id, PaymentPolicyRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SetPaymentPolicyResponse UpdatePaymentPolicy(string payment_policy_id, PaymentPolicyRequest body)
         {
-            return UpdatePaymentPolicyAsync(payment_policy_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdatePaymentPolicyAsync(payment_policy_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="payment_policy_id">This path parameter specifies the ID of the payment policy you want to update.</param>
         /// <param name="body">Payment policy request</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SetPaymentPolicyResponse> UpdatePaymentPolicyAsync(string payment_policy_id, PaymentPolicyRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SetPaymentPolicyResponse> UpdatePaymentPolicyAsync(string payment_policy_id, PaymentPolicyRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (payment_policy_id == null)
                 throw new System.ArgumentNullException("payment_policy_id");
@@ -903,25 +903,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response23>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response23>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response23>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response24>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response24>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response24>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response25>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response25>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response25>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SetPaymentPolicyResponse);
@@ -940,17 +940,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="payment_policy_id">This path parameter specifies the ID of the payment policy you want to delete.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task DeletePaymentPolicyAsync(string payment_policy_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void DeletePaymentPolicy(string payment_policy_id)
         {
-            return DeletePaymentPolicyAsync(payment_policy_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeletePaymentPolicyAsync(payment_policy_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="payment_policy_id">This path parameter specifies the ID of the payment policy you want to delete.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task DeletePaymentPolicyAsync(string payment_policy_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task DeletePaymentPolicyAsync(string payment_policy_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (payment_policy_id == null)
                 throw new System.ArgumentNullException("payment_policy_id");
@@ -992,25 +992,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response26>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response26>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response26>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response27>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response27>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response27>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response28>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response28>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response28>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -1028,18 +1028,18 @@ namespace eBayApi.Sell.Account
         /// <param name="marketplace_id">This query parameter specifies the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <param name="name">This query parameter specifies the user-defined name of the payment policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PaymentPolicy> GetPaymentPolicyByNameAsync(string marketplace_id, string name)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PaymentPolicy GetPaymentPolicyByName(string marketplace_id, string name)
         {
-            return GetPaymentPolicyByNameAsync(marketplace_id, name, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPaymentPolicyByNameAsync(marketplace_id, name, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="marketplace_id">This query parameter specifies the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <param name="name">This query parameter specifies the user-defined name of the payment policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PaymentPolicy> GetPaymentPolicyByNameAsync(string marketplace_id, string name, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PaymentPolicy> GetPaymentPolicyByNameAsync(string marketplace_id, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -1088,19 +1088,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response29>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response29>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response29>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response30>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response30>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response30>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PaymentPolicy);
@@ -1120,18 +1120,18 @@ namespace eBayApi.Sell.Account
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace of the payment program for which you want to retrieve the seller's status.</param>
         /// <param name="payments_program_type">This path parameter specifies the payments program whose status is returned by the call. Currently the only supported payments program is EBAY_PAYMENTS. For details on the program, see Payments Terms of Use.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PaymentsProgramResponse> GetPaymentsProgramAsync(string marketplace_id, string payments_program_type)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PaymentsProgramResponse GetPaymentsProgram(string marketplace_id, string payments_program_type)
         {
-            return GetPaymentsProgramAsync(marketplace_id, payments_program_type, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPaymentsProgramAsync(marketplace_id, payments_program_type, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace of the payment program for which you want to retrieve the seller's status.</param>
         /// <param name="payments_program_type">This path parameter specifies the payments program whose status is returned by the call. Currently the only supported payments program is EBAY_PAYMENTS. For details on the program, see Payments Terms of Use.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PaymentsProgramResponse> GetPaymentsProgramAsync(string marketplace_id, string payments_program_type, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PaymentsProgramResponse> GetPaymentsProgramAsync(string marketplace_id, string payments_program_type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -1179,25 +1179,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response31>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response31>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response31>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response32>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response32>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response32>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response33>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response33>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response33>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PaymentsProgramResponse);
@@ -1215,16 +1215,16 @@ namespace eBayApi.Sell.Account
         }
     
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SellingPrivileges> GetPrivilegesAsync()
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SellingPrivileges GetPrivileges()
         {
-            return GetPrivilegesAsync(System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPrivilegesAsync(System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SellingPrivileges> GetPrivilegesAsync(System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SellingPrivileges> GetPrivilegesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/privilege/");
@@ -1264,19 +1264,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response34>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response34>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response34>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response35>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response35>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response35>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SellingPrivileges);
@@ -1294,16 +1294,16 @@ namespace eBayApi.Sell.Account
         }
     
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Programs> GetOptedInProgramsAsync()
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Programs GetOptedInPrograms()
         {
-            return GetOptedInProgramsAsync(System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetOptedInProgramsAsync(System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Programs> GetOptedInProgramsAsync(System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Programs> GetOptedInProgramsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/program/get_opted_in_programs");
@@ -1343,25 +1343,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response36>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response36>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response36>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response37>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response37>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response37>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response38>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response38>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response38>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Programs);
@@ -1380,17 +1380,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="body">Program being opted-in to.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<object> OptInToProgramAsync(Program body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public object OptInToProgram(Program body)
         {
-            return OptInToProgramAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await OptInToProgramAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">Program being opted-in to.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<object> OptInToProgramAsync(Program body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<object> OptInToProgramAsync(Program body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/program/opt_in");
@@ -1433,25 +1433,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response39>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response39>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response39>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response40>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response40>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response40>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response41>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response41>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response41>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(object);
@@ -1470,17 +1470,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="body">Program being opted-out of.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<object> OptOutOfProgramAsync(Program body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public object OptOutOfProgram(Program body)
         {
-            return OptOutOfProgramAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await OptOutOfProgramAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">Program being opted-out of.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<object> OptOutOfProgramAsync(Program body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<object> OptOutOfProgramAsync(Program body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/program/opt_out");
@@ -1523,25 +1523,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response42>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response42>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response42>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response43>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response43>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response43>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response44>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response44>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response44>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(object);
@@ -1560,17 +1560,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="country_code">This query parameter specifies the two-letter ISO 3166-1 Alpha-2 code of country for which you want shipping-rate table information. If you do not specify a county code, the request returns all the seller-defined rate tables. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/CountryCodeEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<RateTableResponse> GetRateTablesAsync(string country_code)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public RateTableResponse GetRateTables(string country_code = null)
         {
-            return GetRateTablesAsync(country_code, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetRateTablesAsync(country_code, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="country_code">This query parameter specifies the two-letter ISO 3166-1 Alpha-2 code of country for which you want shipping-rate table information. If you do not specify a county code, the request returns all the seller-defined rate tables. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/CountryCodeEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<RateTableResponse> GetRateTablesAsync(string country_code, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<RateTableResponse> GetRateTablesAsync(string country_code = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/rate_table/?");
@@ -1615,19 +1615,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response45>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response45>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response45>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response46>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response46>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response46>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(RateTableResponse);
@@ -1646,17 +1646,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="marketplace_id">This query parameter specifies the ID of the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ReturnPolicyResponse> GetReturnPoliciesAsync(string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ReturnPolicyResponse GetReturnPolicies(string marketplace_id)
         {
-            return GetReturnPoliciesAsync(marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetReturnPoliciesAsync(marketplace_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="marketplace_id">This query parameter specifies the ID of the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ReturnPolicyResponse> GetReturnPoliciesAsync(string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ReturnPolicyResponse> GetReturnPoliciesAsync(string marketplace_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -1701,19 +1701,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response47>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response47>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response47>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response48>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response48>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response48>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ReturnPolicyResponse);
@@ -1732,17 +1732,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="body">Return policy request</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SetReturnPolicyResponse> CreateReturnPolicyAsync(ReturnPolicyRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SetReturnPolicyResponse CreateReturnPolicy(ReturnPolicyRequest body)
         {
-            return CreateReturnPolicyAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await CreateReturnPolicyAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">Return policy request</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SetReturnPolicyResponse> CreateReturnPolicyAsync(ReturnPolicyRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SetReturnPolicyResponse> CreateReturnPolicyAsync(ReturnPolicyRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/return_policy/");
@@ -1785,19 +1785,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response49>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response49>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response49>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response50>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response50>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response50>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SetReturnPolicyResponse);
@@ -1816,17 +1816,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="return_policy_id">This path parameter specifies the of the return policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ReturnPolicy> GetReturnPolicyAsync(string return_policy_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ReturnPolicy GetReturnPolicy(string return_policy_id)
         {
-            return GetReturnPolicyAsync(return_policy_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetReturnPolicyAsync(return_policy_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="return_policy_id">This path parameter specifies the of the return policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ReturnPolicy> GetReturnPolicyAsync(string return_policy_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ReturnPolicy> GetReturnPolicyAsync(string return_policy_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (return_policy_id == null)
                 throw new System.ArgumentNullException("return_policy_id");
@@ -1870,25 +1870,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response51>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response51>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response51>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response52>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response52>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response52>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response53>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response53>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response53>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ReturnPolicy);
@@ -1908,18 +1908,18 @@ namespace eBayApi.Sell.Account
         /// <param name="return_policy_id">This path parameter specifies the ID of the return policy you want to update.</param>
         /// <param name="body">Container for a return policy request.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SetReturnPolicyResponse> UpdateReturnPolicyAsync(string return_policy_id, ReturnPolicyRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SetReturnPolicyResponse UpdateReturnPolicy(string return_policy_id, ReturnPolicyRequest body)
         {
-            return UpdateReturnPolicyAsync(return_policy_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateReturnPolicyAsync(return_policy_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="return_policy_id">This path parameter specifies the ID of the return policy you want to update.</param>
         /// <param name="body">Container for a return policy request.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SetReturnPolicyResponse> UpdateReturnPolicyAsync(string return_policy_id, ReturnPolicyRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SetReturnPolicyResponse> UpdateReturnPolicyAsync(string return_policy_id, ReturnPolicyRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (return_policy_id == null)
                 throw new System.ArgumentNullException("return_policy_id");
@@ -1966,25 +1966,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response54>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response54>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response54>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response55>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response55>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response55>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response56>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response56>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response56>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SetReturnPolicyResponse);
@@ -2003,17 +2003,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="return_policy_id">This path parameter specifies the ID of the return policy you want to delete.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task DeleteReturnPolicyAsync(string return_policy_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void DeleteReturnPolicy(string return_policy_id)
         {
-            return DeleteReturnPolicyAsync(return_policy_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeleteReturnPolicyAsync(return_policy_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="return_policy_id">This path parameter specifies the ID of the return policy you want to delete.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task DeleteReturnPolicyAsync(string return_policy_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task DeleteReturnPolicyAsync(string return_policy_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (return_policy_id == null)
                 throw new System.ArgumentNullException("return_policy_id");
@@ -2055,25 +2055,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response57>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response57>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response57>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response58>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response58>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response58>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response59>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response59>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response59>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -2091,18 +2091,18 @@ namespace eBayApi.Sell.Account
         /// <param name="marketplace_id">This query parameter specifies the ID of the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <param name="name">This query parameter specifies the user-defined name of the return policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ReturnPolicy> GetReturnPolicyByNameAsync(string marketplace_id, string name)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ReturnPolicy GetReturnPolicyByName(string marketplace_id, string name)
         {
-            return GetReturnPolicyByNameAsync(marketplace_id, name, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetReturnPolicyByNameAsync(marketplace_id, name, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="marketplace_id">This query parameter specifies the ID of the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/MarketplaceIdEnum.html</param>
         /// <param name="name">This query parameter specifies the user-defined name of the return policy you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ReturnPolicy> GetReturnPolicyByNameAsync(string marketplace_id, string name, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ReturnPolicy> GetReturnPolicyByNameAsync(string marketplace_id, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -2151,19 +2151,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response60>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response60>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response60>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response61>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response61>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response61>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ReturnPolicy);
@@ -2183,18 +2183,18 @@ namespace eBayApi.Sell.Account
         /// <param name="countryCode">This path parameter specifies the two-letter ISO 3166-1 Alpha-2 code for the country whose tax table you want to retrieve.</param>
         /// <param name="jurisdictionId">This path parameter specifies the ID of the sales tax jurisdiction for the tax table entry you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SalesTax> GetSalesTaxAsync(string countryCode, string jurisdictionId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SalesTax GetSalesTax(string countryCode, string jurisdictionId)
         {
-            return GetSalesTaxAsync(countryCode, jurisdictionId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetSalesTaxAsync(countryCode, jurisdictionId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="countryCode">This path parameter specifies the two-letter ISO 3166-1 Alpha-2 code for the country whose tax table you want to retrieve.</param>
         /// <param name="jurisdictionId">This path parameter specifies the ID of the sales tax jurisdiction for the tax table entry you want to retrieve.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SalesTax> GetSalesTaxAsync(string countryCode, string jurisdictionId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SalesTax> GetSalesTaxAsync(string countryCode, string jurisdictionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (countryCode == null)
                 throw new System.ArgumentNullException("countryCode");
@@ -2242,31 +2242,31 @@ namespace eBayApi.Sell.Account
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response62>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response62>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response62>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response63>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response63>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response63>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response64>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response64>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response64>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SalesTax);
@@ -2287,10 +2287,10 @@ namespace eBayApi.Sell.Account
         /// <param name="jurisdictionId">This path parameter specifies the ID of the sales-tax jurisdiction for the table entry you want to create.</param>
         /// <param name="body">A container that describes the how the sales tax is calculated.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task CreateOrReplaceSalesTaxAsync(string countryCode, string jurisdictionId, SalesTaxBase body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void CreateOrReplaceSalesTax(string countryCode, string jurisdictionId, SalesTaxBase body)
         {
-            return CreateOrReplaceSalesTaxAsync(countryCode, jurisdictionId, body, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await CreateOrReplaceSalesTaxAsync(countryCode, jurisdictionId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -2298,8 +2298,8 @@ namespace eBayApi.Sell.Account
         /// <param name="jurisdictionId">This path parameter specifies the ID of the sales-tax jurisdiction for the table entry you want to create.</param>
         /// <param name="body">A container that describes the how the sales tax is calculated.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task CreateOrReplaceSalesTaxAsync(string countryCode, string jurisdictionId, SalesTaxBase body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task CreateOrReplaceSalesTaxAsync(string countryCode, string jurisdictionId, SalesTaxBase body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (countryCode == null)
                 throw new System.ArgumentNullException("countryCode");
@@ -2348,25 +2348,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response65>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response65>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response65>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response66>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response66>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response66>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response67>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response67>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response67>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -2384,18 +2384,18 @@ namespace eBayApi.Sell.Account
         /// <param name="countryCode">This path parameter specifies the two-letter ISO 3166-1 Alpha-2 code for the country whose tax table entry you want to delete.</param>
         /// <param name="jurisdictionId">This path parameter specifies the ID of the sales tax jurisdiction whose table entry you want to delete.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task DeleteSalesTaxAsync(string countryCode, string jurisdictionId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void DeleteSalesTax(string countryCode, string jurisdictionId)
         {
-            return DeleteSalesTaxAsync(countryCode, jurisdictionId, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeleteSalesTaxAsync(countryCode, jurisdictionId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="countryCode">This path parameter specifies the two-letter ISO 3166-1 Alpha-2 code for the country whose tax table entry you want to delete.</param>
         /// <param name="jurisdictionId">This path parameter specifies the ID of the sales tax jurisdiction whose table entry you want to delete.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task DeleteSalesTaxAsync(string countryCode, string jurisdictionId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task DeleteSalesTaxAsync(string countryCode, string jurisdictionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (countryCode == null)
                 throw new System.ArgumentNullException("countryCode");
@@ -2441,25 +2441,25 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response68>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response68>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response68>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response69>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response69>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response69>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response70>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response70>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response70>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -2476,17 +2476,17 @@ namespace eBayApi.Sell.Account
     
         /// <param name="country_code">This path parameter specifies the two-letter ISO 3166-1 Alpha-2 code for the country whose tax table you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/CountryCodeEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SalesTaxes> GetSalesTaxesAsync(string country_code)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SalesTaxes GetSalesTaxes(string country_code)
         {
-            return GetSalesTaxesAsync(country_code, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetSalesTaxesAsync(country_code, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="country_code">This path parameter specifies the two-letter ISO 3166-1 Alpha-2 code for the country whose tax table you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/account/types/CountryCodeEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SalesTaxes> GetSalesTaxesAsync(string country_code, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SalesTaxes> GetSalesTaxesAsync(string country_code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (country_code == null)
                 throw new System.ArgumentNullException("country_code");
@@ -2531,19 +2531,19 @@ namespace eBayApi.Sell.Account
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response71>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response71>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response71>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response72>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response72>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response72>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SalesTaxes);
@@ -2593,7 +2593,7 @@ namespace eBayApi.Sell.Account
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -2612,7 +2612,7 @@ namespace eBayApi.Sell.Account
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -5315,41 +5315,6 @@ namespace eBayApi.Sell.Account
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

@@ -50,10 +50,10 @@ namespace eBayApi.Buy.Marketing
         /// <param name="gtin">The unique Global Trade Item Number of the item as defined by http://www.gtin.info. This can be a UPC (Universal Product Code), EAN (European Article Number), or an ISBN (International Standard Book Number value. Required: You must specify one epid, or one gtin, or one brand plus mpn pair.</param>
         /// <param name="mpn">The manufacturer part number of the product. Restriction: This must be used along with brand. Required: You must specify one epid, or one gtin, or one brand plus mpn pair.</param>
         /// <returns>This call returns products that were also bought when shoppers bought the product specified in the request. Showing 'also bought' products inspires up-selling and cross-selling. You specify the product by one of the following: epid - eBay Product ID gtin - Global Trade Item Number (UPC, ISBN, EAN) brand (brand name, such as Nike) plus mpn (Manufacturer's Part Number) Restrictions For a list of supported sites and other restrictions, see API Restrictions. Note: A maximum of 12 products are returned. The call will return up to 12 products, but it can be less than 12. If the number of products found is less than 12, the call will return all of the products matching the criteria.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BestSellingProductResponse> GetAlsoBoughtByProductAsync(string brand, string epid, string gtin, string mpn)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BestSellingProductResponse GetAlsoBoughtByProduct(string brand = null, string epid = null, string gtin = null, string mpn = null)
         {
-            return GetAlsoBoughtByProductAsync(brand, epid, gtin, mpn, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetAlsoBoughtByProductAsync(brand, epid, gtin, mpn, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -62,8 +62,8 @@ namespace eBayApi.Buy.Marketing
         /// <param name="gtin">The unique Global Trade Item Number of the item as defined by http://www.gtin.info. This can be a UPC (Universal Product Code), EAN (European Article Number), or an ISBN (International Standard Book Number value. Required: You must specify one epid, or one gtin, or one brand plus mpn pair.</param>
         /// <param name="mpn">The manufacturer part number of the product. Restriction: This must be used along with brand. Required: You must specify one epid, or one gtin, or one brand plus mpn pair.</param>
         /// <returns>This call returns products that were also bought when shoppers bought the product specified in the request. Showing 'also bought' products inspires up-selling and cross-selling. You specify the product by one of the following: epid - eBay Product ID gtin - Global Trade Item Number (UPC, ISBN, EAN) brand (brand name, such as Nike) plus mpn (Manufacturer's Part Number) Restrictions For a list of supported sites and other restrictions, see API Restrictions. Note: A maximum of 12 products are returned. The call will return up to 12 products, but it can be less than 12. If the number of products found is less than 12, the call will return all of the products matching the criteria.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BestSellingProductResponse> GetAlsoBoughtByProductAsync(string brand, string epid, string gtin, string mpn, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BestSellingProductResponse> GetAlsoBoughtByProductAsync(string brand = null, string epid = null, string gtin = null, string mpn = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/merchandised_product/get_also_bought_products?");
@@ -120,31 +120,31 @@ namespace eBayApi.Buy.Marketing
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response2>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response2>("Conflict", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response2>("Conflict", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response3>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response3>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response3>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BestSellingProductResponse);
@@ -166,10 +166,10 @@ namespace eBayApi.Buy.Marketing
         /// <param name="gtin">The unique Global Trade Item Number of the item as defined by http://www.gtin.info. This can be a UPC (Universal Product Code), EAN (European Article Number), or an ISBN (International Standard Book Number value. Required: You must specify one epid, or one gtin, or one brand plus mpn pair.</param>
         /// <param name="mpn">The manufacturer part number of the product. Restriction: This must be used along with brand.</param>
         /// <returns>This call returns products that were also viewed when shoppers viewed the product specified in the request. Showing 'also viewed' products encourages up-selling and cross-selling. You specify the product by one of the following: epid - eBay Product ID gtin - Global Trade Item Number (UPC, ISBN, EAN) brand (brand name, such as Nike) plus mpn (Manufacturer's Part Number) Restrictions For a list of supported sites and other restrictions, see API Restrictions. Note: A maximum of 12 products are returned. The call will return up to 12 products, but it can be less than 12. If the number of products found is less than 12, the call will return all of the products matching the criteria.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BestSellingProductResponse> GetAlsoViewedByProductAsync(string brand, string epid, string gtin, string mpn)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BestSellingProductResponse GetAlsoViewedByProduct(string brand = null, string epid = null, string gtin = null, string mpn = null)
         {
-            return GetAlsoViewedByProductAsync(brand, epid, gtin, mpn, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetAlsoViewedByProductAsync(brand, epid, gtin, mpn, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -178,8 +178,8 @@ namespace eBayApi.Buy.Marketing
         /// <param name="gtin">The unique Global Trade Item Number of the item as defined by http://www.gtin.info. This can be a UPC (Universal Product Code), EAN (European Article Number), or an ISBN (International Standard Book Number value. Required: You must specify one epid, or one gtin, or one brand plus mpn pair.</param>
         /// <param name="mpn">The manufacturer part number of the product. Restriction: This must be used along with brand.</param>
         /// <returns>This call returns products that were also viewed when shoppers viewed the product specified in the request. Showing 'also viewed' products encourages up-selling and cross-selling. You specify the product by one of the following: epid - eBay Product ID gtin - Global Trade Item Number (UPC, ISBN, EAN) brand (brand name, such as Nike) plus mpn (Manufacturer's Part Number) Restrictions For a list of supported sites and other restrictions, see API Restrictions. Note: A maximum of 12 products are returned. The call will return up to 12 products, but it can be less than 12. If the number of products found is less than 12, the call will return all of the products matching the criteria.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BestSellingProductResponse> GetAlsoViewedByProductAsync(string brand, string epid, string gtin, string mpn, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BestSellingProductResponse> GetAlsoViewedByProductAsync(string brand = null, string epid = null, string gtin = null, string mpn = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/merchandised_product/get_also_viewed_products?");
@@ -236,31 +236,31 @@ namespace eBayApi.Buy.Marketing
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response4>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response4>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response4>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response5>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response5>("Conflict", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response5>("Conflict", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response6>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response6>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response6>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BestSellingProductResponse);
@@ -277,25 +277,25 @@ namespace eBayApi.Buy.Marketing
             }
         }
     
-        /// <param name="aspect_filter">The aspect name/value pairs used to further refine product results. For example: &amp;nbsp;&amp;nbsp;&amp;nbsp;/buy/marketing/v1_beta/merchandised_product?category_id=31388&amp;amp;metric_name=BEST_SELLING&amp;amp;aspect_filter=Brand:Canon You can use the Browse API search call with the fieldgroups=ASPECT_REFINEMENTS field to return the aspects of a product. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketingAspectFilter.html</param>
         /// <param name="category_id">This query parameter limits the products returned to a specific eBay category. The list of eBay category IDs is not published and category IDs are not all the same across all the eBay maketplace. You can use the following techniques to find a category by site: Use the Category Changes page. Use the Taxonomy API. For details see Get Categories for Buy APIs. Use the Browse API and submit the following call to get the dominantCategoryId for an item. /buy/browse/v1/item_summary/search?q=keyword&amp;amp;fieldgroups=ASPECT_REFINEMENTS Maximum: 1 Required: 1</param>
-        /// <param name="limit">This value specifies the maximum number of products to return in a result set. Note: Maximum value means the call will return up to that many products per set, but it can be less than this value. If the number of products found is less than this value, the call will return all of the products matching the criteria. Default: 8 Maximum: 100</param>
         /// <param name="metric_name">This value filters the result set by the specified metric. Only products in this metric are returned. Currently, the only metric supported is BEST_SELLING. Default: BEST_SELLING Maximum: 1 Required: 1</param>
+        /// <param name="aspect_filter">The aspect name/value pairs used to further refine product results. For example: &amp;nbsp;&amp;nbsp;&amp;nbsp;/buy/marketing/v1_beta/merchandised_product?category_id=31388&amp;amp;metric_name=BEST_SELLING&amp;amp;aspect_filter=Brand:Canon You can use the Browse API search call with the fieldgroups=ASPECT_REFINEMENTS field to return the aspects of a product. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketingAspectFilter.html</param>
+        /// <param name="limit">This value specifies the maximum number of products to return in a result set. Note: Maximum value means the call will return up to that many products per set, but it can be less than this value. If the number of products found is less than this value, the call will return all of the products matching the criteria. Default: 8 Maximum: 100</param>
         /// <returns>This call returns an array of products based on the category and metric specified. This includes details of the product, such as the eBay product ID (EPID), title, and user reviews and ratings for the product. You can use the epid returned by this call in the Browse API search call to retrieve items for this product. Restrictions For a list of supported sites and other restrictions, see API Restrictions.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BestSellingProductResponse> GetMerchandisedProductsAsync(string aspect_filter, string category_id, string limit, string metric_name)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BestSellingProductResponse GetMerchandisedProducts(string category_id, string metric_name, string aspect_filter = null, string limit = null)
         {
-            return GetMerchandisedProductsAsync(aspect_filter, category_id, limit, metric_name, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetMerchandisedProductsAsync(category_id, metric_name, aspect_filter, limit, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <param name="aspect_filter">The aspect name/value pairs used to further refine product results. For example: &amp;nbsp;&amp;nbsp;&amp;nbsp;/buy/marketing/v1_beta/merchandised_product?category_id=31388&amp;amp;metric_name=BEST_SELLING&amp;amp;aspect_filter=Brand:Canon You can use the Browse API search call with the fieldgroups=ASPECT_REFINEMENTS field to return the aspects of a product. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketingAspectFilter.html</param>
         /// <param name="category_id">This query parameter limits the products returned to a specific eBay category. The list of eBay category IDs is not published and category IDs are not all the same across all the eBay maketplace. You can use the following techniques to find a category by site: Use the Category Changes page. Use the Taxonomy API. For details see Get Categories for Buy APIs. Use the Browse API and submit the following call to get the dominantCategoryId for an item. /buy/browse/v1/item_summary/search?q=keyword&amp;amp;fieldgroups=ASPECT_REFINEMENTS Maximum: 1 Required: 1</param>
-        /// <param name="limit">This value specifies the maximum number of products to return in a result set. Note: Maximum value means the call will return up to that many products per set, but it can be less than this value. If the number of products found is less than this value, the call will return all of the products matching the criteria. Default: 8 Maximum: 100</param>
         /// <param name="metric_name">This value filters the result set by the specified metric. Only products in this metric are returned. Currently, the only metric supported is BEST_SELLING. Default: BEST_SELLING Maximum: 1 Required: 1</param>
+        /// <param name="aspect_filter">The aspect name/value pairs used to further refine product results. For example: &amp;nbsp;&amp;nbsp;&amp;nbsp;/buy/marketing/v1_beta/merchandised_product?category_id=31388&amp;amp;metric_name=BEST_SELLING&amp;amp;aspect_filter=Brand:Canon You can use the Browse API search call with the fieldgroups=ASPECT_REFINEMENTS field to return the aspects of a product. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketingAspectFilter.html</param>
+        /// <param name="limit">This value specifies the maximum number of products to return in a result set. Note: Maximum value means the call will return up to that many products per set, but it can be less than this value. If the number of products found is less than this value, the call will return all of the products matching the criteria. Default: 8 Maximum: 100</param>
         /// <returns>This call returns an array of products based on the category and metric specified. This includes details of the product, such as the eBay product ID (EPID), title, and user reviews and ratings for the product. You can use the epid returned by this call in the Browse API search call to retrieve items for this product. Restrictions For a list of supported sites and other restrictions, see API Restrictions.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BestSellingProductResponse> GetMerchandisedProductsAsync(string aspect_filter, string category_id, string limit, string metric_name, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BestSellingProductResponse> GetMerchandisedProductsAsync(string category_id, string metric_name, string aspect_filter = null, string limit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (category_id == null)
                 throw new System.ArgumentNullException("category_id");
@@ -305,16 +305,16 @@ namespace eBayApi.Buy.Marketing
     
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/merchandised_product?");
+            urlBuilder_.Append(System.Uri.EscapeDataString("category_id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(category_id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            urlBuilder_.Append(System.Uri.EscapeDataString("metric_name") + "=").Append(System.Uri.EscapeDataString(ConvertToString(metric_name, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (aspect_filter != null) 
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("aspect_filter") + "=").Append(System.Uri.EscapeDataString(ConvertToString(aspect_filter, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            urlBuilder_.Append(System.Uri.EscapeDataString("category_id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(category_id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (limit != null) 
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("limit") + "=").Append(System.Uri.EscapeDataString(ConvertToString(limit, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            urlBuilder_.Append(System.Uri.EscapeDataString("metric_name") + "=").Append(System.Uri.EscapeDataString(ConvertToString(metric_name, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             urlBuilder_.Length--;
     
             var client_ = _httpClient;
@@ -352,19 +352,19 @@ namespace eBayApi.Buy.Marketing
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response7>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response7>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response7>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response8>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response8>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response8>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BestSellingProductResponse);
@@ -414,7 +414,7 @@ namespace eBayApi.Buy.Marketing
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -433,7 +433,7 @@ namespace eBayApi.Buy.Marketing
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -904,41 +904,6 @@ namespace eBayApi.Buy.Marketing
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

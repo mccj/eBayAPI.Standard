@@ -3,7 +3,7 @@ using System.Net.Http;
 
 namespace eBayApi
 {
-    public class eBayClient
+    public partial class eBayClient
     {
         private readonly System.Net.Http.HttpClient _httpClient;
         public eBayClient() : this(new System.Net.Http.HttpClient())
@@ -39,8 +39,6 @@ namespace eBayApi
         }
         #endregion 设置操作   
         #region 客户端属性
-
-        
         public OAuth2.OAuth2Client OAuth2 => new OAuth2.OAuth2Client(_httpClient);
 
         public Buy.Browse.Client BuyBrowse => new Buy.Browse.Client(_httpClient);

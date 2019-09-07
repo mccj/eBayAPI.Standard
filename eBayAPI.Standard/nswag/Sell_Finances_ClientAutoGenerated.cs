@@ -47,17 +47,17 @@ namespace eBayApi.Sell.Finances
     
         /// <param name="payout_Id">The unique identfier of the payout is passed in as a path parameter at the end of the call URI. The getPayouts call can be used to retrieve the unique identifier of a payout, or the user can check Seller Hub to get the payout ID.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Payout> GetPayoutAsync(string payout_Id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Payout GetPayout(string payout_Id)
         {
-            return GetPayoutAsync(payout_Id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPayoutAsync(payout_Id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="payout_Id">The unique identfier of the payout is passed in as a path parameter at the end of the call URI. The getPayouts call can be used to retrieve the unique identifier of a payout, or the user can check Seller Hub to get the payout ID.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Payout> GetPayoutAsync(string payout_Id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Payout> GetPayoutAsync(string payout_Id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (payout_Id == null)
                 throw new System.ArgumentNullException("payout_Id");
@@ -101,25 +101,25 @@ namespace eBayApi.Sell.Finances
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Payout);
@@ -141,10 +141,10 @@ namespace eBayApi.Sell.Finances
         /// <param name="limit">The number of payouts to return per page of the result set. Use this parameter in conjunction with the offset parameter to control the pagination of the output. For example, if offset is set to 10 and limit is set to 10, the call retrieves payouts 11 thru 20 from the result set. Note: This feature employs a zero-based list, where the first payout in the results set has an offset value of 0. Maximum: 200 Default: 20</param>
         /// <param name="offset">This integer value indicates the actual position that the first payout returned on the current page has in the results set. So, if you wanted to view the 11th payout of the result set, you would set the offset value in the request to 10. In the request, you can use the offset parameter in conjunction with the limit parameter to control the pagination of the output. For example, if offset is set to 30 and limit is set to 10, the call retrieves payouts 31 thru 40 from the resulting collection of payouts. Note: This feature employs a zero-based list, where the first payout in the results set has an offset value of 0. Default: 0 (zero)</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Payouts> GetPayoutsAsync(string filter, string sort, string limit, string offset)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Payouts GetPayouts(string filter = null, string sort = null, string limit = null, string offset = null)
         {
-            return GetPayoutsAsync(filter, sort, limit, offset, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPayoutsAsync(filter, sort, limit, offset, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -153,8 +153,8 @@ namespace eBayApi.Sell.Finances
         /// <param name="limit">The number of payouts to return per page of the result set. Use this parameter in conjunction with the offset parameter to control the pagination of the output. For example, if offset is set to 10 and limit is set to 10, the call retrieves payouts 11 thru 20 from the result set. Note: This feature employs a zero-based list, where the first payout in the results set has an offset value of 0. Maximum: 200 Default: 20</param>
         /// <param name="offset">This integer value indicates the actual position that the first payout returned on the current page has in the results set. So, if you wanted to view the 11th payout of the result set, you would set the offset value in the request to 10. In the request, you can use the offset parameter in conjunction with the limit parameter to control the pagination of the output. For example, if offset is set to 30 and limit is set to 10, the call retrieves payouts 31 thru 40 from the resulting collection of payouts. Note: This feature employs a zero-based list, where the first payout in the results set has an offset value of 0. Default: 0 (zero)</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Payouts> GetPayoutsAsync(string filter, string sort, string limit, string offset, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Payouts> GetPayoutsAsync(string filter = null, string sort = null, string limit = null, string offset = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/payout?");
@@ -211,25 +211,25 @@ namespace eBayApi.Sell.Finances
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Payouts);
@@ -248,17 +248,17 @@ namespace eBayApi.Sell.Finances
     
         /// <param name="filter">The two filter types that can be used here are discussed below. One or both of these filter types can be used. If none of these filters are used, the data returned in the response will reflect payouts, in all states, processed within the last 90 days. payoutDate: consider payouts processed within a specific range of dates. The date format to use is YYYY-MM-DDTHH:MM:SS.SSSZ. Below is the proper syntax to use if filtering by a date range: https://api.ebay.com/sell/finances/v1_alpha/payout_summary?filter=payoutDate:[2018-12-17T00:00:01.000Z..2018-12-24T00:00:01.000Z] Alternatively, the user could omit the ending date, and the date range would include the starting date and up to 90 days past that date, or the current date if the starting date is less than 90 days in the past. payoutStatus: consider only the payouts in a particular state. Only one payout state can be specified with this filter. The supported payoutStatus values are as follows: SUCCEEDED: consider only successful payouts. RETRYABLE_FAILED: consider only payouts that failed, but ones which will be tried again. TERMINAL_FAILED: consider only payouts that failed, and ones that will not be tried again. REVERSED: consider only payouts that were reversed. Below is the proper syntax to use if filtering by payout status: https://api.ebay.com/sell/finances/v1_alpha/payout_summary?filter=payoutStatus:{SUCCEEDED} If both the payoutDate and payoutStatus filters are used, only the payouts that satisfy both criteria are considered in the results. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/finances/types/FilterField.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PayoutSummaryResponse> GetPayoutSummaryAsync(string filter)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PayoutSummaryResponse GetPayoutSummary(string filter = null)
         {
-            return GetPayoutSummaryAsync(filter, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPayoutSummaryAsync(filter, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="filter">The two filter types that can be used here are discussed below. One or both of these filter types can be used. If none of these filters are used, the data returned in the response will reflect payouts, in all states, processed within the last 90 days. payoutDate: consider payouts processed within a specific range of dates. The date format to use is YYYY-MM-DDTHH:MM:SS.SSSZ. Below is the proper syntax to use if filtering by a date range: https://api.ebay.com/sell/finances/v1_alpha/payout_summary?filter=payoutDate:[2018-12-17T00:00:01.000Z..2018-12-24T00:00:01.000Z] Alternatively, the user could omit the ending date, and the date range would include the starting date and up to 90 days past that date, or the current date if the starting date is less than 90 days in the past. payoutStatus: consider only the payouts in a particular state. Only one payout state can be specified with this filter. The supported payoutStatus values are as follows: SUCCEEDED: consider only successful payouts. RETRYABLE_FAILED: consider only payouts that failed, but ones which will be tried again. TERMINAL_FAILED: consider only payouts that failed, and ones that will not be tried again. REVERSED: consider only payouts that were reversed. Below is the proper syntax to use if filtering by payout status: https://api.ebay.com/sell/finances/v1_alpha/payout_summary?filter=payoutStatus:{SUCCEEDED} If both the payoutDate and payoutStatus filters are used, only the payouts that satisfy both criteria are considered in the results. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/finances/types/FilterField.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PayoutSummaryResponse> GetPayoutSummaryAsync(string filter, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PayoutSummaryResponse> GetPayoutSummaryAsync(string filter = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/payout_summary?");
@@ -303,19 +303,19 @@ namespace eBayApi.Sell.Finances
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PayoutSummaryResponse);
@@ -337,10 +337,10 @@ namespace eBayApi.Sell.Finances
         /// <param name="limit">The number of monetary transactions to return per page of the result set. Use this parameter in conjunction with the offset parameter to control the pagination of the output. For example, if offset is set to 10 and limit is set to 10, the call retrieves monetary transactions 11 thru 20 from the result set. Note: This feature employs a zero-based list, where the first item in the list has an offset of 0. If the orderIds parameter is included in the request, this parameter will be ignored. Maximum: 200 Default: 20</param>
         /// <param name="offset">This integer value indicates the actual position that the first monetary transaction returned on the current page has in the results set. So, if you wanted to view the 11th monetary transaction of the result set, you would set the offset value in the request to 10. In the request, you can use the offset parameter in conjunction with the limit parameter to control the pagination of the output. For example, if offset is set to 30 and limit is set to 10, the call retrieves transactions 31 thru 40 from the resulting collection of transactions. Note: This feature employs a zero-based list, where the first item in the list has an offset of 0. Default: 0 (zero)</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Transactions> GetTransactionsAsync(string filter, string sort, string limit, string offset)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Transactions GetTransactions(string filter = null, string sort = null, string limit = null, string offset = null)
         {
-            return GetTransactionsAsync(filter, sort, limit, offset, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetTransactionsAsync(filter, sort, limit, offset, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -349,8 +349,8 @@ namespace eBayApi.Sell.Finances
         /// <param name="limit">The number of monetary transactions to return per page of the result set. Use this parameter in conjunction with the offset parameter to control the pagination of the output. For example, if offset is set to 10 and limit is set to 10, the call retrieves monetary transactions 11 thru 20 from the result set. Note: This feature employs a zero-based list, where the first item in the list has an offset of 0. If the orderIds parameter is included in the request, this parameter will be ignored. Maximum: 200 Default: 20</param>
         /// <param name="offset">This integer value indicates the actual position that the first monetary transaction returned on the current page has in the results set. So, if you wanted to view the 11th monetary transaction of the result set, you would set the offset value in the request to 10. In the request, you can use the offset parameter in conjunction with the limit parameter to control the pagination of the output. For example, if offset is set to 30 and limit is set to 10, the call retrieves transactions 31 thru 40 from the resulting collection of transactions. Note: This feature employs a zero-based list, where the first item in the list has an offset of 0. Default: 0 (zero)</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Transactions> GetTransactionsAsync(string filter, string sort, string limit, string offset, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Transactions> GetTransactionsAsync(string filter = null, string sort = null, string limit = null, string offset = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/transaction?");
@@ -407,25 +407,25 @@ namespace eBayApi.Sell.Finances
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Transactions);
@@ -444,17 +444,17 @@ namespace eBayApi.Sell.Finances
     
         /// <param name="filter">Numerous filters are available for the getTransactionSummary method, and these filters are discussed below. One or more of these filter types can be used. The transactionStatus filter must be used. All other filters are optional. transactionStatus: the data returned in the response will only pertain to the transaction status set here. The supported transactionStatus values are as follows: PAYOUT: only consider monetary transactions where the proceeds from the sales transactions have been paid out to the seller's account. FUNDS_PROCESSING: only consider monetary transactions where the proceeds from the sales transactions are currently being processed. FUNDS_AVAILABLE_FOR_PAYOUT: only consider monetary transactions where the proceeds from the sales transactions are available for a seller payout, but processing has not yet begun. FUNDS_ON_HOLD: only consider monetary transactions where the proceeds from the sales transactions are currently being held by eBay, and are not yet available for a seller payout.Below is the proper syntax to use when setting up the transactionStatus filter: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=transactionStatus:{PAYOUT} transactionDate: only consider monetary transactions that occurred within a specific range of dates. The date format to use is YYYY-MM-DDTHH:MM:SS.SSSZ. Below is the proper syntax to use if filtering by a date range: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=transactionDate:[2018-10-23T00:00:01.000Z..2018-11-09T00:00:01.000Z] Alternatively, the user could omit the ending date, and the date range would include the starting date and up to 90 days past that date, or the current date if the starting date is less than 90 days in the past. transactionType: only consider a specific type of monetary transaction. The supported transactionType values are as follows: SALE: a sales order. REFUND: a refund to the buyer after an order cancellation or return. CREDIT: a credit issued by eBay to the seller's account.Below is the proper syntax to use if filtering by a monetary transaction type: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=transactionType:{SALE} buyerUsername: only consider monetary transactions involving a specific buyer (specified with the buyer's eBay user ID). Below is the proper syntax to use if filtering by a specific eBay buyer: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=buyerUsername:{buyer1234} salesRecordReference: only consider monetary transactions corresponding to a specific order (identified with a Selling Manager order identifier). Below is the proper syntax to use if filtering by a specific Selling Manager Sales Record ID: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=salesRecordReference:{123} . payoutId: only consider monetary transactions related to a specific seller payout (identified with a Payout ID). This value is auto-generated by eBay once the seller payout is set to be processed. Below is the proper syntax to use if filtering by a specific Payout ID: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=payoutId:{5000106638} transactionId: only consider monetary transactions corresponding to a specific order (identified with a order ID). This identifier is auto-generated by eBay once the buyer pays for an order. Below is the proper syntax to use if filtering by a specific order ID: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=transactionId:{200009081244-9734029010!210000000789982} For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/finances/types/FilterField.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<TransactionSummaryResponse> GetTransactionSummaryAsync(string filter)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public TransactionSummaryResponse GetTransactionSummary(string filter = null)
         {
-            return GetTransactionSummaryAsync(filter, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetTransactionSummaryAsync(filter, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="filter">Numerous filters are available for the getTransactionSummary method, and these filters are discussed below. One or more of these filter types can be used. The transactionStatus filter must be used. All other filters are optional. transactionStatus: the data returned in the response will only pertain to the transaction status set here. The supported transactionStatus values are as follows: PAYOUT: only consider monetary transactions where the proceeds from the sales transactions have been paid out to the seller's account. FUNDS_PROCESSING: only consider monetary transactions where the proceeds from the sales transactions are currently being processed. FUNDS_AVAILABLE_FOR_PAYOUT: only consider monetary transactions where the proceeds from the sales transactions are available for a seller payout, but processing has not yet begun. FUNDS_ON_HOLD: only consider monetary transactions where the proceeds from the sales transactions are currently being held by eBay, and are not yet available for a seller payout.Below is the proper syntax to use when setting up the transactionStatus filter: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=transactionStatus:{PAYOUT} transactionDate: only consider monetary transactions that occurred within a specific range of dates. The date format to use is YYYY-MM-DDTHH:MM:SS.SSSZ. Below is the proper syntax to use if filtering by a date range: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=transactionDate:[2018-10-23T00:00:01.000Z..2018-11-09T00:00:01.000Z] Alternatively, the user could omit the ending date, and the date range would include the starting date and up to 90 days past that date, or the current date if the starting date is less than 90 days in the past. transactionType: only consider a specific type of monetary transaction. The supported transactionType values are as follows: SALE: a sales order. REFUND: a refund to the buyer after an order cancellation or return. CREDIT: a credit issued by eBay to the seller's account.Below is the proper syntax to use if filtering by a monetary transaction type: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=transactionType:{SALE} buyerUsername: only consider monetary transactions involving a specific buyer (specified with the buyer's eBay user ID). Below is the proper syntax to use if filtering by a specific eBay buyer: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=buyerUsername:{buyer1234} salesRecordReference: only consider monetary transactions corresponding to a specific order (identified with a Selling Manager order identifier). Below is the proper syntax to use if filtering by a specific Selling Manager Sales Record ID: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=salesRecordReference:{123} . payoutId: only consider monetary transactions related to a specific seller payout (identified with a Payout ID). This value is auto-generated by eBay once the seller payout is set to be processed. Below is the proper syntax to use if filtering by a specific Payout ID: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=payoutId:{5000106638} transactionId: only consider monetary transactions corresponding to a specific order (identified with a order ID). This identifier is auto-generated by eBay once the buyer pays for an order. Below is the proper syntax to use if filtering by a specific order ID: https://api.ebay.com/sell/finances/v1_alpha/transaction_summary?filter=transactionId:{200009081244-9734029010!210000000789982} For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/finances/types/FilterField.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<TransactionSummaryResponse> GetTransactionSummaryAsync(string filter, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<TransactionSummaryResponse> GetTransactionSummaryAsync(string filter = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/transaction_summary?");
@@ -499,19 +499,19 @@ namespace eBayApi.Sell.Finances
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(TransactionSummaryResponse);
@@ -561,7 +561,7 @@ namespace eBayApi.Sell.Finances
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -580,7 +580,7 @@ namespace eBayApi.Sell.Finances
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -1010,41 +1010,6 @@ namespace eBayApi.Sell.Finances
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

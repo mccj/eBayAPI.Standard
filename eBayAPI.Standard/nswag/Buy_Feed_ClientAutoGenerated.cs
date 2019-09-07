@@ -51,10 +51,10 @@ namespace eBayApi.Buy.Feed
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level (L1) category</param>
         /// <param name="date">The date of the daily Item feed file (feed_scope=NEWLY_LISTED) you want. The date is required only for the daily Item feed file. If you specify a date for the Item Bootstrap file (feed_scope=ALL_ACTIVE), the date is ignored and the latest file is returned. The date the Item Bootstrap feed file was generated is returned in the Last-Modified response header. The Item feed files are generated every day and there are always 14 files available. The daily Item feed files are available each day after 9AM MST (US Mountain Standard Time), which is -7 hours UTC time. There is a 48 hour latency when generating the Item feed files. This means you can download the file for July 10th on July 12 after 9AM MST. Note: For categories with a large number of items, the latency can be up to 72 hours. Format: yyyyMMdd Requirements: Required when feed_scope=NEWLY_LISTED Must be within 3-14 days in the past</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ItemResponse> GetItemFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ItemResponse GetItemFeed(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date = null)
         {
-            return GetItemFeedAsync(x_EBAY_C_MARKETPLACE_ID, range, feed_scope, category_id, date, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetItemFeedAsync(x_EBAY_C_MARKETPLACE_ID, range, feed_scope, category_id, date, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -64,8 +64,8 @@ namespace eBayApi.Buy.Feed
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level (L1) category</param>
         /// <param name="date">The date of the daily Item feed file (feed_scope=NEWLY_LISTED) you want. The date is required only for the daily Item feed file. If you specify a date for the Item Bootstrap file (feed_scope=ALL_ACTIVE), the date is ignored and the latest file is returned. The date the Item Bootstrap feed file was generated is returned in the Last-Modified response header. The Item feed files are generated every day and there are always 14 files available. The daily Item feed files are available each day after 9AM MST (US Mountain Standard Time), which is -7 hours UTC time. There is a 48 hour latency when generating the Item feed files. This means you can download the file for July 10th on July 12 after 9AM MST. Note: For categories with a large number of items, the latency can be up to 72 hours. Format: yyyyMMdd Requirements: Required when feed_scope=NEWLY_LISTED Must be within 3-14 days in the past</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ItemResponse> GetItemFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ItemResponse> GetItemFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (feed_scope == null)
                 throw new System.ArgumentNullException("feed_scope");
@@ -124,7 +124,7 @@ namespace eBayApi.Buy.Feed
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content <br />This code is returned when there are no items that meet the criteria for this feed file. See <a href=\"/api-docs/buy/static/api-feed.html#feed-filters\">Feed File Filters</a> for details.", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No Content <br />This code is returned when there are no items that meet the criteria for this feed file. See <a href=\"/api-docs/buy/static/api-feed.html#feed-filters\">Feed File Filters</a> for details.", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "206") 
@@ -136,31 +136,31 @@ namespace eBayApi.Buy.Feed
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "416") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Range not satisfiable", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Range not satisfiable", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ItemResponse);
@@ -178,26 +178,26 @@ namespace eBayApi.Buy.Feed
         }
     
         /// <param name="x_EBAY_C_MARKETPLACE_ID">The ID of the eBay marketplace where the item is hosted. Note: This value is case sensitive. For example: &amp;nbsp;&amp;nbsp;X-EBAY-C-MARKETPLACE-ID = EBAY_US For a list of supported sites see, API Restrictions.</param>
-        /// <param name="range">This header specifies the range in bytes of the chunks of the gzip file being returned. Format: bytes=startpos-endpos For example, the following retrieves the first 10 MBs of the feed file. &amp;nbsp;&amp;nbsp;Range bytes=0-10485760 For more information about using this headers, see Retrieving a gzip feed file. Maximum: 100 MB (10MB in the Sandbox)</param>
         /// <param name="feed_scope">Specifies the type of file to return. Valid Values: NEWLY_LISTED - Returns the Item Group feed file containing the item group variation information for items in the daily Item feed file that were associated with an item group. The items in this type of Item feed file are items that were listed on the day specified by the date parameter in the category specified by the category_id parameter. The items will be Good 'Til Cancelled and non-Good 'Til Cancelled items. If the item is a non-Good 'Til Cancelled item, the item's end date will be returned in the itemEndDate column. /item_group?feed_scope=NEWLY_LISTED&amp;amp;category_id=15032&amp;amp;date=20170925 ALL_ACTIVE - Returns the weekly Item Group Bootstrap file containing the item group variation information for items in the weekly Item Bootstrap feed file that were associated with an item group. The items are 'Good 'Til Cancelled' items in the category specified by the category_id parameter. Note: Bootstrap files are generated every Tuesday and the file is available on Wednesday. However, the exact time the file is available can vary so we recommend you download the Bootstrap file on Thursday. The item groups in the file are for the items that were in the specified category on Sunday. /item_group?feed_scope=ALL_ACTIVE&amp;amp;category_id=15032</param>
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
+        /// <param name="range">This header specifies the range in bytes of the chunks of the gzip file being returned. Format: bytes=startpos-endpos For example, the following retrieves the first 10 MBs of the feed file. &amp;nbsp;&amp;nbsp;Range bytes=0-10485760 For more information about using this headers, see Retrieving a gzip feed file. Maximum: 100 MB (10MB in the Sandbox)</param>
         /// <param name="date">The date of the daily Item Group feed file (feed_scope=NEWLY_LISTED) you want. The date is required only for the daily Item Group feed file. If you specify a date for the Item Group Bootstrap file (feed_scope=ALL_ACTIVE), the date is ignored and the latest file is returned. The date the Item Group Bootstrap feed file was generated is returned in the Last-Modified response header. The Item Group feed files are generated every day and there are always 14 files available. There is a 48 hour latency when generating the files. This means on July 10, the latest feed file you can download is July 8. Note: The generated files are stored using MST (US Mountain Standard Time), which is -7 hours UTC time. Format: yyyyMMdd Requirement: Requirements: Required only when feed_scope=NEWLY_LISTED Must be within 3-14 days in the past</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ItemGroupResponse> GetItemGroupFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ItemGroupResponse GetItemGroupFeed(string x_EBAY_C_MARKETPLACE_ID, string feed_scope, string category_id, string range = null, string date = null)
         {
-            return GetItemGroupFeedAsync(x_EBAY_C_MARKETPLACE_ID, range, feed_scope, category_id, date, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetItemGroupFeedAsync(x_EBAY_C_MARKETPLACE_ID, feed_scope, category_id, range, date, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="x_EBAY_C_MARKETPLACE_ID">The ID of the eBay marketplace where the item is hosted. Note: This value is case sensitive. For example: &amp;nbsp;&amp;nbsp;X-EBAY-C-MARKETPLACE-ID = EBAY_US For a list of supported sites see, API Restrictions.</param>
-        /// <param name="range">This header specifies the range in bytes of the chunks of the gzip file being returned. Format: bytes=startpos-endpos For example, the following retrieves the first 10 MBs of the feed file. &amp;nbsp;&amp;nbsp;Range bytes=0-10485760 For more information about using this headers, see Retrieving a gzip feed file. Maximum: 100 MB (10MB in the Sandbox)</param>
         /// <param name="feed_scope">Specifies the type of file to return. Valid Values: NEWLY_LISTED - Returns the Item Group feed file containing the item group variation information for items in the daily Item feed file that were associated with an item group. The items in this type of Item feed file are items that were listed on the day specified by the date parameter in the category specified by the category_id parameter. The items will be Good 'Til Cancelled and non-Good 'Til Cancelled items. If the item is a non-Good 'Til Cancelled item, the item's end date will be returned in the itemEndDate column. /item_group?feed_scope=NEWLY_LISTED&amp;amp;category_id=15032&amp;amp;date=20170925 ALL_ACTIVE - Returns the weekly Item Group Bootstrap file containing the item group variation information for items in the weekly Item Bootstrap feed file that were associated with an item group. The items are 'Good 'Til Cancelled' items in the category specified by the category_id parameter. Note: Bootstrap files are generated every Tuesday and the file is available on Wednesday. However, the exact time the file is available can vary so we recommend you download the Bootstrap file on Thursday. The item groups in the file are for the items that were in the specified category on Sunday. /item_group?feed_scope=ALL_ACTIVE&amp;amp;category_id=15032</param>
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
+        /// <param name="range">This header specifies the range in bytes of the chunks of the gzip file being returned. Format: bytes=startpos-endpos For example, the following retrieves the first 10 MBs of the feed file. &amp;nbsp;&amp;nbsp;Range bytes=0-10485760 For more information about using this headers, see Retrieving a gzip feed file. Maximum: 100 MB (10MB in the Sandbox)</param>
         /// <param name="date">The date of the daily Item Group feed file (feed_scope=NEWLY_LISTED) you want. The date is required only for the daily Item Group feed file. If you specify a date for the Item Group Bootstrap file (feed_scope=ALL_ACTIVE), the date is ignored and the latest file is returned. The date the Item Group Bootstrap feed file was generated is returned in the Last-Modified response header. The Item Group feed files are generated every day and there are always 14 files available. There is a 48 hour latency when generating the files. This means on July 10, the latest feed file you can download is July 8. Note: The generated files are stored using MST (US Mountain Standard Time), which is -7 hours UTC time. Format: yyyyMMdd Requirement: Requirements: Required only when feed_scope=NEWLY_LISTED Must be within 3-14 days in the past</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ItemGroupResponse> GetItemGroupFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ItemGroupResponse> GetItemGroupFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string feed_scope, string category_id, string range = null, string date = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (feed_scope == null)
                 throw new System.ArgumentNullException("feed_scope");
@@ -255,7 +255,7 @@ namespace eBayApi.Buy.Feed
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content <br />This code is returned when there are no items that meet the criteria for this feed file. See <a href=\"/api-docs/buy/static/api-feed.html#feed-filters\">Feed File Filters</a> for details.", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No Content <br />This code is returned when there are no items that meet the criteria for this feed file. See <a href=\"/api-docs/buy/static/api-feed.html#feed-filters\">Feed File Filters</a> for details.", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "206") 
@@ -267,31 +267,31 @@ namespace eBayApi.Buy.Feed
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "416") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Range not satisfiable", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Range not satisfiable", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ItemGroupResponse);
@@ -313,10 +313,10 @@ namespace eBayApi.Buy.Feed
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplace, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
         /// <param name="snapshot_date">The hour of the incremental feed file you want, for a particular day. There are always 14 days of Hourly Snapshot feed files available. If you specify that you want the 9AM file for July 15, 2017 (2017-07-15T09:00:00.000Z), the data in the feed file will be items that changed after 9AM on July 15, 2017. Restrictions: Files are generated on the hour, so minutes and seconds are always zeros. &amp;nbsp;&amp;nbsp;&amp;nbsp;(2017-07-12T09:00:00.000Z) Format: UTC format (yyyy-MM-ddThh:00:00.000Z)</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ItemSnapshotResponse> GetItemSnapshotFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string category_id, string snapshot_date)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ItemSnapshotResponse GetItemSnapshotFeed(string x_EBAY_C_MARKETPLACE_ID, string range, string category_id, string snapshot_date)
         {
-            return GetItemSnapshotFeedAsync(x_EBAY_C_MARKETPLACE_ID, range, category_id, snapshot_date, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetItemSnapshotFeedAsync(x_EBAY_C_MARKETPLACE_ID, range, category_id, snapshot_date, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -325,8 +325,8 @@ namespace eBayApi.Buy.Feed
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplace, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
         /// <param name="snapshot_date">The hour of the incremental feed file you want, for a particular day. There are always 14 days of Hourly Snapshot feed files available. If you specify that you want the 9AM file for July 15, 2017 (2017-07-15T09:00:00.000Z), the data in the feed file will be items that changed after 9AM on July 15, 2017. Restrictions: Files are generated on the hour, so minutes and seconds are always zeros. &amp;nbsp;&amp;nbsp;&amp;nbsp;(2017-07-12T09:00:00.000Z) Format: UTC format (yyyy-MM-ddThh:00:00.000Z)</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ItemSnapshotResponse> GetItemSnapshotFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string category_id, string snapshot_date, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ItemSnapshotResponse> GetItemSnapshotFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string category_id, string snapshot_date, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (category_id == null)
                 throw new System.ArgumentNullException("category_id");
@@ -381,7 +381,7 @@ namespace eBayApi.Buy.Feed
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content <br />This code is returned when there are no items that meet the criteria for this feed file. See <a href=\"/api-docs/buy/static/api-feed.html#feed-filters\">Feed File Filters</a> for details.", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No Content <br />This code is returned when there are no items that meet the criteria for this feed file. See <a href=\"/api-docs/buy/static/api-feed.html#feed-filters\">Feed File Filters</a> for details.", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "206") 
@@ -393,31 +393,31 @@ namespace eBayApi.Buy.Feed
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "416") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Range not satisfiable", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Range not satisfiable", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ItemSnapshotResponse);
@@ -440,10 +440,10 @@ namespace eBayApi.Buy.Feed
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
         /// <param name="date">The date of the feed file you want. This is needed only when feed_scope=NEWLY_LISTED. If you specify a date and feed_scope=ALL_ACTIVE, the date is ignored and the latest file is returned. The date of the file is returned in the Last-Modified response header. The Product feed files are generated every day and there are always 14 daily feed files available. There is a 48 hour latency when generating the files. This means on July 10, the latest feed file you can download is July 8. In other words, if you wanted the file generated on July 10th, you would need to wait until July 12th. Note: The generated files are stored using MST (US Mountain Standard Time), which is -7 hours UTC time. Format: yyyyMMdd Requirements: Must be within 3-14 days in the past Required when feed_scope=NEWLY_LISTED</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ProductResponse> GetProductFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ProductResponse GetProductFeed(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date = null)
         {
-            return GetProductFeedAsync(x_EBAY_C_MARKETPLACE_ID, range, feed_scope, category_id, date, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetProductFeedAsync(x_EBAY_C_MARKETPLACE_ID, range, feed_scope, category_id, date, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -453,8 +453,8 @@ namespace eBayApi.Buy.Feed
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
         /// <param name="date">The date of the feed file you want. This is needed only when feed_scope=NEWLY_LISTED. If you specify a date and feed_scope=ALL_ACTIVE, the date is ignored and the latest file is returned. The date of the file is returned in the Last-Modified response header. The Product feed files are generated every day and there are always 14 daily feed files available. There is a 48 hour latency when generating the files. This means on July 10, the latest feed file you can download is July 8. In other words, if you wanted the file generated on July 10th, you would need to wait until July 12th. Note: The generated files are stored using MST (US Mountain Standard Time), which is -7 hours UTC time. Format: yyyyMMdd Requirements: Must be within 3-14 days in the past Required when feed_scope=NEWLY_LISTED</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ProductResponse> GetProductFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ProductResponse> GetProductFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (feed_scope == null)
                 throw new System.ArgumentNullException("feed_scope");
@@ -513,7 +513,7 @@ namespace eBayApi.Buy.Feed
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content <br />This code is returned when there are no products that meet the criteria for this feed file. See <a href=\"/api-docs/buy/static/api-feed.html#feed-filters\">Feed File Filters</a> for details.", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No Content <br />This code is returned when there are no products that meet the criteria for this feed file. See <a href=\"/api-docs/buy/static/api-feed.html#feed-filters\">Feed File Filters</a> for details.", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "206") 
@@ -525,31 +525,31 @@ namespace eBayApi.Buy.Feed
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "416") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Range not satisfiable", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Range not satisfiable", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ProductResponse);
@@ -599,7 +599,7 @@ namespace eBayApi.Buy.Feed
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -618,7 +618,7 @@ namespace eBayApi.Buy.Feed
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -1352,41 +1352,6 @@ namespace eBayApi.Buy.Feed
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

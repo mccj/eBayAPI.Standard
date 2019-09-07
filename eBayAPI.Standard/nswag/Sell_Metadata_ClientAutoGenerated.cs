@@ -47,17 +47,17 @@ namespace eBayApi.Sell.Metadata
     
         /// <param name="countryCode">This path parameter specifies the two-letter ISO 3166-1 Alpha-2 country code for the country whose jurisdictions you want to retrieve. eBay provides sales tax jurisdiction information for Canada, India, and the United States.Valid values for this path parameter are CA, IN, and US.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SalesTaxJurisdictions> GetSalesTaxJurisdictionsAsync(string countryCode)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SalesTaxJurisdictions GetSalesTaxJurisdictions(string countryCode)
         {
-            return GetSalesTaxJurisdictionsAsync(countryCode, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetSalesTaxJurisdictionsAsync(countryCode, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="countryCode">This path parameter specifies the two-letter ISO 3166-1 Alpha-2 country code for the country whose jurisdictions you want to retrieve. eBay provides sales tax jurisdiction information for Canada, India, and the United States.Valid values for this path parameter are CA, IN, and US.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SalesTaxJurisdictions> GetSalesTaxJurisdictionsAsync(string countryCode, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SalesTaxJurisdictions> GetSalesTaxJurisdictionsAsync(string countryCode, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (countryCode == null)
                 throw new System.ArgumentNullException("countryCode");
@@ -101,25 +101,25 @@ namespace eBayApi.Sell.Metadata
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response2>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response2>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response2>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response3>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response3>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response3>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SalesTaxJurisdictions);
@@ -136,21 +136,21 @@ namespace eBayApi.Sell.Metadata
             }
         }
     
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. &amp;gt;Note: Only the following eBay marketplaces support automotive parts compatibility: EBAY_US EBAY_AU EBAY_CA EBAY_DE EBAY_ES EBAY_FR EBAY_GB EBAY_IT</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<AutomotivePartsCompatibilityPolicyResponse> GetAutomotivePartsCompatibilityPoliciesAsync(string filter, string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public AutomotivePartsCompatibilityPolicyResponse GetAutomotivePartsCompatibilityPolicies(string marketplace_id, string filter = null)
         {
-            return GetAutomotivePartsCompatibilityPoliciesAsync(filter, marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetAutomotivePartsCompatibilityPoliciesAsync(marketplace_id, filter, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. &amp;gt;Note: Only the following eBay marketplaces support automotive parts compatibility: EBAY_US EBAY_AU EBAY_CA EBAY_DE EBAY_ES EBAY_FR EBAY_GB EBAY_IT</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<AutomotivePartsCompatibilityPolicyResponse> GetAutomotivePartsCompatibilityPoliciesAsync(string filter, string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<AutomotivePartsCompatibilityPolicyResponse> GetAutomotivePartsCompatibilityPoliciesAsync(string marketplace_id, string filter = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -199,31 +199,31 @@ namespace eBayApi.Sell.Metadata
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response4>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response4>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response4>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response5>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response5>("Not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response5>("Not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response6>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response6>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response6>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(AutomotivePartsCompatibilityPolicyResponse);
@@ -240,21 +240,21 @@ namespace eBayApi.Sell.Metadata
             }
         }
     
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. See the following page for a list of valid eBay marketplace IDs: Request components.</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ItemConditionPolicyResponse> GetItemConditionPoliciesAsync(string filter, string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ItemConditionPolicyResponse GetItemConditionPolicies(string marketplace_id, string filter = null)
         {
-            return GetItemConditionPoliciesAsync(filter, marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetItemConditionPoliciesAsync(marketplace_id, filter, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. See the following page for a list of valid eBay marketplace IDs: Request components.</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ItemConditionPolicyResponse> GetItemConditionPoliciesAsync(string filter, string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ItemConditionPolicyResponse> GetItemConditionPoliciesAsync(string marketplace_id, string filter = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -303,31 +303,31 @@ namespace eBayApi.Sell.Metadata
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response7>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response7>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response7>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response8>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response8>("Not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response8>("Not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response9>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response9>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response9>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ItemConditionPolicyResponse);
@@ -344,21 +344,21 @@ namespace eBayApi.Sell.Metadata
             }
         }
     
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. See the following page for a list of valid eBay marketplace IDs: Request components.</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ListingStructurePolicyResponse> GetListingStructurePoliciesAsync(string filter, string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ListingStructurePolicyResponse GetListingStructurePolicies(string marketplace_id, string filter = null)
         {
-            return GetListingStructurePoliciesAsync(filter, marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetListingStructurePoliciesAsync(marketplace_id, filter, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. See the following page for a list of valid eBay marketplace IDs: Request components.</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ListingStructurePolicyResponse> GetListingStructurePoliciesAsync(string filter, string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ListingStructurePolicyResponse> GetListingStructurePoliciesAsync(string marketplace_id, string filter = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -407,31 +407,31 @@ namespace eBayApi.Sell.Metadata
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response10>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response10>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response10>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response11>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response11>("Not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response11>("Not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response12>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response12>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response12>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ListingStructurePolicyResponse);
@@ -448,21 +448,21 @@ namespace eBayApi.Sell.Metadata
             }
         }
     
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. See the following page for a list of valid eBay marketplace IDs: Request components.</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<NegotiatedPricePolicyResponse> GetNegotiatedPricePoliciesAsync(string filter, string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public NegotiatedPricePolicyResponse GetNegotiatedPricePolicies(string marketplace_id, string filter = null)
         {
-            return GetNegotiatedPricePoliciesAsync(filter, marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetNegotiatedPricePoliciesAsync(marketplace_id, filter, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. See the following page for a list of valid eBay marketplace IDs: Request components.</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<NegotiatedPricePolicyResponse> GetNegotiatedPricePoliciesAsync(string filter, string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<NegotiatedPricePolicyResponse> GetNegotiatedPricePoliciesAsync(string marketplace_id, string filter = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -511,31 +511,31 @@ namespace eBayApi.Sell.Metadata
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response13>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response13>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response13>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response14>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response14>("Not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response14>("Not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response15>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response15>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response15>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(NegotiatedPricePolicyResponse);
@@ -552,21 +552,21 @@ namespace eBayApi.Sell.Metadata
             }
         }
     
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. See the following page for a list of valid eBay marketplace IDs: Request components.</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ProductAdoptionPolicyResponse> GetProductAdoptionPoliciesAsync(string filter, string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ProductAdoptionPolicyResponse GetProductAdoptionPolicies(string marketplace_id, string filter = null)
         {
-            return GetProductAdoptionPoliciesAsync(filter, marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetProductAdoptionPoliciesAsync(marketplace_id, filter, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. See the following page for a list of valid eBay marketplace IDs: Request components.</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ProductAdoptionPolicyResponse> GetProductAdoptionPoliciesAsync(string filter, string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ProductAdoptionPolicyResponse> GetProductAdoptionPoliciesAsync(string marketplace_id, string filter = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -615,31 +615,31 @@ namespace eBayApi.Sell.Metadata
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response16>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response16>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response16>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response17>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response17>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response17>("Not Found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response18>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response18>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response18>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ProductAdoptionPolicyResponse);
@@ -656,21 +656,21 @@ namespace eBayApi.Sell.Metadata
             }
         }
     
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. See the following page for a list of valid eBay marketplace IDs: Request components.</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ReturnPolicyResponse> GetReturnPoliciesAsync(string filter, string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ReturnPolicyResponse GetReturnPolicies(string marketplace_id, string filter = null)
         {
-            return GetReturnPoliciesAsync(filter, marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetReturnPoliciesAsync(marketplace_id, filter, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <param name="marketplace_id">This path parameter specifies the eBay marketplace for which policy information is retrieved. See the following page for a list of valid eBay marketplace IDs: Request components.</param>
+        /// <param name="filter">This query parameter limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category ID that has child nodes, eBay returns policy information for all the leaf categories of that parent node. Example: filter=categoryIds:{100|101|102} Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: &amp;nbsp;&amp;nbsp;filter=categoryIds%3A%7B100%7C101%7C102%7D</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ReturnPolicyResponse> GetReturnPoliciesAsync(string filter, string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ReturnPolicyResponse> GetReturnPoliciesAsync(string marketplace_id, string filter = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -719,31 +719,31 @@ namespace eBayApi.Sell.Metadata
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response19>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response19>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response19>("Bad Request", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response20>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response20>("Not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response20>("Not found", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Response21>(response_, headers_).ConfigureAwait(false);
-                            throw new ApiException<Response21>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            throw new eBayApi.ApiException<Response21>("Internal Server Error", (int)response_.StatusCode, objectResponse_.Text, headers_, objectResponse_.Object, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ReturnPolicyResponse);
@@ -793,7 +793,7 @@ namespace eBayApi.Sell.Metadata
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -812,7 +812,7 @@ namespace eBayApi.Sell.Metadata
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -1786,41 +1786,6 @@ namespace eBayApi.Sell.Metadata
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

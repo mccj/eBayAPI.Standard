@@ -48,18 +48,18 @@ namespace eBayApi.Commerce.Taxonomy
         /// <summary>Get a Default Category Tree ID</summary>
         /// <param name="marketplace_id">The ID of the eBay marketplace for which the category tree ID is being requested. For a list of supported marketplace IDs, see Marketplaces with Default Category Trees.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BaseCategoryTree> GetDefaultCategoryTreeIdAsync(string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BaseCategoryTree GetDefaultCategoryTreeId(string marketplace_id)
         {
-            return GetDefaultCategoryTreeIdAsync(marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetDefaultCategoryTreeIdAsync(marketplace_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get a Default Category Tree ID</summary>
         /// <param name="marketplace_id">The ID of the eBay marketplace for which the category tree ID is being requested. For a list of supported marketplace IDs, see Marketplaces with Default Category Trees.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BaseCategoryTree> GetDefaultCategoryTreeIdAsync(string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BaseCategoryTree> GetDefaultCategoryTreeIdAsync(string marketplace_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -104,25 +104,25 @@ namespace eBayApi.Commerce.Taxonomy
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BaseCategoryTree);
@@ -142,18 +142,18 @@ namespace eBayApi.Commerce.Taxonomy
         /// <summary>Get a Category Tree</summary>
         /// <param name="category_tree_id">The unique identifier of the eBay category tree being requested.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CategoryTree> GetCategoryTreeAsync(string category_tree_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CategoryTree GetCategoryTree(string category_tree_id)
         {
-            return GetCategoryTreeAsync(category_tree_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetCategoryTreeAsync(category_tree_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get a Category Tree</summary>
         /// <param name="category_tree_id">The unique identifier of the eBay category tree being requested.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CategoryTree> GetCategoryTreeAsync(string category_tree_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CategoryTree> GetCategoryTreeAsync(string category_tree_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (category_tree_id == null)
                 throw new System.ArgumentNullException("category_tree_id");
@@ -197,25 +197,25 @@ namespace eBayApi.Commerce.Taxonomy
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CategoryTree);
@@ -236,10 +236,10 @@ namespace eBayApi.Commerce.Taxonomy
         /// <param name="category_id">The unique identifier of the category at the top of the subtree being requested. Note: If the category_id submitted identifies the root node of the tree, this call returns an error. To retrieve the complete tree, use this value with the getCategoryTree call. If the category_id submitted identifies a leaf node of the tree, the call response will contain information about only that leaf node, which is a valid subtree.</param>
         /// <param name="category_tree_id">The unique identifier of the eBay category tree from which a category subtree is being requested.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CategorySubtree> GetCategorySubtreeAsync(string category_id, string category_tree_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CategorySubtree GetCategorySubtree(string category_id, string category_tree_id)
         {
-            return GetCategorySubtreeAsync(category_id, category_tree_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetCategorySubtreeAsync(category_id, category_tree_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -247,8 +247,8 @@ namespace eBayApi.Commerce.Taxonomy
         /// <param name="category_id">The unique identifier of the category at the top of the subtree being requested. Note: If the category_id submitted identifies the root node of the tree, this call returns an error. To retrieve the complete tree, use this value with the getCategoryTree call. If the category_id submitted identifies a leaf node of the tree, the call response will contain information about only that leaf node, which is a valid subtree.</param>
         /// <param name="category_tree_id">The unique identifier of the eBay category tree from which a category subtree is being requested.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CategorySubtree> GetCategorySubtreeAsync(string category_id, string category_tree_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CategorySubtree> GetCategorySubtreeAsync(string category_id, string category_tree_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (category_tree_id == null)
                 throw new System.ArgumentNullException("category_tree_id");
@@ -297,25 +297,25 @@ namespace eBayApi.Commerce.Taxonomy
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CategorySubtree);
@@ -336,10 +336,10 @@ namespace eBayApi.Commerce.Taxonomy
         /// <param name="category_tree_id">The unique identifier of the eBay category tree for which suggested nodes are being requested.</param>
         /// <param name="q">A quoted string that describes or characterizes the item being offered for sale. The string format is free form, and can contain any combination of phrases or keywords. eBay will parse the string and return suggested categories for the item.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CategorySuggestionResponse> GetCategorySuggestionsAsync(string category_tree_id, string q)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CategorySuggestionResponse GetCategorySuggestions(string category_tree_id, string q)
         {
-            return GetCategorySuggestionsAsync(category_tree_id, q, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetCategorySuggestionsAsync(category_tree_id, q, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -347,8 +347,8 @@ namespace eBayApi.Commerce.Taxonomy
         /// <param name="category_tree_id">The unique identifier of the eBay category tree for which suggested nodes are being requested.</param>
         /// <param name="q">A quoted string that describes or characterizes the item being offered for sale. The string format is free form, and can contain any combination of phrases or keywords. eBay will parse the string and return suggested categories for the item.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CategorySuggestionResponse> GetCategorySuggestionsAsync(string category_tree_id, string q, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CategorySuggestionResponse> GetCategorySuggestionsAsync(string category_tree_id, string q, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (category_tree_id == null)
                 throw new System.ArgumentNullException("category_tree_id");
@@ -397,31 +397,31 @@ namespace eBayApi.Commerce.Taxonomy
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CategorySuggestionResponse);
@@ -441,18 +441,18 @@ namespace eBayApi.Commerce.Taxonomy
         /// <param name="category_id">The unique identifier of the leaf category for which aspects are being requested. Note: If the category_id submitted does not identify a leaf node of the tree, this call returns an error.</param>
         /// <param name="category_tree_id">The unique identifier of the eBay category tree from which the specified category's aspects are being requested.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<AspectMetadata> GetItemAspectsForCategoryAsync(string category_id, string category_tree_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public AspectMetadata GetItemAspectsForCategory(string category_id, string category_tree_id)
         {
-            return GetItemAspectsForCategoryAsync(category_id, category_tree_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetItemAspectsForCategoryAsync(category_id, category_tree_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="category_id">The unique identifier of the leaf category for which aspects are being requested. Note: If the category_id submitted does not identify a leaf node of the tree, this call returns an error.</param>
         /// <param name="category_tree_id">The unique identifier of the eBay category tree from which the specified category's aspects are being requested.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<AspectMetadata> GetItemAspectsForCategoryAsync(string category_id, string category_tree_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<AspectMetadata> GetItemAspectsForCategoryAsync(string category_id, string category_tree_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (category_tree_id == null)
                 throw new System.ArgumentNullException("category_tree_id");
@@ -501,31 +501,31 @@ namespace eBayApi.Commerce.Taxonomy
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No Content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(AspectMetadata);
@@ -546,10 +546,10 @@ namespace eBayApi.Commerce.Taxonomy
         /// <param name="category_tree_id">This is the unique identifier of category tree. The following is the list of category_tree_id values and the eBay marketplaces that they represent. One of these ID values must be passed in as a path parameter, and the category_id value, that is passed in as query parameter, must be a valid eBay category on that eBay marketplace that supports parts compatibility for cars, trucks, or motorcyles. eBay US: 0 eBay Motors US: 100 eBay Canada: 2 eBay UK: 3 eBay Germany: 77 eBay Australia: 15 eBay France: 71 eBay Italy: 101 eBay Spain: 186</param>
         /// <param name="category_id">The unique identifier of an eBay category. This eBay category must be a valid eBay category on the specified eBay marketplace, and the category must support parts compatibility for cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method of the Selling Metadata API can be used to retrieve all eBay categories for an eBay marketplace that supports parts compatibility cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method can also be used to see if one or more specific eBay categories support parts compatibility.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GetCompatibilityMetadataResponse> GetCompatibilityPropertiesAsync(string category_tree_id, string category_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GetCompatibilityMetadataResponse GetCompatibilityProperties(string category_tree_id, string category_id)
         {
-            return GetCompatibilityPropertiesAsync(category_tree_id, category_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetCompatibilityPropertiesAsync(category_tree_id, category_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -557,8 +557,8 @@ namespace eBayApi.Commerce.Taxonomy
         /// <param name="category_tree_id">This is the unique identifier of category tree. The following is the list of category_tree_id values and the eBay marketplaces that they represent. One of these ID values must be passed in as a path parameter, and the category_id value, that is passed in as query parameter, must be a valid eBay category on that eBay marketplace that supports parts compatibility for cars, trucks, or motorcyles. eBay US: 0 eBay Motors US: 100 eBay Canada: 2 eBay UK: 3 eBay Germany: 77 eBay Australia: 15 eBay France: 71 eBay Italy: 101 eBay Spain: 186</param>
         /// <param name="category_id">The unique identifier of an eBay category. This eBay category must be a valid eBay category on the specified eBay marketplace, and the category must support parts compatibility for cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method of the Selling Metadata API can be used to retrieve all eBay categories for an eBay marketplace that supports parts compatibility cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method can also be used to see if one or more specific eBay categories support parts compatibility.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GetCompatibilityMetadataResponse> GetCompatibilityPropertiesAsync(string category_tree_id, string category_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GetCompatibilityMetadataResponse> GetCompatibilityPropertiesAsync(string category_tree_id, string category_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (category_tree_id == null)
                 throw new System.ArgumentNullException("category_tree_id");
@@ -607,31 +607,31 @@ namespace eBayApi.Commerce.Taxonomy
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GetCompatibilityMetadataResponse);
@@ -654,10 +654,10 @@ namespace eBayApi.Commerce.Taxonomy
         /// <param name="category_id">The unique identifier of an eBay category. This eBay category must be a valid eBay category on the specified eBay marketplace, and the category must support parts compatibility for cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method of the Selling Metadata API can be used to retrieve all eBay categories for an eBay marketplace that supports parts compatibility cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method can also be used to see if one or more specific eBay categories support parts compatibility.</param>
         /// <param name="filter">One or more compatible vehicle property name/value pairs are passed in through this query parameter. The compatible vehicle property name and corresponding value are delimited with a colon (:), such as filter=Year:2018, and multiple compatible vehicle property name/value pairs are delimited with a comma (,). For example, if you wanted to retrieve all vehicle trims for a 2018 Toyota Camry, you would set the compatibility_property filter as follows: compatibility_property=Trim; and then include the following three name/value filters through one filter parameter: filter=Year:2018,Make:Toyota,Model:Camry. So, putting this all together, your URI would look something like this: GET https://api.ebay.com/commerce/ taxonomy/v1_beta/category_tree/100/ get_compatibility_property_values? category_id=6016&amp;amp;compatibility_property=Trim &amp;amp;filter=filter=Year:2018,Make:Toyota,Model:Camry For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/taxonomy/types/ConstraintFilter.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<GetCompatibilityPropertyValuesResponse> GetCompatibilityPropertyValuesAsync(string category_tree_id, string compatibility_property, string category_id, string filter)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public GetCompatibilityPropertyValuesResponse GetCompatibilityPropertyValues(string category_tree_id, string compatibility_property, string category_id, string filter = null)
         {
-            return GetCompatibilityPropertyValuesAsync(category_tree_id, compatibility_property, category_id, filter, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetCompatibilityPropertyValuesAsync(category_tree_id, compatibility_property, category_id, filter, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -667,8 +667,8 @@ namespace eBayApi.Commerce.Taxonomy
         /// <param name="category_id">The unique identifier of an eBay category. This eBay category must be a valid eBay category on the specified eBay marketplace, and the category must support parts compatibility for cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method of the Selling Metadata API can be used to retrieve all eBay categories for an eBay marketplace that supports parts compatibility cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method can also be used to see if one or more specific eBay categories support parts compatibility.</param>
         /// <param name="filter">One or more compatible vehicle property name/value pairs are passed in through this query parameter. The compatible vehicle property name and corresponding value are delimited with a colon (:), such as filter=Year:2018, and multiple compatible vehicle property name/value pairs are delimited with a comma (,). For example, if you wanted to retrieve all vehicle trims for a 2018 Toyota Camry, you would set the compatibility_property filter as follows: compatibility_property=Trim; and then include the following three name/value filters through one filter parameter: filter=Year:2018,Make:Toyota,Model:Camry. So, putting this all together, your URI would look something like this: GET https://api.ebay.com/commerce/ taxonomy/v1_beta/category_tree/100/ get_compatibility_property_values? category_id=6016&amp;amp;compatibility_property=Trim &amp;amp;filter=filter=Year:2018,Make:Toyota,Model:Camry For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/taxonomy/types/ConstraintFilter.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<GetCompatibilityPropertyValuesResponse> GetCompatibilityPropertyValuesAsync(string category_tree_id, string compatibility_property, string category_id, string filter, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<GetCompatibilityPropertyValuesResponse> GetCompatibilityPropertyValuesAsync(string category_tree_id, string compatibility_property, string category_id, string filter = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (category_tree_id == null)
                 throw new System.ArgumentNullException("category_tree_id");
@@ -725,31 +725,31 @@ namespace eBayApi.Commerce.Taxonomy
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("No content", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(GetCompatibilityPropertyValuesResponse);
@@ -799,7 +799,7 @@ namespace eBayApi.Commerce.Taxonomy
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -818,7 +818,7 @@ namespace eBayApi.Commerce.Taxonomy
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -1400,41 +1400,6 @@ namespace eBayApi.Commerce.Taxonomy
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

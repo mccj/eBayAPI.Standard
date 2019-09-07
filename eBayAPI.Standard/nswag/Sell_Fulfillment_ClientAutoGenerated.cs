@@ -49,18 +49,18 @@ namespace eBayApi.Sell.Fulfillment
         /// <summary>Get an Order</summary>
         /// <param name="orderId">The unique identifier of the order. This value was returned by the getOrders method in the orders.orderId field. The getOrder method supports all order identifier formats. Note: Order IDs in both Trading/legacy APIs and REST APIs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Order> GetOrderAsync(string orderId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Order GetOrder(string orderId)
         {
-            return GetOrderAsync(orderId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetOrderAsync(orderId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get an Order</summary>
         /// <param name="orderId">The unique identifier of the order. This value was returned by the getOrders method in the orders.orderId field. The getOrder method supports all order identifier formats. Note: Order IDs in both Trading/legacy APIs and REST APIs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Order> GetOrderAsync(string orderId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Order> GetOrderAsync(string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (orderId == null)
                 throw new System.ArgumentNullException("orderId");
@@ -104,25 +104,25 @@ namespace eBayApi.Sell.Fulfillment
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Order);
@@ -145,10 +145,10 @@ namespace eBayApi.Sell.Fulfillment
         /// <param name="offset">Specifies the number of orders to skip in the result set before returning the first order in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
         /// <param name="orderIds">A comma-separated list of the unique identifiers of the orders to retrieve (maximum 50). If one or more order ID values are specified through the orderIds query parameter, all other query parameters will be ignored. The getOrders method supports the legacy API Order IDs and REST API order IDs. Note: Order IDs in both Trading/legacy APIs and REST APIs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<OrderSearchPagedCollection> GetOrdersAsync(string filter, string limit, string offset, string orderIds)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public OrderSearchPagedCollection GetOrders(string filter = null, string limit = null, string offset = null, string orderIds = null)
         {
-            return GetOrdersAsync(filter, limit, offset, orderIds, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetOrdersAsync(filter, limit, offset, orderIds, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -158,8 +158,8 @@ namespace eBayApi.Sell.Fulfillment
         /// <param name="offset">Specifies the number of orders to skip in the result set before returning the first order in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
         /// <param name="orderIds">A comma-separated list of the unique identifiers of the orders to retrieve (maximum 50). If one or more order ID values are specified through the orderIds query parameter, all other query parameters will be ignored. The getOrders method supports the legacy API Order IDs and REST API order IDs. Note: Order IDs in both Trading/legacy APIs and REST APIs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<OrderSearchPagedCollection> GetOrdersAsync(string filter, string limit, string offset, string orderIds, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<OrderSearchPagedCollection> GetOrdersAsync(string filter = null, string limit = null, string offset = null, string orderIds = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/order?");
@@ -216,19 +216,19 @@ namespace eBayApi.Sell.Fulfillment
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(OrderSearchPagedCollection);
@@ -248,18 +248,18 @@ namespace eBayApi.Sell.Fulfillment
         /// <summary>Issue Refund</summary>
         /// <param name="order_id">The unique identifier of the order. Order IDs are returned in the getOrders method (and GetOrders call of Trading API). The issueRefund method supports the legacy API Order IDs and REST API order IDs. Note: In the Trading API (and other legacy APIs), Order IDs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support. For developers and sellers who are already integrated with the Trading API's order management calls, this change shouldn't impact your integration unless you parse the existing order identifiers (e.g., OrderID or OrderLineItemID), or otherwise infer meaning from the format (e.g., differentiating between a single line item order versus a multiple line item order). Because we realize that some integrations may have logic that is dependent upon the identifier format, eBay is rolling out the Trading API change with version control to support a transition period of approximately 9 months before applications must switch to the new format completely. See the OrderID field description in the GetOrders call for more details and requirements on transitioning to the new Order ID format.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Refund> IssueRefundAsync(string order_id, IssueRefundRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Refund IssueRefund(string order_id, IssueRefundRequest body = null)
         {
-            return IssueRefundAsync(order_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await IssueRefundAsync(order_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Issue Refund</summary>
         /// <param name="order_id">The unique identifier of the order. Order IDs are returned in the getOrders method (and GetOrders call of Trading API). The issueRefund method supports the legacy API Order IDs and REST API order IDs. Note: In the Trading API (and other legacy APIs), Order IDs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support. For developers and sellers who are already integrated with the Trading API's order management calls, this change shouldn't impact your integration unless you parse the existing order identifiers (e.g., OrderID or OrderLineItemID), or otherwise infer meaning from the format (e.g., differentiating between a single line item order versus a multiple line item order). Because we realize that some integrations may have logic that is dependent upon the identifier format, eBay is rolling out the Trading API change with version control to support a transition period of approximately 9 months before applications must switch to the new format completely. See the OrderID field description in the GetOrders call for more details and requirements on transitioning to the new Order ID format.</param>
         /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Refund> IssueRefundAsync(string order_id, IssueRefundRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Refund> IssueRefundAsync(string order_id, IssueRefundRequest body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (order_id == null)
                 throw new System.ArgumentNullException("order_id");
@@ -306,37 +306,37 @@ namespace eBayApi.Sell.Fulfillment
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "403") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Access Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Resource Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Resource Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Refund);
@@ -356,18 +356,18 @@ namespace eBayApi.Sell.Fulfillment
         /// <summary>Get Shipping Fulfillments</summary>
         /// <param name="orderId">The unique identifier of the order. This value was returned by the getOrders method in the orders.orderId field. The getShippingFulfillments method supports all order identifier formats. Note: Order IDs in both Trading/legacy APIs and REST APIs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ShippingFulfillmentPagedCollection> GetShippingFulfillmentsAsync(string orderId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ShippingFulfillmentPagedCollection GetShippingFulfillments(string orderId)
         {
-            return GetShippingFulfillmentsAsync(orderId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetShippingFulfillmentsAsync(orderId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get Shipping Fulfillments</summary>
         /// <param name="orderId">The unique identifier of the order. This value was returned by the getOrders method in the orders.orderId field. The getShippingFulfillments method supports all order identifier formats. Note: Order IDs in both Trading/legacy APIs and REST APIs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ShippingFulfillmentPagedCollection> GetShippingFulfillmentsAsync(string orderId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ShippingFulfillmentPagedCollection> GetShippingFulfillmentsAsync(string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (orderId == null)
                 throw new System.ArgumentNullException("orderId");
@@ -411,19 +411,19 @@ namespace eBayApi.Sell.Fulfillment
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ShippingFulfillmentPagedCollection);
@@ -444,10 +444,10 @@ namespace eBayApi.Sell.Fulfillment
         /// <param name="orderId">The unique identifier of the order. This value was returned by the getOrders method in the orders.orderId field. The createShippingFulfillment method supports all order identifier formats. Note: Order IDs in both Trading/legacy APIs and REST APIs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.</param>
         /// <param name="body">fulfillment payload</param>
         /// <returns>Created. The call also returns the following location code: &lt;br /&gt;&lt;br /&gt;&lt;code&gt;{ENV}/sell/fulfillment/v1/order/{ORDERID}/shipping_fulfillment/{FULFILLMENTID}&lt;/code&gt; &lt;br /&gt;&lt;br /&gt;The &lt;code&gt;ENV&lt;/code&gt; string is the HTTPS path to the same eBay supported environment in which this call was issued. The &lt;code&gt;ORDERID&lt;/code&gt; parameter is the unique identifier of the order addressed by this call; for example, &lt;code&gt;170009092860-9849164007!140000000544476&lt;/code&gt;. The &lt;code&gt;FULFILLMENTID&lt;/code&gt; parameter identifies the newly created fulfillment; for example, &lt;code&gt;9405509699937003457459&lt;/code&gt;. Use this Get Fulfillment URI to retrieve the contents of the new fulfillment.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<object> CreateShippingFulfillmentAsync(string orderId, ShippingFulfillmentDetails body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public object CreateShippingFulfillment(string orderId, ShippingFulfillmentDetails body)
         {
-            return CreateShippingFulfillmentAsync(orderId, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await CreateShippingFulfillmentAsync(orderId, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -455,8 +455,8 @@ namespace eBayApi.Sell.Fulfillment
         /// <param name="orderId">The unique identifier of the order. This value was returned by the getOrders method in the orders.orderId field. The createShippingFulfillment method supports all order identifier formats. Note: Order IDs in both Trading/legacy APIs and REST APIs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.</param>
         /// <param name="body">fulfillment payload</param>
         /// <returns>Created. The call also returns the following location code: &lt;br /&gt;&lt;br /&gt;&lt;code&gt;{ENV}/sell/fulfillment/v1/order/{ORDERID}/shipping_fulfillment/{FULFILLMENTID}&lt;/code&gt; &lt;br /&gt;&lt;br /&gt;The &lt;code&gt;ENV&lt;/code&gt; string is the HTTPS path to the same eBay supported environment in which this call was issued. The &lt;code&gt;ORDERID&lt;/code&gt; parameter is the unique identifier of the order addressed by this call; for example, &lt;code&gt;170009092860-9849164007!140000000544476&lt;/code&gt;. The &lt;code&gt;FULFILLMENTID&lt;/code&gt; parameter identifies the newly created fulfillment; for example, &lt;code&gt;9405509699937003457459&lt;/code&gt;. Use this Get Fulfillment URI to retrieve the contents of the new fulfillment.</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<object> CreateShippingFulfillmentAsync(string orderId, ShippingFulfillmentDetails body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<object> CreateShippingFulfillmentAsync(string orderId, ShippingFulfillmentDetails body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (orderId == null)
                 throw new System.ArgumentNullException("orderId");
@@ -503,19 +503,19 @@ namespace eBayApi.Sell.Fulfillment
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(object);
@@ -536,10 +536,10 @@ namespace eBayApi.Sell.Fulfillment
         /// <param name="fulfillmentId">The unique identifier of the fulfillment. This eBay-generated value was created by the Create Shipping Fulfillment call, and returned by the getShippingFulfillments call in the fulfillments.fulfillmentId field; for example, 9405509699937003457459.</param>
         /// <param name="orderId">The unique identifier of the order. This value was returned by the getOrders method in the orders.orderId field. The getShippingFulfillment method supports all order identifier formats. Note: Order IDs in both Trading/legacy APIs and REST APIs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ShippingFulfillment> GetShippingFulfillmentAsync(string fulfillmentId, string orderId)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ShippingFulfillment GetShippingFulfillment(string fulfillmentId, string orderId)
         {
-            return GetShippingFulfillmentAsync(fulfillmentId, orderId, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetShippingFulfillmentAsync(fulfillmentId, orderId, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -547,8 +547,8 @@ namespace eBayApi.Sell.Fulfillment
         /// <param name="fulfillmentId">The unique identifier of the fulfillment. This eBay-generated value was created by the Create Shipping Fulfillment call, and returned by the getShippingFulfillments call in the fulfillments.fulfillmentId field; for example, 9405509699937003457459.</param>
         /// <param name="orderId">The unique identifier of the order. This value was returned by the getOrders method in the orders.orderId field. The getShippingFulfillment method supports all order identifier formats. Note: Order IDs in both Trading/legacy APIs and REST APIs are transitioning to a new format. The new format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. These order identifiers will be automatically generated after buyer payment, and unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ShippingFulfillment> GetShippingFulfillmentAsync(string fulfillmentId, string orderId, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ShippingFulfillment> GetShippingFulfillmentAsync(string fulfillmentId, string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (fulfillmentId == null)
                 throw new System.ArgumentNullException("fulfillmentId");
@@ -596,25 +596,25 @@ namespace eBayApi.Sell.Fulfillment
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ShippingFulfillment);
@@ -664,7 +664,7 @@ namespace eBayApi.Sell.Fulfillment
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -683,7 +683,7 @@ namespace eBayApi.Sell.Fulfillment
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -1998,41 +1998,6 @@ namespace eBayApi.Sell.Fulfillment
         }
     
     
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
-        }
     }
 
 }

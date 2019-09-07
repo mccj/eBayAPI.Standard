@@ -48,18 +48,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the bulkCreateAdsByInventoryReference request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BulkCreateAdsByInventoryReferenceResponse> BulkCreateAdsByInventoryReferenceAsync(string campaign_id, BulkCreateAdsByInventoryReferenceRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BulkCreateAdsByInventoryReferenceResponse BulkCreateAdsByInventoryReference(string campaign_id, BulkCreateAdsByInventoryReferenceRequest body)
         {
-            return BulkCreateAdsByInventoryReferenceAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await BulkCreateAdsByInventoryReferenceAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the bulkCreateAdsByInventoryReference request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BulkCreateAdsByInventoryReferenceResponse> BulkCreateAdsByInventoryReferenceAsync(string campaign_id, BulkCreateAdsByInventoryReferenceRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BulkCreateAdsByInventoryReferenceResponse> BulkCreateAdsByInventoryReferenceAsync(string campaign_id, BulkCreateAdsByInventoryReferenceRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -106,37 +106,37 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "207") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BulkCreateAdsByInventoryReferenceResponse);
@@ -156,18 +156,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">The container for the bulk request to create ads for eBay listing IDs. eBay listing IDs are generated when the listing is created on eBay. Note: This request accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BulkAdResponse> BulkCreateAdsByListingIdAsync(string campaign_id, BulkCreateAdRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BulkAdResponse BulkCreateAdsByListingId(string campaign_id, BulkCreateAdRequest body)
         {
-            return BulkCreateAdsByListingIdAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await BulkCreateAdsByListingIdAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">The container for the bulk request to create ads for eBay listing IDs. eBay listing IDs are generated when the listing is created on eBay. Note: This request accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BulkAdResponse> BulkCreateAdsByListingIdAsync(string campaign_id, BulkCreateAdRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BulkAdResponse> BulkCreateAdsByListingIdAsync(string campaign_id, BulkCreateAdRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -214,37 +214,37 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "207") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BulkAdResponse);
@@ -264,18 +264,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for a bulkDeleteAdsByInventoryReference request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BulkDeleteAdsByInventoryReferenceResponse> BulkDeleteAdsByInventoryReferenceAsync(string campaign_id, BulkDeleteAdsByInventoryReferenceRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BulkDeleteAdsByInventoryReferenceResponse BulkDeleteAdsByInventoryReference(string campaign_id, BulkDeleteAdsByInventoryReferenceRequest body)
         {
-            return BulkDeleteAdsByInventoryReferenceAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await BulkDeleteAdsByInventoryReferenceAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for a bulkDeleteAdsByInventoryReference request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BulkDeleteAdsByInventoryReferenceResponse> BulkDeleteAdsByInventoryReferenceAsync(string campaign_id, BulkDeleteAdsByInventoryReferenceRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BulkDeleteAdsByInventoryReferenceResponse> BulkDeleteAdsByInventoryReferenceAsync(string campaign_id, BulkDeleteAdsByInventoryReferenceRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -322,37 +322,37 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "207") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BulkDeleteAdsByInventoryReferenceResponse);
@@ -372,18 +372,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the bulkDeleteAdsByListingId request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BulkDeleteAdResponse> BulkDeleteAdsByListingIdAsync(string campaign_id, BulkDeleteAdRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BulkDeleteAdResponse BulkDeleteAdsByListingId(string campaign_id, BulkDeleteAdRequest body)
         {
-            return BulkDeleteAdsByListingIdAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await BulkDeleteAdsByListingIdAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the bulkDeleteAdsByListingId request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BulkDeleteAdResponse> BulkDeleteAdsByListingIdAsync(string campaign_id, BulkDeleteAdRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BulkDeleteAdResponse> BulkDeleteAdsByListingIdAsync(string campaign_id, BulkDeleteAdRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -430,37 +430,37 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "207") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BulkDeleteAdResponse);
@@ -480,18 +480,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the BulkCreateAdsByInventoryReference request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BulkCreateAdsByInventoryReferenceResponse> BulkUpdateAdsBidByInventoryReferenceAsync(string campaign_id, BulkCreateAdsByInventoryReferenceRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BulkCreateAdsByInventoryReferenceResponse BulkUpdateAdsBidByInventoryReference(string campaign_id, BulkCreateAdsByInventoryReferenceRequest body)
         {
-            return BulkUpdateAdsBidByInventoryReferenceAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await BulkUpdateAdsBidByInventoryReferenceAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the BulkCreateAdsByInventoryReference request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BulkCreateAdsByInventoryReferenceResponse> BulkUpdateAdsBidByInventoryReferenceAsync(string campaign_id, BulkCreateAdsByInventoryReferenceRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BulkCreateAdsByInventoryReferenceResponse> BulkUpdateAdsBidByInventoryReferenceAsync(string campaign_id, BulkCreateAdsByInventoryReferenceRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -538,37 +538,37 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "207") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BulkCreateAdsByInventoryReferenceResponse);
@@ -588,18 +588,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">Container for the bulk request to update ads.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BulkAdResponse> BulkUpdateAdsBidByListingIdAsync(string campaign_id, BulkCreateAdRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BulkAdResponse BulkUpdateAdsBidByListingId(string campaign_id, BulkCreateAdRequest body)
         {
-            return BulkUpdateAdsBidByListingIdAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await BulkUpdateAdsBidByListingIdAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">Container for the bulk request to update ads.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BulkAdResponse> BulkUpdateAdsBidByListingIdAsync(string campaign_id, BulkCreateAdRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BulkAdResponse> BulkUpdateAdsBidByListingIdAsync(string campaign_id, BulkCreateAdRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -646,37 +646,37 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "207") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Multi Status", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BulkAdResponse);
@@ -694,24 +694,24 @@ namespace eBayApi.Sell.Marketing
         }
     
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
-        /// <param name="limit">Specifies the maximum number of ads to return on a page in the paginated response. Default: 10 Maximum: 500</param>
         /// <param name="listing_ids">A comma separated list of eBay listing IDs. The response includes only active ads (ads associated with a RUNNING campaign). The results do not include listing IDs that are excluded by other conditions. Note: This field accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</param>
+        /// <param name="limit">Specifies the maximum number of ads to return on a page in the paginated response. Default: 10 Maximum: 500</param>
         /// <param name="offset">Specifies the number of ads to skip in the result set before returning the first ad in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<AdPagedCollection> GetAdsAsync(string campaign_id, string limit, string listing_ids, string offset)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public AdPagedCollection GetAds(string campaign_id, string listing_ids, string limit = null, string offset = null)
         {
-            return GetAdsAsync(campaign_id, limit, listing_ids, offset, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetAdsAsync(campaign_id, listing_ids, limit, offset, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
-        /// <param name="limit">Specifies the maximum number of ads to return on a page in the paginated response. Default: 10 Maximum: 500</param>
         /// <param name="listing_ids">A comma separated list of eBay listing IDs. The response includes only active ads (ads associated with a RUNNING campaign). The results do not include listing IDs that are excluded by other conditions. Note: This field accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</param>
+        /// <param name="limit">Specifies the maximum number of ads to return on a page in the paginated response. Default: 10 Maximum: 500</param>
         /// <param name="offset">Specifies the number of ads to skip in the result set before returning the first ad in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<AdPagedCollection> GetAdsAsync(string campaign_id, string limit, string listing_ids, string offset, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<AdPagedCollection> GetAdsAsync(string campaign_id, string listing_ids, string limit = null, string offset = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -722,11 +722,11 @@ namespace eBayApi.Sell.Marketing
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/ad_campaign/{campaign_id}/ad?");
             urlBuilder_.Replace("{campaign_id}", System.Uri.EscapeDataString(ConvertToString(campaign_id, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(System.Uri.EscapeDataString("listing_ids") + "=").Append(System.Uri.EscapeDataString(ConvertToString(listing_ids, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (limit != null) 
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("limit") + "=").Append(System.Uri.EscapeDataString(ConvertToString(limit, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            urlBuilder_.Append(System.Uri.EscapeDataString("listing_ids") + "=").Append(System.Uri.EscapeDataString(ConvertToString(listing_ids, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (offset != null) 
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("offset") + "=").Append(System.Uri.EscapeDataString(ConvertToString(offset, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -768,31 +768,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(AdPagedCollection);
@@ -812,18 +812,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the createAd request.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<object> CreateAdByListingIdAsync(string campaign_id, CreateAdRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public object CreateAdByListingId(string campaign_id, CreateAdRequest body)
         {
-            return CreateAdByListingIdAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await CreateAdByListingIdAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the createAd request.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<object> CreateAdByListingIdAsync(string campaign_id, CreateAdRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<object> CreateAdByListingIdAsync(string campaign_id, CreateAdRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -870,31 +870,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(object);
@@ -914,18 +914,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the createAdsByInventoryReference request.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<AdReferences> CreateAdsByInventoryReferenceAsync(string campaign_id, CreateAdsByInventoryReferenceRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public AdReferences CreateAdsByInventoryReference(string campaign_id, CreateAdsByInventoryReferenceRequest body)
         {
-            return CreateAdsByInventoryReferenceAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await CreateAdsByInventoryReferenceAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the createAdsByInventoryReference request.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<AdReferences> CreateAdsByInventoryReferenceAsync(string campaign_id, CreateAdsByInventoryReferenceRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<AdReferences> CreateAdsByInventoryReferenceAsync(string campaign_id, CreateAdsByInventoryReferenceRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -972,31 +972,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(AdReferences);
@@ -1016,18 +1016,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="ad_id">Identifier of an ad. This ID was generated when the ad was created.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Ad> GetAdAsync(string ad_id, string campaign_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Ad GetAd(string ad_id, string campaign_id)
         {
-            return GetAdAsync(ad_id, campaign_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetAdAsync(ad_id, campaign_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="ad_id">Identifier of an ad. This ID was generated when the ad was created.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Ad> GetAdAsync(string ad_id, string campaign_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Ad> GetAdAsync(string ad_id, string campaign_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (ad_id == null)
                 throw new System.ArgumentNullException("ad_id");
@@ -1075,31 +1075,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Ad);
@@ -1119,18 +1119,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="ad_id">Identifier of an ad. This ID was generated when the ad was created.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task DeleteAdAsync(string ad_id, string campaign_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void DeleteAd(string ad_id, string campaign_id)
         {
-            return DeleteAdAsync(ad_id, campaign_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeleteAdAsync(ad_id, campaign_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="ad_id">Identifier of an ad. This ID was generated when the ad was created.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task DeleteAdAsync(string ad_id, string campaign_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task DeleteAdAsync(string ad_id, string campaign_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (ad_id == null)
                 throw new System.ArgumentNullException("ad_id");
@@ -1176,31 +1176,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -1218,18 +1218,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the deleteAdsByInventoryReference request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<AdIds> DeleteAdsByInventoryReferenceAsync(string campaign_id, DeleteAdsByInventoryReferenceRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public AdIds DeleteAdsByInventoryReference(string campaign_id, DeleteAdsByInventoryReferenceRequest body)
         {
-            return DeleteAdsByInventoryReferenceAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await DeleteAdsByInventoryReferenceAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the deleteAdsByInventoryReference request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<AdIds> DeleteAdsByInventoryReferenceAsync(string campaign_id, DeleteAdsByInventoryReferenceRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<AdIds> DeleteAdsByInventoryReferenceAsync(string campaign_id, DeleteAdsByInventoryReferenceRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -1276,31 +1276,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(AdIds);
@@ -1321,10 +1321,10 @@ namespace eBayApi.Sell.Marketing
         /// <param name="inventory_reference_id">The inventory reference ID associated with the ad you want returned. A seller's inventory reference ID is the ID of either a listing or the ID of an inventory item group (the parent of a multi-variation listing, such as a shirt that is available in multiple sizes and colors). You must always supply in both an inventory_reference_id and an inventory_reference_type.</param>
         /// <param name="inventory_reference_type">The type of the inventory reference ID. Set this value to either INVENTORY_ITEM (a single listing) or INVENTORY_ITEM_GROUP (a multi-variation listing). You must always pass in both an inventory_reference_id and an inventory_reference_type.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Ads> GetAdsByInventoryReferenceAsync(string campaign_id, string inventory_reference_id, string inventory_reference_type)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Ads GetAdsByInventoryReference(string campaign_id, string inventory_reference_id, string inventory_reference_type)
         {
-            return GetAdsByInventoryReferenceAsync(campaign_id, inventory_reference_id, inventory_reference_type, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetAdsByInventoryReferenceAsync(campaign_id, inventory_reference_id, inventory_reference_type, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1332,8 +1332,8 @@ namespace eBayApi.Sell.Marketing
         /// <param name="inventory_reference_id">The inventory reference ID associated with the ad you want returned. A seller's inventory reference ID is the ID of either a listing or the ID of an inventory item group (the parent of a multi-variation listing, such as a shirt that is available in multiple sizes and colors). You must always supply in both an inventory_reference_id and an inventory_reference_type.</param>
         /// <param name="inventory_reference_type">The type of the inventory reference ID. Set this value to either INVENTORY_ITEM (a single listing) or INVENTORY_ITEM_GROUP (a multi-variation listing). You must always pass in both an inventory_reference_id and an inventory_reference_type.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Ads> GetAdsByInventoryReferenceAsync(string campaign_id, string inventory_reference_id, string inventory_reference_type, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Ads> GetAdsByInventoryReferenceAsync(string campaign_id, string inventory_reference_id, string inventory_reference_type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -1386,31 +1386,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Ads);
@@ -1431,10 +1431,10 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the updateBid request.</param>
         /// <returns>No content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task UpdateBidAsync(string ad_id, string campaign_id, UpdateBidPercentageRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void UpdateBid(string ad_id, string campaign_id, UpdateBidPercentageRequest body)
         {
-            return UpdateBidAsync(ad_id, campaign_id, body, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await UpdateBidAsync(ad_id, campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1442,8 +1442,8 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for the updateBid request.</param>
         /// <returns>No content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task UpdateBidAsync(string ad_id, string campaign_id, UpdateBidPercentageRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task UpdateBidAsync(string ad_id, string campaign_id, UpdateBidPercentageRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (ad_id == null)
                 throw new System.ArgumentNullException("ad_id");
@@ -1492,31 +1492,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -1534,18 +1534,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for a clone campaign request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<object> CloneCampaignAsync(string campaign_id, CloneCampaignRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public object CloneCampaign(string campaign_id, CloneCampaignRequest body)
         {
-            return CloneCampaignAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await CloneCampaignAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields for a clone campaign request.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<object> CloneCampaignAsync(string campaign_id, CloneCampaignRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<object> CloneCampaignAsync(string campaign_id, CloneCampaignRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -1592,31 +1592,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(object);
@@ -1640,10 +1640,10 @@ namespace eBayApi.Sell.Marketing
         /// <param name="offset">Specifies the number of campaigns to skip in the result set before returning the first report in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
         /// <param name="start_date_range">Specifies the range of a campaign's start date in which to filter the results. The results are filtered to include only campaigns with a start date that is equal to this date or is within specified range. Valid format (UTC): &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;yyyy-MM-ddThh:mm:ssZ..yyyy-MM-ddThh:mm:ssZ&amp;nbsp;&amp;nbsp; (starts within this range) &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;yyyy-MM-ddThh:mm:ssZ..&amp;nbsp;&amp;nbsp;(campaign starts on or after this date) &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;..yyyy-MM-ddThh:mm:ssZ&amp;nbsp;&amp;nbsp; (campaign starts on or before this date) &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2016-09-08T00:00.00.000Z..2016-09-09T00:00:00Z&amp;nbsp;&amp;nbsp; (campaign starts on September 8, 2016) Note: The results might not include all the campaigns with this start date if other filters exclude them.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CampaignPagedCollection> GetCampaignsAsync(string campaign_name, string campaign_status, string end_date_range, string limit, string offset, string start_date_range)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public CampaignPagedCollection GetCampaigns(string campaign_name = null, string campaign_status = null, string end_date_range = null, string limit = null, string offset = null, string start_date_range = null)
         {
-            return GetCampaignsAsync(campaign_name, campaign_status, end_date_range, limit, offset, start_date_range, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetCampaignsAsync(campaign_name, campaign_status, end_date_range, limit, offset, start_date_range, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -1654,8 +1654,8 @@ namespace eBayApi.Sell.Marketing
         /// <param name="offset">Specifies the number of campaigns to skip in the result set before returning the first report in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
         /// <param name="start_date_range">Specifies the range of a campaign's start date in which to filter the results. The results are filtered to include only campaigns with a start date that is equal to this date or is within specified range. Valid format (UTC): &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;yyyy-MM-ddThh:mm:ssZ..yyyy-MM-ddThh:mm:ssZ&amp;nbsp;&amp;nbsp; (starts within this range) &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;yyyy-MM-ddThh:mm:ssZ..&amp;nbsp;&amp;nbsp;(campaign starts on or after this date) &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;..yyyy-MM-ddThh:mm:ssZ&amp;nbsp;&amp;nbsp; (campaign starts on or before this date) &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2016-09-08T00:00.00.000Z..2016-09-09T00:00:00Z&amp;nbsp;&amp;nbsp; (campaign starts on September 8, 2016) Note: The results might not include all the campaigns with this start date if other filters exclude them.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CampaignPagedCollection> GetCampaignsAsync(string campaign_name, string campaign_status, string end_date_range, string limit, string offset, string start_date_range, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<CampaignPagedCollection> GetCampaignsAsync(string campaign_name = null, string campaign_status = null, string end_date_range = null, string limit = null, string offset = null, string start_date_range = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/ad_campaign?");
@@ -1720,25 +1720,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(CampaignPagedCollection);
@@ -1757,17 +1757,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="body">This type defines the fields for the create campaign request.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<object> CreateCampaignAsync(CreateCampaignRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public object CreateCampaign(CreateCampaignRequest body)
         {
-            return CreateCampaignAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await CreateCampaignAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">This type defines the fields for the create campaign request.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<object> CreateCampaignAsync(CreateCampaignRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<object> CreateCampaignAsync(CreateCampaignRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/ad_campaign");
@@ -1810,25 +1810,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(object);
@@ -1847,17 +1847,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Campaign> GetCampaignAsync(string campaign_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Campaign GetCampaign(string campaign_id)
         {
-            return GetCampaignAsync(campaign_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetCampaignAsync(campaign_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Campaign> GetCampaignAsync(string campaign_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Campaign> GetCampaignAsync(string campaign_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -1901,31 +1901,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Campaign);
@@ -1944,17 +1944,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task DeleteCampaignAsync(string campaign_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void DeleteCampaign(string campaign_id)
         {
-            return DeleteCampaignAsync(campaign_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeleteCampaignAsync(campaign_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task DeleteCampaignAsync(string campaign_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task DeleteCampaignAsync(string campaign_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -1996,31 +1996,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -2037,17 +2037,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task EndCampaignAsync(string campaign_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void EndCampaign(string campaign_id)
         {
-            return EndCampaignAsync(campaign_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await EndCampaignAsync(campaign_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task EndCampaignAsync(string campaign_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task EndCampaignAsync(string campaign_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -2090,31 +2090,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -2133,10 +2133,10 @@ namespace eBayApi.Sell.Marketing
         /// <param name="inventory_reference_type">The type of the seller's inventory reference ID, which is a listing or group of items. You must always pass in both inventory_reference_id and inventory_reference_type.</param>
         /// <param name="listing_id">Identifier of the eBay listing associated with the ad.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Campaigns> FindCampaignByAdReferenceAsync(string inventory_reference_id, string inventory_reference_type, string listing_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Campaigns FindCampaignByAdReference(string inventory_reference_id = null, string inventory_reference_type = null, string listing_id = null)
         {
-            return FindCampaignByAdReferenceAsync(inventory_reference_id, inventory_reference_type, listing_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await FindCampaignByAdReferenceAsync(inventory_reference_id, inventory_reference_type, listing_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -2144,8 +2144,8 @@ namespace eBayApi.Sell.Marketing
         /// <param name="inventory_reference_type">The type of the seller's inventory reference ID, which is a listing or group of items. You must always pass in both inventory_reference_id and inventory_reference_type.</param>
         /// <param name="listing_id">Identifier of the eBay listing associated with the ad.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Campaigns> FindCampaignByAdReferenceAsync(string inventory_reference_id, string inventory_reference_type, string listing_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Campaigns> FindCampaignByAdReferenceAsync(string inventory_reference_id = null, string inventory_reference_type = null, string listing_id = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/ad_campaign/find_campaign_by_ad_reference?");
@@ -2198,31 +2198,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Campaigns);
@@ -2241,17 +2241,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="campaign_name">Name of the campaign.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Campaign> GetCampaignByNameAsync(string campaign_name)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public Campaign GetCampaignByName(string campaign_name)
         {
-            return GetCampaignByNameAsync(campaign_name, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetCampaignByNameAsync(campaign_name, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_name">Name of the campaign.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Campaign> GetCampaignByNameAsync(string campaign_name, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Campaign> GetCampaignByNameAsync(string campaign_name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_name == null)
                 throw new System.ArgumentNullException("campaign_name");
@@ -2296,31 +2296,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(Campaign);
@@ -2339,17 +2339,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task PauseCampaignAsync(string campaign_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void PauseCampaign(string campaign_id)
         {
-            return PauseCampaignAsync(campaign_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await PauseCampaignAsync(campaign_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task PauseCampaignAsync(string campaign_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task PauseCampaignAsync(string campaign_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -2392,31 +2392,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -2433,17 +2433,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>No content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task ResumeCampaignAsync(string campaign_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void ResumeCampaign(string campaign_id)
         {
-            return ResumeCampaignAsync(campaign_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await ResumeCampaignAsync(campaign_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <returns>No content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task ResumeCampaignAsync(string campaign_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task ResumeCampaignAsync(string campaign_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -2486,31 +2486,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -2528,18 +2528,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields to updated the campaign name and start and end dates.</param>
         /// <returns>No content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task UpdateCampaignIdentificationAsync(string campaign_id, UpdateCampaignIdentificationRequest body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void UpdateCampaignIdentification(string campaign_id, UpdateCampaignIdentificationRequest body)
         {
-            return UpdateCampaignIdentificationAsync(campaign_id, body, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await UpdateCampaignIdentificationAsync(campaign_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="campaign_id">A unique eBay-assigned ID for an ad campaign that's generated when a campaign is created. Get a seller's campaign IDs by calling getCampaigns.</param>
         /// <param name="body">This type defines the fields to updated the campaign name and start and end dates.</param>
         /// <returns>No content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task UpdateCampaignIdentificationAsync(string campaign_id, UpdateCampaignIdentificationRequest body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task UpdateCampaignIdentificationAsync(string campaign_id, UpdateCampaignIdentificationRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (campaign_id == null)
                 throw new System.ArgumentNullException("campaign_id");
@@ -2584,31 +2584,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -2625,17 +2625,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="report_id">The unique ID of the Promoted Listings report you want to get. This ID is generated by eBay when you run a report task with a call to createReportTask. Get all the seller's report IDs by calling getReportTasks.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<FileResponse> GetReportAsync(string report_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public FileResponse GetReport(string report_id)
         {
-            return GetReportAsync(report_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetReportAsync(report_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="report_id">The unique ID of the Promoted Listings report you want to get. This ID is generated by eBay when you run a report task with a call to createReportTask. Get all the seller's report IDs by calling getReportTasks.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FileResponse> GetReportAsync(string report_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<FileResponse> GetReportAsync(string report_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (report_id == null)
                 throw new System.ArgumentNullException("report_id");
@@ -2681,25 +2681,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(FileResponse);
@@ -2717,16 +2717,16 @@ namespace eBayApi.Sell.Marketing
         }
     
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ReportMetadatas> GetReportMetadataAsync()
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ReportMetadatas GetReportMetadata()
         {
-            return GetReportMetadataAsync(System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetReportMetadataAsync(System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ReportMetadatas> GetReportMetadataAsync(System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ReportMetadatas> GetReportMetadataAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/ad_report_metadata");
@@ -2766,13 +2766,13 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ReportMetadatas);
@@ -2791,17 +2791,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="report_type">The name of the report type whose metadata you want to get. For details about each report type, see ReportTypeEnum. Valid values: &amp;nbsp;&amp;nbsp;&amp;nbsp;ACCOUNT_PERFORMANCE_REPORT &amp;nbsp;&amp;nbsp;&amp;nbsp;CAMPAIGN_PERFORMANCE_REPORT &amp;nbsp;&amp;nbsp;&amp;nbsp;CAMPAIGN_PERFORMANCE_SUMMARY_REPORT &amp;nbsp;&amp;nbsp;&amp;nbsp;LISTING_PERFORMANCE_REPORT &amp;nbsp;&amp;nbsp;&amp;nbsp;INVENTORY_PERFORMANCE_REPORT</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ReportMetadata> GetReportMetadataForReportTypeAsync(string report_type)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ReportMetadata GetReportMetadataForReportType(string report_type)
         {
-            return GetReportMetadataForReportTypeAsync(report_type, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetReportMetadataForReportTypeAsync(report_type, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="report_type">The name of the report type whose metadata you want to get. For details about each report type, see ReportTypeEnum. Valid values: &amp;nbsp;&amp;nbsp;&amp;nbsp;ACCOUNT_PERFORMANCE_REPORT &amp;nbsp;&amp;nbsp;&amp;nbsp;CAMPAIGN_PERFORMANCE_REPORT &amp;nbsp;&amp;nbsp;&amp;nbsp;CAMPAIGN_PERFORMANCE_SUMMARY_REPORT &amp;nbsp;&amp;nbsp;&amp;nbsp;LISTING_PERFORMANCE_REPORT &amp;nbsp;&amp;nbsp;&amp;nbsp;INVENTORY_PERFORMANCE_REPORT</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ReportMetadata> GetReportMetadataForReportTypeAsync(string report_type, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ReportMetadata> GetReportMetadataForReportTypeAsync(string report_type, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (report_type == null)
                 throw new System.ArgumentNullException("report_type");
@@ -2845,25 +2845,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ReportMetadata);
@@ -2884,10 +2884,10 @@ namespace eBayApi.Sell.Marketing
         /// <param name="offset">Specifies the number of report tasks to skip in the result set before returning the first report in the paginated response. Combine offset with the limit query parameter to control the reports returned in the response. For example, if you supply an offset of 0 and a limit of 10, the response contains the first 10 reports from the complete list of report tasks retrieved by the call. If offset is 10 and limit is 10, the first page of the response contains reports 11-20 from the complete result set. Default: 0</param>
         /// <param name="report_task_statuses">This parameter filters the returned report tasks by their status. Supply a comma-separated list of the report statuses you want returned. The results are filtered to include only the report statuses you specify. Note: The results might not include some report tasks if other search conditions exclude them. Valid values: &amp;nbsp;&amp;nbsp;&amp;nbsp;PENDING &amp;nbsp;&amp;nbsp;&amp;nbsp;SUCCESS &amp;nbsp;&amp;nbsp;&amp;nbsp;FAILED</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ReportTaskPagedCollection> GetReportTasksAsync(string limit, string offset, string report_task_statuses)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ReportTaskPagedCollection GetReportTasks(string limit = null, string offset = null, string report_task_statuses = null)
         {
-            return GetReportTasksAsync(limit, offset, report_task_statuses, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetReportTasksAsync(limit, offset, report_task_statuses, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -2895,8 +2895,8 @@ namespace eBayApi.Sell.Marketing
         /// <param name="offset">Specifies the number of report tasks to skip in the result set before returning the first report in the paginated response. Combine offset with the limit query parameter to control the reports returned in the response. For example, if you supply an offset of 0 and a limit of 10, the response contains the first 10 reports from the complete list of report tasks retrieved by the call. If offset is 10 and limit is 10, the first page of the response contains reports 11-20 from the complete result set. Default: 0</param>
         /// <param name="report_task_statuses">This parameter filters the returned report tasks by their status. Supply a comma-separated list of the report statuses you want returned. The results are filtered to include only the report statuses you specify. Note: The results might not include some report tasks if other search conditions exclude them. Valid values: &amp;nbsp;&amp;nbsp;&amp;nbsp;PENDING &amp;nbsp;&amp;nbsp;&amp;nbsp;SUCCESS &amp;nbsp;&amp;nbsp;&amp;nbsp;FAILED</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ReportTaskPagedCollection> GetReportTasksAsync(string limit, string offset, string report_task_statuses, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ReportTaskPagedCollection> GetReportTasksAsync(string limit = null, string offset = null, string report_task_statuses = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/ad_report_task?");
@@ -2949,19 +2949,19 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ReportTaskPagedCollection);
@@ -2980,17 +2980,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="body">The container for the fields that define the report task.</param>
         /// <returns>Accepted</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task CreateReportTaskAsync(CreateReportTask body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void CreateReportTask(CreateReportTask body)
         {
-            return CreateReportTaskAsync(body, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await CreateReportTaskAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">The container for the fields that define the report task.</param>
         /// <returns>Accepted</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task CreateReportTaskAsync(CreateReportTask body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task CreateReportTaskAsync(CreateReportTask body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/ad_report_task");
@@ -3031,25 +3031,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -3066,17 +3066,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="report_task_id">A unique eBay-assigned ID for the report task that's generated when the report task is created by a call to createReportTask.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ReportTask> GetReportTaskAsync(string report_task_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ReportTask GetReportTask(string report_task_id)
         {
-            return GetReportTaskAsync(report_task_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetReportTaskAsync(report_task_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="report_task_id">A unique eBay-assigned ID for the report task that's generated when the report task is created by a call to createReportTask.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ReportTask> GetReportTaskAsync(string report_task_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ReportTask> GetReportTaskAsync(string report_task_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (report_task_id == null)
                 throw new System.ArgumentNullException("report_task_id");
@@ -3120,25 +3120,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ReportTask);
@@ -3157,17 +3157,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="report_task_id">A unique eBay-assigned ID for the report task that's generated when the report task is created by a call to createReportTask.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task DeleteReportTaskAsync(string report_task_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void DeleteReportTask(string report_task_id)
         {
-            return DeleteReportTaskAsync(report_task_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeleteReportTaskAsync(report_task_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="report_task_id">A unique eBay-assigned ID for the report task that's generated when the report task is created by a call to createReportTask.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task DeleteReportTaskAsync(string report_task_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task DeleteReportTaskAsync(string report_task_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (report_task_id == null)
                 throw new System.ArgumentNullException("report_task_id");
@@ -3209,31 +3209,31 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -3250,17 +3250,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="body">This type defines the fields that describe an item price markdown promotion.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<object> CreateItemPriceMarkdownPromotionAsync(ItemPriceMarkdown body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public object CreateItemPriceMarkdownPromotion(ItemPriceMarkdown body = null)
         {
-            return CreateItemPriceMarkdownPromotionAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await CreateItemPriceMarkdownPromotionAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">This type defines the fields that describe an item price markdown promotion.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<object> CreateItemPriceMarkdownPromotionAsync(ItemPriceMarkdown body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<object> CreateItemPriceMarkdownPromotionAsync(ItemPriceMarkdown body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/item_price_markdown");
@@ -3303,25 +3303,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(object);
@@ -3340,17 +3340,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="promotion_id">The ID of the promotion you want to retrieve. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ItemPriceMarkdown> GetItemPriceMarkdownPromotionAsync(string promotion_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ItemPriceMarkdown GetItemPriceMarkdownPromotion(string promotion_id)
         {
-            return GetItemPriceMarkdownPromotionAsync(promotion_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetItemPriceMarkdownPromotionAsync(promotion_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="promotion_id">The ID of the promotion you want to retrieve. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ItemPriceMarkdown> GetItemPriceMarkdownPromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ItemPriceMarkdown> GetItemPriceMarkdownPromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (promotion_id == null)
                 throw new System.ArgumentNullException("promotion_id");
@@ -3394,25 +3394,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ItemPriceMarkdown);
@@ -3432,18 +3432,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="promotion_id">The ID of the promotion you want to update. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <param name="body">This type defines the fields that describe an item price markdown promotion.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<object> UpdateItemPriceMarkdownPromotionAsync(string promotion_id, ItemPriceMarkdown body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public object UpdateItemPriceMarkdownPromotion(string promotion_id, ItemPriceMarkdown body = null)
         {
-            return UpdateItemPriceMarkdownPromotionAsync(promotion_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateItemPriceMarkdownPromotionAsync(promotion_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="promotion_id">The ID of the promotion you want to update. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <param name="body">This type defines the fields that describe an item price markdown promotion.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<object> UpdateItemPriceMarkdownPromotionAsync(string promotion_id, ItemPriceMarkdown body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<object> UpdateItemPriceMarkdownPromotionAsync(string promotion_id, ItemPriceMarkdown body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (promotion_id == null)
                 throw new System.ArgumentNullException("promotion_id");
@@ -3490,37 +3490,37 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Success", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Success", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Business Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Business Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(object);
@@ -3539,17 +3539,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="promotion_id">The ID of the promotion you want to delete. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task DeleteItemPriceMarkdownPromotionAsync(string promotion_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void DeleteItemPriceMarkdownPromotion(string promotion_id)
         {
-            return DeleteItemPriceMarkdownPromotionAsync(promotion_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeleteItemPriceMarkdownPromotionAsync(promotion_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="promotion_id">The ID of the promotion you want to delete. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task DeleteItemPriceMarkdownPromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task DeleteItemPriceMarkdownPromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (promotion_id == null)
                 throw new System.ArgumentNullException("promotion_id");
@@ -3591,25 +3591,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -3626,17 +3626,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="body">This type defines the fields that describe an item promotion.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BaseResponse> CreateItemPromotionAsync(ItemPromotion body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BaseResponse CreateItemPromotion(ItemPromotion body = null)
         {
-            return CreateItemPromotionAsync(body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await CreateItemPromotionAsync(body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="body">This type defines the fields that describe an item promotion.</param>
         /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BaseResponse> CreateItemPromotionAsync(ItemPromotion body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BaseResponse> CreateItemPromotionAsync(ItemPromotion body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/item_promotion");
@@ -3679,25 +3679,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BaseResponse);
@@ -3716,17 +3716,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="promotion_id">The ID of the promotion you want to retrieve. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ItemPromotionResponse> GetItemPromotionAsync(string promotion_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public ItemPromotionResponse GetItemPromotion(string promotion_id)
         {
-            return GetItemPromotionAsync(promotion_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetItemPromotionAsync(promotion_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="promotion_id">The ID of the promotion you want to retrieve. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ItemPromotionResponse> GetItemPromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<ItemPromotionResponse> GetItemPromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (promotion_id == null)
                 throw new System.ArgumentNullException("promotion_id");
@@ -3770,25 +3770,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(ItemPromotionResponse);
@@ -3808,18 +3808,18 @@ namespace eBayApi.Sell.Marketing
         /// <param name="promotion_id">The ID of the promotion you want to update. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <param name="body">This type defines the fields that describe an item promotion.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<BaseResponse> UpdateItemPromotionAsync(string promotion_id, ItemPromotion body)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public BaseResponse UpdateItemPromotion(string promotion_id, ItemPromotion body = null)
         {
-            return UpdateItemPromotionAsync(promotion_id, body, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await UpdateItemPromotionAsync(promotion_id, body, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="promotion_id">The ID of the promotion you want to update. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <param name="body">This type defines the fields that describe an item promotion.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<BaseResponse> UpdateItemPromotionAsync(string promotion_id, ItemPromotion body, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<BaseResponse> UpdateItemPromotionAsync(string promotion_id, ItemPromotion body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (promotion_id == null)
                 throw new System.ArgumentNullException("promotion_id");
@@ -3866,37 +3866,37 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "204") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Success", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Success", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(BaseResponse);
@@ -3915,17 +3915,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="promotion_id">The ID of the promotion you want to delete. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task DeleteItemPromotionAsync(string promotion_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void DeleteItemPromotion(string promotion_id)
         {
-            return DeleteItemPromotionAsync(promotion_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await DeleteItemPromotionAsync(promotion_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="promotion_id">The ID of the promotion you want to delete. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task DeleteItemPromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task DeleteItemPromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (promotion_id == null)
                 throw new System.ArgumentNullException("promotion_id");
@@ -3967,25 +3967,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -4000,29 +4000,29 @@ namespace eBayApi.Sell.Marketing
             }
         }
     
+        /// <param name="promotion_id">The ID of the promotion whose associated listings you want to retrieve. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <param name="limit">Specifies the maximum number of promotions returned on a page from the result set. Default: 200 Maximum: 200</param>
         /// <param name="offset">Specifies the number of promotions to skip in the result set before returning the first promotion in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
-        /// <param name="promotion_id">The ID of the promotion whose associated listings you want to retrieve. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <param name="q">Reserved for future use.</param>
         /// <param name="sort">Specifies the order in which to sort the associated listings in the response. If you precede the supplied value with a dash, the response is sorted in reverse order. Example: &amp;nbsp;&amp;nbsp;&amp;nbsp;sort=PRICE - Sorts the associated listings by their current price in ascending order &amp;nbsp;&amp;nbsp;&amp;nbsp;sort=-TITLE - Sorts the associated listings by their title in descending alphabetical order (Z-Az-a) Valid values: AVAILABLE PRICE TITLE For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketing/types/SortField.html</param>
         /// <param name="status">This query parameter applies only to markdown promotions. It filters the response based on the indicated status of the promotion. Currently, the only supported value for this parameter is MARKED_DOWN, which indicates active markdown promotions. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketing/types/ItemMarkdownStatusEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task GetListingSetAsync(string limit, string offset, string promotion_id, string q, string sort, string status)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void GetListingSet(string promotion_id, string limit = null, string offset = null, string q = null, string sort = null, string status = null)
         {
-            return GetListingSetAsync(limit, offset, promotion_id, q, sort, status, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await GetListingSetAsync(promotion_id, limit, offset, q, sort, status, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <param name="promotion_id">The ID of the promotion whose associated listings you want to retrieve. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <param name="limit">Specifies the maximum number of promotions returned on a page from the result set. Default: 200 Maximum: 200</param>
         /// <param name="offset">Specifies the number of promotions to skip in the result set before returning the first promotion in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
-        /// <param name="promotion_id">The ID of the promotion whose associated listings you want to retrieve. The promotion ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <param name="q">Reserved for future use.</param>
         /// <param name="sort">Specifies the order in which to sort the associated listings in the response. If you precede the supplied value with a dash, the response is sorted in reverse order. Example: &amp;nbsp;&amp;nbsp;&amp;nbsp;sort=PRICE - Sorts the associated listings by their current price in ascending order &amp;nbsp;&amp;nbsp;&amp;nbsp;sort=-TITLE - Sorts the associated listings by their title in descending alphabetical order (Z-Az-a) Valid values: AVAILABLE PRICE TITLE For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketing/types/SortField.html</param>
         /// <param name="status">This query parameter applies only to markdown promotions. It filters the response based on the indicated status of the promotion. Currently, the only supported value for this parameter is MARKED_DOWN, which indicates active markdown promotions. For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketing/types/ItemMarkdownStatusEnum.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task GetListingSetAsync(string limit, string offset, string promotion_id, string q, string sort, string status, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task GetListingSetAsync(string promotion_id, string limit = null, string offset = null, string q = null, string sort = null, string status = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (promotion_id == null)
                 throw new System.ArgumentNullException("promotion_id");
@@ -4085,25 +4085,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -4118,42 +4118,42 @@ namespace eBayApi.Sell.Marketing
             }
         }
     
-        /// <param name="limit">Specifies the maximum number of promotions returned on a page from the result set. Default: 200 Maximum: 200</param>
         /// <param name="marketplace_id">The eBay marketplace ID of the site where the promotion is hosted. Valid values: EBAY_AU = Australia EBAY_DE = Germany EBAY_ES = Spain EBAY_FR = France EBAY_GB = Great Britain EBAY_IT = Italy EBAY_US = United States</param>
+        /// <param name="limit">Specifies the maximum number of promotions returned on a page from the result set. Default: 200 Maximum: 200</param>
         /// <param name="offset">Specifies the number of promotions to skip in the result set before returning the first promotion in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
         /// <param name="promotion_status">Specifies the promotion state by which you want to filter the results. The response contains only those promotions that match the state you specify. Valid values: DRAFT SCHEDULED RUNNING PAUSED ENDEDMaximum number of input values: 1</param>
         /// <param name="promotion_type">Filters the returned promotions based on the their campaign promotion type. Specify one of the following values to indicate the promotion type you want returned: MARKDOWN_SALE &amp;ndash; A markdown promotion set with createItemPriceMarkdownPromotion. ORDER_DISCOUNT &amp;ndash; A threshold promotion set with createItemPromotion. VOLUME_DISCOUNT &amp;ndash; A volume pricing promotion set with createItemPromotion.</param>
         /// <param name="q">A string consisting of one or more keywords. eBay filters the response by returning only the promotions that contain the supplied keywords in the promotion title. Example: &amp;quot;iPhone&amp;quot; or &amp;quot;Harry Potter.&amp;quot; Commas that separate keywords are ignored. For example, a keyword string of &amp;quot;iPhone, iPad&amp;quot; equals &amp;quot;iPhone iPad&amp;quot;, and each results in a response that contains promotions with both &amp;quot;iPhone&amp;quot; and &amp;quot;iPad&amp;quot; in the title.</param>
         /// <param name="sort">Specifies the order for how to sort the response. If you precede the supplied value with a dash, the response is sorted in reverse order. Example: &amp;nbsp;&amp;nbsp;&amp;nbsp;sort=END_DATE &amp;nbsp; Sorts the promotions in the response by their end dates in ascending order &amp;nbsp;&amp;nbsp;&amp;nbsp;sort=-PROMOTION_NAME &amp;nbsp; Sorts the promotions by their promotion name in descending alphabetical order (Z-Az-a) Valid values: START_DATE END_DATE PROMOTION_NAME For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketing/types/SortField.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PromotionsPagedCollection> GetPromotionsAsync(string limit, string marketplace_id, string offset, string promotion_status, string promotion_type, string q, string sort)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PromotionsPagedCollection GetPromotions(string marketplace_id, string limit = null, string offset = null, string promotion_status = null, string promotion_type = null, string q = null, string sort = null)
         {
-            return GetPromotionsAsync(limit, marketplace_id, offset, promotion_status, promotion_type, q, sort, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPromotionsAsync(marketplace_id, limit, offset, promotion_status, promotion_type, q, sort, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <param name="limit">Specifies the maximum number of promotions returned on a page from the result set. Default: 200 Maximum: 200</param>
         /// <param name="marketplace_id">The eBay marketplace ID of the site where the promotion is hosted. Valid values: EBAY_AU = Australia EBAY_DE = Germany EBAY_ES = Spain EBAY_FR = France EBAY_GB = Great Britain EBAY_IT = Italy EBAY_US = United States</param>
+        /// <param name="limit">Specifies the maximum number of promotions returned on a page from the result set. Default: 200 Maximum: 200</param>
         /// <param name="offset">Specifies the number of promotions to skip in the result set before returning the first promotion in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
         /// <param name="promotion_status">Specifies the promotion state by which you want to filter the results. The response contains only those promotions that match the state you specify. Valid values: DRAFT SCHEDULED RUNNING PAUSED ENDEDMaximum number of input values: 1</param>
         /// <param name="promotion_type">Filters the returned promotions based on the their campaign promotion type. Specify one of the following values to indicate the promotion type you want returned: MARKDOWN_SALE &amp;ndash; A markdown promotion set with createItemPriceMarkdownPromotion. ORDER_DISCOUNT &amp;ndash; A threshold promotion set with createItemPromotion. VOLUME_DISCOUNT &amp;ndash; A volume pricing promotion set with createItemPromotion.</param>
         /// <param name="q">A string consisting of one or more keywords. eBay filters the response by returning only the promotions that contain the supplied keywords in the promotion title. Example: &amp;quot;iPhone&amp;quot; or &amp;quot;Harry Potter.&amp;quot; Commas that separate keywords are ignored. For example, a keyword string of &amp;quot;iPhone, iPad&amp;quot; equals &amp;quot;iPhone iPad&amp;quot;, and each results in a response that contains promotions with both &amp;quot;iPhone&amp;quot; and &amp;quot;iPad&amp;quot; in the title.</param>
         /// <param name="sort">Specifies the order for how to sort the response. If you precede the supplied value with a dash, the response is sorted in reverse order. Example: &amp;nbsp;&amp;nbsp;&amp;nbsp;sort=END_DATE &amp;nbsp; Sorts the promotions in the response by their end dates in ascending order &amp;nbsp;&amp;nbsp;&amp;nbsp;sort=-PROMOTION_NAME &amp;nbsp; Sorts the promotions by their promotion name in descending alphabetical order (Z-Az-a) Valid values: START_DATE END_DATE PROMOTION_NAME For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketing/types/SortField.html</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PromotionsPagedCollection> GetPromotionsAsync(string limit, string marketplace_id, string offset, string promotion_status, string promotion_type, string q, string sort, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PromotionsPagedCollection> GetPromotionsAsync(string marketplace_id, string limit = null, string offset = null, string promotion_status = null, string promotion_type = null, string q = null, string sort = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
     
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/promotion?");
+            urlBuilder_.Append(System.Uri.EscapeDataString("marketplace_id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(marketplace_id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (limit != null) 
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("limit") + "=").Append(System.Uri.EscapeDataString(ConvertToString(limit, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            urlBuilder_.Append(System.Uri.EscapeDataString("marketplace_id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(marketplace_id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (offset != null) 
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("offset") + "=").Append(System.Uri.EscapeDataString(ConvertToString(offset, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -4211,19 +4211,19 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PromotionsPagedCollection);
@@ -4242,17 +4242,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="promotion_id">Identifier of the promotion you want to pause. The ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task PausePromotionAsync(string promotion_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void PausePromotion(string promotion_id)
         {
-            return PausePromotionAsync(promotion_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await PausePromotionAsync(promotion_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="promotion_id">Identifier of the promotion you want to pause. The ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task PausePromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task PausePromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (promotion_id == null)
                 throw new System.ArgumentNullException("promotion_id");
@@ -4295,25 +4295,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -4330,17 +4330,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="promotion_id">Identifier of the promotion you want to make active. The ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task ResumePromotionAsync(string promotion_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public void ResumePromotion(string promotion_id)
         {
-            return ResumePromotionAsync(promotion_id, System.Threading.CancellationToken.None);
+            System.Threading.Tasks.Task.Run(async () => await ResumePromotionAsync(promotion_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="promotion_id">Identifier of the promotion you want to make active. The ID is a unique eBay-assigned value that's generated when the promotion is created.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task ResumePromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task ResumePromotionAsync(string promotion_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (promotion_id == null)
                 throw new System.ArgumentNullException("promotion_id");
@@ -4383,25 +4383,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
                     }
                     finally
@@ -4416,40 +4416,40 @@ namespace eBayApi.Sell.Marketing
             }
         }
     
-        /// <param name="limit">Specifies the maximum number of promotions returned on a page from the result set. Default: 200 Maximum: 200</param>
         /// <param name="marketplace_id">The eBay marketplace ID of the site for which you want the promotions report. Valid values: EBAY_AU = Australia EBAY_DE = Germany EBAY_ES = Spain EBAY_FR = France EBAY_GB = Great Britain EBAY_IT = Italy EBAY_US = United States</param>
+        /// <param name="limit">Specifies the maximum number of promotions returned on a page from the result set. Default: 200 Maximum: 200</param>
         /// <param name="offset">Specifies the number of promotions to skip in the result set before returning the first promotion in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
         /// <param name="promotion_status">Limits the results to the promotions that are in the state specified by this query parameter. Valid values: DRAFT SCHEDULED RUNNING PAUSED ENDEDMaximum number of values supported: 1</param>
         /// <param name="promotion_type">Filters the returned promotions in the report based on the their campaign promotion type. Specify one of the following values to indicate the promotion type you want returned in the report: MARKDOWN_SALE &amp;ndash; A markdown promotion set with createItemPriceMarkdownPromotion. ORDER_DISCOUNT &amp;ndash; A threshold promotion set with createItemPromotion. VOLUME_DISCOUNT &amp;ndash; A volume pricing promotion set with createItemPromotion.</param>
         /// <param name="q">A string consisting of one or more keywords. eBay filters the response by returning only the promotions that contain the supplied keywords in the promotion title. Example: &amp;quot;iPhone&amp;quot; or &amp;quot;Harry Potter.&amp;quot; Commas that separate keywords are ignored. For example, a keyword string of &amp;quot;iPhone, iPad&amp;quot; equals &amp;quot;iPhone iPad&amp;quot;, and each results in a response that contains promotions with both &amp;quot;iPhone&amp;quot; and &amp;quot;iPad&amp;quot; in the title.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<PromotionsReportPagedCollection> GetPromotionReportsAsync(string limit, string marketplace_id, string offset, string promotion_status, string promotion_type, string q)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public PromotionsReportPagedCollection GetPromotionReports(string marketplace_id, string limit = null, string offset = null, string promotion_status = null, string promotion_type = null, string q = null)
         {
-            return GetPromotionReportsAsync(limit, marketplace_id, offset, promotion_status, promotion_type, q, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPromotionReportsAsync(marketplace_id, limit, offset, promotion_status, promotion_type, q, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <param name="limit">Specifies the maximum number of promotions returned on a page from the result set. Default: 200 Maximum: 200</param>
         /// <param name="marketplace_id">The eBay marketplace ID of the site for which you want the promotions report. Valid values: EBAY_AU = Australia EBAY_DE = Germany EBAY_ES = Spain EBAY_FR = France EBAY_GB = Great Britain EBAY_IT = Italy EBAY_US = United States</param>
+        /// <param name="limit">Specifies the maximum number of promotions returned on a page from the result set. Default: 200 Maximum: 200</param>
         /// <param name="offset">Specifies the number of promotions to skip in the result set before returning the first promotion in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0</param>
         /// <param name="promotion_status">Limits the results to the promotions that are in the state specified by this query parameter. Valid values: DRAFT SCHEDULED RUNNING PAUSED ENDEDMaximum number of values supported: 1</param>
         /// <param name="promotion_type">Filters the returned promotions in the report based on the their campaign promotion type. Specify one of the following values to indicate the promotion type you want returned in the report: MARKDOWN_SALE &amp;ndash; A markdown promotion set with createItemPriceMarkdownPromotion. ORDER_DISCOUNT &amp;ndash; A threshold promotion set with createItemPromotion. VOLUME_DISCOUNT &amp;ndash; A volume pricing promotion set with createItemPromotion.</param>
         /// <param name="q">A string consisting of one or more keywords. eBay filters the response by returning only the promotions that contain the supplied keywords in the promotion title. Example: &amp;quot;iPhone&amp;quot; or &amp;quot;Harry Potter.&amp;quot; Commas that separate keywords are ignored. For example, a keyword string of &amp;quot;iPhone, iPad&amp;quot; equals &amp;quot;iPhone iPad&amp;quot;, and each results in a response that contains promotions with both &amp;quot;iPhone&amp;quot; and &amp;quot;iPad&amp;quot; in the title.</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<PromotionsReportPagedCollection> GetPromotionReportsAsync(string limit, string marketplace_id, string offset, string promotion_status, string promotion_type, string q, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<PromotionsReportPagedCollection> GetPromotionReportsAsync(string marketplace_id, string limit = null, string offset = null, string promotion_status = null, string promotion_type = null, string q = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
     
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/promotion_report?");
+            urlBuilder_.Append(System.Uri.EscapeDataString("marketplace_id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(marketplace_id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (limit != null) 
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("limit") + "=").Append(System.Uri.EscapeDataString(ConvertToString(limit, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            urlBuilder_.Append(System.Uri.EscapeDataString("marketplace_id") + "=").Append(System.Uri.EscapeDataString(ConvertToString(marketplace_id, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             if (offset != null) 
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("offset") + "=").Append(System.Uri.EscapeDataString(ConvertToString(offset, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -4503,19 +4503,19 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(PromotionsReportPagedCollection);
@@ -4534,17 +4534,17 @@ namespace eBayApi.Sell.Marketing
     
         /// <param name="marketplace_id">The eBay marketplace ID of the site you for which you want a promotion summary report. Valid values: EBAY_AU = Australia EBAY_DE = Germany EBAY_ES = Spain EBAY_FR = France EBAY_GB = Great Britain EBAY_IT = Italy EBAY_US = United States</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<SummaryReportResponse> GetPromotionSummaryReportAsync(string marketplace_id)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public SummaryReportResponse GetPromotionSummaryReport(string marketplace_id)
         {
-            return GetPromotionSummaryReportAsync(marketplace_id, System.Threading.CancellationToken.None);
+            return System.Threading.Tasks.Task.Run(async () => await GetPromotionSummaryReportAsync(marketplace_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <param name="marketplace_id">The eBay marketplace ID of the site you for which you want a promotion summary report. Valid values: EBAY_AU = Australia EBAY_DE = Germany EBAY_ES = Spain EBAY_FR = France EBAY_GB = Great Britain EBAY_IT = Italy EBAY_US = United States</param>
         /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<SummaryReportResponse> GetPromotionSummaryReportAsync(string marketplace_id, System.Threading.CancellationToken cancellationToken)
+        /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<SummaryReportResponse> GetPromotionSummaryReportAsync(string marketplace_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (marketplace_id == null)
                 throw new System.ArgumentNullException("marketplace_id");
@@ -4589,25 +4589,25 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Not Found", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
-                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                            throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
                         return default(SummaryReportResponse);
@@ -4657,7 +4657,7 @@ namespace eBayApi.Sell.Marketing
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, responseText, headers, exception);
                 }
             }
             else
@@ -4676,7 +4676,7 @@ namespace eBayApi.Sell.Marketing
                 catch (Newtonsoft.Json.JsonException exception)
                 {
                     var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                    throw new eBayApi.ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
                 }
             }
         }
@@ -6806,41 +6806,6 @@ namespace eBayApi.Sell.Marketing
                 _response.Dispose();
             if (_client != null)
                 _client.Dispose();
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException : System.Exception
-    {
-        public int StatusCode { get; private set; }
-
-        public string Response { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
-            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
-        {
-            StatusCode = statusCode;
-            Response = response; 
-            Headers = headers;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class ApiException<TResult> : ApiException
-    {
-        public TResult Result { get; private set; }
-
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
-            : base(message, statusCode, response, headers, innerException)
-        {
-            Result = result;
         }
     }
 
