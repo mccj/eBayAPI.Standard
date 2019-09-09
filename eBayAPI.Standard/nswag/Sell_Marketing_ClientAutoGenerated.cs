@@ -17,7 +17,7 @@ namespace eBayApi.Sell.Marketing
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class Client 
     {
-        private string _baseUrl = "https://api.ebay.com{basePath}";
+        private string _baseUrl = "https://api.ebay.com/sell/marketing/v1";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
     
@@ -124,7 +124,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
@@ -238,7 +238,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -454,7 +454,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -556,7 +556,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
@@ -664,13 +664,13 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -1093,7 +1093,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -1610,7 +1610,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -1726,13 +1726,13 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -2008,7 +2008,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Business error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
@@ -2314,7 +2314,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -2504,7 +2504,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -2626,7 +2626,7 @@ namespace eBayApi.Sell.Marketing
         /// <param name="report_id">The unique ID of the Promoted Listings report you want to get. This ID is generated by eBay when you run a report task with a call to createReportTask. Get all the seller's report IDs by calling getReportTasks.</param>
         /// <returns>Success</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
-        public FileResponse GetReport(string report_id)
+        public object GetReport(string report_id)
         {
             return System.Threading.Tasks.Task.Run(async () => await GetReportAsync(report_id, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
@@ -2635,7 +2635,7 @@ namespace eBayApi.Sell.Marketing
         /// <param name="report_id">The unique ID of the Promoted Listings report you want to get. This ID is generated by eBay when you run a report task with a call to createReportTask. Get all the seller's report IDs by calling getReportTasks.</param>
         /// <returns>Success</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FileResponse> GetReportAsync(string report_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<object> GetReportAsync(string report_id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (report_id == null)
                 throw new System.ArgumentNullException("report_id");
@@ -2650,7 +2650,7 @@ namespace eBayApi.Sell.Marketing
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/tab-separated-values"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
@@ -2670,12 +2670,10 @@ namespace eBayApi.Sell.Marketing
                         ProcessResponse(client_, response_);
     
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200" || status_ == "206") 
+                        if (status_ == "200") 
                         {
-                            var responseStream_ = response_.Content == null ? System.IO.Stream.Null : await response_.Content.ReadAsStreamAsync().ConfigureAwait(false);
-                            var fileResponse_ = new FileResponse((int)response_.StatusCode, headers_, responseStream_, null, response_); 
-                            client_ = null; response_ = null; // response and client are disposed by FileResponse
-                            return fileResponse_;
+                            var objectResponse_ = await ReadObjectResponseAsync<object>(response_, headers_).ConfigureAwait(false);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == "400") 
@@ -2693,7 +2691,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -2702,7 +2700,7 @@ namespace eBayApi.Sell.Marketing
                             throw new eBayApi.ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
-                        return default(FileResponse);
+                        return default(object);
                     }
                     finally
                     {
@@ -2857,7 +2855,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -3132,7 +3130,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -3227,7 +3225,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal Server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -3508,7 +3506,7 @@ namespace eBayApi.Sell.Marketing
                         if (status_ == "409") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Business Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Conflict", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "500") 
@@ -4722,33 +4720,24 @@ namespace eBayApi.Sell.Marketing
     public partial class Ad 
     {
         /// <summary>A unique eBay-assigned ID for the ad that is generated when the ad is created.</summary>
-        [Newtonsoft.Json.JsonProperty("adId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("adId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AdId { get; set; }
     
         /// <summary>The user-defined bid percentage (also known as the ad rate) sets level to which eBay should raise the visibility of the associated listing in the search results returned for buyer queries. The value is also used to calculate the Promoted Listings fee. Minimum value: 1.0 Maximum value: 100.0</summary>
-        [Newtonsoft.Json.JsonProperty("bidPercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("bidPercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string BidPercentage { get; set; }
     
         /// <summary>The seller's inventory reference ID for a listing that's associated with the ad. An inventory reference ID can be either a seller-defined SKU value or an inventoryItemGroupKey. An inventoryItemGroupKey is a value used by the Inventory API to indicate a listing that's the parent of a inventory item group (a multi-variation listing, such as a listing for shirt that's available in multiple sizes and colors). You must always specify both an inventory_reference_id and an inventory_reference_type.</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceId { get; set; }
     
         /// <summary>Indicates the item type of the listing referenced by inventoryReferenceId, and can be either INVENTORY_ITEM or INVENTORY_ITEM_GROUP. You must always pair an inventory_reference_id with and inventory_reference_type. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/InventoryReferenceTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceType { get; set; }
     
         /// <summary>A unique eBay-assigned ID that is generated when a listing is created. Note: This field accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</summary>
-        [Newtonsoft.Json.JsonProperty("listingId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("listingId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ListingId { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -4758,61 +4747,43 @@ namespace eBayApi.Sell.Marketing
     public partial class AdIds 
     {
         /// <summary>A list of ad ID's.</summary>
-        [Newtonsoft.Json.JsonProperty("adIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("adIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> AdIds1 { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the fields that paginate the ads returned by the request. The entire result set consists of 0 or more sequenced response pages, where each page consists of 0 or more items from the complete result set.</summary>
+    /// <summary>This type defines the fields that paginate the ads returned by the request. The entire &lt;i&gt;result set&lt;/i&gt; consists of 0 or more sequenced &lt;i&gt;response pages&lt;/i&gt;, where each page consists of 0 or more items from the complete result set.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class AdPagedCollection 
     {
         /// <summary>A list of ads contained on this page from the paginated response.</summary>
-        [Newtonsoft.Json.JsonProperty("ads", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("ads", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Ad> Ads { get; set; }
     
         /// <summary>The URI of the current page of results from the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Href { get; set; }
     
         /// <summary>The number of items returned on a single page from the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Limit { get; set; }
+        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Limit { get; set; }
     
         /// <summary>The URI for the next page of results. This value is returned only if there is an additional page of results in the result set. Max length: 2048</summary>
-        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Next { get; set; }
     
         /// <summary>The value of the offset submitted in the request, which is the number of results to skip before listing the first returned result.</summary>
-        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Offset { get; set; }
+        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Offset { get; set; }
     
         /// <summary>The URI for the previous page of results. This value is returned only if there is a previous page of results in the result set. Max length: 2048</summary>
-        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Prev { get; set; }
     
         /// <summary>The total number of items in the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Total { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Total { get; set; }
     
     
     }
@@ -4822,21 +4793,12 @@ namespace eBayApi.Sell.Marketing
     public partial class AdReference 
     {
         /// <summary>A unique eBay-assigned ID for an ad. This ID is generated when an ad is created.</summary>
-        [Newtonsoft.Json.JsonProperty("adId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("adId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AdId { get; set; }
     
         /// <summary>The URI of an ad. You can use this URI to retrieve the ad.</summary>
-        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Href { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -4846,17 +4808,8 @@ namespace eBayApi.Sell.Marketing
     public partial class AdReferences 
     {
         /// <summary>A list of ad IDs and the URIs that point to them.</summary>
-        [Newtonsoft.Json.JsonProperty("ads", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("ads", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<AdReference> Ads { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -4866,33 +4819,24 @@ namespace eBayApi.Sell.Marketing
     public partial class AdResponse 
     {
         /// <summary>A unique eBay-assigned ID for an ad. This ID is generated when an ad is created.</summary>
-        [Newtonsoft.Json.JsonProperty("adId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("adId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AdId { get; set; }
     
         /// <summary>An array of errors associated with the request.</summary>
-        [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Error> Errors { get; set; }
     
         /// <summary>The URI that points to the ad.</summary>
-        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Href { get; set; }
     
         /// <summary>A unique eBay-assigned ID for a listing that is generated when the listing is created. Note: This field accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</summary>
-        [Newtonsoft.Json.JsonProperty("listingId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("listingId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ListingId { get; set; }
     
         /// <summary>An HTTP status code that indicates the response-status of the request. Check this code to see if the ad was successful created.</summary>
-        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int StatusCode { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? StatusCode { get; set; }
     
     
     }
@@ -4902,17 +4846,8 @@ namespace eBayApi.Sell.Marketing
     public partial class Ads 
     {
         /// <summary>A list of ad IDs and the URIs that point to them.</summary>
-        [Newtonsoft.Json.JsonProperty("ads", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("ads", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Ad> Ads1 { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -4922,21 +4857,12 @@ namespace eBayApi.Sell.Marketing
     public partial class Amount 
     {
         /// <summary>The currency in which the amount value is expressed. The currency is represented as a 3-letter ISO4217 currency code. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/CurrencyCodeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("currency", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Currency { get; set; }
     
         /// <summary>The value of the amount in the specified currency. The value of currency defaults to the standard currency used by the marketplace on which the item is listed.</summary>
-        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Value { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -4946,17 +4872,8 @@ namespace eBayApi.Sell.Marketing
     public partial class BaseResponse 
     {
         /// <summary>The container for any warning error messages generated by the request. Warnings are not fatal in that they do not prevent the call from running and returning a response, but they should be reviewed to ensure your requests are returning the responses you expect.</summary>
-        [Newtonsoft.Json.JsonProperty("warnings", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("warnings", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Error> Warnings { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -4966,17 +4883,8 @@ namespace eBayApi.Sell.Marketing
     public partial class BulkAdResponse 
     {
         /// <summary>A list of ads processed by the call.</summary>
-        [Newtonsoft.Json.JsonProperty("responses", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("responses", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<AdResponse> Responses { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -4986,17 +4894,8 @@ namespace eBayApi.Sell.Marketing
     public partial class BulkCreateAdRequest 
     {
         /// <summary>An array of listing IDs and their associated bid percentages, which the request uses to create ads in bulk. This request accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs). Maximum: 500 IDs per call</summary>
-        [Newtonsoft.Json.JsonProperty("requests", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("requests", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<CreateAdRequest> Requests { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5006,37 +4905,19 @@ namespace eBayApi.Sell.Marketing
     public partial class BulkCreateAdsByInventoryReferenceRequest 
     {
         /// <summary>A lsit of inventory reference ID and inventory reference type pairs, and the bid percentage, which the call uses to create ads in bulk.</summary>
-        [Newtonsoft.Json.JsonProperty("requests", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("requests", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<CreateAdsByInventoryReferenceRequest> Requests { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the response fields used by the bulkCreateAdsByInventoryReference method.</summary>
+    /// <summary>This type defines the response fields used by the &lt;b&gt;bulkCreateAdsByInventoryReference&lt;/b&gt; method.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class BulkCreateAdsByInventoryReferenceResponse 
     {
         /// <summary>A list of inventory reference IDs, and their bid percentages, that the call processed.</summary>
-        [Newtonsoft.Json.JsonProperty("responses", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("responses", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<CreateAdsByInventoryReferenceResponse> Responses { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5046,77 +4927,41 @@ namespace eBayApi.Sell.Marketing
     public partial class BulkDeleteAdRequest 
     {
         /// <summary>An array of the listing IDs that identify the ads to remove. Note: This request accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</summary>
-        [Newtonsoft.Json.JsonProperty("requests", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("requests", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<DeleteAdRequest> Requests { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines a container that lists the ads that bulkDeleteAdsByListingId deleted.</summary>
+    /// <summary>This type defines a container that lists the ads that &lt;b&gt;bulkDeleteAdsByListingId&lt;/b&gt; deleted.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class BulkDeleteAdResponse 
     {
         /// <summary>An array of the ads that were deleted by the bulkDeleteAdsByListingId request, including information associated with each individual delete request.</summary>
-        [Newtonsoft.Json.JsonProperty("responses", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("responses", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<DeleteAdResponse> Responses { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the request fields that bulkDeleteAdsByInventoryReference uses to delete ads in bulk.</summary>
+    /// <summary>This type defines the request fields that &lt;b&gt;bulkDeleteAdsByInventoryReference&lt;/b&gt; uses to delete ads in bulk.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class BulkDeleteAdsByInventoryReferenceRequest 
     {
         /// <summary>A list of inventory referenceID and inventory reference type pairs that specify the set of ads to remove in bulk.</summary>
-        [Newtonsoft.Json.JsonProperty("requests", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("requests", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<DeleteAdsByInventoryReferenceRequest> Requests { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines a container that lists the ads that bulkDeleteAdsByInventoryReference deleted.</summary>
+    /// <summary>This type defines a container that lists the ads that &lt;b&gt;bulkDeleteAdsByInventoryReference&lt;/b&gt; deleted.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class BulkDeleteAdsByInventoryReferenceResponse 
     {
         /// <summary>An array of the ads that were deleted by the bulkDeleteAdsByInventoryReference request, including information associated with each individual delete request.</summary>
-        [Newtonsoft.Json.JsonProperty("responses", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("responses", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<DeleteAdsByInventoryReferenceResponse> Responses { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5125,46 +4970,35 @@ namespace eBayApi.Sell.Marketing
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class Campaign 
     {
-        /// <summary>The selection rules (criterion) used to select the listings for a campaign.</summary>
-        [Newtonsoft.Json.JsonProperty("campaignCriterion", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaignCriterion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public CampaignCriterion CampaignCriterion { get; set; }
     
         /// <summary>A unique eBay-assigned ID for a campaign. This ID is generated when a campaign is created.</summary>
-        [Newtonsoft.Json.JsonProperty("campaignId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaignId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CampaignId { get; set; }
     
         /// <summary>A seller-defined name for the campaign. This value must be unique for the seller. You can use any alphanumeric characters in the name, except the less than (&amp;lt;) or greater than (&amp;gt;) characters.Max length: 80 characters</summary>
-        [Newtonsoft.Json.JsonProperty("campaignName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaignName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CampaignName { get; set; }
     
         /// <summary>Indicates the status of the campaign, such as RUNNING, PAUSED, and ENDED. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/CampaignStatusEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("campaignStatus", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaignStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CampaignStatus { get; set; }
     
         /// <summary>The date and time the campaign ends, in UTC format (yyyy-MM-ddThh:mm:ssZ). If this field is blank (code&amp;gt;null), it indicates a campaign that has no end date. For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EndDate { get; set; }
     
-        /// <summary>This field specifies the funding model that defines how the Promoted Listing fee is calculated. The seller is assessed the fee if an item sells via a Promoted Listings action (such as buyer clicking on a Promoted Listings ad). currently, the only funding model supported is COST_PER_SALE.</summary>
-        [Newtonsoft.Json.JsonProperty("fundingStrategy", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("fundingStrategy", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public FundingStrategy FundingStrategy { get; set; }
     
         /// <summary>The ID of the eBay marketplace where the campaign is hosted. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketplaceIdEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MarketplaceId { get; set; }
     
         /// <summary>The date and time the campaign starts, in UTC format (yyyy-MM-ddThh:mm:ssZ). For display purposes, convert this time into the local time of the seller. On the date specified, the service derives the keywords for each listing in the campaign, creates an ad for each listing, and associates each new ad with the campaign. The campaign starts after this process is completed. The amount of time it takes the service to start the campaign depends on the number of listings in the campaign. Call getCampaign to check the status of the campaign.</summary>
-        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StartDate { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5174,69 +5008,51 @@ namespace eBayApi.Sell.Marketing
     public partial class CampaignCriterion 
     {
         /// <summary>If set to true, eBay adds all inventory matching the campaign criterion to the campaign, including any new listings created from the items in your inventory. In other words, if you create a new listing, and it is is eligible for the Promoted Listings campaign (it is a multiple-quantity fixed-price listing that matches the selection rules of the campaign), it will be automatically added to the campaign.Default: false</summary>
-        [Newtonsoft.Json.JsonProperty("autoSelectFutureInventory", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool AutoSelectFutureInventory { get; set; }
+        [Newtonsoft.Json.JsonProperty("autoSelectFutureInventory", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AutoSelectFutureInventory { get; set; }
     
         /// <summary>This enum defines the criterion (selection rule) types. Currently, the only criterion type supported is INVENTORY_PARTITION. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/CriterionTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("criterionType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("criterionType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CriterionType { get; set; }
     
         /// <summary>Set of rules that selects the listings to include in the campaign. The following rules apply to the selection rules: Each set of selection rules are ORed with each other. Individual rules within a selection rule set are ANDed with each other. If a rule has a list of values (such a list of category IDs), the item need match only one of the values of the rule in order to be included in the campaign. Note: If an item matches multiple sets of rules or multiple rules within a selection rule set, the item is considered only once.Maximum number of rules: 10</summary>
-        [Newtonsoft.Json.JsonProperty("selectionRules", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("selectionRules", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<SelectionRule> SelectionRules { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the fields that paginate the campaigns returned by the request. The entire result set consists of 0 or more sequenced response pages, where each page consists of 0 or more items from the complete result set.</summary>
+    /// <summary>This type defines the fields that paginate the campaigns returned by the request. The entire &lt;i&gt;result set&lt;/i&gt; consists of 0 or more sequenced &lt;i&gt;response pages&lt;/i&gt;, where each page consists of 0 or more items from the complete result set.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class CampaignPagedCollection 
     {
         /// <summary>A list of campaigns contained on this page from the paginated response.</summary>
-        [Newtonsoft.Json.JsonProperty("campaigns", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaigns", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Campaign> Campaigns { get; set; }
     
         /// <summary>The URI of the current page of results from the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Href { get; set; }
     
         /// <summary>The number of items returned on a single page from the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Limit { get; set; }
+        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Limit { get; set; }
     
         /// <summary>The URI for the next page of results. This value is returned only if there is an additional page of results in the result set. Max length: 2048</summary>
-        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Next { get; set; }
     
         /// <summary>The value of the offset submitted in the request, which is the number of results to skip before listing the first returned result.</summary>
-        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Offset { get; set; }
+        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Offset { get; set; }
     
         /// <summary>The URI for the previous page of results. This value is returned only if there is a previous page of results in the result set. Max length: 2048</summary>
-        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Prev { get; set; }
     
         /// <summary>The total number of items in the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Total { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Total { get; set; }
     
     
     }
@@ -5246,17 +5062,8 @@ namespace eBayApi.Sell.Marketing
     public partial class Campaigns 
     {
         /// <summary>An array of campaigns and their details.</summary>
-        [Newtonsoft.Json.JsonProperty("campaigns", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaigns", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Campaign> Campaigns1 { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5266,29 +5073,19 @@ namespace eBayApi.Sell.Marketing
     public partial class CloneCampaignRequest 
     {
         /// <summary>A seller-defined name for the newly-cloned campaign. This value must be unique for the seller. You can use any alphanumeric characters in the name, except the less than (&amp;lt;) or greater than (&amp;gt;) characters.Max length: 80 characters</summary>
-        [Newtonsoft.Json.JsonProperty("campaignName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaignName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CampaignName { get; set; }
     
         /// <summary>The date and time the campaign ends, in UTC format (yyyy-MM-ddThh:mm:ssZ). If this field is blank (code&amp;gt;null), it indicates a campaign that has no end date. For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EndDate { get; set; }
     
-        /// <summary>This field specifies the funding model that defines how the Promoted Listing fee is calculated for the cloned campaign. The seller is assessed the fee if an item sells via a Promoted Listings action (such as buyer clicking on a Promoted Listings ad). currently, the only funding model supported is COST_PER_SALE.</summary>
-        [Newtonsoft.Json.JsonProperty("fundingStrategy", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("fundingStrategy", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public FundingStrategy FundingStrategy { get; set; }
     
         /// <summary>The date and time the cloned campaign starts, in UTC format (yyyy-MM-ddThh:mm:ssZ). For display purposes, convert this time into the local time of the seller. On the date specified, the service derives the keywords for each listing in the campaign, creates an ad for each listing, and associates each new ad with the campaign. The campaign starts after this process is completed. The amount of time it takes the service to start the campaign depends on the number of listings in the campaign. Call getCampaign to check the status of the campaign.</summary>
-        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StartDate { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5298,21 +5095,12 @@ namespace eBayApi.Sell.Marketing
     public partial class CreateAdRequest 
     {
         /// <summary>The user-defined bid percentage (also known as the ad rate) sets the level that eBay increases the visibility in search results for the associated listing. The higher the bidPercentage value, the more eBay promotes the listing. The value specified here is also used to calculate the Promoted Listings fee. This percentage value is multiplied by the final sales price to determine the fee. The Promoted Listings fee is determined at the time the transaction completes and the seller is assessed the fee only when an item sells through a Promoted Listings ad campaign. bidPercentage is a single precision value that is guided by the following rules: These values are valid: &amp;nbsp;&amp;nbsp;&amp;nbsp;1, &amp;nbsp;&amp;nbsp;&amp;nbsp;1.0, &amp;nbsp;&amp;nbsp;&amp;nbsp;4.1, &amp;nbsp;&amp;nbsp;&amp;nbsp;5.0, &amp;nbsp;&amp;nbsp;&amp;nbsp;5.5, ... These values are not valid: &amp;nbsp;&amp;nbsp;&amp;nbsp;0.01, &amp;nbsp;&amp;nbsp;&amp;nbsp;10.75, &amp;nbsp;&amp;nbsp;&amp;nbsp;99.99, &amp;nbsp;&amp;nbsp;&amp;nbsp;and so on. If a bid percentage is not provided for an ad, eBay uses the default bid percentage of the associated campaign.Minimum value: 1.0 Maximum value: 100.0</summary>
-        [Newtonsoft.Json.JsonProperty("bidPercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("bidPercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string BidPercentage { get; set; }
     
         /// <summary>A unique eBay-assigned ID for a listing that is generated when the listing is created. Note: This field accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</summary>
-        [Newtonsoft.Json.JsonProperty("listingId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("listingId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ListingId { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5322,25 +5110,16 @@ namespace eBayApi.Sell.Marketing
     public partial class CreateAdsByInventoryReferenceRequest 
     {
         /// <summary>The user-defined bid percentage (also known as the ad rate) sets the level that eBay increases the visibility in search results for the associated listing. The higher the bidPercentage value, the more eBay promotes the listing. The value specified here is also used to calculate the Promoted Listings fee. This percentage value is multiplied by the final sales price to determine the fee. The Promoted Listings fee is determined at the time the transaction completes and the seller is assessed the fee only when an item sells through a Promoted Listings ad campaign. bidPercentage is a single precision value that is guided by the following rules: These values are valid: &amp;nbsp;&amp;nbsp;&amp;nbsp;1, &amp;nbsp;&amp;nbsp;&amp;nbsp;1.0, &amp;nbsp;&amp;nbsp;&amp;nbsp;4.1, &amp;nbsp;&amp;nbsp;&amp;nbsp;5.0, &amp;nbsp;&amp;nbsp;&amp;nbsp;5.5, ... These values are not valid: &amp;nbsp;&amp;nbsp;&amp;nbsp;0.01, &amp;nbsp;&amp;nbsp;&amp;nbsp;10.75, &amp;nbsp;&amp;nbsp;&amp;nbsp;99.99, &amp;nbsp;&amp;nbsp;&amp;nbsp;and so on. If a bid percentage is not provided for an ad, eBay uses the default bid percentage of the associated campaign.Minimum value: 1.0 Maximum value: 100.0</summary>
-        [Newtonsoft.Json.JsonProperty("bidPercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("bidPercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string BidPercentage { get; set; }
     
         /// <summary>The seller's inventory reference ID for a listing. An inventory reference ID can be either a seller-defined SKU value or an inventoryItemGroupKey. An inventoryItemGroupKey is a value used by the Inventory API to indicate a listing that's the parent of a inventory item group (a multi-variation listing, such as a listing for shirt that's available in multiple sizes and colors). You must always specify both an inventory_reference_id and an inventory_reference_type.</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceId { get; set; }
     
         /// <summary>Indicates the item type of the listing referenced by inventoryReferenceId, and can be either INVENTORY_ITEM or INVENTORY_ITEM_GROUP. You must always pair an inventory_reference_id with and inventory_reference_type. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/InventoryReferenceTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceType { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5350,33 +5129,24 @@ namespace eBayApi.Sell.Marketing
     public partial class CreateAdsByInventoryReferenceResponse 
     {
         /// <summary>A list of ad IDs (based on their inventory reference IDs) and the URIs that point to them.</summary>
-        [Newtonsoft.Json.JsonProperty("ads", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("ads", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<AdReference> Ads { get; set; }
     
         /// <summary>An array of errors or warnings associated with the create-ads request.</summary>
-        [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Error> Errors { get; set; }
     
         /// <summary>The seller's inventory reference ID that's associated with the ad.</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceId { get; set; }
     
         /// <summary>Indicates the item type of the listing referenced by inventoryReferenceId, and can be either INVENTORY_ITEM or INVENTORY_ITEM_GROUP. You must always pair an inventory_reference_id with and inventory_reference_type. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/InventoryReferenceTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceType { get; set; }
     
         /// <summary>An HTTP status code that indicates the response-status of the request. Check this code to see if the ads were successful created.</summary>
-        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int StatusCode { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? StatusCode { get; set; }
     
     
     }
@@ -5385,94 +5155,74 @@ namespace eBayApi.Sell.Marketing
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class CreateCampaignRequest 
     {
-        /// <summary>Container for the fields that define the criteria for a rule-based campaign.</summary>
-        [Newtonsoft.Json.JsonProperty("campaignCriterion", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaignCriterion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public CampaignCriterion CampaignCriterion { get; set; }
     
         /// <summary>A seller-defined name for the campaign. This value must be unique for the seller. You can use any alphanumeric characters in the name, except the less than (&amp;lt;) or greater than (&amp;gt;) characters.Max length: 80 characters</summary>
-        [Newtonsoft.Json.JsonProperty("campaignName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaignName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CampaignName { get; set; }
     
         /// <summary>The date and time the campaign ends, in UTC format (yyyy-MM-ddThh:mm:ssZ). If this field is blank (code&amp;gt;null), it indicates a campaign that has no end date. For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EndDate { get; set; }
     
-        /// <summary>This field specifies the funding model that defines how the Promoted Listing fee is calculated. The seller is assessed the fee if an item sells via a Promoted Listings action (such as buyer clicking on a Promoted Listings ad). currently, the only funding model supported is COST_PER_SALE.</summary>
-        [Newtonsoft.Json.JsonProperty("fundingStrategy", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("fundingStrategy", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public FundingStrategy FundingStrategy { get; set; }
     
         /// <summary>The ID of the eBay marketplace where the campaign is hosted. Note the X-EBAY-C-MARKETPLACE-Id header value is ignored for this purpose. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketplaceIdEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MarketplaceId { get; set; }
     
         /// <summary>The date and time the campaign starts, in UTC format (yyyy-MM-ddThh:mm:ssZ). For display purposes, convert this time into the local time of the seller. On the date specified, the service derives the keywords for each listing in the campaign, creates an ad for each listing, and associates each new ad with the campaign. The campaign starts after this process is completed. The amount of time it takes the service to start the campaign depends on the number of listings in the campaign. Call getCampaign to check the status of the campaign.</summary>
-        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StartDate { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the rules that govern the generation of a report task and the criteria that's used to create the report. The report-generation rules include the starting and ending dates for the report. Report-task criteria includes the report dimensions, metrics, listings covered in the report, and so on. For information on the required and optional fields for each report type, see Reading Promoted Listings reports.</summary>
+    /// <summary>This type defines the rules that govern the generation of a report task and the criteria that's used to create the report. The report-generation rules include the starting and ending dates for the report. Report-task criteria includes the report dimensions, metrics, listings covered in the report, and so on. For information on the required and optional fields for each report type, see &lt;a href="/api-docs/sell/static/marketing/pl-reports.html"&gt;Reading Promoted Listings reports&lt;/a&gt;.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class CreateReportTask 
     {
         /// <summary>Required if reportType is set to CAMPAIGN_PERFORMANCE_REPORT or CAMPAIGN_PERFORMANCE_SUMMARY_REPORT. A list of campaign IDs to be included in the report task. Call getCampaigns to get a list of the current campaign IDs for a seller. Note: The API currently supports only a single campaign ID per report task. Maximum: 1</summary>
-        [Newtonsoft.Json.JsonProperty("campaignIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaignIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> CampaignIds { get; set; }
     
         /// <summary>The date and time defining the start of the timespan covered by the report. For display purposes, convert this time into the local time of the seller. Valid format (UTC): yyyy-MM-ddThh:mm:ss.sssZ</summary>
-        [Newtonsoft.Json.JsonProperty("dateFrom", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dateFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DateFrom { get; set; }
     
         /// <summary>The date and time defining the end of the report timespan. For display purposes, convert this time into the local time of the seller. Valid format (UTC): yyyy-MM-ddThh:mm:ss.sssZ</summary>
-        [Newtonsoft.Json.JsonProperty("dateTo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dateTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DateTo { get; set; }
     
         /// <summary>The list of the dimensions applied to the report. A dimension is an attribute to which the report data applies. For example, if you set dimensionKey to campaign_id in a Campaign Performance Report, the data will apply to the entire ad campaign. For information on the dimensions and how to specify them, see Reading Promoted Listings reports.</summary>
-        [Newtonsoft.Json.JsonProperty("dimensions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dimensions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Dimension> Dimensions { get; set; }
     
         /// <summary>Required if reportType is set to INVENTORY_PERFORMANCE_REPORT. The list of inventory reference IDs to include in the report. An inventory reference ID can be either a seller-defined SKU value or an inventoryItemGroupKey. An inventoryItemGroupKey is seller-defined ID for an inventory item group (a multiple-variation listing), and is created and used by the Inventory API.Maximum: 500</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferences", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferences", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<InventoryReference> InventoryReferences { get; set; }
     
         /// <summary>Required if reportType is set to LISTING_PERFORMANCE_REPORT. An array of listing IDs to be included in the report. A listing ID is the eBay listing identifier that's generated when the listing is created. Note: This field accepts both a listingId, as generated by the Inventory API, and an itemId as used in the eBay Traditional API set (e.g., the Trading and Finding APIs). Maximum: 500</summary>
-        [Newtonsoft.Json.JsonProperty("listingIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("listingIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> ListingIds { get; set; }
     
         /// <summary>Required if reportType is set to ACCOUNT_PERFORMANCE_REPORT or INVENTORY_PERFORMANCE_REPORT. The ID for the eBay marketplace on which the report is based.Maximum: 1 For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketplaceIdEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MarketplaceId { get; set; }
     
         /// <summary>The list of metrics to be included in the report. Metrics are the quantitative measurements compiled into the report and the data returned is based on the specified dimension of the report. For example, if the dimension is campaign, the metrics for number of sales would be the number of sales in the campaign. However, if the dimension is listing, the number of sales represents the number of items sold in that listing. For information on metric keys and how to set them, see Reading Promoted Listings reports.Minimum: 1</summary>
-        [Newtonsoft.Json.JsonProperty("metricKeys", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("metricKeys", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> MetricKeys { get; set; }
     
         /// <summary>The file format of the report. Currently, the only supported format is TSV_GZIP, which is a gzip file with tab separated values. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/ReportFormatEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("reportFormat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportFormat { get; set; }
     
         /// <summary>The type of report to be generated, such as ACCOUNT_PERFORMANCE_REPORT, CAMPAIGN_PERFORMANCE_REPORT, and so on. Maximum: 1 For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/ReportTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("reportType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportType { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5482,17 +5232,8 @@ namespace eBayApi.Sell.Marketing
     public partial class DeleteAdRequest 
     {
         /// <summary>A unique eBay-assigned ID for a listing that is generated when the listing is created. Note: This request accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</summary>
-        [Newtonsoft.Json.JsonProperty("listingId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("listingId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ListingId { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5502,53 +5243,35 @@ namespace eBayApi.Sell.Marketing
     public partial class DeleteAdResponse 
     {
         /// <summary>The ID of the ad that was deleted.</summary>
-        [Newtonsoft.Json.JsonProperty("adId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("adId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AdId { get; set; }
     
         /// <summary>An array of the errors or warnings associated with the request.</summary>
-        [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Error> Errors { get; set; }
     
         /// <summary>A unique eBay-assigned ID for a listing that is generated when the listing is created. Note: This field accepts both listing IDs, as generated by the Inventory API, and an item IDs, as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</summary>
-        [Newtonsoft.Json.JsonProperty("listingId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("listingId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ListingId { get; set; }
     
         /// <summary>An HTTP status code that indicates the response-status of the request. Check this code to see if the ad was successfully deleted.</summary>
-        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int StatusCode { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? StatusCode { get; set; }
     
     
     }
     
-    /// <summary>This type defines the fields needed to delete an ad by its inventory reference ID. You must always supply both inventory_reference_id and inventory_reference_type.</summary>
+    /// <summary>This type defines the fields needed to delete an ad by its inventory reference ID.  You must always supply both &lt;b&gt;inventory_reference_id&lt;/b&gt; and &lt;b&gt;inventory_reference_type&lt;/b&gt;.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class DeleteAdsByInventoryReferenceRequest 
     {
         /// <summary>The seller's inventory reference ID for an ad to be deleted. An inventory reference ID can be either a seller-defined SKU value or an inventoryItemGroupKey. An inventoryItemGroupKey is a value used by the Inventory API to indicate a listing that's the parent of a inventory item group (a multi-variation listing, such as a listing for shirt that's available in multiple sizes and colors). You must always specify both an inventory_reference_id and an inventory_reference_type.</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceId { get; set; }
     
         /// <summary>Indicates the item type of the listing referenced by inventoryReferenceId, and can be either INVENTORY_ITEM or INVENTORY_ITEM_GROUP. You must always pair an inventory_reference_id with and inventory_reference_type. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/InventoryReferenceTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceType { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5558,81 +5281,54 @@ namespace eBayApi.Sell.Marketing
     public partial class DeleteAdsByInventoryReferenceResponse 
     {
         /// <summary>The list of ad IDs that were removed from the campaign.</summary>
-        [Newtonsoft.Json.JsonProperty("adIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("adIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> AdIds { get; set; }
     
         /// <summary>The container for the errors associated with the request.</summary>
-        [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Error> Errors { get; set; }
     
         /// <summary>The seller's inventory reference ID for a listing that's associated with the ad. An inventory reference ID can be either a seller-defined SKU value or an inventoryItemGroupKey. An inventoryItemGroupKey is a value used by the Inventory API to indicate a listing that's the parent of a inventory item group (a multi-variation listing, such as a listing for shirt that's available in multiple sizes and colors). You must always specify both an inventory_reference_id and an inventory_reference_type.</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceId { get; set; }
     
         /// <summary>Indicates the item type of the listing referenced by inventoryReferenceId, and can be either INVENTORY_ITEM or INVENTORY_ITEM_GROUP. You must always pair an inventory_reference_id with and inventory_reference_type. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/InventoryReferenceTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceType { get; set; }
     
         /// <summary>An HTTP status code that indicates the response-status of the request. Check this code to see if the ads were successfully deleted.</summary>
-        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int StatusCode { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("statusCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? StatusCode { get; set; }
     
     
     }
     
-    /// <summary>This type defines the annotation and dimension key used by the report. For information on how to set these values, see Reading Promoted Listings reports.</summary>
+    /// <summary>This type defines the annotation and dimension key used by the report. For information on how to set these values, see &lt;a href="/api-docs/sell/static/marketing/pl-reports.html"&gt;Reading Promoted Listings reports&lt;/a&gt;.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class Dimension 
     {
         /// <summary>A list of annotations associated with the dimension of the report.</summary>
-        [Newtonsoft.Json.JsonProperty("annotationKeys", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("annotationKeys", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> AnnotationKeys { get; set; }
     
         /// <summary>The name of the dimension on which the report is based. A dimension is an attribute to which the report data applies.</summary>
-        [Newtonsoft.Json.JsonProperty("dimensionKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dimensionKey", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DimensionKey { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the the annotation values associated with a dimension. Annotations are metadata of the dimension. For example, annotations for a listing ID could be listing_title or listing_quantity_sold.</summary>
+    /// <summary>This type defines the the annotation values associated with a dimension. Annotations are metadata of the dimension. For example, annotations for a listing ID could be &lt;code&gt;listing_title&lt;/code&gt; or &lt;code&gt;listing_quantity_sold&lt;/code&gt;.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class DimensionKeyAnnotation 
     {
         /// <summary>An annotation key associated with the dimension.</summary>
-        [Newtonsoft.Json.JsonProperty("annotationKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("annotationKey", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AnnotationKey { get; set; }
     
         /// <summary>The data type of the annotation key value. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/DataTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("dataType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dataType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DataType { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5642,121 +5338,79 @@ namespace eBayApi.Sell.Marketing
     public partial class DimensionMetadata 
     {
         /// <summary>The data type of the dimension value used to create the report. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/DataTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("dataType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dataType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DataType { get; set; }
     
         /// <summary>The name of the dimension used to create the report.</summary>
-        [Newtonsoft.Json.JsonProperty("dimensionKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dimensionKey", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DimensionKey { get; set; }
     
         /// <summary>An list of annotation keys associated with the specified dimension of the report.</summary>
-        [Newtonsoft.Json.JsonProperty("dimensionKeyAnnotations", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dimensionKeyAnnotations", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<DimensionKeyAnnotation> DimensionKeyAnnotations { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This container defines the promotional discount as either a monetary amount or a percentage of the sales price. Important!: You must populate one and only one of the fields in this container: amountOffItem amountOffOrder percentageOffItem percentageOffOrder Tip: Refer to Configuring discounts for threshold promotions for information and examples on how to combine discountBenefit and discountSpecification values to create different types of promotions.</summary>
+    /// <summary>This container defines the promotional discount as either a monetary amount or a percentage of the sales price.  &lt;p class="tablenote"&gt;&lt;b&gt;Important!:&lt;/b&gt; You must populate one and only one of the fields in this container: &lt;ul&gt;&lt;li&gt;&lt;b&gt;amountOffItem&lt;/b&gt;&lt;/li&gt; &lt;li&gt;&lt;b&gt;amountOffOrder&lt;/b&gt;&lt;/li&gt; &lt;li&gt;&lt;b&gt;percentageOffItem&lt;/b&gt;&lt;/li&gt; &lt;li&gt;&lt;b&gt;percentageOffOrder&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;  &lt;p class="tablenote"&gt;&lt;b&gt;Tip:&lt;/b&gt; Refer to &lt;a href="/api-docs/sell/static/marketing/pm-specifying-discounts.html"&gt;Configuring discounts for threshold promotions&lt;/a&gt; for information and examples on how to combine &lt;b&gt;discountBenefit&lt;/b&gt; and &lt;b&gt;discountSpecification&lt;/b&gt; values to create different types of promotions.&lt;/p&gt;</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class DiscountBenefit 
     {
-        /// <summary>The monetary amount that is discounted off an item (or items) when the promotion criteria is met. For threshold promotions, where the buyer triggers the discount, the valid values for this field are: &amp;nbsp; 5, 6, 7, 8, 9, 10, 15, 20, 25, &amp;nbsp; 30, 35, 40, 45, 50, 55, 60, 65, &amp;nbsp; 70, 75, 80, 85, 90, 95, 100, 110, &amp;nbsp; 120, 125, 150, 200, 250 For markdown promotions, the range is greater, as outlined below and detailed more precisely here: $1 increments from $5 to $100 $5 increments from $105 to $1,000 $100 increments from $1,100 to $15,000</summary>
-        [Newtonsoft.Json.JsonProperty("amountOffItem", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("amountOffItem", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount AmountOffItem { get; set; }
     
-        /// <summary>Used for threshold promotions, this is the monetary amount that is discounted off an order when the promotion criteria is met. Because this field is valid only for orders, it's not a valid combination to use with markdown promotions. Valid values for the associated amountOffOrder.value field: &amp;nbsp; 5, 6, 7, 8, 9, 10, 15, 20, 25, &amp;nbsp; 30, 35, 40, 45, 50, 55, 60, 65, &amp;nbsp; 70, 75, 80, 85, 90, 95, 100, 110, &amp;nbsp; 120, 125, 150, 200, 250</summary>
-        [Newtonsoft.Json.JsonProperty("amountOffOrder", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("amountOffOrder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount AmountOffOrder { get; set; }
     
         /// <summary>The percentage applied to the sales price that is discounted off the promoted item (or items) when the promotion criteria is met. Valid integer values for percentage off: &amp;nbsp;&amp;nbsp;Min: 5 &amp;nbsp;&amp;nbsp;Max: 80</summary>
-        [Newtonsoft.Json.JsonProperty("percentageOffItem", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("percentageOffItem", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PercentageOffItem { get; set; }
     
         /// <summary>Used for threshold promotions, this is the percentage of the order price that is discounted off the order when the promotion criteria is met. This field is not value for markdown promotions. Valid integer values for ORDER_DISCOUNT promotions: &amp;nbsp;&amp;nbsp;Min: 5 &amp;nbsp;&amp;nbsp;Max: 80 For VOLUME_DISCOUNT promotions: Must be set to 0 for the first discount rule, then a minimum of 5 for the subsequent discount rules.</summary>
-        [Newtonsoft.Json.JsonProperty("percentageOffOrder", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("percentageOffOrder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PercentageOffOrder { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This complex type defines a promotion as being either a monetary amount or a percentage of a sales price that's subtracted from the price of an item or order. Set the amount of the discount and the rules that govern when the discount triggers using the discountBenefit and discountSpecification fields. Note: In volume pricing promotions, you must configure at least two discountRule containers and at most four.</summary>
+    /// <summary>This complex type defines a promotion as being either a monetary amount or a percentage of a sales price that's subtracted from the price of an item or order. &lt;p&gt;Set the amount of the discount and the rules that govern when the discount triggers using the &lt;b&gt;discountBenefit&lt;/b&gt; and &lt;b&gt;discountSpecification&lt;/b&gt; fields.&lt;/p&gt;  &lt;p class="tablenote"&gt;&lt;b&gt;Note:&lt;/b&gt; In &lt;b&gt;volume pricing promotions&lt;/b&gt;, you must configure at least two &lt;b&gt;discountRule&lt;/b&gt; containers and at most four.&lt;/p&gt;</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class DiscountRule 
     {
-        /// <summary>This container defines the promotional discount as either a monetary amount or a percentage of the sales price. Note: When configuring promotion benefits, populate just one of the following fields in the discountBenefit container: amountOffItem amountOffOrder percentageOffItem percentageOffOrder For volume pricing, only percentageOffOrder is applicable as a discountBenefit. Also, the first discountBenefit container in a volume pricing configuration must set percentageOffOrder to 0. Tip: Refer to Configuring discounts for threshold promotions for information and examples on how to combine discountBenefit and discountSpecification to create different types of promotions.</summary>
-        [Newtonsoft.Json.JsonProperty("discountBenefit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("discountBenefit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DiscountBenefit DiscountBenefit { get; set; }
     
-        /// <summary>This container defines the criteria for when the discounts of a promotion trigger, such as the minimum quantity that the buyer must purchase before the promotion kicks in. The promotional discount is applied each time the criteria defined by this container is met. When configuring the rules that govern when the discounts are applied, populate just one of the following fields in the discountSpecification container: minAmount minQuantity forEachQuantity forEachAmount Important: When configuring volume pricing promotions, only minQuantity is applicable as a discountSpecification. Also, the configuration for minQuantity in a volume pricing configuration is specific. In the first discountSpecification container, set minQuantity to 1, and in the second, set minQuantity to 2. If you include a third discountRules pair, minQuantity must be set to 3, and in a fourth, it must be set to 4. Also, you must set a ruleOrder value in each discountRules container. In the first container, discountRules must be set to 1, and in each subsequent container, the value be be incremented by 1. For more, see Configuring volume pricing discounts. Tip: see Configuring discounts for threshold promotions for information and examples on how to combine discountBenefit and discountSpecification to create different types of promotions.</summary>
-        [Newtonsoft.Json.JsonProperty("discountSpecification", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("discountSpecification", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DiscountSpecification DiscountSpecification { get; set; }
     
         /// <summary>Required if: you are creating a volume pricing promotion. This field indicates the order in which the discountRules are presented. The value specified for this field must equal the associated minQuantity value.</summary>
-        [Newtonsoft.Json.JsonProperty("ruleOrder", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int RuleOrder { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("ruleOrder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? RuleOrder { get; set; }
     
     
     }
     
-    /// <summary>This container defines the criteria for when the discounts of a promotion trigger, such as the minimum quantity the buyer must purchase before the promotion kicks in. The promotional discount is applied each time the criteria defined by this container is met. Note: When configuring the rules that govern when the discounts are applied, populate just one of the following fields in the discountSpecification container: minAmount minQuantity forEachQuantity forEachAmount Tip: Refer to Configuring discounts for threshold promotions for information and examples on how to combine discountBenefit and discountSpecification to create different types of promotions.</summary>
+    /// <summary>This container defines the criteria for when the discounts of a promotion trigger, such as the minimum quantity the buyer must purchase before the promotion kicks in. The promotional discount is applied each time the criteria defined by this container is met.  &lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; When configuring the rules that govern when the discounts are applied, populate just one of the following fields in the &lt;b&gt;discountSpecification&lt;/b&gt; container:&lt;/p&gt;  &lt;ul&gt;&lt;li&gt;&lt;b&gt;minAmount&lt;/b&gt;&lt;/li&gt; &lt;li&gt;&lt;b&gt;minQuantity&lt;/b&gt;&lt;/li&gt; &lt;li&gt;&lt;b&gt;forEachQuantity&lt;/b&gt;&lt;/li&gt; &lt;li&gt;&lt;b&gt;forEachAmount&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt; &lt;p class="tablenote"&gt;&lt;b&gt;Tip:&lt;/b&gt; Refer to &lt;a href="/api-docs/sell/static/marketing/pm-specifying-discounts.html"&gt;Configuring discounts for threshold promotions&lt;/a&gt; for information and examples on how to combine &lt;b&gt;discountBenefit&lt;/b&gt; and &lt;b&gt;discountSpecification&lt;/b&gt; to create different types of promotions.&lt;/p&gt;</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class DiscountSpecification 
     {
-        /// <summary>The monetary amount that must be spent on promoted items before the promotional discount is applied. Valid values for the associated forEachAmount.value field: &amp;nbsp; 5, 10, 15, 20, 25, 30, 35, 40, 45, 49, &amp;nbsp; 50, 55, 59, 60, 65, 69, 70, 75, 79, 80, &amp;nbsp; 85, 89, 90, 95, 99, 100, 110, 120, 125, &amp;nbsp; 149, 150, 175, 199, 200, 249, 250, 299, &amp;nbsp; 300, 350, 399, 400, 450, 499, 500</summary>
-        [Newtonsoft.Json.JsonProperty("forEachAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("forEachAmount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount ForEachAmount { get; set; }
     
         /// <summary>The number of items that must be purchased in order to qualify for the discount. Valid values: &amp;nbsp; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, &amp;nbsp; 12, 13, 14, 15, 16, 17, 18, 19 &amp;nbsp; 20, 25, 50, 75, 100</summary>
-        [Newtonsoft.Json.JsonProperty("forEachQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int ForEachQuantity { get; set; }
+        [Newtonsoft.Json.JsonProperty("forEachQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? ForEachQuantity { get; set; }
     
-        /// <summary>Known as the &amp;quot;threshold amount&amp;quot;, the minimum dollar amount that needs to be spent on promoted items in order to qualify for the promotion's discount. Valid values for the associated minAmount.value field: &amp;nbsp; 5, 10, 15, 20, 25, 30, 35, 40, 45, 49, &amp;nbsp; 50, 55, 59, 60, 65, 69, 70, 75, 79, 80, &amp;nbsp; 85, 89, 90, 95, 99, 100, 110, 120, &amp;nbsp; 125, 149, 150, 175, 199, 200, 249, 250, 299, &amp;nbsp; 300, 350, 399, 400, 450, 499, 500</summary>
-        [Newtonsoft.Json.JsonProperty("minAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("minAmount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount MinAmount { get; set; }
     
         /// <summary>The minimum quantity of promoted items that needs to be bought in order to qualify for the promotion's discount. Valid values: &amp;nbsp; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, &amp;nbsp; 12, 13, 14, 15, 16, 17, 18, 19 &amp;nbsp; 20, 25, 50, 75, 100</summary>
-        [Newtonsoft.Json.JsonProperty("minQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int MinQuantity { get; set; }
+        [Newtonsoft.Json.JsonProperty("minQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? MinQuantity { get; set; }
     
         /// <summary>Use this field to configure &amp;quot;Buy One Get One&amp;quot; (or BOGO) promotions. You must couple this field with forEachQuantity and an amountOffItem or percentOffItem field to configure your BOGO promotion. This field is not valid with order-based promotions. The value of this field represents the number of items to be discounted when other promotion criteria is met. For example, when the buyer adds the number of items identified by the forEachQuantity value to their cart, they are then eligible to receive the stated discount from an additional number of like items (the number of which is identified by this field) when they add those items to their cart. To receive the discount, the buyer must purchase the number of items indicated by forEachQuantity plus the number indicated by this field. Valid values: &amp;nbsp; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</summary>
-        [Newtonsoft.Json.JsonProperty("numberOfDiscountedItems", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int NumberOfDiscountedItems { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("numberOfDiscountedItems", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? NumberOfDiscountedItems { get; set; }
     
     
     }
@@ -5766,49 +5420,40 @@ namespace eBayApi.Sell.Marketing
     public partial class Error 
     {
         /// <summary>The category type for this error or warning. This field can have one of three values: Application: Indicates an exception or error occurred in the application code or at runtime. Examples include catching an exception in a service's business logic, system failures, or request errors from a dependency. Business: Used when your service or a dependent service refused to continue processing on the resource because of a business rule violation such as &amp;quot;Seller does not ship items to Antarctica&amp;quot; or &amp;quot;Buyer ineligible to purchase an alcoholic item&amp;quot;. Business errors are not syntactical input errors. Request: Used when there is anything wrong with the request, such as authentication, syntactical errors, rate limiting or missing headers, bad HTTP header values, and so on.</summary>
-        [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Category { get; set; }
     
         /// <summary>The name of the primary system where the error occurred. This is relevant for application errors.</summary>
-        [Newtonsoft.Json.JsonProperty("domain", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("domain", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Domain { get; set; }
     
         /// <summary>A positive integer that uniquely identifies the specific error condition that occurred. Your application can use error codes as identifiers in your customized error-handling algorithms.</summary>
-        [Newtonsoft.Json.JsonProperty("errorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int ErrorId { get; set; }
+        [Newtonsoft.Json.JsonProperty("errorId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? ErrorId { get; set; }
     
         /// <summary>An array of reference IDs that identify the specific request elements most closely associated to the error or warning, if any. For JSON, use JSONPath notation.</summary>
-        [Newtonsoft.Json.JsonProperty("inputRefIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inputRefIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> InputRefIds { get; set; }
     
         /// <summary>A detailed description of the condition that caused the error or warning and information on what to do to correct the problem. The string is normally 100-200 characters in length, but is not required to be such.</summary>
-        [Newtonsoft.Json.JsonProperty("longMessage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("longMessage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string LongMessage { get; set; }
     
         /// <summary>A short description of the condition that caused the error or warning. This value is at most 50 characters long and, if applicable, is localized in the end user's requested locale.</summary>
-        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Message { get; set; }
     
         /// <summary>An array of reference IDs that identify the specific response elements most closely associated to the error or warning, if any. The path format is the same as inputRefId.</summary>
-        [Newtonsoft.Json.JsonProperty("outputRefIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("outputRefIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> OutputRefIds { get; set; }
     
         /// <summary>An array that contains contextual information about the error or warning. The list often includes the parameter or input fields that triggered the warning or error condition.</summary>
-        [Newtonsoft.Json.JsonProperty("parameters", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("parameters", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<ErrorParameter> Parameters { get; set; }
     
         /// <summary>The name of the subdomain in which the error or warning occurred. For example, checkout is a subdomain in the buying domain.</summary>
-        [Newtonsoft.Json.JsonProperty("subdomain", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("subdomain", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Subdomain { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5818,97 +5463,60 @@ namespace eBayApi.Sell.Marketing
     public partial class ErrorParameter 
     {
         /// <summary>Name of the entity that threw the error.</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Name { get; set; }
     
         /// <summary>The value that was set for the element specified in the name field.</summary>
-        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Value { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines how the Promoted Listing fee is calculated when fundingModel is set to COST_PER_SALE.</summary>
+    /// <summary>This type defines how the Promoted Listing fee is calculated when &lt;b&gt;fundingModel&lt;/b&gt; is set to &lt;code&gt;COST_PER_SALE&lt;/code&gt;.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class FundingStrategy 
     {
         /// <summary>The user-defined bid percentage (also known as the ad rate) sets the level that eBay increases the visibility in search results for the associated listing. The higher the bidPercentage value, the more eBay promotes the listing. The value specified here is also used to calculate the Promoted Listings fee. This percentage value is multiplied by the final sales price to determine the fee. The Promoted Listings fee is determined at the time the transaction completes and the seller is assessed the fee only when an item sells through a Promoted Listings ad campaign. bidPercentage is a single precision value that is guided by the following rules: These values are valid: &amp;nbsp;&amp;nbsp;&amp;nbsp;1, &amp;nbsp;&amp;nbsp;&amp;nbsp;1.0, &amp;nbsp;&amp;nbsp;&amp;nbsp;4.1, &amp;nbsp;&amp;nbsp;&amp;nbsp;5.0, &amp;nbsp;&amp;nbsp;&amp;nbsp;5.5, ... These values are not valid: &amp;nbsp;&amp;nbsp;&amp;nbsp;0.01, &amp;nbsp;&amp;nbsp;&amp;nbsp;10.75, &amp;nbsp;&amp;nbsp;&amp;nbsp;99.99, &amp;nbsp;&amp;nbsp;&amp;nbsp;and so on. If a bid percentage is not provided for an ad, eBay uses the default bid percentage of the associated campaign.Minimum value: 1.0 Maximum value: 100.0</summary>
-        [Newtonsoft.Json.JsonProperty("bidPercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("bidPercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string BidPercentage { get; set; }
     
         /// <summary>Indicates the model that eBay uses to calculate the Promoted Listings fee. Currently, only COST_PER_SALE is supported. Default: COST_PER_SALE For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/FundingModelEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("fundingModel", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("fundingModel", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string FundingModel { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines either the selections rules or the list of listing IDs for the promotion. The &amp;quot;listing IDs&amp;quot; are are either the seller's item IDs or the eBay listing IDs.</summary>
+    /// <summary>This type defines either the selections rules or the list of listing IDs for the promotion. The "listing IDs" are are either the seller's item IDs or the eBay listing IDs.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class InventoryCriterion 
     {
         /// <summary>Indicates how the items to include in the promotion are selected. You can include inventory by ID, using rules, or globally include all your inventory. Valid values: INVENTORY_BY_RULE INVENTORY_BY_VALUE INVENTORY_ANY For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/InventoryCriterionEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryCriterionType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryCriterionType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryCriterionType { get; set; }
     
         /// <summary>Required if: InventoryCriterionType is set to INVENTORY_BY_VALUE, you must specify either inventoryItems or listingIds. An array of containers for the seller's inventory reference IDs (also known as an &amp;quot;SKU&amp;quot; or &amp;quot;custom label&amp;quot;) to be added to the promotion. Note: The request can have either inventoryItems or listingIds, but not both. Required: All listings in a promotion must offer an electronic payment method. Maximum: 500 parent items Maximum SKU or custom label length: 50 characters</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryItems", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryItems", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<InventoryItem> InventoryItems { get; set; }
     
         /// <summary>Required if: InventoryCriterionEnum is set to INVENTORY_BY_VALUE, you must specify either inventoryItems or listingIds. An array of eBay listing IDs to be added to the promotion. Note: The request can have either inventoryItems or listingIds, but not both. Required: All listings in a promotion must offer an electronic payment method. Maximum: 500 parent items</summary>
-        [Newtonsoft.Json.JsonProperty("listingIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("listingIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> ListingIds { get; set; }
     
-        /// <summary>Required if: InventoryCriterionEnum is set to INVENTORY_BY_RULE. This container defines a set of inventory selection rules for a promotion. When defining rule criteria, you must limit item exclusions to 100 IDs when you choose from live inventory.</summary>
-        [Newtonsoft.Json.JsonProperty("ruleCriteria", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("ruleCriteria", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public RuleCriteria RuleCriteria { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the fields for the seller inventory reference IDs (also known as an &amp;quot;SKU&amp;quot; or &amp;quot;custom label&amp;quot;).</summary>
+    /// <summary>This type defines the fields for the seller inventory reference IDs (also known as an "SKU" or "custom label").</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class InventoryItem 
     {
         /// <summary>The seller's inventory reference ID for a listing. Also known as the &amp;quot;SKU&amp;quot; or &amp;quot;custom label,&amp;quot; an inventory reference ID is either the ID of the listing or, if the listing has variations (such as a shirt that's available in multiple sizes and colors), the ID of the parent listing.</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceId { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5918,21 +5526,12 @@ namespace eBayApi.Sell.Marketing
     public partial class InventoryReference 
     {
         /// <summary>Required if if you supply an inventoryReferenceType The seller's inventory reference ID for a listing. An inventory reference is either the ID of a single listing or the ID of the parent of an item group listing (a multi-variation listing, such as a shirt that is available in multiple sizes and colors).</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceId { get; set; }
     
         /// <summary>Required if if you supply an inventoryReferenceId Indicates the type of the inventoryReferenceId. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/InventoryReferenceTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferenceType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InventoryReferenceType { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -5942,61 +5541,52 @@ namespace eBayApi.Sell.Marketing
     public partial class ItemPriceMarkdown 
     {
         /// <summary>If set to true, free shipping is applied to the first shipping service specified for the item. The first domestic shipping option is set to &amp;quot;free shipping,&amp;quot; regardless if the shipping optionType for that service is set to FLAT_RATE, CALCULATED, or NOT_SPECIFIED (freight). This flag essentially adds free shipping as a promotional bonus. Default: false</summary>
-        [Newtonsoft.Json.JsonProperty("applyFreeShipping", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool ApplyFreeShipping { get; set; }
+        [Newtonsoft.Json.JsonProperty("applyFreeShipping", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ApplyFreeShipping { get; set; }
     
         /// <summary>If set to true, eBay will automatically add inventory items to the markdown promotion if they meet the selectedInventoryDiscounts criteria specified for the markdown promotion. Default: false</summary>
-        [Newtonsoft.Json.JsonProperty("autoSelectFutureInventory", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool AutoSelectFutureInventory { get; set; }
+        [Newtonsoft.Json.JsonProperty("autoSelectFutureInventory", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AutoSelectFutureInventory { get; set; }
     
         /// <summary>If set to true, price increases (including removing the free shipping flag) are blocked and an error message is returned if a seller attempts to adjust the price of an item that's partaking in this markdown promotion. If set to false, an item is dropped from the markdown promotion if the seller adjusts the price. Default: false</summary>
-        [Newtonsoft.Json.JsonProperty("blockPriceIncreaseInItemRevision", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool BlockPriceIncreaseInItemRevision { get; set; }
+        [Newtonsoft.Json.JsonProperty("blockPriceIncreaseInItemRevision", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? BlockPriceIncreaseInItemRevision { get; set; }
     
         /// <summary>This field is required if you are configuring an MARKDOWN_SALE promotion. This is the seller-defined &amp;quot;tag line&amp;quot; for the offer, such as &amp;quot;Save on designer shoes.&amp;quot; A tag line appears under the &amp;quot;offer-type text&amp;quot; that is generated for the promotion. The text is displayed on the offer tile that is shown on the seller's All Offers page and on the event page for the promotion. Note: Offer-type text is a teaser that's presented throughout the buyer's journey through the sales flow and is generated by eBay. This text is not editable by the seller&amp;mdash;it's derived from the settings in the discountRules and discountSpecification fields&amp;mdash;and can be, for example, &amp;quot;20% off&amp;quot;. Maximum length: 50</summary>
-        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Description { get; set; }
     
         /// <summary>The date and time the promotion ends, in UTC format (yyyy-MM-ddThh:mm:ssZ). The value supplied for endDate must be at least 24 hours after the value supplied for the startDate of the markdown promotion. If this field is blank (null), it indicates the promotion has no end date. For display purposes, convert this time into the local time of the seller. Max value: 14 days for the AT, CH, DE, ES, FR, IE, IT, and UK, marketplaces. 45 days for all other marketplaces.</summary>
-        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EndDate { get; set; }
     
         /// <summary>The eBay marketplace ID of the site where the markdown promotion is hosted. Markdown promotions are supported on all eBay marketplaces. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketplaceIdEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MarketplaceId { get; set; }
     
         /// <summary>The seller-defined name or 'title' of the promotion that the seller can use to identify a promotion. This label is not displayed in end-user flows. Maximum length: 90</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Name { get; set; }
     
         /// <summary>This field is ignored in markdown promotions. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionPriorityEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("priority", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("priority", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Priority { get; set; }
     
         /// <summary>Required for MARKDOWN_SALE promotions, populate this field with a URL that points to an image to be used with the promotion. This image is displayed on the seller's All Offers page. The URL must point to either JPEG or PNG image and it must be a minimum of 500x500 pixels in dimension and cannot exceed 12Mb in size.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionImageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionImageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionImageUrl { get; set; }
     
         /// <summary>The current status of the promotion. When creating a new promotion, you must set this value to either DRAFT or SCHEDULED. Note that you must set this value to SCHEDULED when you update a RUNNING promotion. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionStatusEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("promotionStatus", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionStatus { get; set; }
     
         /// <summary>A list that defines the sets of selected items for the markdown promotion and the discount specified for promotion.</summary>
-        [Newtonsoft.Json.JsonProperty("selectedInventoryDiscounts", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("selectedInventoryDiscounts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<SelectedInventoryDiscount> SelectedInventoryDiscounts { get; set; }
     
         /// <summary>The date and time the promotion starts in UTC format (yyyy-MM-ddThh:mm:ssZ). For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StartDate { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -6006,61 +5596,51 @@ namespace eBayApi.Sell.Marketing
     public partial class ItemPromotion 
     {
         /// <summary>This flag is only relevant in volume pricing promotions (VOLUME_DISCOUNT). If set to true, the discount is applied only when the buyer purchases multiple quantities of a single item in the promotion. Otherwise, the promotional discount applies to multiple quantities of any items in the promotion. Note that this flag is not relevant if the inventoryCriterion container identifies a single listing ID for the promotion.</summary>
-        [Newtonsoft.Json.JsonProperty("applyDiscountToSingleItemOnly", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool ApplyDiscountToSingleItemOnly { get; set; }
+        [Newtonsoft.Json.JsonProperty("applyDiscountToSingleItemOnly", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ApplyDiscountToSingleItemOnly { get; set; }
     
         /// <summary>Required if you are configuring ORDER_DISCOUNT or MARKDOWN_SALE promotions (and not valid for VOLUME_DISCOUNT promotions). This is the seller-defined &amp;quot;tag line&amp;quot; for the offer, such as &amp;quot;Save on designer shoes.&amp;quot; The tag line appears under the &amp;quot;offer-type text&amp;quot; that is generated for the promotion and is displayed on the offer tile that's shown on the seller's All Offers page, and on the event page for the promotion. Note: Offer-type text is a teaser that's presented throughout the buyer's journey through the sales flow and is generated by eBay. The offer-type text is not editable by the seller&amp;mdash;it's derived from the settings in the discountRules and discountSpecification fields&amp;mdash;and can be, for example, &amp;quot;Extra 20% off when you buy 3+&amp;quot;. Maximum length: 50</summary>
-        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Description { get; set; }
     
         /// <summary>This container defines a promotion using the following two required fields: discountBenefit &amp;ndash; Defines a discount as either a monetary amount or a percentage that is subtracted from the sales price of an item, a set of items, or an order. discountSpecification &amp;ndash; Defines a set of rules that determine when the promotion is applied. Note: For volume pricing, you must specify at least two and not more than four discountBenefit/discountSpecification pairs. In addition, you must define each set of rules with a ruleOrder value that corresponds with the order of volume discounts you present. Tip: Refer to Specifying item promotion discounts for information and examples on how to combine discountBenefit and discountSpecification to create different types of promotions.</summary>
-        [Newtonsoft.Json.JsonProperty("discountRules", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("discountRules", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<DiscountRule> DiscountRules { get; set; }
     
         /// <summary>The date and time the promotion ends in UTC format (yyyy-MM-ddThh:mm:ssZ). If this field is blank (null), it indicates the promotion has no end date. For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EndDate { get; set; }
     
-        /// <summary>A container that defines either the listing IDs or the selection rules that specify the items to include in the promotion. Listing IDs can be either eBay listing IDs or a list of the seller's inventory reference IDs (know as SKUs or custom labels). See the selectionRules container for the rule criteria you can use to select inventory. Note: All listings in Promotions Manager promotions must support an electronic payment method.</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryCriterion", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryCriterion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public InventoryCriterion InventoryCriterion { get; set; }
     
         /// <summary>The eBay marketplace ID of the site where the threshold promotion is hosted. Threshold promotions are currently supported on a limited number of eBay marketplaces. Valid values: EBAY_AU = Australia EBAY_DE = Germany EBAY_ES = Spain EBAY_FR = France EBAY_GB = Great Britain EBAY_IT = Italy EBAY_US = United States For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketplaceIdEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MarketplaceId { get; set; }
     
         /// <summary>The seller-defined name or &amp;quot;title&amp;quot; of the promotion that the seller can use to identify a promotion. This label is not displayed in end-user flows. Maximum length: 90</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Name { get; set; }
     
         /// <summary>Applicable for only ORDER_DISCOUNT promotions, this field indicates the precedence of the promotion, which is used to determine the position of a promotion on the seller's All Offers page. If an item is associated with multiple promotions, the promotion with the higher priority takes precedence. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionPriorityEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("priority", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("priority", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Priority { get; set; }
     
         /// <summary>This field is optional for ORDER_DISCOUNT promotions, but is not valid for VOLUME_DISCOUNT promotions. Populate this field with a URL that points to an image to be used with the promotion. This image is displayed on the seller's All Offers page. The URL must point to either JPEG or PNG image and it must be a minimum of 500x500 pixels in dimension and cannot exceed 12Mb in size.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionImageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionImageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionImageUrl { get; set; }
     
         /// <summary>The current status of the promotion. When creating a new promotion, this value must be set to either DRAFT or SCHEDULED. Note that you must set this value to SCHEDULED when you update a RUNNING promotion. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionStatusEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("promotionStatus", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionStatus { get; set; }
     
         /// <summary>Required if: you are creating a volume pricing promotion (VOLUME_DISCOUNT). Use this field to specify the type of the promotion you are creating. The supported types are: MARKDOWN_SALE &amp;ndash; A markdown promotion set with createItemPriceMarkdownPromotion. ORDER_DISCOUNT &amp;ndash; A threshold promotion set with createItemPromotion. VOLUME_DISCOUNT &amp;ndash; A volume pricing promotion set with createItemPromotion. See the Promotions Manager documentation for details. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("promotionType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionType { get; set; }
     
         /// <summary>The date and time the promotion starts in UTC format (yyyy-MM-ddThh:mm:ssZ). For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StartDate { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -6070,65 +5650,55 @@ namespace eBayApi.Sell.Marketing
     public partial class ItemPromotionResponse 
     {
         /// <summary>If set to true, the discount is applied only when the buyer purchases multiple quantities of a single item in the promotion. Otherwise, the promotional discount applies to multiple quantities of any items in the promotion. Note that this flag is not relevant if the inventoryCriterion container identifies a single listing ID for the promotion.</summary>
-        [Newtonsoft.Json.JsonProperty("applyDiscountToSingleItemOnly", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool ApplyDiscountToSingleItemOnly { get; set; }
+        [Newtonsoft.Json.JsonProperty("applyDiscountToSingleItemOnly", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ApplyDiscountToSingleItemOnly { get; set; }
     
         /// <summary>This is the seller-defined &amp;quot;tag line&amp;quot; for the offer, such as &amp;quot;Save on designer shoes.&amp;quot; The tag line appears under the &amp;quot;offer-type text&amp;quot; that is generated for the promotion and is displayed under the offer tile that is shown on the seller's All Offers page and on the event page for the promotion. This tag line is not used with volume pricing promotions. Note: Offer-type text is a teaser that's presented throughout the buyer's journey through the sales flow and is generated by eBay. This text is not editable by the seller&amp;mdash;it's derived from the settings in the discountRules and discountSpecification fields&amp;mdash;and can be, for example, &amp;quot;Extra 20% off when you buy 3+&amp;quot;. Maximum length: 50</summary>
-        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Description { get; set; }
     
         /// <summary>A list containing the promotion benefits (discountRule) and the rules that define when the benefit is applied (discountSpecification).</summary>
-        [Newtonsoft.Json.JsonProperty("discountRules", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("discountRules", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<DiscountRule> DiscountRules { get; set; }
     
         /// <summary>The date and time the promotion ends in UTC format (yyyy-MM-ddThh:mm:ssZ). If this field is blank (null), it indicates the promotion has no end date. For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EndDate { get; set; }
     
-        /// <summary>Returns either an array of listing IDs or the selection rules used to specify the items included in the promotion. Listing IDs can be either eBay listing IDs or an array of seller's inventory reference IDs (know as SKUs or custom labels). See the selectionRules container for the rule criteria you can use to select inventory.</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryCriterion", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryCriterion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public InventoryCriterion InventoryCriterion { get; set; }
     
         /// <summary>The eBay marketplace ID of the site where the threshold promotion is hosted. Threshold promotions are currently supported on a limited number of eBay marketplaces. Valid values: EBAY_AU = Australia EBAY_DE = Germany EBAY_ES = Spain EBAY_FR = France EBAY_GB = Great Britain EBAY_IT = Italy EBAY_US = United States For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketplaceIdEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MarketplaceId { get; set; }
     
         /// <summary>The seller-defined name or &amp;quot;title&amp;quot; of the promotion that the seller can use to identify a promotion. This label is not displayed in end-user flows. Maximum length: 90</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Name { get; set; }
     
         /// <summary>Applicable for only ORDER_DISCOUNT promotions, this field indicates the precedence of the promotion, which eBay uses to determine the position of a promotion on the seller's All Offers page. If an item is associated with multiple promotions, the promotion with the higher priority takes precedence. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionPriorityEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("priority", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("priority", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Priority { get; set; }
     
         /// <summary>A unique eBay-assigned ID for the promotion that's generated when the promotion is created.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionId { get; set; }
     
         /// <summary>Not applicable for VOLUME_DISCOUNT promotions, this field is a URL that points to an image for the promotion. This image is displayed on the seller's All Offers page. The URL must point to either JPEG or PNG image and it must be a minimum of 500x500 pixels in dimension and cannot exceed 12Mb in size.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionImageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionImageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionImageUrl { get; set; }
     
         /// <summary>The current status of the promotion. When creating a new promotion, this value must be set to either DRAFT or SCHEDULED. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionStatusEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("promotionStatus", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionStatus { get; set; }
     
         /// <summary>Indicates the type of the promotion, either MARKDOWN_SALE, ORDER_DISCOUNT, or VOLUME_DISCOUNT. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("promotionType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionType { get; set; }
     
         /// <summary>The date and time the promotion starts in UTC format (yyyy-MM-ddThh:mm:ssZ). For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StartDate { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -6138,21 +5708,12 @@ namespace eBayApi.Sell.Marketing
     public partial class MetricMetadata 
     {
         /// <summary>The data type of the returned metric value. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/DataTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("dataType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dataType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DataType { get; set; }
     
         /// <summary>The name of the metric.</summary>
-        [Newtonsoft.Json.JsonProperty("metricKey", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("metricKey", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MetricKey { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -6162,57 +5723,48 @@ namespace eBayApi.Sell.Marketing
     public partial class PromotionDetail 
     {
         /// <summary>Required if you are configuring ORDER_DISCOUNT or MARKDOWN_SALE promotions (and not valid for VOLUME_DISCOUNT promotions). This is the seller-defined &amp;quot;tag line&amp;quot; for the offer, such as &amp;quot;Save on designer shoes.&amp;quot; Tag lines appear under the &amp;quot;offer-type text&amp;quot; that is generated for a promotion and displayed under the offer tile that is shown on the seller's All Offers page and on the promotion's event page. Note: Offer-type text is a teaser that's presented throughout the buyer's journey through the sales flow and is generated by eBay. This text is not editable by the seller&amp;mdash;it's derived from the settings in the discountRules and discountSpecification fields&amp;mdash;and can be, for example, &amp;quot;Extra 20% off when you buy 3+&amp;quot;. Maximum length: 50</summary>
-        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Description { get; set; }
     
         /// <summary>The date and time the promotion ends in UTC format (yyyy-MM-ddThh:mm:ssZ). If this field is blank (null), it indicates the promotion has no end date. For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EndDate { get; set; }
     
         /// <summary>The eBay marketplace ID of the site where the promotion is hosted. Threshold promotions are supported on a select set of marketplaces while markdown promotions are supported on all eBay marketplaces. Valid values for threshold promotions are as follows: EBAY_AU = Australia EBAY_DE = Germany EBAY_ES = Spain EBAY_FR = France EBAY_GB = Great Britain EBAY_IT = Italy EBAY_US = United States For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketplaceIdEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MarketplaceId { get; set; }
     
         /// <summary>The seller-defined name or &amp;quot;title&amp;quot; of the promotion, such as &amp;quot;Buy 1 Get 1&amp;quot;, that the seller can use to identify a promotion. This label is not displayed in end-user flows. Maximum length: 90</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Name { get; set; }
     
         /// <summary>Applicable for only ORDER_DISCOUNT promotions, this field indicates the precedence of the promotion, which is used to determine the position of a promotion on the seller's All Offers page. If an item is associated with multiple promotions, the promotion with the higher priority takes precedence. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionPriorityEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("priority", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("priority", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Priority { get; set; }
     
         /// <summary>The URI of the promotion details.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionHref", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionHref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionHref { get; set; }
     
         /// <summary>A unique eBay-assigned ID for the promotion that's generated when the promotion is created.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionId { get; set; }
     
         /// <summary>Not applicable for VOLUME_DISCOUNT promotions, this field is a URL that points to an image for the promotion. This image is displayed on the seller's All Offers page. The URL must point to either JPEG or PNG image and it must be a minimum of 500x500 pixels in dimension and cannot exceed 12Mb in size.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionImageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionImageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionImageUrl { get; set; }
     
         /// <summary>The current status of the promotion. When creating a new promotion, you must set this value to either DRAFT or SCHEDULED. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionStatusEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("promotionStatus", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionStatus { get; set; }
     
         /// <summary>Indicates type of the promotion, either MARKDOWN_SALE, ORDER_DISCOUNT, or VOLUME_DISCOUNT. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("promotionType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionType { get; set; }
     
         /// <summary>The date and time the promotion starts in UTC format (yyyy-MM-ddThh:mm:ssZ). For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StartDate { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -6221,166 +5773,131 @@ namespace eBayApi.Sell.Marketing
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class PromotionReportDetail 
     {
-        /// <summary>The average item discount is the average discount that has been applied to each item in a promotion. This value is calculated as follows: totalDiscount / itemsSoldQuantity = averageItemDiscount</summary>
-        [Newtonsoft.Json.JsonProperty("averageItemDiscount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("averageItemDiscount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount AverageItemDiscount { get; set; }
     
-        /// <summary>The average item revenue is the average revenue that has been received for each item in a promotion. This value is calculated as follows: totalSales / itemsSoldQuantity = averageItemRevenue</summary>
-        [Newtonsoft.Json.JsonProperty("averageItemRevenue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("averageItemRevenue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount AverageItemRevenue { get; set; }
     
-        /// <summary>The average order discount is the average discount that has been applied to each order in a promotion. This value is calculated as follows: totalDiscount / numberOfOrdersSold = averageOrderDiscount</summary>
-        [Newtonsoft.Json.JsonProperty("averageOrderDiscount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("averageOrderDiscount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount AverageOrderDiscount { get; set; }
     
-        /// <summary>The average order revenue is the average revenue that has been received for each order in a promotion. This value is calculated as follows: totalSales / numberOfOrdersSold = averageOrderRevenue</summary>
-        [Newtonsoft.Json.JsonProperty("averageOrderRevenue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("averageOrderRevenue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount AverageOrderRevenue { get; set; }
     
         /// <summary>The average order size is the average number of items that each order contained in a promotion. This value is calculated as follows: itemsSoldQuantity / numberOfOrdersSold = averageOrderSize</summary>
-        [Newtonsoft.Json.JsonProperty("averageOrderSize", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("averageOrderSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AverageOrderSize { get; set; }
     
-        /// <summary>This is the monetary amount of items purchased in a promotion where the threshold wasn't met, so the discount was not applied. For example, suppose you're running a &amp;quot;Buy 1, get 1 at 50%&amp;quot; promotion on $5 socks. One buyer purchased only one pair of socks, so they pay the full price of $5. Here, your baseSale amount would be $5.</summary>
-        [Newtonsoft.Json.JsonProperty("baseSale", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("baseSale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount BaseSale { get; set; }
     
         /// <summary>This is the quantity of items purchased in a threshold promotion where the threshold has been met and the discount was applied. For example, suppose you're running a &amp;quot;Buy 1, get 1 at 50%&amp;quot; promotion on $5 socks. One buyer purchases two pairs of socks, so they pay $7.50 for both pairs (rather than the full price of $10). Your number of items sold (itemsSoldQuantity) would be 2 and you number of orders sold (numberOfOrdersSold) would be 1.</summary>
-        [Newtonsoft.Json.JsonProperty("itemsSoldQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int ItemsSoldQuantity { get; set; }
+        [Newtonsoft.Json.JsonProperty("itemsSoldQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? ItemsSoldQuantity { get; set; }
     
         /// <summary>This is the number of orders sold in a threshold promotion where the threshold has been met and the discount was applied. For example, suppose you're running a &amp;quot;Buy 1, get 1 at 50%&amp;quot; promotion on $5 socks. One buyer purchases two pairs of socks, so they pay $7.50 for both pairs (rather than the full price of $10). Your numberOfOrdersSold would be 1 and your itemsSoldQuantity would be 2.</summary>
-        [Newtonsoft.Json.JsonProperty("numberOfOrdersSold", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int NumberOfOrdersSold { get; set; }
+        [Newtonsoft.Json.JsonProperty("numberOfOrdersSold", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? NumberOfOrdersSold { get; set; }
     
         /// <summary>The percentage sales lift is the total dollar amount gained due to promotions. This value is calculated as follows: promotionSale / totalSale = percentageSalesLift</summary>
-        [Newtonsoft.Json.JsonProperty("percentageSalesLift", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("percentageSalesLift", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PercentageSalesLift { get; set; }
     
         /// <summary>The URI of the promotion report.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionHref", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionHref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionHref { get; set; }
     
         /// <summary>A unique eBay-assigned ID for the promotion that's generated when the promotion is created.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionId { get; set; }
     
         /// <summary>The unique eBay-assigned ID of the promotion report that is generated when the report is created.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionReportId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionReportId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionReportId { get; set; }
     
-        /// <summary>This is the monetary amount of the items sold in a threshold promotion where the threshold has been met and the discount was applied. For example, suppose you're running a &amp;quot;Buy 1, get 1 at 50%&amp;quot; promotion on $5 socks. One buyer purchases two pairs of socks, so they pay $7.50 for both pairs (rather than the full price of $10). Your promotionSale amount would be $7.50.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionSale", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionSale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount PromotionSale { get; set; }
     
         /// <summary>Indicates the type of the promotion, either MARKDOWN_SALE, ORDER_DISCOUNT, or VOLUME_DISCOUNT. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/PromotionTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("promotionType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PromotionType { get; set; }
     
-        /// <summary>This is the monetary discount amount applied to the sale of items in a threshold promotion where the threshold has been met and the discount was applied. For example, suppose you're running a &amp;quot;Buy 1, get 1 at 50%&amp;quot; promotion on $5 socks. One buyer purchases two pairs of socks, so they pay $7.50 for both pairs (rather than the full price of $10). Your totalDiscount amount would be $2.50.</summary>
-        [Newtonsoft.Json.JsonProperty("totalDiscount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("totalDiscount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount TotalDiscount { get; set; }
     
-        /// <summary>This is the total monetary sales amount of all items sold in a promotion. For example, suppose you're running a &amp;quot;Buy 1, get 1 at 50%&amp;quot; promotion on $5 socks. You make one sale where the buyer purchases only one pair of socks and they pay the full price of $5 (baseSale). You make a second sale where the buyer purchases two pairs of socks and they pay $7.50, for both pairs (promotionSale). Your totalSale would be $12.50. This value is calculated as follows: baseSale + promotionSale = totalSale</summary>
-        [Newtonsoft.Json.JsonProperty("totalSale", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("totalSale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount TotalSale { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the fields in a paginated result set of seller promotions. The response consists of 0 or more sequenced pages that are returned from the complete result set, where each page consists of 0 or more items.</summary>
+    /// <summary>This type defines the fields in a paginated result set of seller promotions. The response consists of 0 or more sequenced pages that are returned from the complete &lt;i&gt;result set&lt;/i&gt;, where each page consists of 0 or more items.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class PromotionsPagedCollection 
     {
         /// <summary>The URI of the current page of results.</summary>
-        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Href { get; set; }
     
         /// <summary>The value of the limit parameter submitted in the request, which is the maximum number of promotions returned on a page from the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Limit { get; set; }
+        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Limit { get; set; }
     
         /// <summary>The URI for the next page of results. This value is returned if there is another page of results to return from the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Next { get; set; }
     
         /// <summary>The value of the offset submitted in the request, which is the number of promotions to skip before returning the first result.</summary>
-        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Offset { get; set; }
+        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Offset { get; set; }
     
         /// <summary>The URI for the previous set of results. This is returned if there is a previous page of results in the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Prev { get; set; }
     
         /// <summary>A list containing the details of each returned promotion. This includes all the information about the promotions except for the listings that are part of the promotions.</summary>
-        [Newtonsoft.Json.JsonProperty("promotions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<PromotionDetail> Promotions { get; set; }
     
         /// <summary>The total number of promotions in the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Total { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Total { get; set; }
     
     
     }
     
-    /// <summary>This type defines the fields in a paginated result set of promotion-level reports. The response consists of 0 or more sequenced pages that are returned from the complete result set, where each page consists of 0 or more items.</summary>
+    /// <summary>This type defines the fields in a paginated result set of promotion-level reports. The response consists of 0 or more sequenced pages that are returned from the complete &lt;i&gt;result set&lt;/i&gt;, where each page consists of 0 or more items.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class PromotionsReportPagedCollection 
     {
         /// <summary>The URI of the current page of results.</summary>
-        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Href { get; set; }
     
         /// <summary>The value of the limit parameter submitted in the request, which is the maximum number of reports returned on a page from the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Limit { get; set; }
+        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Limit { get; set; }
     
         /// <summary>The URI for the next page of results. This value is returned if there is another page of results to return from the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Next { get; set; }
     
         /// <summary>The value of the offset submitted in the request, which is the number of reports to skip before returning the first result.</summary>
-        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Offset { get; set; }
+        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Offset { get; set; }
     
         /// <summary>The URI for the previous set of results. This is returned if there is a previous page of results in the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Prev { get; set; }
     
         /// <summary>A list of promotionReports contained in the paginated result set.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionReports", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionReports", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<PromotionReportDetail> PromotionReports { get; set; }
     
         /// <summary>The total number of promotions in the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Total { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Total { get; set; }
     
     
     }
@@ -6390,33 +5907,24 @@ namespace eBayApi.Sell.Marketing
     public partial class ReportMetadata 
     {
         /// <summary>A list containing the metadata for the dimension used in the report.</summary>
-        [Newtonsoft.Json.JsonProperty("dimensionMetadata", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dimensionMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<DimensionMetadata> DimensionMetadata { get; set; }
     
         /// <summary>The maximum number of dimensions that can be requested for the specified report type.</summary>
-        [Newtonsoft.Json.JsonProperty("maxNumberOfDimensionsToRequest", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int MaxNumberOfDimensionsToRequest { get; set; }
+        [Newtonsoft.Json.JsonProperty("maxNumberOfDimensionsToRequest", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? MaxNumberOfDimensionsToRequest { get; set; }
     
         /// <summary>The maximum number of metrics that can be requested for the specified report type.</summary>
-        [Newtonsoft.Json.JsonProperty("maxNumberOfMetricsToRequest", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int MaxNumberOfMetricsToRequest { get; set; }
+        [Newtonsoft.Json.JsonProperty("maxNumberOfMetricsToRequest", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? MaxNumberOfMetricsToRequest { get; set; }
     
         /// <summary>A list containing the metadata for the metrics in the report.</summary>
-        [Newtonsoft.Json.JsonProperty("metricMetadata", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("metricMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<MetricMetadata> MetricMetadata { get; set; }
     
         /// <summary>The report_type, as specified in the request to create the report task. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/ReportTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("reportType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportType { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -6426,17 +5934,8 @@ namespace eBayApi.Sell.Marketing
     public partial class ReportMetadatas 
     {
         /// <summary>A list of the metadata for the associated report type.</summary>
-        [Newtonsoft.Json.JsonProperty("reportMetadata", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<ReportMetadata> ReportMetadata { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -6446,173 +5945,146 @@ namespace eBayApi.Sell.Marketing
     public partial class ReportTask 
     {
         /// <summary>A list of campaign IDs to be included in the report. A campaign ID is a unique eBay-assigned identifier of the campaign that's generated when the campaign is created. Call getCampaigns to return the current campaign IDs for a seller. Note: Currently, you can specify only one campaign ID.</summary>
-        [Newtonsoft.Json.JsonProperty("campaignIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaignIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> CampaignIds { get; set; }
     
         /// <summary>The date and time defining the start of the timespan covered by the report. For display purposes, convert this time into the local time of the seller. Valid format (UTC): yyyy-MM-ddThh:mm:ss.sssZ</summary>
-        [Newtonsoft.Json.JsonProperty("dateFrom", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dateFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DateFrom { get; set; }
     
         /// <summary>The date and time defining the end of the report timespan. For display purposes, convert this time into the local time of the seller. Valid format (UTC): yyyy-MM-ddThh:mm:ss.sssZ</summary>
-        [Newtonsoft.Json.JsonProperty("dateTo", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dateTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DateTo { get; set; }
     
         /// <summary>A list containing the dimension in the report.</summary>
-        [Newtonsoft.Json.JsonProperty("dimensions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dimensions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Dimension> Dimensions { get; set; }
     
         /// <summary>A list of the seller's inventory reference IDs to be included in the report. An inventory reference ID can be either a seller-defined SKU value or an inventoryItemGroupKey. An inventoryItemGroupKey is seller-defined ID for an inventory item group (a multiple-variation listing), and is created and used by the Inventory API.</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryReferences", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryReferences", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<InventoryReference> InventoryReferences { get; set; }
     
         /// <summary>A list of the listing IDs to be included in the report. A listing ID is an eBay-assigned ID that's generated when a listing is created. Note: This field accepts both a listingId, as generated by the Inventory API, and an itemId as used in the eBay Traditional API set (e.g., the Trading and Finding APIs).</summary>
-        [Newtonsoft.Json.JsonProperty("listingIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("listingIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> ListingIds { get; set; }
     
         /// <summary>The ID of the eBay marketplace used by the report task. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/MarketplaceIdEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("marketplaceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string MarketplaceId { get; set; }
     
         /// <summary>A list of metrics for the report task.</summary>
-        [Newtonsoft.Json.JsonProperty("metricKeys", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("metricKeys", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> MetricKeys { get; set; }
     
         /// <summary>The date after which the report is no longer be available. Reports are available for 30 days and you cannot download a report after it has expired. For display purposes, convert this time into the local time of the seller. Format (UTC): yyyy-MM-ddThh:mm:ss.sssZ</summary>
-        [Newtonsoft.Json.JsonProperty("reportExpirationDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportExpirationDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportExpirationDate { get; set; }
     
         /// <summary>Indicates the format of the report. Currently, only TSV_GZIP is supported. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/ReportFormatEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("reportFormat", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportFormat { get; set; }
     
         /// <summary>The URL of the generated report, which can be used to download the report once it has been generated.</summary>
-        [Newtonsoft.Json.JsonProperty("reportHref", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportHref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportHref { get; set; }
     
         /// <summary>A unique eBay-assigned ID for the report.</summary>
-        [Newtonsoft.Json.JsonProperty("reportId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportId { get; set; }
     
         /// <summary>An eBay-assigned name for the report that's created by the createReportTask call. This name is unique for the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("reportName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportName { get; set; }
     
         /// <summary>The date the report task completed the report generation. For display purposes, convert this time into the local time of the seller. Format (UTC): yyyy-MM-ddThh:mm:ss.sssZ</summary>
-        [Newtonsoft.Json.JsonProperty("reportTaskCompletionDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportTaskCompletionDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportTaskCompletionDate { get; set; }
     
         /// <summary>The date the report task was created. For display purposes, convert this time into the local time of the seller. Format (UTC): yyyy-MM-ddThh:mm:ss.sssZ</summary>
-        [Newtonsoft.Json.JsonProperty("reportTaskCreationDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportTaskCreationDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportTaskCreationDate { get; set; }
     
         /// <summary>The date the report task is expected to complete the report generation. For display purposes, convert this time into the local time of the seller. Format (UTC): yyyy-MM-ddThh:mm:ss.sssZ</summary>
-        [Newtonsoft.Json.JsonProperty("reportTaskExpectedCompletionDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportTaskExpectedCompletionDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportTaskExpectedCompletionDate { get; set; }
     
         /// <summary>The unique eBay-assigned ID of the report task. This value is generated when the report task is created with a call to createReportTask.</summary>
-        [Newtonsoft.Json.JsonProperty("reportTaskId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportTaskId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportTaskId { get; set; }
     
         /// <summary>Indicates the current state of the report task. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/TaskStatusEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("reportTaskStatus", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportTaskStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportTaskStatus { get; set; }
     
         /// <summary>A status message with additional information about the report task.</summary>
-        [Newtonsoft.Json.JsonProperty("reportTaskStatusMessage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportTaskStatusMessage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportTaskStatusMessage { get; set; }
     
         /// <summary>Indicates type of report associated with the report task. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/ReportTypeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("reportType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReportType { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the fields that paginate the reports tasks returned by the request. The entire result set consists of 0 or more sequenced response pages, where each page consists of 0 or more items from the complete result set.</summary>
+    /// <summary>This type defines the fields that paginate the reports tasks returned by the request. The entire &lt;i&gt;result set&lt;/i&gt; consists of 0 or more sequenced &lt;i&gt;response pages&lt;/i&gt;, where each page consists of 0 or more items from the complete result set.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ReportTaskPagedCollection 
     {
         /// <summary>The URI of the current page of results from the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Href { get; set; }
     
         /// <summary>The number of items returned on a single page from the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Limit { get; set; }
+        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Limit { get; set; }
     
         /// <summary>The URI for the next page of results. This value is returned only if there is an additional page of results in the result set. Max length: 2048</summary>
-        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Next { get; set; }
     
         /// <summary>The value of the offset submitted in the request, which is the number of results to skip before listing the first returned result.</summary>
-        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Offset { get; set; }
+        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Offset { get; set; }
     
         /// <summary>The URI for the previous page of results. This value is returned only if there is a previous page of results in the result set. Max length: 2048</summary>
-        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Prev { get; set; }
     
         /// <summary>The total number of items in the result set.</summary>
-        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Total { get; set; }
+        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Total { get; set; }
     
         /// <summary>A list of report tasks contained on this page from the paginated response.</summary>
-        [Newtonsoft.Json.JsonProperty("reportTasks", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("reportTasks", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<ReportTask> ReportTasks { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the fields for a set of inventory selection rules. Required: When inventoryCriterionType is set to INVENTORY_BY_RULE.</summary>
+    /// <summary>This type defines the fields for a set of inventory selection rules.  &lt;br&gt;&lt;br&gt;&lt;b&gt;Required:&lt;/b&gt; When &lt;b&gt;inventoryCriterionType&lt;/b&gt; is set to &lt;code&gt;INVENTORY_BY_RULE&lt;/code&gt;.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class RuleCriteria 
     {
         /// <summary>A list of seller inventory reference IDs to exclude from the promotion. Note: The request can have either excludeInventoryItems or excludeListingIds but not both. Maximum: 100 parent items Maximum SKU or custom label length: 50 characters</summary>
-        [Newtonsoft.Json.JsonProperty("excludeInventoryItems", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("excludeInventoryItems", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<InventoryItem> ExcludeInventoryItems { get; set; }
     
         /// <summary>A list of eBay listing IDs to exclude from the promotion. Note: The request can have either excludeInventoryItems or excludeListingIds but not both. Maximum: 100 parent items Maximum SKU or custom label length: 50 characters</summary>
-        [Newtonsoft.Json.JsonProperty("excludeListingIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("excludeListingIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> ExcludeListingIds { get; set; }
     
         /// <summary>A list of SKUs to remove from a markdown promotion. The listed SKUs are 'marked up' to their standard price after being part of the markdown promotion.</summary>
-        [Newtonsoft.Json.JsonProperty("markupInventoryItems", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("markupInventoryItems", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<InventoryItem> MarkupInventoryItems { get; set; }
     
         /// <summary>A list of listing IDs to remove from a markdown promotion. The listed items are 'marked up' to their standard price after being part of the markdown promotion.</summary>
-        [Newtonsoft.Json.JsonProperty("markupListingIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("markupListingIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> MarkupListingIds { get; set; }
     
         /// <summary>Required if: inventoryCriterionType is set to INVENTORY_BY_RULE. The container for the rules that select the items to include in a promotion.</summary>
-        [Newtonsoft.Json.JsonProperty("selectionRules", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("selectionRules", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<SelectionRule> SelectionRules { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -6621,30 +6093,19 @@ namespace eBayApi.Sell.Marketing
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SelectedInventoryDiscount 
     {
-        /// <summary>This container defines the promotional discount as either a monetary amount or a percentage applied to the sales price.</summary>
-        [Newtonsoft.Json.JsonProperty("discountBenefit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("discountBenefit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DiscountBenefit DiscountBenefit { get; set; }
     
         /// <summary>A unique, eBay-generated ID that you can use to identify the discount. This field is ignored in POST and PUT operations.</summary>
-        [Newtonsoft.Json.JsonProperty("discountId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("discountId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DiscountId { get; set; }
     
-        /// <summary>A container that defines either the listing IDs or the selection rules that specify the items to include in the promotion. Listing IDs can be either eBay listing IDs or a list of the seller's inventory reference IDs (know as SKUs or custom labels). See the selectionRules container for the rule criteria you can use to select inventory. Note: All listings in Promotions Manager promotions must support an electronic payment method.</summary>
-        [Newtonsoft.Json.JsonProperty("inventoryCriterion", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inventoryCriterion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public InventoryCriterion InventoryCriterion { get; set; }
     
         /// <summary>For markdown promotions, this field is reserved for future use.</summary>
-        [Newtonsoft.Json.JsonProperty("ruleOrder", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int RuleOrder { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("ruleOrder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? RuleOrder { get; set; }
     
     
     }
@@ -6654,73 +6115,50 @@ namespace eBayApi.Sell.Marketing
     public partial class SelectionRule 
     {
         /// <summary>A list of the brands of the items to be included in the campaign.</summary>
-        [Newtonsoft.Json.JsonProperty("brands", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("brands", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> Brands { get; set; }
     
         /// <summary>A list of category IDs associated with the listings to be included in the campaign. All the seller's items listed in the specified categories are included in the campaign, up to a maximum of 25,000 items. The IDs can be either a list of eBay category IDs (from the site where the item is hosted), or a list of category IDs defined and used by the seller's store. eBay Marketplace category IDs To get a list of marketplace category IDs, do one of the following: Get a list of category IDs for a marketplace by adding /sch/allcategories/all-categories to the marketplace URL when browsing the site. For example: http://www.ebay.com.au/sch/allcategories/all-categories Navigate to the desired category on the host site and copy the category ID from the URL. These options are also available for the US marketplace: See Category Changes for the latest list of category IDs. Retrieve a list of category IDs using the Taxonomy API. Seller store category IDs Because store category IDs are uniquely defined and maintained by each seller, this service cannot provide a list of a seller's IDs. However, sellers can retrieve their store category IDs as follows: Go to Seller Hub &amp;gt; Marketing. Click Manage store categories. A list of your store categories displays. Click the All categories link displayed at the bottom of the list. A complete list of your store categories and their associated store category IDs displays.</summary>
-        [Newtonsoft.Json.JsonProperty("categoryIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("categoryIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> CategoryIds { get; set; }
     
         /// <summary>Indicates the source of the category ID; eBay or seller's store. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketing/types/CategoryScopeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("categoryScope", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("categoryScope", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CategoryScope { get; set; }
     
         /// <summary>The ID of the listing's condition. Valid values: 1000 = New 2000 = Manufacturer refurbished 2500 = Seller refurbished 3000 = Used/Like new/Pre owned</summary>
-        [Newtonsoft.Json.JsonProperty("listingConditionIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("listingConditionIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> ListingConditionIds { get; set; }
     
-        /// <summary>The maximum price of the listings included in the campaign.</summary>
-        [Newtonsoft.Json.JsonProperty("maxPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("maxPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount MaxPrice { get; set; }
     
-        /// <summary>The minimum price of the listings included in the campaign.</summary>
-        [Newtonsoft.Json.JsonProperty("minPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("minPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount MinPrice { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type defines the fields in an Promotions Manager Summary report. Reports are formatted in JSON. For more details, see Reading item promotion Summary reports.</summary>
+    /// <summary>This type defines the fields in an Promotions Manager Summary report. Reports are formatted in JSON. For more details, see &lt;a href="/api-docs/sell/static/marketing/pm-summary-reports.html"&gt;Reading item promotion Summary reports&lt;/a&gt;.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class SummaryReportResponse 
     {
-        /// <summary>The total revenue from all the purchased items that were part of a promotion but did not trigger a discount during the promotion period.</summary>
-        [Newtonsoft.Json.JsonProperty("baseSale", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("baseSale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount BaseSale { get; set; }
     
         /// <summary>The date the report was generated.</summary>
-        [Newtonsoft.Json.JsonProperty("lastUpdated", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("lastUpdated", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string LastUpdated { get; set; }
     
         /// <summary>The percentage of the total dollar amount gained due to promotions. This value is calculated as follows: precentageSalesLift = promotionSale / (baseSale + promotionSale)</summary>
-        [Newtonsoft.Json.JsonProperty("percentageSalesLift", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("percentageSalesLift", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PercentageSalesLift { get; set; }
     
-        /// <summary>The total revenue from all the purchased items that were part of a promotion and their purchase did trigger a discount during the promotion period.</summary>
-        [Newtonsoft.Json.JsonProperty("promotionSale", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("promotionSale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount PromotionSale { get; set; }
     
-        /// <summary>Total dollar sales amount of all the seller's listings, current to the date the report was generated.</summary>
-        [Newtonsoft.Json.JsonProperty("totalSale", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("totalSale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Amount TotalSale { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -6730,17 +6168,8 @@ namespace eBayApi.Sell.Marketing
     public partial class UpdateBidPercentageRequest 
     {
         /// <summary>The user-defined bid percentage (also known as the ad rate) sets the level that eBay increases the visibility in search results for the associated listing. The higher the bidPercentage value, the more eBay promotes the listing. The value specified here is also used to calculate the Promoted Listings fee. This percentage value is multiplied by the final sales price to determine the fee. The Promoted Listings fee is determined at the time the transaction completes and the seller is assessed the fee only when an item sells through a Promoted Listings ad campaign. bidPercentage is a single precision value that is guided by the following rules: These values are valid: &amp;nbsp;&amp;nbsp;&amp;nbsp;1, &amp;nbsp;&amp;nbsp;&amp;nbsp;1.0, &amp;nbsp;&amp;nbsp;&amp;nbsp;4.1, &amp;nbsp;&amp;nbsp;&amp;nbsp;5.0, &amp;nbsp;&amp;nbsp;&amp;nbsp;5.5, ... These values are not valid: &amp;nbsp;&amp;nbsp;&amp;nbsp;0.01, &amp;nbsp;&amp;nbsp;&amp;nbsp;10.75, &amp;nbsp;&amp;nbsp;&amp;nbsp;99.99, &amp;nbsp;&amp;nbsp;&amp;nbsp;and so on. If a bid percentage is not provided for an ad, eBay uses the default bid percentage of the associated campaign.Minimum value: 1.0 Maximum value: 100.0</summary>
-        [Newtonsoft.Json.JsonProperty("bidPercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("bidPercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string BidPercentage { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -6750,63 +6179,18 @@ namespace eBayApi.Sell.Marketing
     public partial class UpdateCampaignIdentificationRequest 
     {
         /// <summary>The new seller-defined name for the campaign. This value must be unique for the seller. If you don't want to change the name of the campaign, specify the current campaign name in this field. You can use any alphanumeric characters in the name, except the less than (&amp;lt;) or greater than (&amp;gt;) characters.Max length: 80 characters.</summary>
-        [Newtonsoft.Json.JsonProperty("campaignName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("campaignName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CampaignName { get; set; }
     
         /// <summary>The new date and time the campaign ends, in UTC format (yyyy-MM-ddThh:mm:ssZ). If this field is blank (code&amp;gt;null), it indicates a campaign that has no end date. For display purposes, convert this time into the local time of the seller.</summary>
-        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EndDate { get; set; }
     
         /// <summary>The new start date for the campaign, in UTC format (yyyy-MM-ddThh:mm:ssZ). If the campaign is currently RUNNING or PAUSED, enter the current date in this field because you cannot submit past or future date for these campaigns. On the date specified, the service derives the keywords for each listing in the campaign, creates an ad for each listing, and associates each new ad with the campaign. The campaign starts after this process is completed. The amount of time it takes the service to start the campaign depends on the number of listings in the campaign. Call getCampaigns to retrieve the campaign_id and the campaign status (RUNNING, PAUSED, ENDED, and so on) for all the seller's campaigns.</summary>
-        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StartDate { get; set; }
     
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
     
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
-    
-    }
-
-    public partial class FileResponse : System.IDisposable
-    {
-        private System.IDisposable _client; 
-        private System.IDisposable _response; 
-
-        public int StatusCode { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public System.IO.Stream Stream { get; private set; }
-
-        public bool IsPartial
-        {
-            get { return StatusCode == 206; }
-        }
-
-        public FileResponse(int statusCode, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.IO.Stream stream, System.IDisposable client, System.IDisposable response)
-        {
-            StatusCode = statusCode; 
-            Headers = headers; 
-            Stream = stream; 
-            _client = client; 
-            _response = response;
-        }
-
-        public void Dispose() 
-        {
-            if (Stream != null)
-                Stream.Dispose();
-            if (_response != null)
-                _response.Dispose();
-            if (_client != null)
-                _client.Dispose();
-        }
     }
 
 }

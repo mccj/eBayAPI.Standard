@@ -17,7 +17,7 @@ namespace eBayApi.Buy.Marketplace.Insights
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class Client 
     {
-        private string _baseUrl = "https://api.ebay.com{basePath}";
+        private string _baseUrl = "https://api.ebay.com/buy/marketplace_insights/v1_beta";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
     
@@ -55,7 +55,7 @@ namespace eBayApi.Buy.Marketplace.Insights
         /// <param name="offset">Specifies the number of items to skip in the result set. This is used with the limit field to control the pagination of the output. If offset is 0 and limit is 10, the call will retrieve items 1-10 from the list of items returned, if offset is 10 and limit is 10, the call will retrieve items 11 thru 20 from the list of items returned. Valid Values: 0-10,000 (inclusive) Default: 0 Maximum number of items returned: 10,000</param>
         /// <param name="q">A string consisting of one or more keywords that are used to search for items on eBay. The keywords are handled as follows: If the keywords are separated by a comma, it is treated as an AND. In the following example, the query returns items that have iphone AND ipad. /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone,ipad&amp;amp;category_ids=15724 If the keywords are separated by a space, it is treated as an OR. In the following examples, the query returns items that have iphone OR ipad. /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone&amp;amp;category_ids=15724&amp;nbsp;ipad /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone,&amp;nbsp;ipad&amp;amp;category_ids=15724 Restriction: The * wildcard character is not allowed in this field. Required: At least 1 category_ids Optional: Any combination of epid, gtin, or q</param>
         /// <param name="sort">This field specifies the order and the field name to use to sort the items. To sort in descending order use - before the field name. Currently, you can only sort by price (in ascending or descending order). If no sort parameter is submitted, the result set is sorted by &amp;quot;Best Match&amp;quot;. The following are examples of using the sort query parameter. Sort Result &amp;amp;sort=price Sorts by price in ascending order (lowest price first) &amp;amp;sort=-price Sorts by price in descending order (highest price first) Default: ascending For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketplace_insights/types/SortField.html</param>
-        /// <returns>(Limited Release) This call searches for sold eBay items by various URI query parameters and retrieves the sales history of the items for the last 90 days. You can search by keyword, category, eBay product ID (ePID), or GTIN, or a combination of these. You can refine the items returned by using field filters, such as price range. Controlling what is returned You can also control what is returned by using the fieldgroups field. In addition to returning items, which is the default, you can return refinements (metadata) about an item that enables you to create aspect histograms. A histogram enables users to drill down in each refinement narrowing the search results. You can return: ASPECT_REFINEMENTS - Lets you refine the result set by variation aspects, such as Brand, Color, etc. BUYING_OPTION_REFINEMENT - Lets you refine the result set by either FIXED_PRICE or AUCTION CATEGORY_REFINEMENTS - Lets you refine the result set by items in a category CONDITION_REFINEMENT - Lets you refine the result set by item condition, such as NEW, USED, etc. MATCHING_ITEMS - The default, which returns the items. When used with one or more of the refinement values above the specified refinements and all the matching items are returned. FULL - This returns all the refinement containers and all the matching items. Filtering by aspects You can use the ASPECT_REFINEMENTS returned to filter the result set using the aspect_filter field. For example: This call gets a list of the aspects pairs for the sold items and the dominant category (category most of the items are in). /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;fieldgroups=ASPECT_REFINEMENTS This call filters the items by one of the aspect pairs returned and the dominant category. The category ID is required twice when using aspect_filter; once as a URI parameter and as part of the aspect_filter. /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{adidas} This call filters the items by multiple aspects /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{adidas},Featured Refinements:{Adidas Match Ball} This call filters the items by multiple aspect values /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{Nike|Wilson} Fields filters You can also refine the result set by price range using s field filter. Pagination and sort controls There are pagination controls (limit and offset fields) and sort query parameters that control/sort the data that is returned. By default, the results are sorted by &amp;quot;Best Match&amp;quot;. For more information about Best Match, see the eBay help page Best Match. URLs for this call Production URL: https://api.ebay.com/buy/marketplace_insights/v1_beta/item_sales/ Sandbox URL: https://api.sandbox.ebay.com/buy/marketplace_insights/v1_beta/item_sales/ Request headers You will want to use the X-EBAY-C-ENDUSERCTX request header with this call. If you are an eBay Network Partner you must use affiliateCampaignId=ePNCampaignId,affiliateReferenceId=referenceId in the header in order to be paid for selling eBay items on your site . For details see, Request headers in the Buy APIs Overview. Restrictions For a list of supported sites and other restrictions, see API Restrictions. URL Encoding for Parameters As with all query parameter values, the filter parameter value must be URL encoded. For better readability, the examples in this document omit the encoding. Example: &amp;nbsp;&amp;nbsp;search?q=iphone&amp;amp;category_ids=9355&amp;amp;filter=price:[50..500],priceCurrency:USD Encoded Example: &amp;nbsp;&amp;nbsp;search?q=iphone&amp;amp;category_ids=9355&amp;amp;filter=price%3A%5B50..500%5D,priceCurrency%3AUSD For more information about encoding, see HTML URL Encoding Reference.</returns>
+        /// <returns>Success</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
         public SalesHistoryPagedCollection Search(string aspect_filter = null, string category_ids = null, string epid = null, string fieldgroups = null, string filter = null, string gtin = null, string limit = null, string offset = null, string q = null, string sort = null)
         {
@@ -73,7 +73,7 @@ namespace eBayApi.Buy.Marketplace.Insights
         /// <param name="offset">Specifies the number of items to skip in the result set. This is used with the limit field to control the pagination of the output. If offset is 0 and limit is 10, the call will retrieve items 1-10 from the list of items returned, if offset is 10 and limit is 10, the call will retrieve items 11 thru 20 from the list of items returned. Valid Values: 0-10,000 (inclusive) Default: 0 Maximum number of items returned: 10,000</param>
         /// <param name="q">A string consisting of one or more keywords that are used to search for items on eBay. The keywords are handled as follows: If the keywords are separated by a comma, it is treated as an AND. In the following example, the query returns items that have iphone AND ipad. /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone,ipad&amp;amp;category_ids=15724 If the keywords are separated by a space, it is treated as an OR. In the following examples, the query returns items that have iphone OR ipad. /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone&amp;amp;category_ids=15724&amp;nbsp;ipad /buy/marketplace-insights/v1_beta/item_sales/search?q=iphone,&amp;nbsp;ipad&amp;amp;category_ids=15724 Restriction: The * wildcard character is not allowed in this field. Required: At least 1 category_ids Optional: Any combination of epid, gtin, or q</param>
         /// <param name="sort">This field specifies the order and the field name to use to sort the items. To sort in descending order use - before the field name. Currently, you can only sort by price (in ascending or descending order). If no sort parameter is submitted, the result set is sorted by &amp;quot;Best Match&amp;quot;. The following are examples of using the sort query parameter. Sort Result &amp;amp;sort=price Sorts by price in ascending order (lowest price first) &amp;amp;sort=-price Sorts by price in descending order (highest price first) Default: ascending For implementation help, refer to eBay API documentation at https://developer.ebay.com/devzone/rest/api-ref/marketplace_insights/types/SortField.html</param>
-        /// <returns>(Limited Release) This call searches for sold eBay items by various URI query parameters and retrieves the sales history of the items for the last 90 days. You can search by keyword, category, eBay product ID (ePID), or GTIN, or a combination of these. You can refine the items returned by using field filters, such as price range. Controlling what is returned You can also control what is returned by using the fieldgroups field. In addition to returning items, which is the default, you can return refinements (metadata) about an item that enables you to create aspect histograms. A histogram enables users to drill down in each refinement narrowing the search results. You can return: ASPECT_REFINEMENTS - Lets you refine the result set by variation aspects, such as Brand, Color, etc. BUYING_OPTION_REFINEMENT - Lets you refine the result set by either FIXED_PRICE or AUCTION CATEGORY_REFINEMENTS - Lets you refine the result set by items in a category CONDITION_REFINEMENT - Lets you refine the result set by item condition, such as NEW, USED, etc. MATCHING_ITEMS - The default, which returns the items. When used with one or more of the refinement values above the specified refinements and all the matching items are returned. FULL - This returns all the refinement containers and all the matching items. Filtering by aspects You can use the ASPECT_REFINEMENTS returned to filter the result set using the aspect_filter field. For example: This call gets a list of the aspects pairs for the sold items and the dominant category (category most of the items are in). /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;fieldgroups=ASPECT_REFINEMENTS This call filters the items by one of the aspect pairs returned and the dominant category. The category ID is required twice when using aspect_filter; once as a URI parameter and as part of the aspect_filter. /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{adidas} This call filters the items by multiple aspects /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{adidas},Featured Refinements:{Adidas Match Ball} This call filters the items by multiple aspect values /buy/marketplace_insights/v1_beta/item_sales/search?q=world cup soccer ball&amp;amp;category_ids=20863&amp;amp;aspect_filter=categoryId:20863,Brand:{Nike|Wilson} Fields filters You can also refine the result set by price range using s field filter. Pagination and sort controls There are pagination controls (limit and offset fields) and sort query parameters that control/sort the data that is returned. By default, the results are sorted by &amp;quot;Best Match&amp;quot;. For more information about Best Match, see the eBay help page Best Match. URLs for this call Production URL: https://api.ebay.com/buy/marketplace_insights/v1_beta/item_sales/ Sandbox URL: https://api.sandbox.ebay.com/buy/marketplace_insights/v1_beta/item_sales/ Request headers You will want to use the X-EBAY-C-ENDUSERCTX request header with this call. If you are an eBay Network Partner you must use affiliateCampaignId=ePNCampaignId,affiliateReferenceId=referenceId in the header in order to be paid for selling eBay items on your site . For details see, Request headers in the Buy APIs Overview. Restrictions For a list of supported sites and other restrictions, see API Restrictions. URL Encoding for Parameters As with all query parameter values, the filter parameter value must be URL encoded. For better readability, the examples in this document omit the encoding. Example: &amp;nbsp;&amp;nbsp;search?q=iphone&amp;amp;category_ids=9355&amp;amp;filter=price:[50..500],priceCurrency:USD Encoded Example: &amp;nbsp;&amp;nbsp;search?q=iphone&amp;amp;category_ids=9355&amp;amp;filter=price%3A%5B50..500%5D,priceCurrency%3AUSD For more information about encoding, see HTML URL Encoding Reference.</returns>
+        /// <returns>Success</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<SalesHistoryPagedCollection> SearchAsync(string aspect_filter = null, string category_ids = null, string epid = null, string fieldgroups = null, string filter = null, string gtin = null, string limit = null, string offset = null, string q = null, string sort = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
@@ -289,160 +289,106 @@ namespace eBayApi.Buy.Marketplace.Insights
     public partial class AspectDistribution 
     {
         /// <summary>An array of containers for the various values of the aspect and the match count and a HATEOAS reference ( refinementHref) for this aspect.</summary>
-        [Newtonsoft.Json.JsonProperty("aspectValueDistributions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("aspectValueDistributions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<AspectValueDistribution> AspectValueDistributions { get; set; }
     
         /// <summary>Name of an aspect, such as Brand, Color, etc.</summary>
-        [Newtonsoft.Json.JsonProperty("localizedAspectName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("localizedAspectName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string LocalizedAspectName { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>The container that defines the fields for the conditions refinements. This container is returned when fieldgroups is set to ASPECT_REFINEMENTS or FULL in the request.</summary>
+    /// <summary>The container that defines the fields for the conditions refinements. This container is returned when &lt;b&gt; fieldgroups&lt;/b&gt; is set to &lt;code&gt;ASPECT_REFINEMENTS&lt;/code&gt; or &lt;code&gt;FULL&lt;/code&gt; in the request.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class AspectValueDistribution 
     {
         /// <summary>The value of an aspect. For example, Red is a value for the aspect Color.</summary>
-        [Newtonsoft.Json.JsonProperty("localizedAspectValue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("localizedAspectValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string LocalizedAspectValue { get; set; }
     
         /// <summary>The number of items with this aspect.</summary>
-        [Newtonsoft.Json.JsonProperty("matchCount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int MatchCount { get; set; }
+        [Newtonsoft.Json.JsonProperty("matchCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? MatchCount { get; set; }
     
         /// <summary>A HATEOAS reference for this aspect.</summary>
-        [Newtonsoft.Json.JsonProperty("refinementHref", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("refinementHref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string RefinementHref { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>The container that defines the fields for the buying options refinements. This container is returned when fieldgroups is set to BUYING_OPTION_REFINEMENTS or FULL in the request.</summary>
+    /// <summary>The container that defines the fields for the buying options refinements. This container is returned when &lt;b&gt; fieldgroups&lt;/b&gt; is set to &lt;code&gt;BUYING_OPTION_REFINEMENTS&lt;/code&gt; or &lt;code&gt;FULL&lt;/code&gt; in the request.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class BuyingOptionDistribution 
     {
-        [Newtonsoft.Json.JsonProperty("buyingOption", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("buyingOption", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string BuyingOption { get; set; }
     
         /// <summary>The number of items having this buying option.</summary>
-        [Newtonsoft.Json.JsonProperty("matchCount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int MatchCount { get; set; }
+        [Newtonsoft.Json.JsonProperty("matchCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? MatchCount { get; set; }
     
         /// <summary>The HATEOAS reference for this buying option.</summary>
-        [Newtonsoft.Json.JsonProperty("refinementHref", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("refinementHref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string RefinementHref { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>This type is used by the categories container in the response of the search call, and contains the primary item category ID of the item, as well as the secondary item category if the item was listed in two categories.</summary>
+    /// <summary>This type is used by the &lt;b&gt; categories&lt;/b&gt;  container in the response of the &lt;b&gt; search&lt;/b&gt;  call, and contains the primary item category ID of the item, as well as the secondary item category if the item was listed in two categories.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class Category 
     {
         /// <summary>The unique identifier of the primary item category of the item, as well as the secondary item category if item was listed in two categories.</summary>
-        [Newtonsoft.Json.JsonProperty("categoryId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("categoryId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CategoryId { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>The container that defines the fields for the category refinements. This container is returned when fieldgroups is set to CATEGORY_REFINEMENTS or FULL in the request.</summary>
+    /// <summary>The container that defines the fields for the category refinements. This container is returned when &lt;b&gt; fieldgroups&lt;/b&gt; is set to &lt;code&gt;CATEGORY_REFINEMENTS&lt;/code&gt; or &lt;code&gt;FULL&lt;/code&gt; in the request.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class CategoryDistribution 
     {
         /// <summary>The identifier of the category.</summary>
-        [Newtonsoft.Json.JsonProperty("categoryId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("categoryId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CategoryId { get; set; }
     
         /// <summary>The name of the category, such as Baby &amp;amp; Toddler Clothing.</summary>
-        [Newtonsoft.Json.JsonProperty("categoryName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("categoryName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CategoryName { get; set; }
     
         /// <summary>The number of items in this category.</summary>
-        [Newtonsoft.Json.JsonProperty("matchCount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int MatchCount { get; set; }
+        [Newtonsoft.Json.JsonProperty("matchCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? MatchCount { get; set; }
     
         /// <summary>The HATEOAS reference of this category.</summary>
-        [Newtonsoft.Json.JsonProperty("refinementHref", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("refinementHref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string RefinementHref { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>The container that defines the fields for the conditions refinements. This container is returned when fieldgroups is set to CONDITION_REFINEMENTS or FULL in the request.</summary>
+    /// <summary>The container that defines the fields for the conditions refinements. This container is returned when &lt;b&gt; fieldgroups&lt;/b&gt; is set to &lt;code&gt;CONDITION_REFINEMENTS&lt;/code&gt; or &lt;code&gt;FULL&lt;/code&gt; in the request.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ConditionDistribution 
     {
         /// <summary>The text describing the condition of the item, such as New or Used. For a list of condition names, see ConditionEnum. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("condition", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("condition", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Condition { get; set; }
     
         /// <summary>The identifier of the condition. For example, 1000 is the identifier for NEW.</summary>
-        [Newtonsoft.Json.JsonProperty("conditionId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("conditionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ConditionId { get; set; }
     
         /// <summary>The number of items having the condition.</summary>
-        [Newtonsoft.Json.JsonProperty("matchCount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int MatchCount { get; set; }
+        [Newtonsoft.Json.JsonProperty("matchCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? MatchCount { get; set; }
     
         /// <summary>The HATEOAS reference of this condition.</summary>
-        [Newtonsoft.Json.JsonProperty("refinementHref", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("refinementHref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string RefinementHref { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -451,132 +397,39 @@ namespace eBayApi.Buy.Marketplace.Insights
     public partial class ConvertedAmount 
     {
         /// <summary>A three-letter ISO 4217 code that indicates the currency of the amount in the convertedFromValue field. This value represents the pre-conversion currency. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketplace_insights/types/CurrencyCodeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("convertedFromCurrency", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("convertedFromCurrency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ConvertedFromCurrency { get; set; }
     
         /// <summary>The monetary amount before any conversion is performed, in the currency specified by the convertedFromCurrency field. The value field contains the converted amount of this value, in the currency specified by the currency field.</summary>
-        [Newtonsoft.Json.JsonProperty("convertedFromValue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("convertedFromValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ConvertedFromValue { get; set; }
     
         /// <summary>A three-letter ISO 4217 code that indicates the currency of the amount in the value field. This value represents the post-conversion currency of the amount in the value field. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketplace_insights/types/CurrencyCodeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("currency", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Currency { get; set; }
     
         /// <summary>The monetary value in the currency specified in the currency field.</summary>
-        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Value { get; set; }
     
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
     
     }
     
-    /// <summary>This type defines the fields that can be returned in an error.</summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class Error 
-    {
-        /// <summary>Identifies the type of erro.</summary>
-        [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Category { get; set; }
-    
-        /// <summary>Name for the primary system where the error occurred. This is relevant for application errors.</summary>
-        [Newtonsoft.Json.JsonProperty("domain", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Domain { get; set; }
-    
-        /// <summary>A unique number to identify the error.</summary>
-        [Newtonsoft.Json.JsonProperty("errorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int ErrorId { get; set; }
-    
-        /// <summary>An array of request elements most closely associated to the error.</summary>
-        [Newtonsoft.Json.JsonProperty("inputRefIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> InputRefIds { get; set; }
-    
-        /// <summary>A more detailed explanation of the error.</summary>
-        [Newtonsoft.Json.JsonProperty("longMessage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LongMessage { get; set; }
-    
-        /// <summary>Information on how to correct the problem, in the end user's terms and language where applicable.</summary>
-        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Message { get; set; }
-    
-        /// <summary>An array of request elements most closely associated to the error.</summary>
-        [Newtonsoft.Json.JsonProperty("outputRefIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> OutputRefIds { get; set; }
-    
-        /// <summary>An array of name/value pairs that describe details the error condition. These are useful when multiple errors are returned.</summary>
-        [Newtonsoft.Json.JsonProperty("parameters", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<ErrorParameter> Parameters { get; set; }
-    
-        /// <summary>Further helps indicate which subsystem the error is coming from. System subcategories include: Initialization, Serialization, Security, Monitoring, Rate Limiting, etc.</summary>
-        [Newtonsoft.Json.JsonProperty("subdomain", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Subdomain { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class ErrorParameter 
-    {
-        /// <summary>The object of the error.</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
-    
-        /// <summary>The value of the object.</summary>
-        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Value { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
-    
-    }
-    
-    /// <summary>Type the defines the details of an image, such as size and image URL. Currently only imageUrl is populated. The height and width were added for future use.</summary>
+    /// <summary>Type the defines the details of an image, such as size and image URL. Currently only &lt;b&gt; imageUrl&lt;/b&gt; is  populated. The &lt;b&gt; height&lt;/b&gt; and &lt;b&gt; width&lt;/b&gt; were added for future use.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class Image 
     {
         /// <summary>Reserved for future use.</summary>
-        [Newtonsoft.Json.JsonProperty("height", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Height { get; set; }
+        [Newtonsoft.Json.JsonProperty("height", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Height { get; set; }
     
         /// <summary>The URL of the image.</summary>
-        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ImageUrl { get; set; }
     
         /// <summary>Reserved for future use.</summary>
-        [Newtonsoft.Json.JsonProperty("width", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Width { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("width", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Width { get; set; }
     
     
     }
@@ -586,41 +439,32 @@ namespace eBayApi.Buy.Marketplace.Insights
     public partial class ItemLocation 
     {
         /// <summary>The first line of the street address.</summary>
-        [Newtonsoft.Json.JsonProperty("addressLine1", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("addressLine1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AddressLine1 { get; set; }
     
         /// <summary>The second line of the street address. This field may contain such values as an apartment or suite number.</summary>
-        [Newtonsoft.Json.JsonProperty("addressLine2", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("addressLine2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AddressLine2 { get; set; }
     
         /// <summary>The city in which the item is located.</summary>
-        [Newtonsoft.Json.JsonProperty("city", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("city", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string City { get; set; }
     
         /// <summary>The two-letter ISO 3166 standard code that indicates the country in which the item is located. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/marketplace_insights/types/CountryCodeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("country", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Country { get; set; }
     
         /// <summary>The county in which the item is located.</summary>
-        [Newtonsoft.Json.JsonProperty("county", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("county", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string County { get; set; }
     
         /// <summary>The postal code (or zip code in US) where the item is located.</summary>
-        [Newtonsoft.Json.JsonProperty("postalCode", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("postalCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PostalCode { get; set; }
     
         /// <summary>The state or province in which the item is located.</summary>
-        [Newtonsoft.Json.JsonProperty("stateOrProvince", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("stateOrProvince", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string StateOrProvince { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -630,101 +474,88 @@ namespace eBayApi.Buy.Marketplace.Insights
     public partial class ItemSales 
     {
         /// <summary>An array of containers with the URLs for the images that are in addition to the primary image. The primary image is returned in the image.imageUrl field.</summary>
-        [Newtonsoft.Json.JsonProperty("additionalImages", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("additionalImages", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Image> AdditionalImages { get; set; }
     
         /// <summary>This indicates if the item is for adults only. For more information about adult-only items on eBay, see Adult items policy for sellers and Searching for adult only items for buyers.</summary>
-        [Newtonsoft.Json.JsonProperty("adultOnly", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool AdultOnly { get; set; }
+        [Newtonsoft.Json.JsonProperty("adultOnly", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? AdultOnly { get; set; }
     
         /// <summary>This integer value indicates the total number of bids that have been placed for an auction item. This field is only returned for auction items.</summary>
-        [Newtonsoft.Json.JsonProperty("bidCount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int BidCount { get; set; }
+        [Newtonsoft.Json.JsonProperty("bidCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? BidCount { get; set; }
     
         /// <summary>A comma separated list of the purchase options available for the item, such as FIXED_PRICE, AUCTION. FIXED_PRICE - Returned for fixed-price items (non-auction) AUCTION - Returned for auction items without Buy It Now feature FIXED_PRICE and AUCTION - Returned for auction items enabled with the Buy It Now feature Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("buyingOptions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("buyingOptions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> BuyingOptions { get; set; }
     
         /// <summary>This container returns the primary category ID of the item, as well as the secondary category if the item was listed in two categories.</summary>
-        [Newtonsoft.Json.JsonProperty("categories", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("categories", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Category> Categories { get; set; }
     
         /// <summary>The text describing the condition of the item, such as New or Used. For a list of condition names, see ConditionEnum. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("condition", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("condition", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Condition { get; set; }
     
         /// <summary>The identifier of the condition of the item. For example, 1000 is the identifier for NEW. For a list of condition names and IDs, see ConditionEnum. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("conditionId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("conditionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ConditionId { get; set; }
     
         /// <summary>An ePID is the eBay product identifier of a product from the eBay product catalog. This indicates the product in which the item belongs.</summary>
-        [Newtonsoft.Json.JsonProperty("epid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("epid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Epid { get; set; }
     
-        /// <summary>The URL to the primary image of the item.</summary>
-        [Newtonsoft.Json.JsonProperty("image", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("image", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Image Image { get; set; }
     
         /// <summary>The URL to the View Item page of the item, which includes the affiliate tracking ID. This field is only returned if the eBay partner enables affiliate tracking for the item by including the X-EBAY-C-ENDUSERCTX request header in the call.</summary>
-        [Newtonsoft.Json.JsonProperty("itemAffiliateWebUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemAffiliateWebUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemAffiliateWebUrl { get; set; }
     
         /// <summary>The HATEOAS reference of the parent page of the item group. An item group is an item that has various aspect differences, such as color, size, storage capacity, etc. Note: This field is returned only for item groups.</summary>
-        [Newtonsoft.Json.JsonProperty("itemGroupHref", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemGroupHref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemGroupHref { get; set; }
     
         /// <summary>Indicates the item group type. An item group is an item that has various aspect differences, such as color, size, storage capacity, etc. Currently only SELLER_DEFINED_VARIATIONS is supported and indicates this is an item group created by the seller. Note: This field is returned only for item groups. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("itemGroupType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemGroupType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemGroupType { get; set; }
     
         /// <summary>The URI of the item.</summary>
-        [Newtonsoft.Json.JsonProperty("itemHref", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemHref", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemHref { get; set; }
     
         /// <summary>The unique RESTful identifier of the item.</summary>
-        [Newtonsoft.Json.JsonProperty("itemId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemId { get; set; }
     
-        /// <summary>This container returns the postal code and country of the location of the item.</summary>
-        [Newtonsoft.Json.JsonProperty("itemLocation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public ItemLocation ItemLocation { get; set; }
     
         /// <summary>The URL to the View Item page of the item.</summary>
-        [Newtonsoft.Json.JsonProperty("itemWebUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemWebUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemWebUrl { get; set; }
     
         /// <summary>The date the last item was purchased within the last 90 days. The totalSoldQuantity returns the total number of items that were sold. This field returns the date the last item in that group was sold.</summary>
-        [Newtonsoft.Json.JsonProperty("lastSoldDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("lastSoldDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string LastSoldDate { get; set; }
     
-        /// <summary>The sold price of the last item purchased within the last 90 days. The totalSoldQuantity returns the total number of items that were sold. This field returns the date the last item in that group was sold..</summary>
-        [Newtonsoft.Json.JsonProperty("lastSoldPrice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("lastSoldPrice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public ConvertedAmount LastSoldPrice { get; set; }
     
-        /// <summary>This container returns basic information about the seller of the item, such as name, feedback score, etc.</summary>
-        [Newtonsoft.Json.JsonProperty("seller", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("seller", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Seller Seller { get; set; }
     
         /// <summary>An array of thumbnail images for the item.</summary>
-        [Newtonsoft.Json.JsonProperty("thumbnailImages", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("thumbnailImages", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Image> ThumbnailImages { get; set; }
     
         /// <summary>The seller-created title of the item. Maximum Length: 80 characters</summary>
-        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Title { get; set; }
     
         /// <summary>The total number of this item that have been sold.</summary>
-        [Newtonsoft.Json.JsonProperty("totalSoldQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int TotalSoldQuantity { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("totalSoldQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? TotalSoldQuantity { get; set; }
     
     
     }
@@ -734,33 +565,24 @@ namespace eBayApi.Buy.Marketplace.Insights
     public partial class Refinement 
     {
         /// <summary>A array of containers for the all the aspect refinements.</summary>
-        [Newtonsoft.Json.JsonProperty("aspectDistributions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("aspectDistributions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<AspectDistribution> AspectDistributions { get; set; }
     
         /// <summary>A array of containers for the all the buying option refinements.</summary>
-        [Newtonsoft.Json.JsonProperty("buyingOptionDistributions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("buyingOptionDistributions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<BuyingOptionDistribution> BuyingOptionDistributions { get; set; }
     
         /// <summary>A array of containers for the all the category refinements.</summary>
-        [Newtonsoft.Json.JsonProperty("categoryDistributions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("categoryDistributions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<CategoryDistribution> CategoryDistributions { get; set; }
     
         /// <summary>A array of containers for the all the condition refinements.</summary>
-        [Newtonsoft.Json.JsonProperty("conditionDistributions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("conditionDistributions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<ConditionDistribution> ConditionDistributions { get; set; }
     
         /// <summary>The identifier of the category that most of the items are part of.</summary>
-        [Newtonsoft.Json.JsonProperty("dominantCategoryId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dominantCategoryId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DominantCategoryId { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
@@ -769,45 +591,35 @@ namespace eBayApi.Buy.Marketplace.Insights
     public partial class SalesHistoryPagedCollection 
     {
         /// <summary>The URI of the current page of results. The following example returns items 1 thru 5 from the list of items found. https://api.ebay.com/buy/marketplace_insights/v1_beta/item_sales/search?q=shirt&amp;amp;&amp;amp;limit=5&amp;amp;offset=0</summary>
-        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("href", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Href { get; set; }
     
         /// <summary>The type that defines the fields for a paginated result set of the sold items. The response consists of 0 or more sequenced result sets where each result sets has 0 or more items.</summary>
-        [Newtonsoft.Json.JsonProperty("itemSales", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemSales", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<ItemSales> ItemSales { get; set; }
     
         /// <summary>The value of the limit parameter submitted in the request, which is the maximum number of items to return on a page, from the result set. A result set is the complete set of items returned by the call.</summary>
-        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Limit { get; set; }
+        [Newtonsoft.Json.JsonProperty("limit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Limit { get; set; }
     
         /// <summary>The URI for the next page of results. This value is returned if there is an additional page of results to return from the result set. The following example returns items 5 thru 10 from the list of items found. https://api.ebay.com/buy/marketplace_insights/v1_beta/item_sales/search?query=t-shirts&amp;amp;limit=5&amp;amp;offset=10</summary>
-        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("next", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Next { get; set; }
     
         /// <summary>This value indicates the current 'page' of items being returned. This value is 0 for the first page of data, 1 for the second page of data, and so on.</summary>
-        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Offset { get; set; }
+        [Newtonsoft.Json.JsonProperty("offset", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Offset { get; set; }
     
         /// <summary>The URI for the previous page of results. This is returned if there is a previous page of results from the result set. The following example returns items 1 thru 5 from the list of items found, which would be the first set of items returned. https://api.ebay.com/buy/marketplace_insights/v1_beta/item_sales/search?query=t-shirts&amp;amp;limit=5&amp;amp;offset=0</summary>
-        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("prev", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Prev { get; set; }
     
-        /// <summary>The container for all the search refinements.</summary>
-        [Newtonsoft.Json.JsonProperty("refinement", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("refinement", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Refinement Refinement { get; set; }
     
         /// <summary>The total number of items that match the input criteria.</summary>
-        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Total { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Total { get; set; }
     
     
     }
@@ -817,25 +629,16 @@ namespace eBayApi.Buy.Marketplace.Insights
     public partial class Seller 
     {
         /// <summary>The percentage of the total positive feedback.</summary>
-        [Newtonsoft.Json.JsonProperty("feedbackPercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("feedbackPercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string FeedbackPercentage { get; set; }
     
         /// <summary>The feedback score of the seller. This value is based on the ratings from eBay members that bought items from this seller.</summary>
-        [Newtonsoft.Json.JsonProperty("feedbackScore", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int FeedbackScore { get; set; }
+        [Newtonsoft.Json.JsonProperty("feedbackScore", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? FeedbackScore { get; set; }
     
         /// <summary>The username created by the seller for use on eBay.</summary>
-        [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Username { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }

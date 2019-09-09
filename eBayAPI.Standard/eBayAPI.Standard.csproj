@@ -12,7 +12,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
+  
   <Target Name="NSwag" AfterTargets="Build">
     <!--<Warning Text="$(NSwagExe_Core22) run nswag.json /variables:Configuration=$(Configuration)" />-->
 
@@ -112,5 +112,4 @@
       <DependentUpon>Developer_Analytics.json</DependentUpon>
     </Compile>
   </ItemGroup>
-
 </Project>

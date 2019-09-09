@@ -2,7 +2,7 @@
   "runtime": "NetCore22",
   "documentGenerator": {
     "fromDocument": {
-      "url": "https://developer.ebay.com/api-docs/master/commerce/identity/openapi/3/buy_identity_v1_oas3.json"
+      "url": "https://developer.ebay.com/api-docs/master/commerce/identity/openapi/2/buy_identity_v1_oas2.json"
     }
   },
   "codeGenerators": {

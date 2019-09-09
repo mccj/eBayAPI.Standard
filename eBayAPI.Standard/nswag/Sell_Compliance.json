@@ -2,7 +2,7 @@
   "runtime": "NetCore22",
   "documentGenerator": {
     "fromDocument": {
-      "url": "https://developer.ebay.com/api-docs/master/sell/compliance/openapi/3/sell_compliance_v1_oas3.json"
+      "url": "https://developer.ebay.com/api-docs/master/sell/compliance/openapi/2/sell_compliance_v1_oas2.json"
     }
   },
   "codeGenerators": {

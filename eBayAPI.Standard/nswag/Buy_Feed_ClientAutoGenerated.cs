@@ -17,7 +17,7 @@ namespace eBayApi.Buy.Feed
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.0.6.0 (NJsonSchema v10.0.23.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class Client 
     {
-        private string _baseUrl = "https://api.ebay.com{basePath}";
+        private string _baseUrl = "https://api.ebay.com/buy/feed/v1_beta";
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
     
@@ -50,7 +50,7 @@ namespace eBayApi.Buy.Feed
         /// <param name="feed_scope">Specifies the type of feed file to return. Valid Values: NEWLY_LISTED - Returns the daily Item feed file containing all items that were listed on the day specified by the date parameter in the category specified by the category_id parameter. The items are Good 'Til Cancelled and non-Good 'Til Cancelled items. If the item is a non-Good 'Til Cancelled item, the item's end date will be returned in the itemEndDate column. /item?feed_scope=NEWLY_LISTED&amp;amp;category_id=15032&amp;amp;date=20170925 ALL_ACTIVE - Returns the weekly Item Bootstrap feed file containing all the 'Good 'Til Cancelled' items in the category specified by the category_id parameter. Note: Bootstrap files are generated every Tuesday and the file is available on Wednesday. However, the exact time the file is available can vary so we recommend you download the Bootstrap file on Thursday. The items in the file are the items that were in the specified category on Sunday. /item?feed_scope=ALL_ACTIVE&amp;amp;category_id=15032</param>
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level (L1) category</param>
         /// <param name="date">The date of the daily Item feed file (feed_scope=NEWLY_LISTED) you want. The date is required only for the daily Item feed file. If you specify a date for the Item Bootstrap file (feed_scope=ALL_ACTIVE), the date is ignored and the latest file is returned. The date the Item Bootstrap feed file was generated is returned in the Last-Modified response header. The Item feed files are generated every day and there are always 14 files available. The daily Item feed files are available each day after 9AM MST (US Mountain Standard Time), which is -7 hours UTC time. There is a 48 hour latency when generating the Item feed files. This means you can download the file for July 10th on July 12 after 9AM MST. Note: For categories with a large number of items, the latency can be up to 72 hours. Format: yyyyMMdd Requirements: Required when feed_scope=NEWLY_LISTED Must be within 3-14 days in the past</param>
-        /// <returns>Success</returns>
+        /// <returns>Partial Content</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
         public ItemResponse GetItemFeed(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date = null)
         {
@@ -63,7 +63,7 @@ namespace eBayApi.Buy.Feed
         /// <param name="feed_scope">Specifies the type of feed file to return. Valid Values: NEWLY_LISTED - Returns the daily Item feed file containing all items that were listed on the day specified by the date parameter in the category specified by the category_id parameter. The items are Good 'Til Cancelled and non-Good 'Til Cancelled items. If the item is a non-Good 'Til Cancelled item, the item's end date will be returned in the itemEndDate column. /item?feed_scope=NEWLY_LISTED&amp;amp;category_id=15032&amp;amp;date=20170925 ALL_ACTIVE - Returns the weekly Item Bootstrap feed file containing all the 'Good 'Til Cancelled' items in the category specified by the category_id parameter. Note: Bootstrap files are generated every Tuesday and the file is available on Wednesday. However, the exact time the file is available can vary so we recommend you download the Bootstrap file on Thursday. The items in the file are the items that were in the specified category on Sunday. /item?feed_scope=ALL_ACTIVE&amp;amp;category_id=15032</param>
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level (L1) category</param>
         /// <param name="date">The date of the daily Item feed file (feed_scope=NEWLY_LISTED) you want. The date is required only for the daily Item feed file. If you specify a date for the Item Bootstrap file (feed_scope=ALL_ACTIVE), the date is ignored and the latest file is returned. The date the Item Bootstrap feed file was generated is returned in the Last-Modified response header. The Item feed files are generated every day and there are always 14 files available. The daily Item feed files are available each day after 9AM MST (US Mountain Standard Time), which is -7 hours UTC time. There is a 48 hour latency when generating the Item feed files. This means you can download the file for July 10th on July 12 after 9AM MST. Note: For categories with a large number of items, the latency can be up to 72 hours. Format: yyyyMMdd Requirements: Required when feed_scope=NEWLY_LISTED Must be within 3-14 days in the past</param>
-        /// <returns>Success</returns>
+        /// <returns>Partial Content</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<ItemResponse> GetItemFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
@@ -95,7 +95,7 @@ namespace eBayApi.Buy.Feed
                         throw new System.ArgumentNullException("range");
                     request_.Headers.TryAddWithoutValidation("Range", ConvertToString(range, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/tab-separated-values"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
@@ -154,7 +154,7 @@ namespace eBayApi.Buy.Feed
                         if (status_ == "500") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Internal Server Error", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Internal server error", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -182,7 +182,7 @@ namespace eBayApi.Buy.Feed
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
         /// <param name="range">This header specifies the range in bytes of the chunks of the gzip file being returned. Format: bytes=startpos-endpos For example, the following retrieves the first 10 MBs of the feed file. &amp;nbsp;&amp;nbsp;Range bytes=0-10485760 For more information about using this headers, see Retrieving a gzip feed file. Maximum: 100 MB (10MB in the Sandbox)</param>
         /// <param name="date">The date of the daily Item Group feed file (feed_scope=NEWLY_LISTED) you want. The date is required only for the daily Item Group feed file. If you specify a date for the Item Group Bootstrap file (feed_scope=ALL_ACTIVE), the date is ignored and the latest file is returned. The date the Item Group Bootstrap feed file was generated is returned in the Last-Modified response header. The Item Group feed files are generated every day and there are always 14 files available. There is a 48 hour latency when generating the files. This means on July 10, the latest feed file you can download is July 8. Note: The generated files are stored using MST (US Mountain Standard Time), which is -7 hours UTC time. Format: yyyyMMdd Requirement: Requirements: Required only when feed_scope=NEWLY_LISTED Must be within 3-14 days in the past</param>
-        /// <returns>Success</returns>
+        /// <returns>Partial Content</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
         public ItemGroupResponse GetItemGroupFeed(string x_EBAY_C_MARKETPLACE_ID, string feed_scope, string category_id, string range = null, string date = null)
         {
@@ -195,7 +195,7 @@ namespace eBayApi.Buy.Feed
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
         /// <param name="range">This header specifies the range in bytes of the chunks of the gzip file being returned. Format: bytes=startpos-endpos For example, the following retrieves the first 10 MBs of the feed file. &amp;nbsp;&amp;nbsp;Range bytes=0-10485760 For more information about using this headers, see Retrieving a gzip feed file. Maximum: 100 MB (10MB in the Sandbox)</param>
         /// <param name="date">The date of the daily Item Group feed file (feed_scope=NEWLY_LISTED) you want. The date is required only for the daily Item Group feed file. If you specify a date for the Item Group Bootstrap file (feed_scope=ALL_ACTIVE), the date is ignored and the latest file is returned. The date the Item Group Bootstrap feed file was generated is returned in the Last-Modified response header. The Item Group feed files are generated every day and there are always 14 files available. There is a 48 hour latency when generating the files. This means on July 10, the latest feed file you can download is July 8. Note: The generated files are stored using MST (US Mountain Standard Time), which is -7 hours UTC time. Format: yyyyMMdd Requirement: Requirements: Required only when feed_scope=NEWLY_LISTED Must be within 3-14 days in the past</param>
-        /// <returns>Success</returns>
+        /// <returns>Partial Content</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<ItemGroupResponse> GetItemGroupFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string feed_scope, string category_id, string range = null, string date = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
@@ -226,7 +226,7 @@ namespace eBayApi.Buy.Feed
                     if (range != null)
                         request_.Headers.TryAddWithoutValidation("Range", ConvertToString(range, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/tab-separated-values"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
@@ -312,7 +312,7 @@ namespace eBayApi.Buy.Feed
         /// <param name="range">This header specifies the range in bytes of the chunks of the gzip file being returned. Format: bytes=startpos-endpos For example, the following retrieves the first 10 MBs of the feed file. &amp;nbsp;&amp;nbsp;Range bytes=0-10485760 For more information about using this headers, see Retrieving a gzip feed file. Maximum: 100 MB (10MB in the Sandbox)</param>
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplace, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
         /// <param name="snapshot_date">The hour of the incremental feed file you want, for a particular day. There are always 14 days of Hourly Snapshot feed files available. If you specify that you want the 9AM file for July 15, 2017 (2017-07-15T09:00:00.000Z), the data in the feed file will be items that changed after 9AM on July 15, 2017. Restrictions: Files are generated on the hour, so minutes and seconds are always zeros. &amp;nbsp;&amp;nbsp;&amp;nbsp;(2017-07-12T09:00:00.000Z) Format: UTC format (yyyy-MM-ddThh:00:00.000Z)</param>
-        /// <returns>Success</returns>
+        /// <returns>Partial Content</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
         public ItemSnapshotResponse GetItemSnapshotFeed(string x_EBAY_C_MARKETPLACE_ID, string range, string category_id, string snapshot_date)
         {
@@ -324,7 +324,7 @@ namespace eBayApi.Buy.Feed
         /// <param name="range">This header specifies the range in bytes of the chunks of the gzip file being returned. Format: bytes=startpos-endpos For example, the following retrieves the first 10 MBs of the feed file. &amp;nbsp;&amp;nbsp;Range bytes=0-10485760 For more information about using this headers, see Retrieving a gzip feed file. Maximum: 100 MB (10MB in the Sandbox)</param>
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplace, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
         /// <param name="snapshot_date">The hour of the incremental feed file you want, for a particular day. There are always 14 days of Hourly Snapshot feed files available. If you specify that you want the 9AM file for July 15, 2017 (2017-07-15T09:00:00.000Z), the data in the feed file will be items that changed after 9AM on July 15, 2017. Restrictions: Files are generated on the hour, so minutes and seconds are always zeros. &amp;nbsp;&amp;nbsp;&amp;nbsp;(2017-07-12T09:00:00.000Z) Format: UTC format (yyyy-MM-ddThh:00:00.000Z)</param>
-        /// <returns>Success</returns>
+        /// <returns>Partial Content</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<ItemSnapshotResponse> GetItemSnapshotFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string category_id, string snapshot_date, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
@@ -352,7 +352,7 @@ namespace eBayApi.Buy.Feed
                         throw new System.ArgumentNullException("range");
                     request_.Headers.TryAddWithoutValidation("Range", ConvertToString(range, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/tab-separated-values"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
@@ -393,7 +393,7 @@ namespace eBayApi.Buy.Feed
                         if (status_ == "400") 
                         {
                             string responseText_ = ( response_.Content == null ) ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new eBayApi.ApiException("Bad request", (int)response_.StatusCode, responseText_, headers_, null);
+                            throw new eBayApi.ApiException("Bad Request", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ == "404") 
@@ -439,7 +439,7 @@ namespace eBayApi.Buy.Feed
         /// <param name="feed_scope">Specifies the type of product feed file to return. Valid Values: NEWLY_LISTED - Returns the file containing the product information for items in the NEWLY_LISTED Item feed file that were associated with a product. The items in this type of Item feed file are items that were listed on the day specified by the date parameter in the category specified by the category_id parameter. The items will be Good 'Til Cancelled and non-Good 'Til Cancelled items. If the item is a non-Good 'Til Cancelled item, the item's end date will be returned in the itemEndDate column. /product?feed_scope=NEWLY_LISTED&amp;amp;category_id=15032&amp;amp;date=20170925 ALL_ACTIVE (bootstrap) - Returns the file containing the product information for items in the ALL_ACTIVE Item feed file that were associated with a product. The items in this type of Item feed file are all the 'Good 'Til Cancelled' items in the category specified by the category_id parameter. Note: Bootstrap files are generated every Tuesday and the file is available on Wednesday. However, the exact time the file is available can vary so we recommend you download the Bootstrap file on Thursday. The products in the file are the products that were in the specified category on Sunday. /product?feed_scope=ALL_ACTIVE&amp;amp;category_id=15032</param>
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
         /// <param name="date">The date of the feed file you want. This is needed only when feed_scope=NEWLY_LISTED. If you specify a date and feed_scope=ALL_ACTIVE, the date is ignored and the latest file is returned. The date of the file is returned in the Last-Modified response header. The Product feed files are generated every day and there are always 14 daily feed files available. There is a 48 hour latency when generating the files. This means on July 10, the latest feed file you can download is July 8. In other words, if you wanted the file generated on July 10th, you would need to wait until July 12th. Note: The generated files are stored using MST (US Mountain Standard Time), which is -7 hours UTC time. Format: yyyyMMdd Requirements: Must be within 3-14 days in the past Required when feed_scope=NEWLY_LISTED</param>
-        /// <returns>Success</returns>
+        /// <returns>Partial Content</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
         public ProductResponse GetProductFeed(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date = null)
         {
@@ -452,7 +452,7 @@ namespace eBayApi.Buy.Feed
         /// <param name="feed_scope">Specifies the type of product feed file to return. Valid Values: NEWLY_LISTED - Returns the file containing the product information for items in the NEWLY_LISTED Item feed file that were associated with a product. The items in this type of Item feed file are items that were listed on the day specified by the date parameter in the category specified by the category_id parameter. The items will be Good 'Til Cancelled and non-Good 'Til Cancelled items. If the item is a non-Good 'Til Cancelled item, the item's end date will be returned in the itemEndDate column. /product?feed_scope=NEWLY_LISTED&amp;amp;category_id=15032&amp;amp;date=20170925 ALL_ACTIVE (bootstrap) - Returns the file containing the product information for items in the ALL_ACTIVE Item feed file that were associated with a product. The items in this type of Item feed file are all the 'Good 'Til Cancelled' items in the category specified by the category_id parameter. Note: Bootstrap files are generated every Tuesday and the file is available on Wednesday. However, the exact time the file is available can vary so we recommend you download the Bootstrap file on Thursday. The products in the file are the products that were in the specified category on Sunday. /product?feed_scope=ALL_ACTIVE&amp;amp;category_id=15032</param>
         /// <param name="category_id">An eBay top-level category ID of the items to be returned in the feed file. The list of eBay category IDs changes over time and category IDs are not the same across all the eBay marketplaces. To get a list of the top-level categories for a marketplaces, you can use the Taxonomy API getCategoryTree method. This method retrieves the complete category tree for the marketplace. The top-level categories are identified by the categoryTreeNodeLevel field. For example: &amp;nbsp;&amp;nbsp;&amp;quot;categoryTreeNodeLevel&amp;quot;: 1 For details see Get Categories for Buy APIs. Restriction: Must be a top-level category</param>
         /// <param name="date">The date of the feed file you want. This is needed only when feed_scope=NEWLY_LISTED. If you specify a date and feed_scope=ALL_ACTIVE, the date is ignored and the latest file is returned. The date of the file is returned in the Last-Modified response header. The Product feed files are generated every day and there are always 14 daily feed files available. There is a 48 hour latency when generating the files. This means on July 10, the latest feed file you can download is July 8. In other words, if you wanted the file generated on July 10th, you would need to wait until July 12th. Note: The generated files are stored using MST (US Mountain Standard Time), which is -7 hours UTC time. Format: yyyyMMdd Requirements: Must be within 3-14 days in the past Required when feed_scope=NEWLY_LISTED</param>
-        /// <returns>Success</returns>
+        /// <returns>Partial Content</returns>
         /// <exception cref="eBayApi.ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<ProductResponse> GetProductFeedAsync(string x_EBAY_C_MARKETPLACE_ID, string range, string feed_scope, string category_id, string date = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
@@ -484,7 +484,7 @@ namespace eBayApi.Buy.Feed
                         throw new System.ArgumentNullException("range");
                     request_.Headers.TryAddWithoutValidation("Range", ConvertToString(range, System.Globalization.CultureInfo.InvariantCulture));
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/tab-separated-values"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
@@ -659,697 +659,550 @@ namespace eBayApi.Buy.Feed
         }
     }
 
-    /// <summary>This type defines the fields that can be returned in an error.</summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class Error 
-    {
-        /// <summary>Identifies the type of erro.</summary>
-        [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Category { get; set; }
-    
-        /// <summary>Name for the primary system where the error occurred. This is relevant for application errors.</summary>
-        [Newtonsoft.Json.JsonProperty("domain", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Domain { get; set; }
-    
-        /// <summary>A unique number to identify the error.</summary>
-        [Newtonsoft.Json.JsonProperty("errorId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int ErrorId { get; set; }
-    
-        /// <summary>An array of request elements most closely associated to the error.</summary>
-        [Newtonsoft.Json.JsonProperty("inputRefIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> InputRefIds { get; set; }
-    
-        /// <summary>A more detailed explanation of the error.</summary>
-        [Newtonsoft.Json.JsonProperty("longMessage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LongMessage { get; set; }
-    
-        /// <summary>Information on how to correct the problem, in the end user's terms and language where applicable.</summary>
-        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Message { get; set; }
-    
-        /// <summary>An array of request elements most closely associated to the error.</summary>
-        [Newtonsoft.Json.JsonProperty("outputRefIds", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> OutputRefIds { get; set; }
-    
-        /// <summary>An array of name/value pairs that describe details the error condition. These are useful when multiple errors are returned.</summary>
-        [Newtonsoft.Json.JsonProperty("parameters", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<ErrorParameter> Parameters { get; set; }
-    
-        /// <summary>Further helps indicate which subsystem the error is coming from. System subcategories include: Initialization, Serialization, Security, Monitoring, Rate Limiting, etc.</summary>
-        [Newtonsoft.Json.JsonProperty("subdomain", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Subdomain { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
-    public partial class ErrorParameter 
-    {
-        /// <summary>The object of the error.</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
-    
-        /// <summary>The value of the object.</summary>
-        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Value { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
-    
-    
-    }
-    
-    /// <summary>The type that defines the columns returned in the Item feed file.</summary>
+    /// <summary>The type that defines the columns returned in the &lt;b&gt;Item&lt;/b&gt; feed file.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class Item 
     {
         /// <summary>The unique identifier of the eBay item.</summary>
-        [Newtonsoft.Json.JsonProperty("itemId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemId { get; set; }
     
         /// <summary>The seller created title of the item. This text is an escaped string when special characters are present, using the following rules: Double quotes (&amp;quot;) and backslashes (\) in the Title are escaped with a backslash (\) character If there are any tabs (\t), double quotes (&amp;quot;), or backslashes (\) in the Title, the entire Title will be wrapped in double quotes. For example Before: Misty Rainforest Modern Masters 2017 MTG Magic Fetch Land Free Ship W\Tracking Marvel Legends HULK 8&amp;quot; Figure Avengers Age of Ultron Studios 6&amp;quot; Series After: &amp;quot;Misty Rainforest Modern Masters 2017 MTG Magic Fetch Land Free Ship W\\Tracking&amp;quot; &amp;quot;Marvel Legends HULK 8\&amp;quot; Figure Avengers Age of Ultron Studios 6\&amp;quot; Series&amp;quot;</summary>
-        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Title { get; set; }
     
         /// <summary>The URL to the primary image of the item. This is the URL of the largest image available based on what the seller submitted.</summary>
-        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ImageUrl { get; set; }
     
         /// <summary>The label of the category. For example: Toys &amp;amp; Hobbies|Action Figures|Comic Book Heroes</summary>
-        [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Category { get; set; }
     
         /// <summary>The ID of the category of the item. For example: The ID for Toys &amp;amp; Hobbies|Action Figures|Comic Book Heroes is 158671.</summary>
-        [Newtonsoft.Json.JsonProperty("categoryId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("categoryId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CategoryId { get; set; }
     
         /// <summary>A comma separated list of the purchase options available for the item, such as FIXED_PRICE, AUCTION. FIXED_PRICE - Returned for fixed-price items (non-auction) AUCTION - Returned for auction items without Buy It Now feature FIXED_PRICE and AUCTION - Returned for auction items enabled with the Buy It Now feature Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("buyingOptions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("buyingOptions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string BuyingOptions { get; set; }
     
         /// <summary>The seller's eBay user name.</summary>
-        [Newtonsoft.Json.JsonProperty("sellerUsername", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("sellerUsername", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SellerUsername { get; set; }
     
         /// <summary>The percentage of the seller's total positive feedback.</summary>
-        [Newtonsoft.Json.JsonProperty("sellerFeedbackPercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("sellerFeedbackPercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SellerFeedbackPercentage { get; set; }
     
         /// <summary>The feedback score of the seller. This value is based on the ratings from eBay members that bought items from this seller.</summary>
-        [Newtonsoft.Json.JsonProperty("sellerFeedbackScore", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("sellerFeedbackScore", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SellerFeedbackScore { get; set; }
     
         /// <summary>The unique Global Trade Item Number of the item as defined by http://www.gtin.info. This can be a UPC (Universal Product Code), EAN (European Article Number), or an ISBN (International Standard Book Number) value.</summary>
-        [Newtonsoft.Json.JsonProperty("gtin", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("gtin", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Gtin { get; set; }
     
         /// <summary>The name brand of the item, such as Nike, Apple, etc.</summary>
-        [Newtonsoft.Json.JsonProperty("brand", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("brand", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Brand { get; set; }
     
         /// <summary>The manufacturer part number, which is a number that is used in combination with brand to identify a product.</summary>
-        [Newtonsoft.Json.JsonProperty("mpn", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("mpn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Mpn { get; set; }
     
         /// <summary>The eBay product identifier of a product from the eBay product catalog. You can use this value in the Browse API search method to retrieve items for this product and in the Marketing API methods to retrieve 'also viewed' and 'also bought' products to encourage up-selling and cross-selling.</summary>
-        [Newtonsoft.Json.JsonProperty("epid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("epid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Epid { get; set; }
     
         /// <summary>The identifier of the condition of the item. For example, 1000 is the identifier for NEW. For a list of condition names and IDs, see Item Condition IDs and Names. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("conditionId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("conditionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ConditionId { get; set; }
     
         /// <summary>The text describing the condition of the item. For a list of condition names, see Item Condition IDs and Names. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("condition", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("condition", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Condition { get; set; }
     
         /// <summary>The price of the item. This price can be a discounted price. If it is discounted, information about the discount is returned in the originalPriceValue, originalPriceCurrency, discountAmount, and discountPercentage columns.</summary>
-        [Newtonsoft.Json.JsonProperty("priceValue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("priceValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PriceValue { get; set; }
     
         /// <summary>The currency used for the price of the item. Generally, this is the currency used by the country of the eBay site offering the item. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/CurrencyCodeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("priceCurrency", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("priceCurrency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PriceCurrency { get; set; }
     
         /// <summary>The unique identifier for the item group that contains this item. An item group is an item that has various aspect differences, such as color, size, storage capacity, etc.</summary>
-        [Newtonsoft.Json.JsonProperty("primaryItemGroupId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("primaryItemGroupId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PrimaryItemGroupId { get; set; }
     
         /// <summary>The item group type. Supported value: SELLER_DEFINED_VARIATIONS, indicates that the item group was created by the seller. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("primaryItemGroupType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("primaryItemGroupType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PrimaryItemGroupType { get; set; }
     
         /// <summary>A timestamp indicating when the item's sale period will end based on its start date and duration. For Good 'Til Cancelled' items, no value is returned in this column. Format: UTC (yyyy-MM-ddThh:mm:ss.sssZ).</summary>
-        [Newtonsoft.Json.JsonProperty("itemEndDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemEndDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemEndDate { get; set; }
     
         /// <summary>An identifier generated/incremented when a seller revises the item. There are two types of item revisions; seller changes, such as changing the title and eBay system changes, such as changing the quantity when an item is purchased. This ID is changed only when the seller makes a change to the item.</summary>
-        [Newtonsoft.Json.JsonProperty("sellerItemRevision", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("sellerItemRevision", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SellerItemRevision { get; set; }
     
         /// <summary>The country where the item is physically located.</summary>
-        [Newtonsoft.Json.JsonProperty("itemLocationCountry", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemLocationCountry", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemLocationCountry { get; set; }
     
         /// <summary>A semicolon separated list of the name/value pairs for the aspects of the item, which are BASE64 encoded. The aspect label is separated by a pipe (|), the aspect name and value are separated by a colon (:) and the name/value pairs are separated by a semicolon (;). Example without Label &amp;nbsp;&amp;nbsp; Encoded Format: &amp;nbsp;&amp;nbsp;&amp;nbsp;encodedName:encodedValue;encodedName:encodedValue;encodedName:encodedValue &amp;nbsp;&amp;nbsp; Encoded Example (The delimiters are empathized): &amp;nbsp;&amp;nbsp;&amp;nbsp;U2l6ZQ==:WEw=;Q29sb3I=:UmVk;U2xlZXZlcw==:TG9uZw== &amp;nbsp;&amp;nbsp; Decoded: &amp;nbsp;&amp;nbsp;&amp;nbsp;Size:XL;Color:Red;Sleeves:Long Example with Label &amp;nbsp;&amp;nbsp; Encoded Format: &amp;nbsp;&amp;nbsp;&amp;nbsp;encodedLabel|encodedName:encodedValue;encodedName:encodedValue;encodedLabel| &amp;nbsp;&amp;nbsp; Encoded Example (The delimiters are empathized): &amp;nbsp;&amp;nbsp;&amp;nbsp;UHJvZHVjdCBJZGVudGlmaWVycw==|R1RJTg==:MDE5MDE5ODA2NjYzMw==;QlJBTkQ=:QXBwbGU=;UHJvZHVjdCBLZXkgRmVhdHVyZXM=|TW9kZWw=:aVBob25lIDc= &amp;nbsp;&amp;nbsp; Decoded: &amp;nbsp;&amp;nbsp;&amp;nbsp;Product Identifiers|GTIN:0190198066633;BRAND:Apple;Product Key Features|Model:iPhone 7 Note: The separators ( | : ; ) are not encoded. You must decode each label, name, and value separately. You cannot decode the entire string. For more information, see Encoded Aspects in the Buying Integration Guide.</summary>
-        [Newtonsoft.Json.JsonProperty("localizedAspects", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("localizedAspects", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string LocalizedAspects { get; set; }
     
         /// <summary>An enumeration value representing the eBay status of the seller. Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/SellerTrustLevelEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("sellerTrustLevel", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("sellerTrustLevel", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SellerTrustLevel { get; set; }
     
         /// <summary>An enumeration value representing the item's availability (possibility of being purchased). Values: AVAILABLE TEMPORARILY_UNAVAILABLE UNAVAILABLE Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/AvailabilityEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("availability", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("availability", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Availability { get; set; }
     
         /// <summary>A boolean that indicates whether the images can be altered. If the value is true, you cannot modify the image. Note: Due to image licensing agreements and other legal concerns, modification (including resizing) of some images is strictly prohibited. These images are for display as-is only.</summary>
-        [Newtonsoft.Json.JsonProperty("imageAlteringProhibited", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool ImageAlteringProhibited { get; set; }
+        [Newtonsoft.Json.JsonProperty("imageAlteringProhibited", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ImageAlteringProhibited { get; set; }
     
         /// <summary>The estimated number of this item that are available for purchase. Because the quantity of an item can change several times within a second, it is impossible to return the exact quantity. So instead of returning quantity, the estimated availability of the item is returned.</summary>
-        [Newtonsoft.Json.JsonProperty("estimatedAvailableQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int EstimatedAvailableQuantity { get; set; }
+        [Newtonsoft.Json.JsonProperty("estimatedAvailableQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? EstimatedAvailableQuantity { get; set; }
     
         /// <summary>This column has a value only when the seller sets their Display Item Quantity preference to Display &amp;quot;More than 10 available&amp;quot; in your listing (if applicable). The value of this column will be MORE_THAN. This indicates that the seller has more than the 'Display Item Quantity', which is 10, in stock for this item. The following are the Display Item Quantity preferences the seller can set. Display &amp;quot;More than 10 available&amp;quot; in your listing (if applicable) If the seller enables this preference, this column will have a value as long as there are more than 10 of this item in inventory. If the quantity is equal to 10 or drops below 10, this column will be null and the estimated quantity of the item is returned in the estimatedAvailableQuantity column. Display the exact quantity in your items If the seller enables this preference, the availabilityThresholdType and availabilityThreshold columns will be null and the estimated quantity of the item is returned in the estimatedAvailableQuantity column. Note: Because the quantity of an item can change several times within a second, it is impossible to return the exact quantity. Code so that your app gracefully handles any future changes to these preferences. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/AvailabilityThresholdEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("availabilityThresholdType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("availabilityThresholdType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AvailabilityThresholdType { get; set; }
     
         /// <summary>This column has a value only when the seller sets their 'display item quantity' preference to Display &amp;quot;More than 10 available&amp;quot; in your listing (if applicable). The value of this column will be &amp;quot;10&amp;quot;, which is the threshold value. Code so that your app gracefully handles any future changes to this value.</summary>
-        [Newtonsoft.Json.JsonProperty("availabilityThreshold", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int AvailabilityThreshold { get; set; }
+        [Newtonsoft.Json.JsonProperty("availabilityThreshold", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? AvailabilityThreshold { get; set; }
     
         /// <summary>Indicates whether the seller accepts returns for the item.</summary>
-        [Newtonsoft.Json.JsonProperty("returnsAccepted", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool ReturnsAccepted { get; set; }
+        [Newtonsoft.Json.JsonProperty("returnsAccepted", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ReturnsAccepted { get; set; }
     
         /// <summary>The amount of time the buyer has to return the item after the purchase date. This can be the number of years, months, or days depending on returnPeriodUnit. For example, if this value is '30', and the returnPeriodUnit value is 'DAY', the return period is 30 days.</summary>
-        [Newtonsoft.Json.JsonProperty("returnPeriodValue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int ReturnPeriodValue { get; set; }
+        [Newtonsoft.Json.JsonProperty("returnPeriodValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? ReturnPeriodValue { get; set; }
     
         /// <summary>An enumeration value that indicates the period of time being used to measure the duration, such as business days or months, or years. See the TimeDurationUnitEnum type for a list of possible time-measuring units. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/TimeDurationUnitEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("returnPeriodUnit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("returnPeriodUnit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReturnPeriodUnit { get; set; }
     
         /// <summary>An enumeration value that indicates how a buyer is refunded when an item is returned. Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/RefundMethodEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("refundMethod", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("refundMethod", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string RefundMethod { get; set; }
     
         /// <summary>An enumeration value that indicates the alternative methods for a full refund when an item is returned. This column will have data if the seller offers the buyer an item replacement or exchange instead of a monetary refund. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/ReturnMethodEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("returnMethod", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("returnMethod", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReturnMethod { get; set; }
     
         /// <summary>The party responsible for the return shipping costs when an item is returned. Valid Values: BUYER or SELLER Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/ReturnShippingCostPayerEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("returnShippingCostPayer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("returnShippingCostPayer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReturnShippingCostPayer { get; set; }
     
         /// <summary>Indicates the credit card service that will be used to process the transaction. If this column contains PAYPAL, you can use the Buy Order API to checkout and purchase the item. If this column is empty, you must use another method for checkout.</summary>
-        [Newtonsoft.Json.JsonProperty("acceptedPaymentMethods", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("acceptedPaymentMethods", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AcceptedPaymentMethods { get; set; }
     
         /// <summary>A comma separated list of delivery options for the item, such as SHIP_TO_HOME and SELLER_ARRANGED_LOCAL_PICKUP. This column lets you filter out items that cannot be shipped to the buyer. Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/DeliveryOptionsEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("deliveryOptions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("deliveryOptions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DeliveryOptions { get; set; }
     
         /// <summary>A pipe (|) separated alphabetical list of the geographic countries and regions where the seller will ship the item. If a region is specified, you will need to subtract any countries and regions returned in the shipToExcludedRegions column to fully understand where the seller will ship. The COUNTRY: list is separated from the REGION: list with a semicolon (;). Format Example: COUNTRY:US|BM|GL|MX|PM;REGION:AFRICA|ASIA|CENTRAL_AMERICA_AND_CARIBBEAN|EUROPE|MIDDLE_EAST|OCEANIA|SOUTH_AMERICA|SOUTHEAST_ASIA; Country Values: The two-letter ISO 3166 standard code of the country. Region Values: AFRICA, AMERICAS, ANTARCTIC, ARCTIC, ASIA, AUSTRALIA, CENTRAL_AMERICA_AND_CARIBBEAN, EUROPE, EURO_UNION, GREATER_CHINA, MIDDLE_EAST, NORTH_AMERICA, OCEANIA, REST_OF_ASIA, SOUTHEAST_ASIA, SOUTH_AMERICA, WORLDWIDE Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("shipToIncludedRegions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("shipToIncludedRegions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ShipToIncludedRegions { get; set; }
     
         /// <summary>A pipe (|) separated alphabetical list of the geographic countries and regions where the item cannot be shipped. These countries and regions refine (restrict) the shipToIncludedRegions list. The COUNTRY: list is separated from the REGION: list with a semicolon (;). Format Example: COUNTRY:US|BM|GL|MX|PM;REGION:AFRICA|ASIA|CENTRAL_AMERICA_AND_CARIBBEAN|EUROPE|MIDDLE_EAST|OCEANIA|SOUTH_AMERICA|SOUTHEAST_ASIA; Country Values: The two-letter ISO 3166 standard code of the country. Region Values: AFRICA, AMERICAS, ANTARCTIC, ARCTIC, ASIA, AUSTRALIA, CENTRAL_AMERICA_AND_CARIBBEAN, EUROPE, EURO_UNION, GREATER_CHINA, MIDDLE_EAST, NORTH_AMERICA, OCEANIA, REST_OF_ASIA, SOUTHEAST_ASIA, SOUTH_AMERICA, WORLDWIDE Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("shipToExcludedRegions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("shipToExcludedRegions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ShipToExcludedRegions { get; set; }
     
         /// <summary>The ePID (eBay Product ID of a product from the eBay product catalog) for the item, which has been programmatically determined by eBay using the item's title, aspects, and other data. If the seller provided an ePID for the item, the seller's value is returned in the epid column.</summary>
-        [Newtonsoft.Json.JsonProperty("inferredEpid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inferredEpid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InferredEpid { get; set; }
     
         /// <summary>The GTIN (Global Trade Item Number) of the product as defined by http://www.gtin.info, which as been programmatically determined by eBay. This can be a UPC (Universal Product Code), EAN (European Article Number), or an ISBN (International Standard Book Number) value. If the seller provided a GTIN for the item, the seller's value is returned in the gtin column.</summary>
-        [Newtonsoft.Json.JsonProperty("inferredGtin", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inferredGtin", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InferredGtin { get; set; }
     
         /// <summary>The name brand for the item, such as Nike or Apple, which has been programmatically determined by eBay. To identify the product, this is always used along with MPN. If the seller provided a brand for the item, the seller's value is returned in the brand column.</summary>
-        [Newtonsoft.Json.JsonProperty("inferredBrand", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inferredBrand", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InferredBrand { get; set; }
     
         /// <summary>The MPN (Manufacturer's Part Number) for the item, which has been programmatically determined by eBay. To identify the product, this is always used along with brand. If the seller provided a MPN for the item, the seller's value is returned in the mpn column.</summary>
-        [Newtonsoft.Json.JsonProperty("inferredMpn", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inferredMpn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InferredMpn { get; set; }
     
         /// <summary>A semicolon separated list of the name/value pairs for the aspects of the item, which are BASE64 encoded. These aspects have been programmatically determined by eBay. If the seller provided aspects for the item, the seller's values are returned in the localizedAspects column. The aspect label is separated by a pipe (|), the aspect name and value are separated by a colon (:) and the name/value pairs are separated by a semicolon (;). Example without Label &amp;nbsp;&amp;nbsp; Encoded Format: &amp;nbsp;&amp;nbsp;&amp;nbsp;encodedName:encodedValue;encodedName:encodedValue;encodedName:encodedValue &amp;nbsp;&amp;nbsp; Encoded Example (The delimiters are empathized): &amp;nbsp;&amp;nbsp;&amp;nbsp;U2l6ZQ==:WEw=;Q29sb3I=:UmVk;U2xlZXZlcw==:TG9uZw== &amp;nbsp;&amp;nbsp; Decoded: &amp;nbsp;&amp;nbsp;&amp;nbsp;Size:XL;Color:Red;Sleeves:Long Example with Label &amp;nbsp;&amp;nbsp; Encoded Format: &amp;nbsp;&amp;nbsp;&amp;nbsp;encodedLabel|encodedName:encodedValue;encodedName:encodedValue;encodedLabel| &amp;nbsp;&amp;nbsp; Encoded Example (The delimiters are empathized): &amp;nbsp;&amp;nbsp;&amp;nbsp;UHJvZHVjdCBJZGVudGlmaWVycw==|R1RJTg==:MDE5MDE5ODA2NjYzMw==;QlJBTkQ=:QXBwbGU=;UHJvZHVjdCBLZXkgRmVhdHVyZXM=|TW9kZWw=:aVBob25lIDc= &amp;nbsp;&amp;nbsp; Decoded: &amp;nbsp;&amp;nbsp;&amp;nbsp;Product Identifiers|GTIN:0190198066633;BRAND:Apple;Product Key Features|Model:iPhone 7 Note: The separators ( | : ; ) are not encoded. You must decode each label, name, and value separately. You cannot decode the entire string. For more information, see Encoded Aspects in the Buying Integration Guide.</summary>
-        [Newtonsoft.Json.JsonProperty("inferredLocalizedAspects", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("inferredLocalizedAspects", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string InferredLocalizedAspects { get; set; }
     
         /// <summary>A pipe separated (|) list of URLs for the additional images of the item. These images are in addition to the primary image, which is returned in the imageUrl column. Note: This column can contain multiple values.</summary>
-        [Newtonsoft.Json.JsonProperty("additionalImageUrls", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("additionalImageUrls", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AdditionalImageUrls { get; set; }
     
         /// <summary>The original selling price of the item. This lets you surface a strikethrough price for the item.</summary>
-        [Newtonsoft.Json.JsonProperty("originalPriceValue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("originalPriceValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string OriginalPriceValue { get; set; }
     
         /// <summary>The currency of the originalPriceValue of the item and the discountAmount. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/CurrencyCodeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("originalPriceCurrency", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("originalPriceCurrency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string OriginalPriceCurrency { get; set; }
     
         /// <summary>The calculated amount of the discount (originalPriceValue - priceValue). For example, if originalPriceValue is 70 and priceValue is 56, this value would be 14. Note: The currency shown in originalPriceCurrency is used for both discountAmount and originalPriceCurrency.</summary>
-        [Newtonsoft.Json.JsonProperty("discountAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("discountAmount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DiscountAmount { get; set; }
     
         /// <summary>The calculated discount percentage. For example, if originalPriceValue is 70 and discountAmount is 14, this value will be 20.</summary>
-        [Newtonsoft.Json.JsonProperty("discountPercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("discountPercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DiscountPercentage { get; set; }
     
         /// <summary>Indicates the European energy efficiency rating (EEK) of the item. This field is returned only if the seller specified the energy efficiency rating. The rating is a set of energy efficiency classes from A to G, where 'A' is the most energy efficient and 'G' is the least efficient. This rating helps buyers choose between various models. To retrieve the manufacturer's specifications for this item, when they are available, use the getItem method in the Browse API. The information is returned in the productFicheWebUrl field.</summary>
-        [Newtonsoft.Json.JsonProperty("energyEfficiencyClass", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("energyEfficiencyClass", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EnergyEfficiencyClass { get; set; }
     
         /// <summary>A pipe separated list of the qualified programs available for the item. Currently, the only qualified program returned is EBAY_PLUS. Note: The EBAY_PLUS program is supported only on the EBAY_DE and EBAY_AU marketplaces. This means the qualifiedPrograms column will be populated only in feed files for these marketplaces. Program Values: EBAY_PLUS</summary>
-        [Newtonsoft.Json.JsonProperty("qualifiedPrograms", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("qualifiedPrograms", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string QualifiedPrograms { get; set; }
     
         /// <summary>The number of items in a lot. In other words, a lot size is the number of items that are being sold together. A lot is a set of two or more items included in a single listing that must be purchased together in a single order line item. All the items in the lot are the same but there can be multiple items in a single lot, such as the package of batteries shown in the example below. For example: Item Lot Definition Lot Size A package of 24 AA batteries A box of 10 packages 10 A P235/75-15 Goodyear tire 4 tires 4 Fashion Jewelry Rings Package of 100 assorted rings 100 Note: Lots are not supported in all categories.</summary>
-        [Newtonsoft.Json.JsonProperty("lotSize", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int LotSize { get; set; }
+        [Newtonsoft.Json.JsonProperty("lotSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? LotSize { get; set; }
     
         /// <summary>The unit of measurement used for the package dimensions, such as INCH, FEET, CENTIMETER, or METER. Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/LengthUnitOfMeasureEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("lengthUnitOfMeasure", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("lengthUnitOfMeasure", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string LengthUnitOfMeasure { get; set; }
     
         /// <summary>The width of the shipping package that contains the item.</summary>
-        [Newtonsoft.Json.JsonProperty("packageWidth", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("packageWidth", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PackageWidth { get; set; }
     
         /// <summary>The height of the shipping package that contains the item.</summary>
-        [Newtonsoft.Json.JsonProperty("packageHeight", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("packageHeight", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PackageHeight { get; set; }
     
         /// <summary>The length of the shipping package that contains the item.</summary>
-        [Newtonsoft.Json.JsonProperty("packageLength", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("packageLength", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PackageLength { get; set; }
     
         /// <summary>The unit of measurement used for the package weight, such as POUND, KILOGRAM, OUNCE, or GRAM. Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/WeightUnitOfMeasureEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("weightUnitOfMeasure", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("weightUnitOfMeasure", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string WeightUnitOfMeasure { get; set; }
     
         /// <summary>The weight of the package that contains the item.</summary>
-        [Newtonsoft.Json.JsonProperty("packageWeight", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("packageWeight", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PackageWeight { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>The type that defines the columns returned in the Item Group feed file.</summary>
+    /// <summary>The type that defines the columns returned in the &lt;b&gt;Item Group&lt;/b&gt; feed file.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ItemGroup 
     {
         /// <summary>The unique identifier for the item group. This ID is returned in the primaryItemGroupId column of the Item Feed file.</summary>
-        [Newtonsoft.Json.JsonProperty("itemGroupId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemGroupId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemGroupId { get; set; }
     
         /// <summary>The item group type. For example: SELLER_DEFINED_VARIATIONS, indicates that the item group was created by the seller. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("itemGroupType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemGroupType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemGroupType { get; set; }
     
         /// <summary>The seller created title of the item group. This text is an escaped string when special characters are present, using the following rules: Double quotes (&amp;quot;) and backslashes (\) in the Title are escaped with a backslash (\) character If there are any tabs (\t), double quotes (&amp;quot;), or backslashes (\) in the Title, the entire Title will be wrapped in double quotes. For example Before: Misty Rainforest Modern Masters 2017 MTG Magic Fetch Land Free Ship W\Tracking Marvel Legends HULK 8&amp;quot; Figure Avengers Age of Ultron Studios 6&amp;quot; Series After: &amp;quot;Misty Rainforest Modern Masters 2017 MTG Magic Fetch Land Free Ship W\\Tracking&amp;quot; &amp;quot;Marvel Legends HULK 8\&amp;quot; Figure Avengers Age of Ultron Studios 6\&amp;quot; Series&amp;quot;</summary>
-        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Title { get; set; }
     
         /// <summary>A pipe separated (|) list of the aspect (variation) names for this item group. The aspect name is BASE64 encoded. Note: This column can contain multiple values. &amp;nbsp;&amp;nbsp; Encoded Format: &amp;nbsp;&amp;nbsp;&amp;nbsp;aspectName|aspectName &amp;nbsp;&amp;nbsp; Encoded Example (The delimiters are empathized): &amp;nbsp;&amp;nbsp;&amp;nbsp;Q29sb3I=|U2l6ZQ== &amp;nbsp;&amp;nbsp; Decoded: &amp;nbsp;&amp;nbsp;&amp;nbsp;Color|Size</summary>
-        [Newtonsoft.Json.JsonProperty("variesByLocalizedAspects", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("variesByLocalizedAspects", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string VariesByLocalizedAspects { get; set; }
     
         /// <summary>The URL to the primary image of the item. The other images of the item group are returned in the additionalImageUrls column.</summary>
-        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ImageUrl { get; set; }
     
         /// <summary>A pipe separated (|) list of URLs for the additional images for the item group. These images are in addition to the primary image, which is returned in the imageUrl column. Note: This column can contain multiple values.</summary>
-        [Newtonsoft.Json.JsonProperty("additionalImageUrls", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("additionalImageUrls", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AdditionalImageUrls { get; set; }
     
         /// <summary>A boolean that indicates whether the images can be altered. If the value is true, you cannot modify the image. Note: Due to image licensing agreements and other legal concerns, modification (including resizing) of some images is strictly prohibited. These images are for display as-is only.</summary>
-        [Newtonsoft.Json.JsonProperty("imageAlteringProhibited", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool ImageAlteringProhibited { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("imageAlteringProhibited", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ImageAlteringProhibited { get; set; }
     
     
     }
     
-    /// <summary>The type that defines the array for the items returned in the Item Group feed file.</summary>
+    /// <summary>The type that defines the array for the items returned in the &lt;b&gt;Item Group&lt;/b&gt; feed file.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ItemGroupResponse 
     {
         /// <summary>The container for the array of items groups returned by the getItemGroupFeed method. The data in the file is tab separated and the first row is the header, which labels the columns and indicates the order of the values for each item. The header labels match the fields that are described in the Response fields section.</summary>
-        [Newtonsoft.Json.JsonProperty("itemGroups", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemGroups", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<ItemGroup> ItemGroups { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>The type that defines the array for the items returned in the Item feed file.</summary>
+    /// <summary>The type that defines the array for the items returned in the &lt;b&gt;Item&lt;/b&gt; feed file. </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ItemResponse 
     {
         /// <summary>The container for the array of items returned by the getItemFeed method. The data in the file is tab separated and the first row is the header, which labels the columns and indicates the order of the values on each line. The header labels match the fields that are described in the Response fields section.</summary>
-        [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Item> Items { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>The type that defines the columns returned in the Hourly Snapshot feed file. Note: When the value of the availability column is UNAVAILABLE, only the itemId and availability columns are populated.</summary>
+    /// <summary>The type that defines the columns returned in the &lt;b&gt;Hourly Snapshot&lt;/b&gt; feed file.  &lt;p&gt;  &lt;b&gt;Note: &lt;/b&gt; When the value of the &lt;b&gt;availability&lt;/b&gt; column is &lt;code&gt;UNAVAILABLE&lt;/code&gt;, only the &lt;b&gt;itemId&lt;/b&gt; and &lt;b&gt;availability&lt;/b&gt; columns are populated.  &lt;/p&gt; </summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ItemSnapshot 
     {
         /// <summary>The unique identifier of the eBay item.</summary>
-        [Newtonsoft.Json.JsonProperty("itemId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemId { get; set; }
     
         /// <summary>An enumeration value representing the item's availability (possibility of being purchased). Values: AVAILABLE TEMPORARILY_UNAVAILABLE UNAVAILABLE Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/AvailabilityEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("availability", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("availability", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Availability { get; set; }
     
         /// <summary>The seller created title of the item. This text is an escaped string when special characters are present, using the following rules: Double quotes (&amp;quot;) and backslashes (\) in the Title are escaped with a backslash (\) character If there are any tabs (\t), double quotes (&amp;quot;), or backslashes (\) in the Title, the entire Title will be wrapped in double quotes. For example Before: Misty Rainforest Modern Masters 2017 MTG Magic Fetch Land Free Ship W\Tracking Marvel Legends HULK 8&amp;quot; Figure Avengers Age of Ultron Studios 6&amp;quot; Series After: &amp;quot;Misty Rainforest Modern Masters 2017 MTG Magic Fetch Land Free Ship W\\Tracking&amp;quot; &amp;quot;Marvel Legends HULK 8\&amp;quot; Figure Avengers Age of Ultron Studios 6\&amp;quot; Series&amp;quot;</summary>
-        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Title { get; set; }
     
         /// <summary>The URL to the primary image of the item. This is the URL of the largest image available based on what the seller submitted.</summary>
-        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ImageUrl { get; set; }
     
         /// <summary>The label of the category of the item. For example: Toys &amp;amp; Hobbies|Action Figures|Comic Book Heroes .</summary>
-        [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Category { get; set; }
     
         /// <summary>The ID of the category of the item. For example: The ID for Toys &amp;amp; Hobbies|Action Figures|Comic Book Heroes is 158671.</summary>
-        [Newtonsoft.Json.JsonProperty("categoryId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("categoryId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string CategoryId { get; set; }
     
         /// <summary>A comma separated list of the purchase options available for the item, such as FIXED_PRICE, AUCTION. Code so that your app gracefully handles any future changes to this list. Note: This column can contain multiple values.</summary>
-        [Newtonsoft.Json.JsonProperty("buyingOptions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("buyingOptions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string BuyingOptions { get; set; }
     
         /// <summary>The seller's eBay user name.</summary>
-        [Newtonsoft.Json.JsonProperty("sellerUsername", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("sellerUsername", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SellerUsername { get; set; }
     
         /// <summary>The percentage of the seller's total positive feedback.</summary>
-        [Newtonsoft.Json.JsonProperty("sellerFeedbackPercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("sellerFeedbackPercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SellerFeedbackPercentage { get; set; }
     
         /// <summary>The feedback score of the seller. This value is based on the ratings from eBay members that bought items from this seller.</summary>
-        [Newtonsoft.Json.JsonProperty("sellerFeedbackScore", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("sellerFeedbackScore", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SellerFeedbackScore { get; set; }
     
         /// <summary>The unique Global Trade Item Number of the item as defined by http://www.gtin.info. This can be a UPC (Universal Product Code), EAN (European Article Number), or an ISBN (International Standard Book Number) value.</summary>
-        [Newtonsoft.Json.JsonProperty("gtin", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("gtin", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Gtin { get; set; }
     
         /// <summary>The name brand of the item, such as Nike, Apple, etc.</summary>
-        [Newtonsoft.Json.JsonProperty("brand", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("brand", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Brand { get; set; }
     
         /// <summary>The manufacturer part number, which is a number that is used in combination with brand to identify a product.</summary>
-        [Newtonsoft.Json.JsonProperty("mpn", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("mpn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Mpn { get; set; }
     
         /// <summary>The eBay product identifier of a product from the eBay product catalog. You can use this value in the Browse API search method to retrieve items for this product and in the Marketing API methods to retrieve 'also viewed' and 'also bought' products to encourage up-selling and cross-selling.</summary>
-        [Newtonsoft.Json.JsonProperty("epid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("epid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Epid { get; set; }
     
         /// <summary>The identifier of the condition of the item. For example, 1000 is the identifier for NEW. For a list of condition names and IDs, see Item Condition IDs and Names. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("conditionId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("conditionId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ConditionId { get; set; }
     
         /// <summary>The text describing the condition of the item, such as New or Used. For a list of condition names, see Item Condition IDs and Names. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("condition", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("condition", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Condition { get; set; }
     
         /// <summary>The price of the item. Note: This price can be a discounted price.</summary>
-        [Newtonsoft.Json.JsonProperty("priceValue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("priceValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PriceValue { get; set; }
     
         /// <summary>The currency used for the price of the item. Generally, this is the currency used by the country of the eBay site offering the item. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/CurrencyCodeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("priceCurrency", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("priceCurrency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PriceCurrency { get; set; }
     
         /// <summary>The unique identifier for the item group that contains this item. An item group is an item that has various aspect differences, such as color, size, storage capacity, etc.</summary>
-        [Newtonsoft.Json.JsonProperty("primaryItemGroupId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("primaryItemGroupId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PrimaryItemGroupId { get; set; }
     
         /// <summary>The item group type. Supported value: SELLER_DEFINED_VARIATIONS, indicates that the item group was created by the seller. Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("primaryItemGroupType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("primaryItemGroupType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PrimaryItemGroupType { get; set; }
     
         /// <summary>A timestamp indicating when the item's sale period will end based on its start date and duration. For Good 'Til Cancelled' items, no value is returned in this column. Format: UTC (yyyy-MM-ddThh:mm:ss.sssZ).</summary>
-        [Newtonsoft.Json.JsonProperty("itemEndDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemEndDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemEndDate { get; set; }
     
         /// <summary>An identifier generated/incremented when a seller revises the item. There are two types of item revisions; seller changes, such as changing the title and eBay system changes, such as changing the quantity when an item is purchased. This ID is changed only when the seller makes a change to the item.</summary>
-        [Newtonsoft.Json.JsonProperty("sellerItemRevision", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("sellerItemRevision", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SellerItemRevision { get; set; }
     
         /// <summary>The country where the item is physically located.</summary>
-        [Newtonsoft.Json.JsonProperty("itemLocationCountry", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemLocationCountry", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemLocationCountry { get; set; }
     
         /// <summary>A semicolon separated list of the name/value pairs for the aspects of the item, which are BASE64 encoded. The aspect label is separated by a pipe (|), the aspect name and value are separated by a colon (:) and the name/value pairs are separated by a semicolon (;). Example without Label &amp;nbsp;&amp;nbsp; Encoded Format: &amp;nbsp;&amp;nbsp;&amp;nbsp;encodedName:encodedValue;encodedName:encodedValue;encodedName:encodedValue &amp;nbsp;&amp;nbsp; Encoded Example (The delimiters are empathized): &amp;nbsp;&amp;nbsp;&amp;nbsp;U2l6ZQ==:WEw=;Q29sb3I=:UmVk;U2xlZXZlcw==:TG9uZw== &amp;nbsp;&amp;nbsp; Decoded: &amp;nbsp;&amp;nbsp;&amp;nbsp;Size:XL;Color:Red;Sleeves:Long Example with Label &amp;nbsp;&amp;nbsp; Encoded Format: &amp;nbsp;&amp;nbsp;&amp;nbsp;encodedLabel|encodedName:encodedValue;encodedName:encodedValue;encodedLabel| &amp;nbsp;&amp;nbsp; Encoded Example (The delimiters are empathized): &amp;nbsp;&amp;nbsp;&amp;nbsp;UHJvZHVjdCBJZGVudGlmaWVycw==|R1RJTg==:MDE5MDE5ODA2NjYzMw==;QlJBTkQ=:QXBwbGU=;UHJvZHVjdCBLZXkgRmVhdHVyZXM=|TW9kZWw=:aVBob25lIDc= &amp;nbsp;&amp;nbsp; Decoded: &amp;nbsp;&amp;nbsp;&amp;nbsp;Product Identifiers|GTIN:0190198066633;BRAND:Apple;Product Key Features|Model:iPhone 7 Note: The separators ( | : ; ) are not encoded. You must decode each label, name, and value separately. You cannot decode the entire string. For more information, see Encoded Aspects in the Buying Integration Guide.</summary>
-        [Newtonsoft.Json.JsonProperty("localizedAspects", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("localizedAspects", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string LocalizedAspects { get; set; }
     
         /// <summary>An enumeration value representing the eBay status of the seller. Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/SellerTrustLevelEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("sellerTrustLevel", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("sellerTrustLevel", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string SellerTrustLevel { get; set; }
     
         /// <summary>A boolean that indicates whether the images can be altered. If the value is true, you cannot modify the image. Note: Due to image licensing agreements and other legal concerns, modification (including resizing) of some images is strictly prohibited. These images are for display as-is only.</summary>
-        [Newtonsoft.Json.JsonProperty("imageAlteringProhibited", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool ImageAlteringProhibited { get; set; }
+        [Newtonsoft.Json.JsonProperty("imageAlteringProhibited", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ImageAlteringProhibited { get; set; }
     
         /// <summary>The estimated number of this item that are available for purchase. Because the quantity of an item can change several times within a second, it is impossible to return the exact quantity. So instead of returning quantity, the estimated availability of the item is returned.</summary>
-        [Newtonsoft.Json.JsonProperty("estimatedAvailableQuantity", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int EstimatedAvailableQuantity { get; set; }
+        [Newtonsoft.Json.JsonProperty("estimatedAvailableQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? EstimatedAvailableQuantity { get; set; }
     
         /// <summary>This column has a value only when the seller sets their Display Item Quantity preference to Display &amp;quot;More than 10 available&amp;quot; in your listing (if applicable). The value of this column will be MORE_THAN. This indicates that the seller has more than the 'Display Item Quantity', which is 10, in stock for this item. The following are the Display Item Quantity preferences the seller can set. Display &amp;quot;More than 10 available&amp;quot; in your listing (if applicable) If the seller enables this preference, this column will have a value as long as there are more than 10 of this item in inventory. If the quantity is equal to 10 or drops below 10, this column will be null and the estimated quantity of the item is returned in the estimatedAvailableQuantity column. Display the exact quantity in your items If the seller enables this preference, the availabilityThresholdType and availabilityThreshold columns will be null and the estimated quantity of the item is returned in the estimatedAvailableQuantity column. Note: Because the quantity of an item can change several times within a second, it is impossible to return the exact quantity. Code so that your app gracefully handles any future changes to these preferences. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/AvailabilityThresholdEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("availabilityThresholdType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("availabilityThresholdType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AvailabilityThresholdType { get; set; }
     
         /// <summary>This column has a value only when the seller sets their 'display item quantity' preference to Display &amp;quot;More than 10 available&amp;quot; in your listing (if applicable). The value of this column will be &amp;quot;10&amp;quot;, which is the threshold value. Code so that your app gracefully handles any future changes to this value.</summary>
-        [Newtonsoft.Json.JsonProperty("availabilityThreshold", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int AvailabilityThreshold { get; set; }
+        [Newtonsoft.Json.JsonProperty("availabilityThreshold", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? AvailabilityThreshold { get; set; }
     
         /// <summary>This timestamp denotes the date and time the changes for that item were picked up and added to the snapshot feed file. For example, let's say you have a snapshot feed file and also ran the getItem method. When you compare the same item information from the two sources, you see that the price in the getItem method response is different from the price in the snapshot feed file. By knowing the date and time you submitted the getItem method, you can use the itemSnapshotDate data to determine which price is the most current for this item.</summary>
-        [Newtonsoft.Json.JsonProperty("itemSnapshotDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("itemSnapshotDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ItemSnapshotDate { get; set; }
     
         /// <summary>The original selling price of the item. This lets you surface a strikethrough price for the item.</summary>
-        [Newtonsoft.Json.JsonProperty("originalPriceValue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("originalPriceValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string OriginalPriceValue { get; set; }
     
         /// <summary>The currency of the originalPriceValue of the item and the discountAmount. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/CurrencyCodeEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("originalPriceCurrency", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("originalPriceCurrency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string OriginalPriceCurrency { get; set; }
     
         /// <summary>The calculated amount of the discount (originalPriceValue - priceValue). For example, if originalPriceValue is 70 and priceValue is 56, this value would be 14. Note: The currency shown in originalPriceCurrency is used for both discountAmount and originalPriceCurrency.</summary>
-        [Newtonsoft.Json.JsonProperty("discountAmount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("discountAmount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DiscountAmount { get; set; }
     
         /// <summary>The calculated discount percentage. For example, if originalPriceValue is 70 and discountAmount is 14, this value will be 20.</summary>
-        [Newtonsoft.Json.JsonProperty("discountPercentage", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("discountPercentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DiscountPercentage { get; set; }
     
         /// <summary>Indicates whether the seller accepts returns for the item.</summary>
-        [Newtonsoft.Json.JsonProperty("returnsAccepted", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool ReturnsAccepted { get; set; }
+        [Newtonsoft.Json.JsonProperty("returnsAccepted", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? ReturnsAccepted { get; set; }
     
         /// <summary>The amount of time the buyer has to return the item after the purchase date. This can be the number of years, months, or days depending on returnPeriodUnit. For example, if this value is '30', and the returnPeriodUnit value is 'DAY', the return period is 30 days.</summary>
-        [Newtonsoft.Json.JsonProperty("returnPeriodValue", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int ReturnPeriodValue { get; set; }
+        [Newtonsoft.Json.JsonProperty("returnPeriodValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? ReturnPeriodValue { get; set; }
     
         /// <summary>An enumeration value representing the period of time being used to measure the duration, such as business days or months, or years. See the TimeDurationUnitEnum type for a list of possible time-measuring units. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/TimeDurationUnitEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("returnPeriodUnit", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("returnPeriodUnit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReturnPeriodUnit { get; set; }
     
         /// <summary>An enumeration value representing how a buyer is refunded when an item is returned. Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/RefundMethodEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("refundMethod", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("refundMethod", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string RefundMethod { get; set; }
     
         /// <summary>An enumeration value that indicates the alternative methods for a full refund when an item is returned. This column will have data if the seller offers the buyer an item replacement or exchange instead of a monetary refund. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/ReturnMethodEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("returnMethod", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("returnMethod", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReturnMethod { get; set; }
     
         /// <summary>An enumeration value that indicates the party responsible for the return shipping costs when an item is returned. Valid Values: BUYER or SELLER Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/ReturnShippingCostPayerEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("returnShippingCostPayer", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("returnShippingCostPayer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ReturnShippingCostPayer { get; set; }
     
         /// <summary>Indicates the European energy efficiency rating (EEK) of the item. This field is returned only if the seller specified the energy efficiency rating. The rating is a set of energy efficiency classes from A to G, where 'A' is the most energy efficient and 'G' is the least efficient. This rating helps buyers choose between various models. To retrieve the manufacturer's specifications for this item, when they are available, use the getItem method in the Browse API. The information is returned in the productFicheWebUrl field.</summary>
-        [Newtonsoft.Json.JsonProperty("energyEfficiencyClass", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("energyEfficiencyClass", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string EnergyEfficiencyClass { get; set; }
     
         /// <summary>A pipe separated (|) list of URLs for the additional images of the item. These images are in addition to the primary image, which is returned in the imageUrl column. Note: This column can contain multiple values.</summary>
-        [Newtonsoft.Json.JsonProperty("additionalImageUrls", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("additionalImageUrls", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AdditionalImageUrls { get; set; }
     
         /// <summary>A comma separated list of delivery options for the item, such as SHIP_TO_HOME and SELLER_ARRANGED_LOCAL_PICKUP. This column lets you filter out items that cannot be shipped to the buyer. Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href='https://developer.ebay.com/devzone/rest/api-ref/feed/types/DeliveryOptionsEnum.html'&gt;eBay API documentation&lt;/a&gt;</summary>
-        [Newtonsoft.Json.JsonProperty("deliveryOptions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("deliveryOptions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DeliveryOptions { get; set; }
     
         /// <summary>A pipe (|) separated alphabetical list of the geographic countries and regions where the seller will ship the item. If a region is specified, you will need to subtract any countries and regions returned in the shipToExcludedRegions column to fully understand where the seller will ship. The COUNTRY: list is separated from the REGION: list with a semicolon (;). Format Example: COUNTRY:US|BM|GL|MX|PM;REGION:AFRICA|ASIA|CENTRAL_AMERICA_AND_CARIBBEAN|EUROPE|MIDDLE_EAST|OCEANIA|SOUTH_AMERICA|SOUTHEAST_ASIA; Country Values: The two-letter ISO 3166 standard code of the country. Region Values: AFRICA, AMERICAS, ANTARCTIC, ARCTIC, ASIA, AUSTRALIA, CENTRAL_AMERICA_AND_CARIBBEAN, EUROPE, EURO_UNION, GREATER_CHINA, MIDDLE_EAST, NORTH_AMERICA, OCEANIA, REST_OF_ASIA, SOUTHEAST_ASIA, SOUTH_AMERICA, WORLDWIDE Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("shipToIncludedRegions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("shipToIncludedRegions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ShipToIncludedRegions { get; set; }
     
         /// <summary>A pipe (|) separated alphabetical list of the geographic countries and regions where the item cannot be shipped. These countries and regions refine (restrict) the shipToIncludedRegions list. The COUNTRY: list is separated from the REGION: list with a semicolon (;). Format Example: COUNTRY:US|BM|GL|MX|PM;REGION:AFRICA|ASIA|CENTRAL_AMERICA_AND_CARIBBEAN|EUROPE|MIDDLE_EAST|OCEANIA|SOUTH_AMERICA|SOUTHEAST_ASIA; Country Values: The two-letter ISO 3166 standard code of the country. Region Values: AFRICA, AMERICAS, ANTARCTIC, ARCTIC, ASIA, AUSTRALIA, CENTRAL_AMERICA_AND_CARIBBEAN, EUROPE, EURO_UNION, GREATER_CHINA, MIDDLE_EAST, NORTH_AMERICA, OCEANIA, REST_OF_ASIA, SOUTHEAST_ASIA, SOUTH_AMERICA, WORLDWIDE Code so that your app gracefully handles any future changes to this list.</summary>
-        [Newtonsoft.Json.JsonProperty("shipToExcludedRegions", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("shipToExcludedRegions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ShipToExcludedRegions { get; set; }
     
         /// <summary>Indicates the credit card service that will be used to process the transaction. If this column contains PAYPAL, you can use the Buy Order API to checkout and purchase the item. If this column is empty, you must use another method for checkout.</summary>
-        [Newtonsoft.Json.JsonProperty("acceptedPaymentMethods", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("acceptedPaymentMethods", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AcceptedPaymentMethods { get; set; }
     
         /// <summary>A pipe separated list of the qualified programs available for the item, such as EBAY_PLUS</summary>
-        [Newtonsoft.Json.JsonProperty("qualifiedPrograms", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("qualifiedPrograms", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string QualifiedPrograms { get; set; }
     
         /// <summary>The number of items in a lot. In other words, a lot size is the number of items that are being sold together. A lot is a set of two or more items included in a single listing that must be purchased together in a single order line item. All the items in the lot are the same but there can be multiple items in a single lot, such as the package of batteries shown in the example below. For example: Item Lot Definition Lot Size A package of 24 AA batteries A box of 10 packages 10 A P235/75-15 Goodyear tire 4 tires 4 Fashion Jewelry Rings Package of 100 assorted rings 100 Note: Lots are not supported in all categories.</summary>
-        [Newtonsoft.Json.JsonProperty("lotSize", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int LotSize { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
+        [Newtonsoft.Json.JsonProperty("lotSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? LotSize { get; set; }
     
     
     }
     
-    /// <summary>The type that defines the array for the items returned in the Hourly Snapshot feed file.</summary>
+    /// <summary>The type that defines the array for the items returned in the &lt;b&gt;Hourly Snapshot&lt;/b&gt; feed file.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ItemSnapshotResponse 
     {
         /// <summary>The container for the array of items returned by the getItemSnapshotFeed method. Note: When the value of the availability column is UNAVAILABLE, only the itemId and availability columns are populated.</summary>
-        [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<ItemSnapshot> Items { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>The type that defines the columns returned in the getProductFeed feed file.</summary>
+    /// <summary>The type that defines the columns returned in the &lt;b&gt; getProductFeed&lt;/b&gt; feed file.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class Product 
     {
         /// <summary>The eBay product identifier of a product from the eBay product catalog. You can use this value in the Browse API search method to retrieve items for this product and in the Marketing API methods to retrieve 'also viewed' and 'also bought' products to encourage up-selling and cross-selling.</summary>
-        [Newtonsoft.Json.JsonProperty("epid", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("epid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Epid { get; set; }
     
         /// <summary>The title of the product. This text is an escaped string when special characters are present, using the following rules: Double quotes (&amp;quot;) and backslashes (\) in the Title are escaped with a backslash (\) character If there are any tabs (\t), double quotes (&amp;quot;), or backslashes (\) in the Title, the entire Title will be wrapped in double quotes. For example Before: Misty Rainforest Modern Masters 2017 MTG Magic Fetch Land Free Ship W\Tracking Marvel Legends HULK 8&amp;quot; Figure Avengers Age of Ultron Studios 6&amp;quot; Series After: &amp;quot;Misty Rainforest Modern Masters 2017 MTG Magic Fetch Land Free Ship W\\Tracking&amp;quot; &amp;quot;Marvel Legends HULK 8\&amp;quot; Figure Avengers Age of Ultron Studios 6\&amp;quot; Series&amp;quot;</summary>
-        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Title { get; set; }
     
         /// <summary>The description of the product, which is BASE64 encoded.</summary>
-        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Description { get; set; }
     
         /// <summary>The URL to the primary product image. This is the URL of the largest image available based on what the seller submitted.</summary>
-        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("imageUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string ImageUrl { get; set; }
     
         /// <summary>A pipe separated (|) list of URLs for the additional images of the item. These images are in addition to the primary image, which is returned in the imageUrl column. Note: This column can contain multiple values.</summary>
-        [Newtonsoft.Json.JsonProperty("additionalImageUrls", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("additionalImageUrls", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string AdditionalImageUrls { get; set; }
     
         /// <summary>A list of the name/value pairs for the aspects of the product, which are BASE64 encoded. The aspect label, is separated by a pipe (|), the aspect name and value are separated by a colon (:) and the name/value pairs are separated by a semicolon (;). Example without Label Encoded: encodedName:encodedValue;encodedName:encodedValue;encodedName:encodedValue Decoded: Size:XL;Color:Red;Sleeves:Long Example with Label Encoded: encodedLabel|encodedName:encodedValue;encodedName:encodedValue;encodedLabel|encodedName:encodedValue Decoded: Product Identifiers|GTIN:0190198066633;BRAND:Apple;Product Key Features|Model:iPhone 7 Note: The separators ( | : ; ) are not encoded. You must decode each label, name, and value separately. You cannot decode the entire string. For more information, see Encoded Aspects in the Buying Integration Guide.</summary>
-        [Newtonsoft.Json.JsonProperty("localizedProductAspects", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("localizedProductAspects", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string LocalizedProductAspects { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
     
-    /// <summary>The type that defines the array for the products returned in the Product feed file.</summary>
+    /// <summary>The type that defines the array for the products returned in the &lt;b&gt;Product&lt;/b&gt; feed file.</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.0.23.0 (Newtonsoft.Json v11.0.0.0)")]
     public partial class ProductResponse 
     {
         /// <summary>The container for the array of products returned by the getProdutFeed method. The data in the file is tab separated and the first row is the header, which labels the columns and indicates the order of the values on each line. The header labels match the fields that are described in the Response fields section.</summary>
-        [Newtonsoft.Json.JsonProperty("products", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("products", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<Product> Products { get; set; }
-    
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
-    
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties; }
-            set { _additionalProperties = value; }
-        }
     
     
     }
