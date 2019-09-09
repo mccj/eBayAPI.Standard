@@ -61,6 +61,7 @@ namespace eBayApi
         public Sell.Marketing.Client SellMarketing => new Sell.Marketing.Client(_httpClient);
         public Sell.Metadata.Client SellMetadata => new Sell.Metadata.Client(_httpClient);
         public Sell.Recommendation.Client SellRecommendation => new Sell.Recommendation.Client(_httpClient);
+        public Developer.Analytics.Client DeveloperAnalytics => new Developer.Analytics.Client(_httpClient);
         #endregion 客户端属性
     }
 }
