@@ -7,28 +7,7 @@ namespace UnitTestProject
     {
         public eBayApiClientAuthOAuth2Test()
         {
-            var ebayconfig = @"
-name: ebay-config
-
-
-api.sandbox.ebay.com:
-    appid: mmmmm6c49-9bd2-4ca3-ae07-db76cf2c5d2
-    certid: 17efc6e6-e9fc-441c-a7a0-6a43a932a8ca
-    devid: 678bc87a-7a84-4445-8249-2d65d56f0b32
-    redirecturi: mmmmm-mmmmm6c49-9bd2--dhscnzf
-
-
-api.ebay.com:
-    appid: mmmmm69ac-ca7a-4165-9331-e0c7f27557e
-    certid: d56ae126-2192-4942-bff1-9fabeccfc918
-    devid: 678bc87a-7a84-4445-8249-2d65d56f0b32
-    redirecturi: mmmmm-mmmmm69ac-ca7a--vpyba
-";
-            var ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(ebayconfig));
-
-            //eBay.ApiClient.Auth.OAuth2.CredentialUtil.Load("YAML config file path");
-            //or
-            eBay.ApiClient.Auth.OAuth2.CredentialUtil.Load(new System.IO.StreamReader(ms));
+            OAuth2Initialize.Initialize();
         }
         [TestMethod]
         public void CredentialUtilTest()
@@ -52,7 +31,7 @@ api.ebay.com:
             Assert.IsNotNull(Sandbox_DevId);
             Assert.IsNotNull(Sandbox_RedirectUrl);
         }
-        [Ignore]
+        //[Ignore]
         [TestMethod]
         public void CredentialUtilTest11()
         {
